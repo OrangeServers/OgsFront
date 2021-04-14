@@ -13,24 +13,23 @@ layui.use('table', function(){
     id: 'test'
     ,elem: '#test'
     ,height: 580
-    ,url: 'http://10.0.1.198:18000/server/host_list_all'
+    ,url: 'http://10.0.1.198:18000/account/acc_user_list_all'
     ,method: 'POST'
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
       "code": res.host_status, //解析接口状态
       "msg": '', //解析提示文本
-      "count": res.host_len_msg, //解析数据长度
-      "data": res.host_list_msg //解析数据列表
+      "count": res.acc_user_len_msg, //解析数据长度
+      "data": res.acc_user_list_msg //解析数据列表
       };
     }
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
-      ,{field:'id', width:80, sort: true, title: 'id'}
+      ,{field:'id', width: 80, sort: true, title: 'id'}
       ,{field:'alias', title: '名称'}
-      ,{field:'host_ip', title: 'ip地址'}
-      ,{field:'host_port', width:80, title: '端口'}
-      ,{field:'host_user', title: '登录用户'}
-      ,{field:'group', title: '组名'}
+      ,{field:'mail', title: '邮箱'}
+      ,{field:'usrole', width: 80, title: '权限'}
+      ,{field:'remarks', title: '备注'}
       ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
     ]]
     ,page: true //开启分页
@@ -40,7 +39,7 @@ layui.use('table', function(){
       ,layEvent: 'LAYTABLE_TIPS'
       ,icon: 'layui-icon-tips'
     }]
-    ,title: '资产信息表'
+    ,title: '用户信息表'
   });
 
 
@@ -83,18 +82,7 @@ layui.use('table', function(){
         layer.close(index);
       });
     } else if(obj.event === 'edit'){
-      // layer.prompt({
-      //   formType: 2
-      //   ,value: data.email
-      // }, function(value, index){
-      //   obj.update({
-      //     email: value
-      //   });
-      //   layer.close(index);
-      // });
       window.location.href = "/code/OgsFront/subpage/property-update-host.html?id=" + data.id
-      // $("input[name = 'alias']")
-      // layer.alert(data.id, {skin: 'layui-layer-hui'})
     }
   });
   });
@@ -112,37 +100,3 @@ layui.use('table', function(){
           }
       })
     }
-
-
-//
-// function get_host_list() {
-//   $.ajax({
-//     type: "POST",
-//     url: "http://10.0.1.198:18000/server/host_list_all",
-//     dataType: "JSON",
-//     success: function (res) {
-//       var msg = res['host_list_msg']
-//       for (i=0;i<msg.length;i++) {
-//         // console.log(msg[i]['alias']);
-//         var html = `<tr>      <td></td>
-//       <td>${msg[i]['id']}</td>
-//       <td>${msg[i]['alias']}</td>
-//       <td>${msg[i]['host_ip']}</td>
-//       <td>${msg[i]['host_port']}</td>
-//       <td>${msg[i]['host_user']}</td>
-//       <td>${msg[i]['group']}</td>
-//       <td>  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-//   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-//       </td></tr>`
-//         console.log(html);
-//
-//       }
-//       $("#orange-host-tbody").html(html)
-//         // alert(msg[1]['alias'])
-//     }
-//   })
-// }
-//
-// $(function (){
-//     get_host_list()
-// });

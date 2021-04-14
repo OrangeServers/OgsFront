@@ -13,24 +13,22 @@ layui.use('table', function(){
     id: 'test'
     ,elem: '#test'
     ,height: 580
-    ,url: 'http://10.0.1.198:18000/server/host_list_all'
+    ,url: 'http://10.0.1.198:18000/account/group_list_all'
     ,method: 'POST'
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
       "code": res.host_status, //解析接口状态
       "msg": '', //解析提示文本
-      "count": res.host_len_msg, //解析数据长度
-      "data": res.host_list_msg //解析数据列表
+      "count": res.group_len_msg, //解析数据长度
+      "data": res.group_list_msg //解析数据列表
       };
     }
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
-      ,{field:'id', width:80, sort: true, title: 'id'}
-      ,{field:'alias', title: '名称'}
-      ,{field:'host_ip', title: 'ip地址'}
-      ,{field:'host_port', width:80, title: '端口'}
-      ,{field:'host_user', title: '登录用户'}
-      ,{field:'group', title: '组名'}
+      ,{field:'id', width: 80, sort: true, title: 'id'}
+      ,{field:'name', title: '名称'}
+      ,{field:'nums', width: 100, title: '资产数量'}
+      ,{field:'remarks', title: '备注'}
       ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
     ]]
     ,page: true //开启分页
@@ -40,7 +38,7 @@ layui.use('table', function(){
       ,layEvent: 'LAYTABLE_TIPS'
       ,icon: 'layui-icon-tips'
     }]
-    ,title: '资产信息表'
+    ,title: '组信息表'
   });
 
 
