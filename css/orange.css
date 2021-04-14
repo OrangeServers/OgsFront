@@ -1,0 +1,75 @@
+/*整体框架样式，全部文件都需引用*/
+@font-face {
+  font-family: myfont;
+  src: url("../image/STXINWEI.TTF");
+}
+
+body > .layui-layout-admin {
+  color: #0C0C0C;
+}
+
+body > .layui-layout-admin > .layui-header {
+  background-color: #faa755;
+  border: 0.1px solid #c2c9c6;
+}
+
+body > .layui-layout-admin > .layui-header > .layui-logo > a {
+  /*color: #FF8C00;*/
+  color: #fff;
+  font-size: 20px;
+  font-family: myfont;
+}
+
+body > .layui-layout-admin > .layui-header > .layui-logo > a > img {
+  margin-right: 5px;
+}
+
+body > .layui-layout-admin > .layui-header > .layui-nav > .layui-nav-item > a {
+  /*color: #676a6c;*/
+  color: #fff;
+}
+
+/*.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover {*/
+/*    background-color: #5bc0de;*/
+/*    color: #0C0C0C;*/
+/*}*/
+
+body > .layui-layout-admin > .layui-header > .layui-nav > .layui-nav-item > .orange-login-out {
+  /*color: #0C0C0C;*/
+  color: #fff;
+}
+
+body > .layui-layout-admin > .layui-bg-black > .layui-side-scroll > .layui-nav-tree > .layui-nav-item > a {
+  /*color: #0C0C0C!important;*/
+  color: #f3f3f4!important;
+}
+
+body > .layui-layout-admin > .layui-bg-black > .layui-side-scroll > .layui-nav-tree > .layui-nav-item > a > img {
+  margin-right: 8px;
+}
+
+/*body > .layui-layout-admin > .layui-bg-black > .layui-side-scroll > .layui-nav-tree > .layui-nav-item > .layui-nav-child > dd > a {*/
+/*  color: #0C0C0C;*/
+/*}*/
+
+body > .layui-layout-admin > .layui-bg-black > .layui-side-scroll > .layui-nav-tree > .layui-nav-item > .layui-nav-child > dd > a > img {
+  margin-right: 10px
+}
+
+body > .layui-layout-admin > .layui-body > .orange-body {
+  background-color: #f3f3f4;
+  height: 620px;
+}
+
+/*body > .layui-layout-admin > .layui-bg-black > .layui-side-scroll {*/
+/*  background-color: #FFFFFF;*/
+/*}*/
+
+/*body > .layui-layout-admin > .layui-bg-black > .layui-side-scroll > .layui-nav-tree {*/
+/*  background-color: #FFFFFF;*/
+/*}*/
+
+.layui-footer > p {
+  text-align: center;
+  color: #5d5e63;
+}

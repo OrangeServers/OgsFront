@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>layout 管理系统大布局 - Layui</title>
+
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="css/orange.css">
+
+
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><a href="index.html"><img src="image/juzi11.png" width="40" height="40">OrangeServer</a></div>
+    <!-- 头部区域（可配合layui 已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="">nav 1</a></li>
+      <li class="layui-nav-item"><a href="">nav 2</a></li>
+      <li class="layui-nav-item"><a href="">nav 3</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">nav groups</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">menu 11</a></dd>
+          <dd><a href="">menu 22</a></dd>
+          <dd><a href="">menu 33</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="image/juzi11.png" class="layui-nav-img">
+          admin
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">set 1</a></dd>
+          <dd><a href="">set 2</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a class="orange-login-out" href="">Sign out</a></li>
+    </ul>
+  </div>
+
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a href="index.html"><img src="image/仪表盘.png" width="20" height="20">仪表盘</a></li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;"><img src="image/资产管理.png" width="20" height="20">资产管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="property-hostlist.html"><img src="image/juzi11.png" width="20" height="20">资产列表</a></dd>
+            <dd><a href="property-userlist.html"><img src="image/juzi11.png" width="20" height="20">系统用户</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;"><img src="image/用户管理.png" width="20" height="20">用户管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="user-userlist.html"><img src="image/juzi11.png" width="20" height="20">用户列表</a></dd>
+            <dd><a href="user-grouplist.html"><img src="image/juzi11.png" width="20" height="20">用户组</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;"><img src="image/执行日志.png" width="20" height="20">操作中心</a>
+          <dl class="layui-nav-child">
+            <dd><a href="operation-onecommand.html"><img src="image/juzi11.png" width="20" height="20">单主机命令</a></dd>
+            <dd><a href="operation-batchcommand.html"><img src="image/juzi11.png" width="20" height="20">批量命令</a></dd>
+            <dd><a href="operation-codesync.html"><img src="image/juzi11.png" width="20" height="20">代码同步</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;"><img src="image/容器.png" width="20" height="20">容器管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="container-imagelist.html"><img src="image/juzi11.png" width="20" height="20">镜像列表</a></dd>
+            <dd><a href="container-dockerlist.html"><img src="image/juzi11.png" width="20" height="20">容器列表</a></dd>
+            <dd><a href="container-kubernetes.html" class="layui-this"><img src="image/juzi11.png" width="20" height="20">kubernetes</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item"><a href="authority.html"><img src="image/权限.png" width="20" height="20">权限管理</a></li>
+        <li class="layui-nav-item"><a href="filetransfer.html"><img src="image/文件.png" width="20" height="20">文件传输</a></li>
+        <li class="layui-nav-item"><a href="settings.html"><img src="image/设置.png" width="20" height="20">系统设置</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="layui-body">
+
+    <div class="orange-body" style="padding: 15px;">
+ 内容主体区域
+    </div>
+  </div>
+
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <p >Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
+  </div>
+</div>
+
+
+<script src="./layui/layui.js"></script>
+
+<!-- Chart code -->
+
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+
+});
+
+layui.use('table', function(){
+  var table = layui.table;
+
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 312
+    ,page: true //开启分页
+        ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+    ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+      title: '提示'
+      ,layEvent: 'LAYTABLE_TIPS'
+      ,icon: 'layui-icon-tips'
+    }]
+    ,title: '用户数据表'
+  });
+
+  //头工具栏事件
+  table.on('toolbar(test)', function(obj){
+    var checkStatus = table.checkStatus(obj.config.id);
+    switch(obj.event){
+      case 'getCheckData':
+        var data = checkStatus.data;
+        layer.alert(JSON.stringify(data));
+      break;
+      case 'getCheckLength':
+        var data = checkStatus.data;
+        layer.msg('选中了：'+ data.length + ' 个');
+      break;
+      case 'isAll':
+        layer.msg(checkStatus.isAll ? '全选': '未全选');
+      break;
+
+      //自定义头工具栏右侧图标 - 提示
+      case 'LAYTABLE_TIPS':
+        layer.alert('这是工具栏右侧自定义的一个图标按钮');
+      break;
+    };
+  });
+
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+        obj.del();
+        layer.close(index);
+      });
+    } else if(obj.event === 'edit'){
+      layer.prompt({
+        formType: 2
+        ,value: data.email
+      }, function(value, index){
+        obj.update({
+          email: value
+        });
+        layer.close(index);
+      });
+    }
+  });
+  });
+</script>
+</body>
+</html>

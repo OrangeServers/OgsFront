@@ -1,0 +1,12 @@
+.layui-body > .orange-body > .orange-zsbq {
+  margin-left: 10px;
+}
+
+.layui-body > .orange-body > .orange-zsbq > a {
+  color: #009688;
+  font-size: 13px;
+}
+
+.layui-body > .orange-body > .orange-zsbq > a:hover {
+  text-decoration: underline;
+}

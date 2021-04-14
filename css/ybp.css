@@ -1,0 +1,57 @@
+.orange-charts {
+  height: 420px;
+  width: 1200px;
+  background-color: #f8f9ff;
+  margin-left: 50px;
+  border: 1px solid #d9d9de;
+  /*border-radius: 6px;*/
+}
+
+.orange-charts > p {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 25px;
+  color: #5d5e63;
+  float: left;
+}
+
+.orange-charts > .orange-yuanbiao-div {
+  margin-left: 400px;
+  margin-top: 40px;
+}
+
+.orange-charts > .orange-bingtu-div {
+  margin-left: 300px;
+  margin-top: 10px;
+  color: #5d5e63;
+  font-size: 20px;
+  float: left;
+}
+
+.orange-charts > .orange-yuanbiao-div > .orange-yuanbiao {
+  font-size: 8px;
+  color: #5d5e63;
+  float: left;
+  margin-left: 20px;
+}
+
+.orange-charts > .orange-yuanbiao-div > .orange-yuanbiao > span {
+  margin-right: 10px;
+}
+
+#zhexiandiv {
+  width: 650px;
+  height: 300px;
+  margin-top: 30px;
+  margin-left: 20px;
+  float: left;
+}
+
+#bingtudiv {
+  width: 460px;
+  height: 210px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 100px;
+  /*clear: both;*/
+}
