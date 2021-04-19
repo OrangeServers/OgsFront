@@ -92,7 +92,7 @@ layui.use('table', function(){
       //   });
       //   layer.close(index);
       // });
-      window.location.href = "/code/OgsFront/property-hostlist/update.html?id=" + data.id
+      window.location.href = "../property/property-hostlist/update.html?id=" + data.id
       // $("input[name = 'alias']")
       // layer.alert(data.id, {skin: 'layui-layer-hui'})
     }
