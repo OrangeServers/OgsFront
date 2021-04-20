@@ -1,25 +1,25 @@
-function add_hosts() {
+function add_sys_user() {
   // layer.alert($('.layui-form').serialize())
        var logif = layer.load(1, {
               shade: [0.1,'#fff'] //0.1透明度的白色背景
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/host_add",
+    url: "http://10.0.1.198:18000/server/sys/user/add",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {
-        if (res['server_add_status'] === 'true') {
-            window.location.href = '../property/property-hostlist.html'
-        } else if (res['server_add_status'] === 'fail') {
+        if (res['sys_user_add_status'] === 'true') {
+            window.location.href = '../property-userlist.html'
+        } else if (res['sys_user_add_status'] === 'fail') {
           layer.close(logif)
           layer.alert('添加失败，密码或其他错误')
-        } else if (res['server_add_status'] === 'con_fail') {
+        } else if (res['sys_user_add_status'] === 'con_fail') {
           layer.close(logif)
           layer.alert('添加失败，主机无法连接')
-        } else if (res['server_add_status'] === 'sel_fail') {
+        } else if (res['sys_user_add_status'] === 'sel_fail') {
           layer.close(logif)
-          layer.alert('添加失败，该主机已存在')
+          layer.alert('添加失败，该用户已存在')
         }
     }
     })
@@ -38,10 +38,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
       elem: '#date1'
     });
     form.on('submit(demo1)', function(){
-      add_hosts()
+      add_sys_user()
     });
 });
 
-function clean_adhost() {
-    window.history.go(-1)
-}

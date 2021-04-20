@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="../../layui/css/layui.css">
   <link rel="stylesheet" href="../../css/orange.css">
-  <link rel="stylesheet" href="../../css/addhost.css">
+  <link rel="stylesheet" href="../../css/pagefrom.css">
 
 
 </head>
@@ -175,25 +175,9 @@
 <script src="../../js/jquery-3.3.1.js"></script>
 
 <script src="../../layui/layui.js"></script>
-<script>
-  layui.use(['form', 'layedit', 'laydate'], function(){
-  var form = layui.form
-  ,layer = layui.layer
-  ,layedit = layui.layedit
-  ,laydate = layui.laydate;
+<script src="../../js/main.js"></script>
 
-  //日期
-    laydate.render({
-      elem: '#date'
-    });
-    laydate.render({
-      elem: '#date1'
-    });
-    form.on('submit(demo1)', function(){
-      layer.alert($('.layui-form').serialize())
-    });
-});
-</script>
+<script src="add.js"></script>
 <!-- Chart code -->
 
 </body>

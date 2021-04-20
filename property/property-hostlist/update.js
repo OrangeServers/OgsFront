@@ -1,27 +1,8 @@
-var getParam = function(name){
-    var search = document.location.search;
-    var pattern = new RegExp("[?&]"+name+"\=([^&]+)", "g");
-    var matcher = pattern.exec(search);
-    var items = null;
-    if(null != matcher){
-            try{
-                    items = decodeURIComponent(decodeURIComponent(matcher[1]));
-            }catch(e){
-                    try{
-                            items = decodeURIComponent(matcher[1]);
-                    }catch(e){
-                            items = matcher[1];
-                    }
-            }
-    }
-    return items;
-};
-
-function get_list_hosts() {
+function get_host_list() {
     var host_id = getParam("id");
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/host_list",
+    url: "http://10.0.1.198:18000/server/host/list",
     data: {'id': host_id},
     dataType: "JSON",
     success: function (res) {
@@ -39,14 +20,14 @@ function get_list_hosts() {
     })
 }
 
-function update_hosts() {
+function host_update() {
     // layer.alert($('.layui-form').serialize())
        var logif = layer.load(1, {
               shade: [0.1,'#fff'] //0.1透明度的白色背景
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/host_update",
+    url: "http://10.0.1.198:18000/server/host/update",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {
@@ -54,7 +35,7 @@ function update_hosts() {
           layer.close(logif)
           layer.alert('更新失败，密码或其他错误，主机无法连接', {skin: 'layui-layer-hui'})
         } else if (res['server_into_update']) {
-          window.location.href = '../property/property-hostlist.html'
+          window.location.href = '../property-hostlist.html'
         } else if (res['server_into_update'] === 'fail') {
           layer.close(logif)
           layer.alert('更新失败，未知错误#db error', {skin: 'layui-layer-hui'})
@@ -79,14 +60,10 @@ layui.use(['form', 'layedit', 'laydate'], function(){
       elem: '#date1'
     });
     form.on('submit(demo1)', function(){
-      update_hosts()
+      host_update()
     });
 });
 
 $(function (){
-    get_list_hosts()
+    get_host_list()
 });
-
-function clean_adhost() {
-    window.history.go(-1)
-}

@@ -13,7 +13,7 @@ layui.use('table', function(){
     id: 'test'
     ,elem: '#test'
     ,height: 580
-    ,url: 'http://10.0.1.198:18000/server/sys_user_list_all'
+    ,url: 'http://10.0.1.198:18000/server/sys/user/list_all'
     ,method: 'POST'
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
@@ -60,7 +60,7 @@ layui.use('table', function(){
         layer.msg(checkStatus.isAll ? '全选': '未全选');
       break;
       case 'createData':
-        window.location.href = '../property/property-userlist/create.html'
+        window.location.href = './property-userlist/create.html'
       break;
 
       //自定义头工具栏右侧图标 - 提示
@@ -83,7 +83,7 @@ layui.use('table', function(){
         layer.close(index);
       });
     } else if(obj.event === 'edit'){
-      window.location.href = "../property/property-userlist/update.html?id=" + data.id
+      window.location.href = "./property-userlist/update.html?id=" + data.id
       // $("input[name = 'alias']")
       // layer.alert(data.id, {skin: 'layui-layer-hui'})
     }
@@ -93,7 +93,7 @@ layui.use('table', function(){
     function host_del(obj) {
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/server/host_del",
+          url: "http://10.0.1.198:18000/server/sys/user/del",
           data: {
           'id': obj
           },

@@ -49,17 +49,17 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item"><a href="../../index.html"><img src="../../image/仪表盘.png" width="20" height="20">仪表盘</a></li>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;"><img src="../../image/资产管理.png" width="20" height="20">资产管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="../property-hostlist.html" class="layui-this"><img src="../../image/juzi11.png" width="20" height="20">资产列表</a></dd>
+            <dd><a href="../property-hostlist.html"><img src="../../image/juzi11.png" width="20" height="20">资产列表</a></dd>
             <dd><a href="../property-userlist.html"><img src="../../image/juzi11.png" width="20" height="20">系统用户</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item">
+        <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;"><img src="../../image/用户管理.png" width="20" height="20">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="../../user/user-userlist.html"><img src="../../image/juzi11.png" width="20" height="20">用户列表</a></dd>
+            <dd><a href="../../user/user-userlist.html" class="layui-this"><img src="../../image/juzi11.png" width="20" height="20">用户列表</a></dd>
             <dd><a href="../../user/user-grouplist.html"><img src="../../image/juzi11.png" width="20" height="20">用户组</a></dd>
           </dl>
         </li>
@@ -92,25 +92,17 @@
       <div class="orange-zsbq">
         <a href="../../index.html">/ 仪表盘</a>
         <a href="../property-hostlist.html">/ 资产列表</a>
-        <a href="update.html">/ 更新信息</a>
+        <a href="create.html">/ 创建用户</a>
       </div>
 
       <div class="orange-cjbt">
-      <h2>更新资产信息</h2>
+      <h2>创建系统用户</h2>
       </div>
 
-      <div class="orange-host-from" style="height: 580px">
+      <div class="orange-host-from">
         <h3>必填信息</h3>
 <!--      <form id="adhsform" onsubmit="return false">-->
         <form class="layui-form" onsubmit="return false">
-
-              <div class="layui-form-item">
-        <label class="layui-form-label">id</label>
-        <div class="layui-input-block">
-          <input type="text" name="id" readonly="readonly" style="background-color: #dbe2df" lay-verify="required" lay-reqtext="id是必填项，不能为空!" autocomplete="off" class="layui-input">
-        </div>
-        </div>
-
 
               <div class="layui-form-item">
         <label class="layui-form-label">别名</label>
@@ -119,38 +111,45 @@
         </div>
         </div>
 
-                <div class="layui-form-item">
-        <label class="layui-form-label">机器ip</label>
+              <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
         <div class="layui-input-block">
-          <input type="text" name="host_ip" lay-verify="required" lay-reqtext="资产ip是必填项，不能为空!" placeholder="请输入资产ip" autocomplete="off" class="layui-input">
+          <input type="text" name="name" lay-verify="required" lay-reqtext="名称是必填项，不能为空!" placeholder="请输入名称" autocomplete="off" class="layui-input">
         </div>
         </div>
 
                 <div class="layui-form-item">
-        <label class="layui-form-label">机器端口</label>
+        <label class="layui-form-label">密码</label>
         <div class="layui-input-block">
-          <input type="text" name="host_port" lay-verify="required" lay-reqtext="资产端口是必填项，不能为空!" placeholder="请输入资产端口" autocomplete="off" class="layui-input">
+          <input type="password" name="password" lay-verify="required" lay-reqtext="密码是必填项，不能为空!" placeholder="请输入密码" autocomplete="off" class="layui-input">
         </div>
         </div>
 
                 <div class="layui-form-item">
-        <label class="layui-form-label">登录用户</label>
+        <label class="layui-form-label">邮箱</label>
         <div class="layui-input-block">
-          <input type="text" name="host_user" lay-verify="required" lay-reqtext="登录用户名是必填项，不能为空!" placeholder="请输入登录用户名" autocomplete="off" class="layui-input">
+          <input type="text" name="mail" lay-verify="required" lay-reqtext="邮箱是必填项，不能为空!" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
         </div>
         </div>
 
+
                 <div class="layui-form-item">
-        <label class="layui-form-label">登录密码</label>
+        <label class="layui-form-label">权限</label>
         <div class="layui-input-block">
-          <input type="password" name="host_password" lay-verify="required" lay-reqtext="登录密码是必填项，不能为空!" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+          <select name="usrole" lay-filter="aihao">
+            <option value=""></option>
+            <option value="develop" selected="">develop</option>
+            <option value="admin" >admin</option>
+            <option value="自定义" disabled="">自定义</option>
+          </select>
         </div>
         </div>
+
 
             <div class="layui-form-item">
-        <label class="layui-form-label">用户组</label>
+        <label class="layui-form-label">备注</label>
         <div class="layui-input-block">
-          <input type="text" name="group" lay-verify="title" autocomplete="off" placeholder="请输入用户组，不填默认为default" class="layui-input">
+          <input type="text" name="remarks" lay-verify="title" autocomplete="off" placeholder="请输入备注信息，不填默认为空" class="layui-input">
         </div>
         </div>
 
@@ -179,7 +178,7 @@
 <script src="../../layui/layui.js"></script>
 <script src="../../js/main.js"></script>
 
-<script src="update.js"></script>
+<script src="add.js"></script>
 <!-- Chart code -->
 
 </body>
