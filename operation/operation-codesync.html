@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="../layui/css/layui.css">
   <link rel="stylesheet" href="../css/orange.css">
+  <link rel="stylesheet" href="../css/codesync.css">
 
 
 </head>
@@ -88,19 +89,33 @@
   <div class="layui-body">
 
     <div class="orange-body" style="padding: 15px;">
- 内容主体区域
-          <h1 class="threed">服务端git代码同步平台</h1>
-    <span>group选择：</span>
-    <select id="sel1" class="shortselect" onchange="get_List()">
-        <option v-for="sel in sels" :value="sel">{{ sel }}</option>
-    </select>
-<!--    <span>project选择：</span>-->
-<!--    <select id="sel2" class="shortselect">-->
-<!--    </select>-->
-<!--    <button id="btn" onclick="submit()" class="login-button">同步代码</button>-->
-<!--    <p id="p1">同步状态</p>-->
-<!--    <p id="p2">同步信息</p>-->
+
+        <div class="orange-codesync-header">
+<!--          <h1 class="threed">服务端git代码同步平台</h1>-->
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>代码同步</legend>
+    </fieldset>
+          </div>
+
+          <div class="orange-codesync-body">
+            <h3>执行框</h3>
+          <span>group选择：</span>
+          <select id="sel1" class="shortselect" onchange="get_project_dir()">
+              <option selected="" disabled="">请选择</option>
+              <option v-for="sel in sels" :value="sel">{{ sel }}</option>
+          </select>
+          <span>project选择：</span>
+          <select id="sel2" class="shortselect">
+          </select>
+          <button id="btn" onclick="code_sync()" class="login-button">同步代码</button>
+
+          <textarea readonly="readonly" id="shuchu_tex" style="resize: none">执行同步代码的输出内容</textarea>
+
+        </div>
+
+
     </div>
+
   </div>
 
   <div class="layui-footer">
@@ -113,8 +128,8 @@
   <script src="../js/vue.js"></script>
 <script src="../js/jquery-3.3.1.js"></script>
 <script src="../layui/layui.js"></script>
+<script src="../js/main.js"></script>
 <script src="codesync.js"></script>
-
 
 <!-- Chart code -->
 </body>

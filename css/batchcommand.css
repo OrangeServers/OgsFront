@@ -1,0 +1,54 @@
+.orange-cmd-header {
+    background-color: #fff;
+    height: 60px;
+    width: 100%;
+    padding-top: 1px;
+}
+
+.orange-cmd-body {
+    margin-top: 30px;
+    height: 500px;
+    width: 260px;
+    background-color: #fff;
+    padding: 20px;
+    float: left;
+}
+
+.orange-cmd-end {
+    margin-top: 30px;
+    height: 540px;
+    width: 900px;
+    margin-left: 50px;
+    background-color: #fff;
+    /*padding: 20px;*/
+    float: left;
+}
+
+#shuru_div {
+    height: 100px;
+    width: 700px;
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+}
+
+#shuchu_tex {
+    height: 400px;
+    width: 860px;
+    border: 3px solid #d9d9de;
+    margin-top: 20px;
+    background-color: #1b1e21;
+    color: #f8f9ff;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.orange-cmd-end button {
+    /*float: left;*/
+    margin-top: 15px;
+    margin-left: 30px;
+    clear: both;
+    height: 38px;
+    width: 130px;
+    font-size: 8px;
+}

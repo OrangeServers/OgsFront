@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="../layui/css/layui.css">
   <link rel="stylesheet" href="../css/orange.css">
+  <link rel="stylesheet" href="../css/batchcommand.css">
 
 
 </head>
@@ -88,18 +89,32 @@
   <div class="layui-body">
 
     <div class="orange-body" style="padding: 15px;">
- 内容主体区域
 
-      <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-        <legend>基本演示</legend>
+      <div class="orange-cmd-header">
+      <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>批量执行命令</legend>
       </fieldset>
+      </div>
+
+      <div class="orange-cmd-body">
       <div class="layui-btn-container">
-        <button type="button" class="layui-btn layui-btn-sm" lay-demo="getChecked">获取选中节点数据</button>
-        <button type="button" class="layui-btn layui-btn-sm" lay-demo="setChecked">勾选指定节点</button>
+
         <button type="button" class="layui-btn layui-btn-sm" lay-demo="reload">重载实例</button>
       </div>
 
       <div id="orange-fx1" class="demo-tree"></div>
+      </div>
+
+      <div class="orange-cmd-end">
+
+    <div class="layui-input-block" id="shuru_div">
+      <textarea placeholder="请输入命令" class="layui-textarea" id="shuru_tex"></textarea>
+    </div>
+        <button type="button" class="layui-btn layui-btn-sm" lay-demo="getChecked">批量执行</button>
+        <br>
+        <button type="button" class="layui-btn layui-btn-primary" lay-demo="resetMsg">重置内容</button>
+      <textarea readonly="readonly" id="shuchu_tex" style="resize: none">执行同步代码的输出内容</textarea>
+      </div>
 
     </div>
   </div>
@@ -112,6 +127,7 @@
 
 <script src="../js/jquery-3.3.1.js"></script>
 <script src="../layui/layui.js"></script>
+<script src="../js/main.js"></script>
 
 <script src="batchcommand.js"></script>
 <!-- Chart code -->
