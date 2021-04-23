@@ -49,18 +49,19 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item"><a href="../../index.html"><img src="../../image/仪表盘.png" width="20" height="20">仪表盘</a></li>
-        <li class="layui-nav-item">
+        <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;"><img src="../../image/资产管理.png" width="20" height="20">资产管理</a>
           <dl class="layui-nav-child">
             <dd><a href="../property-hostlist.html"><img src="../../image/juzi11.png" width="20" height="20">资产列表</a></dd>
+            <dd><a href="../property-grouplist.html" class="layui-this"><img src="../../image/juzi11.png" width="20" height="20">资产组</a></dd>
             <dd><a href="../property-userlist.html"><img src="../../image/juzi11.png" width="20" height="20">系统用户</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item">
           <a href="javascript:;"><img src="../../image/用户管理.png" width="20" height="20">用户管理</a>
           <dl class="layui-nav-child">
             <dd><a href="../../user/user-userlist.html"><img src="../../image/juzi11.png" width="20" height="20">用户列表</a></dd>
-            <dd><a href="../../user/user-grouplist.html" class="layui-this"><img src="../../image/juzi11.png" width="20" height="20">用户组</a></dd>
+            <dd><a href="../../user/user-grouplist.html"><img src="../../image/juzi11.png" width="20" height="20">用户组</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -91,12 +92,12 @@
     <div class="orange-body" style="padding: 15px;">
       <div class="orange-zsbq">
         <a href="../../index.html">/ 仪表盘</a>
-        <a href="../property-hostlist.html">/ 资产列表</a>
+        <a href="../property-hostlist.html">/ 资产组列表</a>
         <a href="update.html">/ 更新信息</a>
       </div>
 
       <div class="orange-cjbt">
-      <h2>更新用户信息</h2>
+      <h2>更新资产组信息</h2>
       </div>
 
       <div class="orange-host-from" style="height: 400px">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>系统用户</title>
+  <title>组列表</title>
 
   <link rel="icon" href="../image/bitbug_favicon.ico">
   <link rel="stylesheet" href="../layui/css/layui.css">
@@ -52,16 +52,16 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;"><img src="../image/资产管理.png" width="20" height="20">资产管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="property-hostlist.html"><img src="../image/juzi11.png" width="20" height="20">资产列表</a></dd>
-            <dd><a href="../property/property-grouplist.html"><img src="../image/juzi11.png" width="20" height="20">资产组</a></dd>
-            <dd><a class="layui-this" href="property-userlist.html"><img src="../image/juzi11.png" width="20" height="20">系统用户</a></dd>
+            <dd><a href="../property/property-hostlist.html"><img src="../image/juzi11.png" width="20" height="20">资产列表</a></dd>
+            <dd><a href="../property/property-grouplist.html" class="layui-this"><img src="../image/juzi11.png" width="20" height="20">资产组</a></dd>
+            <dd><a href="../property/property-userlist.html"><img src="../image/juzi11.png" width="20" height="20">系统用户</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;"><img src="../image/用户管理.png" width="20" height="20">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="../user/user-userlist.html"><img src="../image/juzi11.png" width="20" height="20">用户列表</a></dd>
-            <dd><a href="../user/user-grouplist.html"><img src="../image/juzi11.png" width="20" height="20">用户组</a></dd>
+            <dd><a href="user-userlist.html"><img src="../image/juzi11.png" width="20" height="20">用户列表</a></dd>
+            <dd><a href="user-grouplist.html"><img src="../image/juzi11.png" width="20" height="20">用户组</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -93,7 +93,7 @@
 
       <div class="orange-zsbq">
         <a href="../index.html">/ 仪表盘</a>
-        <a href="property-userlist.html">/ 系统用户</a>
+        <a href="user-grouplist.html">/ 组列表</a>
       </div>
       <table class="layui-hide" id="test" lay-filter="test"></table>
 
@@ -104,7 +104,7 @@
 
 <script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="createData">创建系统用户</button>
+    <button class="layui-btn layui-btn-sm" lay-event="createData">创建资产组</button>
     <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
     <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
     <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
@@ -120,11 +120,12 @@
   </div>
 </div>
 
+
 <script src="../js/jquery-3.3.1.js"></script>
 <script src="../layui/layui.js"></script>
 <script src="../js/main.js"></script>
 
-<script src="userlist.js"></script>
+<script src="grouplist.js"></script>
 
 </body>
 </html>

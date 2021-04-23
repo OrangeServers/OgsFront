@@ -22,12 +22,16 @@ layui.use(['tree', 'util'], function() {
 
       // 批量执行命令
         function host_list_command(list_id) {
+        let logif = layer.msg('正在批量执行')
+        // let logif = layer.load(1, {
+        //   shade: [0.1,'#fff'] //0.1透明度的白色背景
+        // });
         $.ajax({
-          type: "POST",
+          type: "GET",
           url: "http://10.0.1.198:18000/server/host_list_cmd",
           // useCORS: true,
           data: {
-            'host_ip': list_id,
+            'host_id': list_id,
             'command': $("#shuru_tex").val()
           },
           // 设置后去掉数组传参中带的[]  使后台能正常接收
@@ -35,6 +39,7 @@ layui.use(['tree', 'util'], function() {
           dataType: "JSON",
           success: function (res) {
               if (res["server_ping_status"] === 'true'){
+                  layer.close(logif)
                   orange_alert(1,'批量执行成功')
                   var com_ls = res["command_msg"]
                   var com_hs = res["hostname_list"]
@@ -50,7 +55,8 @@ layui.use(['tree', 'util'], function() {
                   }
                   $("#shuchu_tex").html('批量命令执行成功' + '\n' + com_jh).css("color","#FF8C00")
             } else if (res["server_ping_status"] === 'fail'){
-                orange_alert(1,'执行失败')
+                  layer.close(logif)
+                  orange_alert(1,'执行失败')
             }
           }
         })
@@ -72,6 +78,12 @@ layui.use(['tree', 'util'], function() {
     }
     ,resetMsg: function (){
         $("#shuru_tex").val("")
+      }
+    ,createHost: function (){
+        window.location.href = '../../property/property-hostlist/create.html'
+      }
+    ,createGroup: function (){
+        window.location.href = '../../property/property-group/create.html'
       }
     ,reload: function(){
       //重载实例

@@ -38,6 +38,7 @@
     }
 
     function code_sync() {
+        let logi = layer.msg('正在同步中')
         $.ajax({
             type: "POST",
             url: "http://10.0.1.198:18000/local/rsync",
@@ -47,7 +48,6 @@
             },
             dataType: "JSON",
             success: function (res) {
-                let logi = layer.msg('正在同步中')
                 let msg = "同步状态：" + res["status"] + '\n' + "同步信息：" + res["msg"]
                 if (res["status"] === 'sucessfuly'){
                     layer.close(logi)

@@ -5,12 +5,12 @@ function add_acc_group() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/acc/group/add",
+    url: "http://10.0.1.198:18000/server/host/group/add",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {
         if (res['acc_group_add_status'] === 'true') {
-            window.location.href = '../user-grouplist.html'
+            window.location.href = '../../property/property-grouplist.html'
         } else if (res['acc_group_add_status'] === 'fail') {
           layer.close(logif)
           layer.alert('添加失败，密码或其他错误')

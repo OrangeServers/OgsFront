@@ -45,7 +45,8 @@
         for (let i=0;i<undata0.length;i++){
             let undata1 = undata0[i]['children']
             for (let y=0;y<undata1.length;y++){
-                let undata2 = undata1[y]['title']
+                // let undata2 = undata1[y]['title']
+                let undata2 = undata1[y]['id']
                 msg_data.push(undata2)
             }
         }
