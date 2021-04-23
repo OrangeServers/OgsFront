@@ -52,6 +52,9 @@ layui.use(['form', 'layedit', 'laydate'], function(){
   ,layedit = layui.layedit
   ,laydate = layui.laydate;
 
+  // 获取组名列表
+  get_group_name_list()
+
   //日期
     laydate.render({
       elem: '#date'

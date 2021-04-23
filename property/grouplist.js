@@ -8,6 +8,18 @@ layui.use('element', function(){
 layui.use('table', function(){
   var table = layui.table;
 
+    // 加载组关联资产信息
+    $.ajax({
+      type: "POST",
+      url: "http://10.0.1.198:18000/local/sum",
+      data: {
+      'sum_name': 'group'
+      },
+      dataType: "JSON",
+      success: function (res) {
+      }
+  })
+
   //第一个实例
   table.render({
     id: 'test'

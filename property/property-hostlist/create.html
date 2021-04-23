@@ -53,7 +53,7 @@
           <a class="" href="javascript:;"><img src="../../image/资产管理.png" width="20" height="20">资产管理</a>
           <dl class="layui-nav-child">
             <dd><a href="../property-hostlist.html" class="layui-this"><img src="../../image/juzi11.png" width="20" height="20">资产列表</a></dd>
-            <dd><a href="../property/property-grouplist.html"><img src="../image/juzi11.png" width="20" height="20">资产组</a></dd>
+            <dd><a href="../property-grouplist.html"><img src="../../image/juzi11.png" width="20" height="20">资产组</a></dd>
             <dd><a href="../property-userlist.html"><img src="../../image/juzi11.png" width="20" height="20">系统用户</a></dd>
           </dl>
         </li>
@@ -140,10 +140,11 @@
         </div>
         </div>
 
-            <div class="layui-form-item">
+                <div class="layui-form-item">
         <label class="layui-form-label">用户组</label>
         <div class="layui-input-block">
-          <input type="text" name="group" lay-verify="title" autocomplete="off" placeholder="请输入用户组，不填默认为default" class="layui-input">
+          <select name="group" lay-filter="group" id="orange_group">
+          </select>
         </div>
         </div>
 

@@ -113,36 +113,3 @@ layui.use('table', function(){
       })
     }
 
-
-//
-// function get_host_list() {
-//   $.ajax({
-//     type: "POST",
-//     url: "http://10.0.1.198:18000/server/host_list_all",
-//     dataType: "JSON",
-//     success: function (res) {
-//       var msg = res['host_list_msg']
-//       for (i=0;i<msg.length;i++) {
-//         // console.log(msg[i]['alias']);
-//         var html = `<tr>      <td></td>
-//       <td>${msg[i]['id']}</td>
-//       <td>${msg[i]['alias']}</td>
-//       <td>${msg[i]['host_ip']}</td>
-//       <td>${msg[i]['host_port']}</td>
-//       <td>${msg[i]['host_user']}</td>
-//       <td>${msg[i]['group']}</td>
-//       <td>  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-//   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-//       </td></tr>`
-//         console.log(html);
-//
-//       }
-//       $("#orange-host-tbody").html(html)
-//         // alert(msg[1]['alias'])
-//     }
-//   })
-// }
-//
-// $(function (){
-//     get_host_list()
-// });

@@ -52,3 +52,20 @@
         }
         return msg_data
     }
+
+    function get_group_name_list() {
+        $.ajax({
+        type: "POST",
+        url: "http://10.0.1.198:18000/server/host/group/name_list",
+        dataType: "JSON",
+        success: function (res) {
+            let data_name = res['group_name_list_msg']
+            let option = '';
+            for(let i=0;i<data_name.length;i++){
+                option +="<option value='"+data_name[i]+"'>"+data_name[i]+"</option>";
+            }
+            $("#orange_group").html(option);
+            layui.form.render('select')
+          }
+        })
+    }
