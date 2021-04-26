@@ -51,7 +51,7 @@
                 let msg = "同步状态：" + res["status"] + '\n' + "同步信息：" + res["msg"]
                 if (res["status"] === 'sucessfuly'){
                     layer.close(logi)
-                    orange_alert(1, '同步成功')
+                    layer.msg('同步成功', {icon: 1})
                     $("#shuchu_tex").html('')
                     for (let i=0;i<res["msg"].length;i++){
                         $("#shuchu_tex").append(res["msg"][i] + '\n').css("color","#FF8C00")
@@ -59,7 +59,7 @@
                     // $("#shuchu_tex").html(msg).css("color","#FF8C00")
                 } else if (res["status"] === 'fail'){
                     layer.close(logi)
-                    orange_alert(1,'同步失败')
+                    layer.msg('同步失败', {icon: 2})
                     $("#shuchu_tex").html(msg)
                 }
 

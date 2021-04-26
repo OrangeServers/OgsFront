@@ -90,6 +90,18 @@
 
     <div class="orange-body" style="padding: 15px;">
  内容主体区域
+
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+    <legend>指定允许上传的文件类型</legend>
+  </fieldset>
+
+  <button type="button" class="layui-btn" id="test3"><i class="layui-icon"></i>上传文件</button>
+  <button type="button" class="layui-btn layui-btn-primary" id="test4"><i class="layui-icon"></i>只允许压缩文件</button>
+  <button type="button" class="layui-btn" id="test5"><i class="layui-icon"></i>上传视频</button>
+  <button type="button" class="layui-btn" id="test6"><i class="layui-icon"></i>上传音频</button>
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+  </fieldset>
+
     </div>
   </div>
 
@@ -106,73 +118,51 @@
 
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
+layui.use(['upload', 'element', 'layer'], function() {
+  var $ = layui.jquery
+          , upload = layui.upload
+          , element = layui.element
+          , layer = layui.layer;
 
-});
-
-layui.use('table', function(){
-  var table = layui.table;
-
-  //第一个实例
-  table.render({
-    elem: '#demo'
-    ,height: 312
-    ,page: true //开启分页
-        ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-    ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
-      title: '提示'
-      ,layEvent: 'LAYTABLE_TIPS'
-      ,icon: 'layui-icon-tips'
-    }]
-    ,title: '用户数据表'
-  });
-
-  //头工具栏事件
-  table.on('toolbar(test)', function(obj){
-    var checkStatus = table.checkStatus(obj.config.id);
-    switch(obj.event){
-      case 'getCheckData':
-        var data = checkStatus.data;
-        layer.alert(JSON.stringify(data));
-      break;
-      case 'getCheckLength':
-        var data = checkStatus.data;
-        layer.msg('选中了：'+ data.length + ' 个');
-      break;
-      case 'isAll':
-        layer.msg(checkStatus.isAll ? '全选': '未全选');
-      break;
-
-      //自定义头工具栏右侧图标 - 提示
-      case 'LAYTABLE_TIPS':
-        layer.alert('这是工具栏右侧自定义的一个图标按钮');
-      break;
-    };
-  });
-
-  //监听行工具事件
-  table.on('tool(test)', function(obj){
-    var data = obj.data;
-    //console.log(obj)
-    if(obj.event === 'del'){
-      layer.confirm('真的删除行么', function(index){
-        obj.del();
-        layer.close(index);
-      });
-    } else if(obj.event === 'edit'){
-      layer.prompt({
-        formType: 2
-        ,value: data.email
-      }, function(value, index){
-        obj.update({
-          email: value
-        });
-        layer.close(index);
-      });
+  //指定允许上传的文件类型
+  upload.render({
+    elem: '#test3'
+    , url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    , accept: 'file' //普通文件
+    , done: function (res) {
+      layer.msg('上传成功');
+      console.log(res);
     }
   });
+  upload.render({ //允许上传的文件后缀
+    elem: '#test4'
+    , url: 'https://httpbin.org/post' //改成您自己的上传接口
+    , accept: 'file' //普通文件
+    , exts: 'zip|rar|7z' //只允许上传压缩文件
+    , done: function (res) {
+      layer.msg('上传成功');
+      console.log(res)
+    }
   });
+  upload.render({
+    elem: '#test5'
+    , url: 'https://httpbin.org/post' //改成您自己的上传接口
+    , accept: 'video' //视频
+    , done: function (res) {
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+  upload.render({
+    elem: '#test6'
+    , url: 'https://httpbin.org/post' //改成您自己的上传接口
+    , accept: 'audio' //音频
+    , done: function (res) {
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+})
 </script>
 </body>
 </html>

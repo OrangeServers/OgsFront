@@ -147,9 +147,9 @@ layui.use(['dropdown', 'table'], function(){
     //console.log(obj)
     if(obj.event === 'del'){
       layer.confirm('确定删除该资产?', function(index){
-        // obj.del();
+        obj.del();
         var host_id = obj.data['id']
-        console.log(host_id);
+        // console.log(host_id);
         host_del(host_id)
         layer.close(index);
       });
@@ -179,7 +179,7 @@ layui.use(['dropdown', 'table'], function(){
           },
           dataType: "JSON",
           success: function (res) {
-            location.reload()
+            // location.reload()
           }
       })
     }

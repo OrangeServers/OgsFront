@@ -88,9 +88,8 @@ layui.use('table', function(){
     //console.log(obj)
     if(obj.event === 'del'){
       layer.confirm('确定删除该系统用户?', function(index){
-        // obj.del();
+        obj.del();
         var host_id = obj.data['id']
-        console.log(host_id);
         host_del(host_id)
         layer.close(index);
       });
@@ -111,7 +110,12 @@ layui.use('table', function(){
           },
           dataType: "JSON",
           success: function (res) {
-            location.reload()
+            // location.reload()
+            if (res['server_del_status'] === 'true'){
+              console.log(res['server_del_status'])
+            } else if (res['server_del_status'] === 'true'){
+              layer.msg('删除失败，未知错误')
+            }
           }
       })
     }
