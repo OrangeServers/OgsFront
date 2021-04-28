@@ -69,3 +69,20 @@
           }
         })
     }
+
+    function get_tree_list () {
+  $.ajax({
+      type: "POST",
+      url: "http://10.0.1.198:18000/local/data",
+      dataType: "JSON",
+      success: function (res) {
+          let data = res['host']
+            layui.tree.render({
+            elem: '#orange-fx1'
+            ,id: 'demoId1'
+            ,data: data
+            ,showCheckbox: true
+            });
+      }
+  })
+}

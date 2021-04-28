@@ -5,20 +5,7 @@ layui.use(['tree', 'util'], function() {
 
 
      //开启复选框
-  $.ajax({
-      type: "POST",
-      url: "http://10.0.1.198:18000/local/data",
-      dataType: "JSON",
-      success: function (res) {
-          let data = res['host']
-            tree.render({
-            elem: '#orange-fx1'
-            ,id: 'demoId1'
-            ,data: data
-            ,showCheckbox: true
-            });
-      }
-  })
+        get_tree_list()
 
       // 批量执行命令
         function host_list_command(list_id) {
