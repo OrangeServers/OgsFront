@@ -75,6 +75,8 @@
       type: "POST",
       url: "http://10.0.1.198:18000/local/data",
       dataType: "JSON",
+      showLine: true,
+      edit: ['add', 'update', 'del'],
       success: function (res) {
           let data = res['host']
             layui.tree.render({

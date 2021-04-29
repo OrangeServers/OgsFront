@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="../css/orange.css">
   <link rel="stylesheet" href="../css/batchscript.css">
 
-
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -111,17 +110,18 @@
 
       <div class="orange-cmd-end">
 
-    <div class="layui-input-block" id="shuru_div">
-<!--      <textarea placeholder="请输入命令" class="layui-textarea" id="shuru_tex"></textarea>-->
-      <div class="layui-upload-drag" id="test10" style="height: 50px!important;width: 600px; float: left;">
-        <i class="layui-icon"></i>
-        <p>点击上传，或将文件拖拽到此处</p>
-        <div class="layui-hide" id="uploadDemoView">
-          <hr>
-<!--          <img src="" alt="上传成功后渲染" style="max-width: 196px">-->
+
+    <div id="drop_area">
+      <input id="uploadFile" type="file">
+        <div class="text" id="orange-text">
+          <i class="layui-icon"></i>
+          <span>+</span><span>点击或拖拽脚本到此处, 即可上传</span>
         </div>
-      </div>
     </div>
+    <div id="img_area"></div>
+
+
+<!--        <input type="button" onclick="" value="上传" />-->
         <button type="button" class="layui-btn layui-btn-sm" lay-demo="getChecked" id="test9">上传执行</button>
         <br>
         <button type="button" class="layui-btn layui-btn-primary" lay-demo="resetMsg">重置内容</button>
@@ -142,11 +142,11 @@
 
 <script src="../layui/layui.js"></script>
 <script src="../js/jquery-3.3.1.js"></script>
+<!--<script src="../js/jquery-3.3.1.min.js"></script>-->
 
 <script src="../js/main.js"></script>
 
 <script src="batchscript.js"></script>
 <!-- Chart code -->
-
 </body>
 </html>
