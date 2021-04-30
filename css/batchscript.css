@@ -86,7 +86,7 @@
 #drop_area .text {
     position: absolute;
     width: 100%;
-    top: 10px;
+    top: 0px;
     text-align: center;
     font-size: 14px;
 }

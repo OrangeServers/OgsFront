@@ -40,18 +40,24 @@
     }
 
     function undata(obj) {
-        let undata0 = obj[0]['children']
-        let msg_data = []
-        for (let i=0;i<undata0.length;i++){
-            let undata1 = undata0[i]['children']
-            for (let y=0;y<undata1.length;y++){
-                // let undata2 = undata1[y]['title']
-                let undata2 = undata1[y]['id']
-                msg_data.push(undata2)
+        if (obj[0] !== undefined) {
+            let undata0 = obj[0]['children']
+            let msg_data = []
+            for (let i = 0; i < undata0.length; i++) {
+                let undata1 = undata0[i]['children']
+                for (let y = 0; y < undata1.length; y++) {
+                    // let undata2 = undata1[y]['title']
+                    let undata2 = undata1[y]['id']
+                    msg_data.push(undata2)
+                }
             }
+            return msg_data
+        } else {
+            return 0
         }
-        return msg_data
     }
+
+
 
     function get_group_name_list() {
         $.ajax({
