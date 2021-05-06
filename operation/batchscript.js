@@ -91,6 +91,7 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
                             "font-size": "10px"
                         })
                         layui.tree.reload('demoId1', {});
+                        $(".orange-file-zt").html('状态: 已上传执行')
                     } else if (res["server_ping_status"] === 'fail') {
                         layer.close(logif)
                         layer.msg('批量执行失败', {icon: 2})
@@ -148,7 +149,7 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
             , '<tr>'
             , '<td>' + "文件名: " + ipu_file.name + '</td>'
             , '<td>' + "大小: " + (ipu_file.size / 1024).toFixed(1) + 'kb </td>'
-            , '<td>状态: 等待上传</td>'
+            , '<td class="orange-file-zt">状态: 等待上传</td>'
             , '</tr>' + '</tbody>' + '</table>'
         ].join(''))
         $('.text').html(ipu_tr)

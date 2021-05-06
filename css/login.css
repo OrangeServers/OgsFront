@@ -1,0 +1,43 @@
+body {
+    padding: 1px;
+    background-color: #f3f3f4;
+    /*background-image: url("../image/beijing.jpeg");*/
+}
+
+.orange-body {
+    margin-left: 500px;
+    margin-top: 200px;
+    width: 550px;
+    height: 340px;
+    background-color: #fff;
+}
+
+.orange-head {
+    margin-left: 150px;
+}
+
+.orange-biaoqian {
+    width: 60px;
+    height: 60px;
+}
+
+.orange-body span{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 30px;
+}
+
+form {
+    margin-top: 40px;
+}
+form div {
+    margin-top: 20px;
+}
+
+.layui-input {
+    width: 340px;
+}
+.layui-btn {
+    margin-left: 100px;
+    width: 300px;
+}
