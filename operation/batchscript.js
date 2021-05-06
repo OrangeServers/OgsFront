@@ -17,7 +17,23 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
 
     // 按钮事件
     util.event('lay-demo', {
-        resetMsg: function (othis) {
+        getChecked: function (othis) {
+        let formData = new FormData()
+        let ipu_file = $("#uploadFile")[0].files[0]
+        let checkedData = layui.tree.getChecked('demoId1');
+        let chk_data_len = checkedData.length
+        if (chk_data_len === 0) {
+            layer.msg('必须选择资产组或资产才能执行', {icon: 7});
+        } else if(ipu_file === undefined){
+            layer.msg('必须上传文件才能执行', {icon: 7})
+        } else if (chk_data_len !== 0 && ipu_file !== undefined){
+            formData.append('file', ipu_file)
+            formData.append('name', ipu_file.name)
+            console.log('div' + ipu_file.name)
+            test_put_file(formData, undata(checkedData))
+        }
+        }
+        , resetMsg: function () {
             $("#shuru_tex").val("")
         }
         , createHost: function () {
@@ -33,11 +49,11 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
         }
     });
 
-    //拖拽上传
-    function test_put_file(obj, tree_len, id_list) {
-        if (tree_len === 0) {
-            layer.msg('必须选择资产组或资产才能执行', {icon: 7});
-        } else {
+    // 拖拽上传
+    function test_put_file(obj, id_list) {
+        // if (tree_len === 0) {
+        //     layer.msg('必须选择资产组或资产才能执行', {icon: 7});
+        // } else {
             let logif = layer.load(1, {
                 shade: [0.1, '#fff'] //0.1透明度的白色背景
             });
@@ -81,45 +97,45 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
                     }
                 }
             })
-        }
+        // }
     }
 
-    var dp = document.getElementById('drop_area');
-    dp.addEventListener('dragover', function (e) {
-        e.stopPropagation();
-        //阻止浏览器默认打开文件的操作
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'copy';
-    });
+    // var dp = document.getElementById('drop_area');
+    // dp.addEventListener('dragover', function (e) {
+    //     e.stopPropagation();
+    //     //阻止浏览器默认打开文件的操作
+    //     e.preventDefault();
+    //     e.dataTransfer.dropEffect = 'copy';
+    // });
     //单图上传
-    dp.addEventListener("drop", function (e) {
-        e.stopPropagation();
-        //阻止浏览器默认打开文件的操作
-        e.preventDefault();
-        let div_files = e.dataTransfer.files;
-        let div_file = div_files[0];
-        let divData = new FormData();
-        let div_filename = div_file.name
-        divData.append("file", div_file);
-        divData.append('name', div_filename);
-        divData.append('title', 'divdata');
-        let div_tr = $([
-            '<p>区域继续拖拽或点击上传脚本可覆盖原文件</p>' + '<table class="layui-table">'
-            , '<tbody id="demoList">'
-            , '<tr>'
-            , '<td>' + "文件名: " + div_file.name + '</td>'
-            , '<td>' + "大小: " + (div_file.size / 1024).toFixed(1) + 'kb </td>'
-            , '<td>状态: 等待上传</td>'
-            , '</tr>' + '</tbody>' + '</table>'
-        ].join(''))
-        $('.text').html(div_tr)
-        $("#test9").click(function () {
-            let checkedData = layui.tree.getChecked('demoId1'); //获取选中节点的数据
-            let chk_data_len = checkedData.length
-            console.log('div' + div_filename + chk_data_len)
-            test_put_file(divData, chk_data_len, undata(checkedData))
-        })
-    });
+    // dp.addEventListener("drop", function (e) {
+    //     e.stopPropagation();
+    //     //阻止浏览器默认打开文件的操作
+    //     e.preventDefault();
+    //     let div_files = e.dataTransfer.files;
+    //     let div_file = div_files[0];
+    //     let divData = new FormData();
+    //     let div_filename = div_file.name
+    //     divData.append("file", div_file);
+    //     divData.append('name', div_filename);
+    //     divData.append('title', 'divdata');
+    //     let div_tr = $([
+    //         '<p>区域继续拖拽或点击上传脚本可覆盖原文件</p>' + '<table class="layui-table">'
+    //         , '<tbody id="demoList">'
+    //         , '<tr>'
+    //         , '<td>' + "文件名: " + div_file.name + '</td>'
+    //         , '<td>' + "大小: " + (div_file.size / 1024).toFixed(1) + 'kb </td>'
+    //         , '<td>状态: 等待上传</td>'
+    //         , '</tr>' + '</tbody>' + '</table>'
+    //     ].join(''))
+    //     $('.text').html(div_tr)
+    //     $("#test9").click(function () {
+    //         let checkedData = layui.tree.getChecked('demoId1'); //获取选中节点的数据
+    //         let chk_data_len = checkedData.length
+    //         console.log('div' + div_filename + chk_data_len)
+    //         test_put_file(divData, chk_data_len, undata(checkedData))
+    //     })
+    // });
 
     $("#uploadFile").bind('change', function () {
         let formData = new FormData()
@@ -136,12 +152,6 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
             , '</tr>' + '</tbody>' + '</table>'
         ].join(''))
         $('.text').html(ipu_tr)
-        $("#test9").click(function () {
-            let checkedData = layui.tree.getChecked('demoId1');
-            let chk_data_len = checkedData.length
-            console.log('div' + ipu_file.name)
-            test_put_file(formData, chk_data_len, undata(checkedData))
-        })
     })
 
 
