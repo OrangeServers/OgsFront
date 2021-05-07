@@ -1,3 +1,11 @@
+    $(function (){
+        if ($.cookie('username') === undefined){
+            window.location.href = './login.html'
+        } else {
+            $(".orange-title-name").html($(".orange-title-name").html().replace("admin",$.cookie('username')))
+        }
+    });
+
     const getParam = function (name) {
         var search = document.location.search;
         var pattern = new RegExp("[?&]" + name + "\=([^&]+)", "g");
@@ -94,3 +102,7 @@
       }
   })
 }
+    function delete_cookie(){
+        $.removeCookie('username')
+        window.location.href = '../login.html'
+    }

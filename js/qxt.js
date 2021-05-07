@@ -33,8 +33,6 @@ function get_count_list() {
   })
 }
 
-
-
 //折线图js文件
 am4core.ready(function() {
 

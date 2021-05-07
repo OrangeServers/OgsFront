@@ -38,6 +38,17 @@ form div {
     width: 340px;
 }
 .layui-btn {
-    margin-left: 100px;
-    width: 300px;
+    margin-left: 110px;
+    width: 280px;
+}
+.orange-res {
+    text-align: center;
+    color: #007bff;
+}
+.layui-footer {
+    margin-top: 130px;
+    text-align: center;
+  padding: 20px;
+  min-height: 100%;
+  /*margin: 0 auto -50px;*/
 }

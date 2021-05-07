@@ -23,34 +23,35 @@
       <span>OrangeServer</span>
     </div>
 
-    <form class="layui-form" action="">
+    <form class="layui-form" onsubmit="return false">
 
             <div class="layui-form-item">
     <label class="layui-form-label">用户名</label>
     <div class="layui-input-block">
-      <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="username" id="orange-username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
     </div>
     </div>
 
                   <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
     <div class="layui-input-block">
-      <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="password" name="password" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
     </div>
     </div>
 
                   <div class="layui-form-item">
     <label class="layui-form-label">验证码</label>
     <div class="layui-input-block">
-      <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+      <input type="text" name="yzm" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
     </div>
     </div>
 
         <div class="layui-form-item">
-    <button class="layui-btn" lay-submit="" lay-filter="demo2" style="width: 350px">跳转式提交</button>
+    <button class="layui-btn" lay-submit="" lay-filter="demo1" style="width: 340px">登录</button>
     </div>
 
     </form>
+        <a href="index.html" class="orange-res">没有账号? 立即注册</a>
     </div>
   </div>
 
@@ -62,7 +63,10 @@
 
 
 <script src="./layui/layui.js"></script>
-<script src="js/main.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/jquery.cookie.min.js"></script>
+
+<script src="js/login.js"></script>
 
 <!-- Chart code -->
 
