@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>用户注册</title>
+
+  <link rel="icon" href="image/bitbug_favicon.ico">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="css/register.css">
+
+  <script src="js/jquery-3.3.1.js"></script>
+
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+
+
+    <!-- 内容主体区域 -->
+    <div class="orange-body" style="padding: 15px;">
+      <div class="orange-head">
+      <img class="orange-biaoqian" src="image/juzi11.png">
+      <span>OrangeServer</span>
+    </div>
+
+    <form class="layui-form" onsubmit="return false">
+
+            <div class="layui-form-item">
+    <label class="layui-form-label">用户名</label>
+    <div class="layui-input-block">
+      <input type="text" name="username" id="orange-username" lay-verify="required" lay-reqtext="请输入用户名!" placeholder="请输入用户名" autocomplete="off" class="layui-input" style="width: 260px;float: left;display: block;">
+    <button class="layui-btn layui-bg-black" onclick="chk_username()" id="check_name" style="width: 70px;margin-left: 10px ">检查</button>
+    </div>
+    </div>
+
+            <div class="layui-form-item">
+    <label class="layui-form-label">邮箱</label>
+    <div class="layui-input-block">
+      <input type="email" id="email" name="email" lay-verify="required" lay-reqtext="请输入邮箱!" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+
+                  <div class="layui-form-item">
+    <label class="layui-form-label">验证码</label>
+    <div class="layui-input-block">
+      <input type="text" name="yzm" lay-verify="required" lay-reqtext="请输入验证码!" placeholder="请输入验证码" autocomplete="off" class="layui-input" style="width: 130px;float: left;display: block;">
+    <button class="layui-btn layui-bg-blue" onclick="send_mail()" style="width: 200px;margin-left: 10px ">获取验证码</button>
+    </div>
+
+    </div>
+
+                  <div class="layui-form-item">
+    <label class="layui-form-label">密码</label>
+    <div class="layui-input-block">
+      <input type="password" name="password" lay-verify="required" lay-reqtext="请输入密码!" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+
+
+        <div class="layui-form-item">
+    <button class="layui-btn" lay-submit="" lay-filter="demo1" style="width: 340px">注册</button>
+    </div>
+
+    </form>
+    </div>
+  </div>
+
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <p >Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
+  </div>
+
+
+
+<script src="./layui/layui.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/jquery.cookie.min.js"></script>
+
+<script src="js/register.js"></script>
+
+<!-- Chart code -->
+
+
+</body>
+</html>
