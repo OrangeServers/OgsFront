@@ -114,3 +114,14 @@ layui.use(['form', 'layedit', 'laydate'], function(){
       }
     });
 });
+
+// 测试监听输入事件
+function test_on_input(){
+    let val = $('#orange-username').val()
+    if (val !== 'xuzhiwei'){
+        // layer.msg('????', {icon: 5, time: 2000})
+        $("#orange-username").css('color', '#4cb450')
+    } else if (val === 'xuzhiwei'){
+        $("#orange-username").css('color', '')
+    }
+}

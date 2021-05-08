@@ -2,6 +2,7 @@ body {
     padding: 1px;
     background-color: #f3f3f4;
     /*background-image: url("../image/beijing.jpeg");*/
+    background-size: cover;
 }
 
 .orange-body {
@@ -10,6 +11,7 @@ body {
     width: 550px;
     height: 380px;
     background-color: #fff;
+    /*opacity: 80%;*/
 }
 
 .orange-head {
