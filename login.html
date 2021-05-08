@@ -28,21 +28,31 @@
             <div class="layui-form-item">
     <label class="layui-form-label">用户名</label>
     <div class="layui-input-block">
-      <input type="text" name="username" id="orange-username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+        <div class="orange-i-icon">
+        <i class="layui-icon layui-icon-username"></i>
+        </div>
+      <input type="text" name="username" id="orange-username" lay-verify="required" lay-reqtext="请输入用户名!" placeholder="请输入用户名" autocomplete="off" class="layui-input">
     </div>
     </div>
 
                   <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
     <div class="layui-input-block">
-      <input type="password" name="password" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+      <div class="orange-i-icon">
+        <i class="layui-icon layui-icon-password"></i>
+      </div>
+      <input type="password" name="password" lay-verify="required" lay-reqtext="请输入密码!" placeholder="请输入密码" autocomplete="off" class="layui-input">
     </div>
     </div>
 
                   <div class="layui-form-item">
     <label class="layui-form-label">验证码</label>
     <div class="layui-input-block">
-      <input type="text" name="yzm" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+        <div class="orange-i-icon">
+        <i class="layui-icon layui-icon-vercode"></i>
+        </div>
+      <input type="text" id="orange-yzm" name="yzm" lay-verify="required" lay-reqtext="请输入验证码!" placeholder="请输入验证码" autocomplete="off" class="layui-input" style="width: 190px;float: left;display: block;">
+        <canvas id="canvas" width="100" height="43" style="margin-left: 10px;"></canvas>
     </div>
     </div>
 
@@ -51,7 +61,7 @@
     </div>
 
     </form>
-        <a href="index.html" class="orange-res">没有账号? 立即注册</a>
+        <a href="register.html" class="orange-res">没有账号? 立即注册</a>
     </div>
   </div>
 

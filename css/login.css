@@ -6,9 +6,9 @@ body {
 
 .orange-body {
     margin-left: 500px;
-    margin-top: 200px;
+    margin-top: 160px;
     width: 550px;
-    height: 340px;
+    height: 380px;
     background-color: #fff;
 }
 
@@ -35,8 +35,29 @@ form div {
 }
 
 .layui-input {
-    width: 340px;
+    width: 300px;
+    height: 45px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+    border-left: 0px none #ccc;
 }
+.orange-i-icon {
+    margin-top: 0px;
+    float: left;
+    width: 40px;
+    height: 43px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    text-align: center;
+    background-color: #d2d7da;
+}
+.orange-i-icon i {
+    font-size: 25px;
+    line-height: 38px;
+}
+
 .layui-btn {
     margin-left: 110px;
     width: 280px;
@@ -51,4 +72,10 @@ form div {
   padding: 20px;
   min-height: 100%;
   /*margin: 0 auto -50px;*/
+}
+#canvas {
+     display: inline-block;
+    border: 1px solid #ccc;
+     border-radius: 5px;
+    cursor: pointer;
 }
