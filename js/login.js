@@ -52,15 +52,32 @@ function randomColor() {//得到随机的颜色值
     return "rgb(" + r + "," + g + "," + b + ")";
 }
 
+
+    function get_new_ondate() {
+        let mydata = new Date()
+        let day = mydata.getDate();
+        let month = mydata.getMonth() + 1;
+        let year = mydata.getFullYear();
+        if (month < 10) {
+        month = "0" + month;
+        }
+        if (day < 10) {
+            day = "0" + day;
+        }
+        return year + '-' + month + '-' + day
+    }
+
 function user_login() {
     // layer.alert($('.layui-form').serialize())
     var logif = layer.load(1, {
         shade: [0.1, '#fff'] //0.1透明度的白色背景
     });
+    let login_form = $.param({'login_time': get_new_ondate()}) + '&' + $.param({'login_sum': 1}) + '&' + $('.layui-form').serialize()
+    console.log(login_form)
     $.ajax({
         type: "POST",
         url: "http://10.0.1.198:18000/account/login_dl",
-        data: $('.layui-form').serialize(),
+        data: login_form,
         dataType: "JSON",
         success: function (res) {
             if (res['chk_status'] === 'true') {
