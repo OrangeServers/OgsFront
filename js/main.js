@@ -1,4 +1,8 @@
+// js内导入其他js
+// document.write("<script src=\"http://pv.sohu.com/cityjson?ie=utf-8\"></script>");
+
     $(function (){
+        // document.write(returnCitySN["cip"]+','+returnCitySN["cname"])
         if ($.cookie('username') === undefined){
             window.location.href = './login.html'
         } else {

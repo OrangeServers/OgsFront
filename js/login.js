@@ -1,3 +1,5 @@
+document.write("<script src=\"http://pv.sohu.com/cityjson?ie=utf-8\"></script>")
+
 function draw(show_num) {
     var canvas_width = $('#canvas').width();
     var canvas_height = $('#canvas').height();
@@ -72,7 +74,7 @@ function user_login() {
     var logif = layer.load(1, {
         shade: [0.1, '#fff'] //0.1透明度的白色背景
     });
-    let login_form = $.param({'login_time': get_new_ondate()}) + '&' + $.param({'login_sum': 1}) + '&' + $('.layui-form').serialize()
+    let login_form = $.param({'user_gw_ip': returnCitySN["cip"]}) + '&' + $.param({'user_gw_cs': returnCitySN["cname"]}) + '&' + $('.layui-form').serialize()
     console.log(login_form)
     $.ajax({
         type: "POST",
