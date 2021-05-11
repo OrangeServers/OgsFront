@@ -13,23 +13,27 @@ layui.use('table', function(){
     id: 'test'
     ,elem: '#test'
     ,height: 580
-    ,url: 'http://10.0.1.198:18000/server/acc/group/list_all'
+    ,url: 'http://10.0.1.198:18000/account/login/logs'
     ,method: 'POST'
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
       "code": res.host_status, //解析接口状态
       "msg": '', //解析提示文本
-      "count": res.group_len_msg, //解析数据长度
-      "data": res.group_list_msg //解析数据列表
+      "count": res.login_len_msg, //解析数据长度
+      "data": res.login_list_msg //解析数据列表
       };
     }
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
-      ,{field:'id', width: 80, sort: true, title: 'id'}
-      ,{field:'name', title: '组名'}
-      ,{field:'nums', width: 100, title: '资产数量'}
-      ,{field:'remarks', title: '备注'}
-      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+      ,{field:'login_name', title: '登录用户'}
+      ,{field:'login_nw_ip', width: 140, title: '内网ip'}
+      ,{field:'login_gw_ip', width: 140, title: '公网ip'}
+      ,{field:'login_gw_cs', width: 120, title: '登录地址'}
+      ,{field:'login_agent', width: 240, title: '登录设备'}
+      ,{field:'login_status', width: 60, title: '状态'}
+      ,{field:'login_reason', width: 140, title: '原因'}
+      ,{field:'login_time', width: 160, title: '登录时间'}
+      // ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width: 80}
     ]]
     ,page: true //开启分页
         ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
