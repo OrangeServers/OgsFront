@@ -5,12 +5,14 @@ layui.use('table', function(){
   var laydate = layui.laydate;
 
   //第一个实例
+  function get_login_logs(url, obj){
   table.render({
     id: 'test'
     ,elem: '#test'
     ,height: 580
-    ,url: 'http://10.0.1.198:18000/account/login/logs'
+    ,url: url
     ,method: 'POST'
+    ,where: {'login_jg_date': obj}
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
       "code": res.host_status, //解析接口状态
@@ -40,7 +42,9 @@ layui.use('table', function(){
     }]
     ,title: '组信息表'
   });
+  }
 
+  get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
 
   //头工具栏事件
   table.on('toolbar(test)', function(obj){
@@ -70,6 +74,7 @@ layui.use('table', function(){
 
 
     //日期时间范围
+  function login_date_select(){
   laydate.render({
     elem: '#test10'
     ,type: 'datetime'
@@ -78,8 +83,17 @@ layui.use('table', function(){
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
       console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+      if (value === ''){
+        get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
+        login_date_select()
+      } else {
+        get_login_logs('http://10.0.1.198:18000/account/login/date', value)
+        login_date_select()
+        }
     }
   });
+  }
+  login_date_select()
 
   //监听行工具事件
   table.on('tool(test)', function(obj){
