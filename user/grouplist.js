@@ -40,7 +40,7 @@ layui.use('table', function(){
       ,layEvent: 'LAYTABLE_TIPS'
       ,icon: 'layui-icon-tips'
     }]
-    ,title: '组信息表'
+    ,title: '登录日志表'
   });
   }
 
