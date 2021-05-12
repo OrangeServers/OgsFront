@@ -7,9 +7,9 @@ layui.use('table', function(){
   //第一个实例
   function get_login_logs(url, obj){
   table.render({
-    id: 'test'
+    id: 'testReload'
     ,elem: '#test'
-    ,height: 580
+    ,height: 550
     ,url: url
     ,method: 'POST'
     ,where: {'login_jg_date': obj}
@@ -85,43 +85,23 @@ layui.use('table', function(){
       console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
       if (value === ''){
         get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
-        login_date_select()
       } else {
         get_login_logs('http://10.0.1.198:18000/account/login/date', value)
-        login_date_select()
         }
     }
   });
   }
   login_date_select()
 
-  //监听行工具事件
-  table.on('tool(test)', function(obj){
-    var data = obj.data;
-    //console.log(obj)
-    if(obj.event === 'del'){
-      layer.confirm('确定删除该资产?', function(index){
-        // obj.del();
-        var host_id = obj.data['id']
-        console.log(host_id);
-        host_del(host_id)
-        layer.close(index);
-      });
-    } else if(obj.event === 'edit'){
-      // layer.prompt({
-      //   formType: 2
-      //   ,value: data.email
-      // }, function(value, index){
-      //   obj.update({
-      //     email: value
-      //   });
-      //   layer.close(index);
-      // });
-      window.location.href = "./user-grouplist/update.html?id=" + data.id
-      // $("input[name = 'alias']")
-      // layer.alert(data.id, {skin: 'layui-layer-hui'})
+  $('.demoTable .layui-btn').on('click', function(){
+    let select_val =  $('#demoReload').val()
+    if (select_val === ''){
+      get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
+    } else {
+        get_login_logs('http://10.0.1.198:18000/account/login/select', select_val)
     }
-  });
+  })
+
   });
 
     function host_del(obj) {
