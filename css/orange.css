@@ -73,3 +73,10 @@ body > .layui-layout-admin > .layui-body > .orange-body {
   text-align: center;
   color: #5d5e63;
 }
+
+.orange-cmd-header {
+    background-color: #fff;
+    height: 60px;
+    width: 100%;
+    padding-top: 1px;
+}

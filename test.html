@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+      <div id="demo1" class="xm-select-demo"></div>
+      <button class="btn" id="demo1-getValue">获取选中值</button>
+      <pre id="demo1-value"></pre>
+
+<script src="./layui/layui.js"></script>
+<script src="layui/layuimod/xm-select.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<!-- Chart code -->
+
+<script type="application/javascript">
+
+    // layui.config({
+    //     base: 'layui/'
+    // }).extend({
+    //     xmSelect: 'xm-select'
+    // })
+    //
+    // layui.use(['jquery', 'xmSelect'], function (){
+        let xmSelect = layui.xmSelect
+        	var demo1 = xmSelect.render({
+		el: '#demo1',
+		language: 'zn',
+		data: [
+			{name: '张三', value: 1},
+			{name: '李四', value: 2},
+			{name: '王五', value: 3},
+		]
+	})
+
+  document.getElementById('demo1-getValue').onclick = function(){
+      //获取当前多选选中的值
+      var selectArr = demo1.getValue();
+      document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
+  }
+
+    // })
+
+
+
+</script>
+</body>
+</html>
