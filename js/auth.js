@@ -52,7 +52,7 @@ layui.use('table', function(){
         layer.msg(checkStatus.isAll ? '全选': '未全选');
       break;
       case 'createData':
-        window.location.href = './user-userlist/create.html'
+        window.location.href = './create.html'
       break;
 
       //自定义头工具栏右侧图标 - 提示
@@ -69,13 +69,13 @@ layui.use('table', function(){
     if(obj.event === 'del'){
       layer.confirm('确定删除该资产?', function(index){
         // obj.del();
-        var host_id = obj.data['id']
+        var host_id = obj.data['name']
         console.log(host_id);
         host_del(host_id)
         layer.close(index);
       });
     } else if(obj.event === 'edit'){
-      window.location.href = "./user-userlist/update.html?id=" + data.id
+      window.location.href = "./update.html?name=" + data.name
     }
   });
   });
@@ -85,7 +85,7 @@ layui.use('table', function(){
           type: "POST",
           url: "http://10.0.1.198:18000/server/acc/user/del",
           data: {
-          'id': obj
+          'name': obj
           },
           dataType: "JSON",
           success: function (res) {
