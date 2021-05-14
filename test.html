@@ -41,7 +41,7 @@
                       auth_data[i]['selected'] = true
                   }
               }
-            xmSelect.render({
+            window.demo1 = xmSelect.render({
                 el: '#demo1',
                 language: 'zn',
                 data: auth_data
@@ -54,7 +54,7 @@
 
   document.getElementById('demo1-getValue').onclick = function(){
       //获取当前多选选中的值
-      var selectArr = demo1.getValue();
+      var selectArr = demo1.getValue('value');
       document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
   }
 
