@@ -69,9 +69,9 @@ layui.use('table', function(){
     if(obj.event === 'del'){
       layer.confirm('确定删除该资产?', function(index){
         // obj.del();
-        var host_id = obj.data['name']
-        console.log(host_id);
-        host_del(host_id)
+        var host_name = obj.data['name']
+        console.log(host_name);
+        auth_del(host_name)
         layer.close(index);
       });
     } else if(obj.event === 'edit'){
@@ -80,10 +80,10 @@ layui.use('table', function(){
   });
   });
 
-    function host_del(obj) {
+    function auth_del(obj) {
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/server/acc/user/del",
+          url: "http://10.0.1.198:18000/auth/host/del",
           data: {
           'name': obj
           },

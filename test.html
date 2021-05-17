@@ -29,9 +29,10 @@
 
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/test",
+          url: "http://10.0.1.198:18000/auth/host/uplist",
           data: {
-          'name': '所有权限'
+            'name': '所有权限',
+            'req_type': 'user'
           },
           dataType: "JSON",
           success: function (res) {
