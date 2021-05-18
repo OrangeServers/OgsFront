@@ -17,6 +17,7 @@ layui.use(['dropdown', 'table'], function(){
     ,height: 580
     ,url: 'http://10.0.1.198:18000/server/host/list_all'
     ,method: 'POST'
+    ,where: {'name': $.cookie('username')}
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
       "code": res.host_status, //解析接口状态

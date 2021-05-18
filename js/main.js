@@ -93,6 +93,7 @@
       type: "POST",
       url: "http://10.0.1.198:18000/local/data",
       dataType: "JSON",
+      data: {'name': $.cookie('username')},
       showLine: true,
       edit: ['add', 'update', 'del'],
       success: function (res) {
