@@ -2,9 +2,10 @@
 // document.write("<script src=\"http://pv.sohu.com/cityjson?ie=utf-8\"></script>");
 
     $(function (){
+        let url_local = window.location.protocol + window.location.host + '/login.html'
         // document.write(returnCitySN["cip"]+','+returnCitySN["cname"])
         if ($.cookie('username') === undefined){
-            window.location.href = './login.html'
+            window.location.href = '/login.html'
         } else {
             $(".orange-title-name").html($(".orange-title-name").html().replace("admin",$.cookie('username')))
         }

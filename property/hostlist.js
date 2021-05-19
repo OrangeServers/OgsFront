@@ -80,7 +80,7 @@ layui.use(['dropdown', 'table'], function(){
     ,height: 580
     ,url: 'http://10.0.1.198:18000/server/host/list_page'
     ,method: 'POST'
-    ,where: {'group_name': obj}
+    ,where: {'group_name': obj, 'name': $.cookie('username')}
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
       "code": res.host_status, //解析接口状态
@@ -115,6 +115,7 @@ layui.use(['dropdown', 'table'], function(){
   type: "POST",
   url: "http://10.0.1.198:18000/server/host/group/name_list",
   dataType: "JSON",
+  data: {'name': $.cookie('username')},
   success: function (res) {
     let data_list = []
     let data_name = res['group_name_list_msg']

@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>layout 管理系统大布局 - Layui</title>
+  <title>组列表</title>
 
-  <link rel="stylesheet" href="/layui/css/layui.css">
+  <link rel="icon" href="/image/bitbug_favicon.ico">
+  <link rel="stylesheet" href="/layui/css/layui.css" media="all">
   <link rel="stylesheet" href="/css/orange.css">
-  <link rel="stylesheet" href="/css/pagefrom.css">
-
+  <link rel="stylesheet" href="/css/zclb.css">
 
 </head>
 <body>
@@ -49,12 +49,12 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item"><a href="/index.html"><img src="/image/仪表盘.png" width="20" height="20">仪表盘</a></li>
-        <li class="layui-nav-item layui-nav-itemed">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;"><img src="/image/资产管理.png" width="20" height="20">资产管理</a>
           <dl class="layui-nav-child">
             <dd><a href="/property/property-hostlist.html"><img src="/image/juzi11.png" width="20" height="20">资产列表</a></dd>
             <dd><a href="/property/property-grouplist.html"><img src="/image/juzi11.png" width="20" height="20">资产组</a></dd>
-            <dd><a href="/property/property-userlist.html" class="layui-this"><img src="/image/juzi11.png" width="20" height="20">系统用户</a></dd>
+            <dd><a href="/property/property-userlist.html"><img src="/image/juzi11.png" width="20" height="20">系统用户</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -80,10 +80,10 @@
             <dd><a href="/container/container-kubernetes.html"><img src="/image/juzi11.png" width="20" height="20">kubernetes</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item">
+        <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;"><img src="/image/日志.png" width="20" height="20">日志审计</a>
           <dl class="layui-nav-child">
-            <dd><a href="/audit/audit-userlog.html"><img src="/image/juzi11.png" width="20" height="20">登录日志</a></dd>
+            <dd><a class="layui-this" href="/audit/audit-userlog.html"><img src="/image/juzi11.png" width="20" height="20">登录日志</a></dd>
             <dd><a href="/audit/audit-comlog.html"><img src="/image/juzi11.png" width="20" height="20">操作日志</a></dd>
             <dd><a href="/audit/audit-rslog.html"><img src="/image/juzi11.png" width="20" height="20">同步日志</a></dd>
           </dl>
@@ -97,87 +97,39 @@
 
   <div class="layui-body">
 
-    <div class="orange-body" style="padding: 15px;">
-      <div class="orange-zsbq">
-        <a href="/index.html">/ 仪表盘</a>
-        <a href="/property/property-hostlist.html">/ 资产列表</a>
-        <a href="update.html">/ 更新信息</a>
+    <!-- 内容主体区域 -->
+    <div class="orange-body" style="padding: 15px;">内容主体区域
+
+            <div>
+      <div class="demoTable" style="float: left">
+  搜索用户名：
+  <div class="layui-inline">
+    <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+  </div>
+  <button class="layui-btn" data-type="reload">搜索</button>
+  </div>
+      <div class="layui-form" style="float: left;height: 40px">
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label" style="width: 100px; box-sizing: unset;">日期时间范围</label>
+      <div class="layui-input-inline">
+        <input type="text" class="layui-input" id="test10" placeholder=" - " style="width: 320px">
       </div>
-
-      <div class="orange-cjbt">
-      <h2>更新用户信息</h2>
+    </div>
+  </div>
+</div>
+        <div  style="clear: both"></div>
       </div>
-
-      <div class="orange-host-from" style="height: 580px">
-        <h3>必填信息</h3>
-<!--      <form id="adhsform" onsubmit="return false">-->
-        <form class="layui-form" onsubmit="return false">
-
-              <div class="layui-form-item">
-        <label class="layui-form-label">id</label>
-        <div class="layui-input-block">
-          <input type="text" name="id" readonly="readonly" style="background-color: #dbe2df" lay-verify="required" lay-reqtext="id是必填项，不能为空!" autocomplete="off" class="layui-input">
-        </div>
-        </div>
+      <table class="layui-hide" id="test" lay-filter="test"></table>
 
 
-              <div class="layui-form-item">
-        <label class="layui-form-label">别名</label>
-        <div class="layui-input-block">
-          <input type="text" name="alias" lay-verify="required" lay-reqtext="别名是必填项，不能为空!" placeholder="请输入别名" autocomplete="off" class="layui-input">
-        </div>
-        </div>
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
 
-                <div class="layui-form-item">
-        <label class="layui-form-label">用户名</label>
-        <div class="layui-input-block">
-          <input type="text" name="host_user" lay-verify="required" lay-reqtext="用户名是必填项，不能为空!" placeholder="请输入用户名" autocomplete="off" class="layui-input">
-        </div>
-        </div>
 
-                <div class="layui-form-item">
-        <label class="layui-form-label">协议</label>
-        <div class="layui-input-block">
-          <select name="agreement" lay-filter="aihao">
-            <option value=""></option>
-            <option value="ssh" selected="">ssh</option>
-            <option value="ftp" >ftp</option>
-            <option value="自定义">自定义</option>
-          </select>
-        </div>
-        </div>
-
-                <div class="layui-form-item">
-        <label class="layui-form-label">资产数量</label>
-        <div class="layui-input-block">
-          <input type="text" name="nums" readonly="readonly" style="background-color: #dbe2df" lay-verify="required" lay-reqtext="资产数量是必填项，不能为空!" placeholder="请输入资产数量" autocomplete="off" class="layui-input">
-        </div>
-        </div>
-
-                <div class="layui-form-item">
-        <label class="layui-form-label">登录密码</label>
-        <div class="layui-input-block">
-          <input type="password" name="host_password" lay-verify="required" lay-reqtext="请输入备注信息，不能为空!" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
-        </div>
-        </div>
-
-            <div class="layui-form-item">
-        <label class="layui-form-label">备注</label>
-        <div class="layui-input-block">
-          <input type="text" name="remarks" lay-verify="title" autocomplete="off" placeholder="请输入备注信息，不填默认为空" class="layui-input">
-        </div>
-        </div>
-
-          <div class="layui-form-item">
-        <div class="layui-input-block">
-          <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-          <button type="button" class="layui-btn layui-btn-normal" onclick="clean_adhost()">取消</button>
-        </div>
-      </div>
-
-      </form>
-      </div>
+<script type="text/html" id="toolbarDemo">
+</script>
 
     </div>
   </div>
@@ -194,8 +146,7 @@
 <script src="/js/jquery.cookie.min.js"></script>
 <script src="/js/main.js"></script>
 
-<script src="update.js"></script>
-<!-- Chart code -->
+<script src="userlog.js"></script>
 
 </body>
 </html>

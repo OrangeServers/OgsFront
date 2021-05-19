@@ -60,7 +60,7 @@ layui.use('table', function(){
         layer.msg(checkStatus.isAll ? '全选': '未全选');
       break;
       case 'createData':
-        window.location.href = '../authority/create.html'
+        window.location.href = './user-userlist/create.html'
       break;
 
       //自定义头工具栏右侧图标 - 提示
@@ -83,7 +83,7 @@ layui.use('table', function(){
         layer.close(index);
       });
     } else if(obj.event === 'edit'){
-      window.location.href = "../authority/update.html?id=" + data.id
+      window.location.href = "./user-userlist/update.html?id=" + data.id
     }
   });
   });
