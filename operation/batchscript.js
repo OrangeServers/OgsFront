@@ -37,10 +37,10 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
             $("#shuru_tex").val("")
         }
         , createHost: function () {
-            window.location.href = '../../property/property-hostlist/create.html'
+            window.location.href = '/property/property-hostlist/create.html'
         }
         , createGroup: function () {
-            window.location.href = '../../property/property-group/create.html'
+            window.location.href = '/property/property-group/create.html'
         }
         , reload: function () {
             //重载实例
@@ -60,6 +60,7 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
             for (let y=0;y<id_list.length;y++){
                 obj.append('id_list', id_list[y])
             }
+            obj.append('com_name', $.cookie('username'))
             $.ajax({
                 url: 'http://10.0.1.198:18000/server/file/put',
                 type: 'POST',

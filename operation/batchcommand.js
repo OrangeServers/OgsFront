@@ -19,7 +19,8 @@ layui.use(['tree', 'util'], function() {
           // useCORS: true,
           data: {
             'host_id': list_id,
-            'command': $("#shuru_tex").val()
+            'command': $("#shuru_tex").val(),
+            'com_name': $.cookie('username')
           },
           // 设置后去掉数组传参中带的[]  使后台能正常接收
           traditional: true,

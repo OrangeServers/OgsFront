@@ -2,36 +2,41 @@
 //JavaScript代码区域
 layui.use('table', function(){
   var table = layui.table;
-  var laydate = layui.laydate;
+
+    // 加载组关联资产信息
+    $.ajax({
+      type: "POST",
+      url: "http://10.0.1.198:18000/local/sum",
+      data: {
+      'sum_name': 'group'
+      },
+      dataType: "JSON",
+      success: function (res) {
+      }
+  })
 
   //第一个实例
-  function get_login_logs(url, obj){
   table.render({
-    id: 'testReload'
+    id: 'test'
     ,elem: '#test'
-    ,height: 550
-    ,url: url
+    ,height: 580
+    ,url: 'http://10.0.1.198:18000/account/group/list_all'
     ,method: 'POST'
-    ,where: {'login_jg_date': obj}
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
       "code": res.host_status, //解析接口状态
       "msg": '', //解析提示文本
-      "count": res.login_len_msg, //解析数据长度
-      "data": res.login_list_msg //解析数据列表
+      "count": res.group_len_msg, //解析数据长度
+      "data": res.group_list_msg //解析数据列表
       };
     }
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
-      ,{field:'login_name', title: '登录用户'}
-      ,{field:'login_nw_ip', width: 140, title: '内网ip'}
-      ,{field:'login_gw_ip', width: 140, title: '公网ip'}
-      ,{field:'login_gw_cs', width: 120, title: '登录地址'}
-      ,{field:'login_agent', width: 240, title: '登录设备'}
-      ,{field:'login_status', width: 60, title: '状态'}
-      ,{field:'login_reason', width: 140, title: '原因'}
-      ,{field:'login_time', width: 160, title: '登录时间'}
-      // ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width: 80}
+      ,{field:'id', width: 80, sort: true, title: 'id'}
+      ,{field:'name', title: '组名'}
+      ,{field:'nums', width: 100, title: '资产数量'}
+      ,{field:'remarks', title: '备注'}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
     ]]
     ,page: true //开启分页
         ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
@@ -40,11 +45,9 @@ layui.use('table', function(){
       ,layEvent: 'LAYTABLE_TIPS'
       ,icon: 'layui-icon-tips'
     }]
-    ,title: '登录日志表'
+    ,title: '用户组信息表'
   });
-  }
 
-  get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
 
   //头工具栏事件
   table.on('toolbar(test)', function(obj){
@@ -62,7 +65,7 @@ layui.use('table', function(){
         layer.msg(checkStatus.isAll ? '全选': '未全选');
       break;
       case 'createData':
-        window.location.href = '../property/property-group/create.html'
+        window.location.href = '/user/user-grouplist/create.html'
       break;
 
       //自定义头工具栏右侧图标 - 提示
@@ -72,48 +75,33 @@ layui.use('table', function(){
     };
   });
 
-
-    //日期时间范围
-  function login_date_select(){
-  laydate.render({
-    elem: '#test10'
-    ,type: 'datetime'
-    ,range: true
-    ,done: function(value, date, endDate){
-      console.log(value); //得到日期生成的值，如：2017-08-18
-      console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
-      console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
-      if (value === ''){
-        get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
-      } else {
-        get_login_logs('http://10.0.1.198:18000/account/login/date', value)
-        }
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('确定删除该资产?', function(index){
+        obj.del();
+        var host_id = obj.data['id']
+        host_del(host_id)
+        layer.close(index);
+      });
+    } else if(obj.event === 'edit'){
+      window.location.href = "/user/user-grouplist/update.html?id=" + data.id
     }
   });
-  }
-  login_date_select()
-
-  $('.demoTable .layui-btn').on('click', function(){
-    let select_val =  $('#demoReload').val()
-    if (select_val === ''){
-      get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
-    } else {
-        get_login_logs('http://10.0.1.198:18000/account/login/select', select_val)
-    }
-  })
-
   });
 
     function host_del(obj) {
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/server/acc/group/del",
+          url: "http://10.0.1.198:18000/account/group/del",
           data: {
           'id': obj
           },
           dataType: "JSON",
           success: function (res) {
-            location.reload()
+            // location.reload()
           }
       })
     }

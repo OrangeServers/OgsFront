@@ -100,24 +100,38 @@
     <div class="orange-body" style="padding: 15px;">
       <div class="orange-zsbq">
         <a href="/index.html">/ 仪表盘</a>
-        <a href="/property/property-hostlist.html">/ 资产列表</a>
-        <a href="create.html">/ 创建用户</a>
+        <a href="/property/property-hostlist.html">/ 资产组列表</a>
+        <a href="update.html">/ 更新信息</a>
       </div>
 
       <div class="orange-cjbt">
-      <h2>创建资产组</h2>
+      <h2>更新用户组信息</h2>
       </div>
 
-      <div class="orange-host-from" style="height: 240px">
+      <div class="orange-host-from" style="height: 400px">
         <h3>必填信息</h3>
 <!--      <form id="adhsform" onsubmit="return false">-->
         <form class="layui-form" onsubmit="return false">
+
+              <div class="layui-form-item">
+        <label class="layui-form-label">id</label>
+        <div class="layui-input-block">
+          <input type="text" name="id" readonly="readonly" style="background-color: #dbe2df" lay-verify="required" lay-reqtext="id是必填项，不能为空!" autocomplete="off" class="layui-input">
+        </div>
+        </div>
 
 
               <div class="layui-form-item">
         <label class="layui-form-label">组名</label>
         <div class="layui-input-block">
           <input type="text" name="name" lay-verify="required" lay-reqtext="名称是必填项，不能为空!" placeholder="请输入名称" autocomplete="off" class="layui-input">
+        </div>
+        </div>
+
+                <div class="layui-form-item">
+        <label class="layui-form-label">资产数量</label>
+        <div class="layui-input-block">
+          <input type="text" name="nums" readonly="readonly" style="background-color: #dbe2df" lay-verify="required" lay-reqtext="资产数量是必填项，不能为空!" placeholder="请输入资产数量" autocomplete="off" class="layui-input">
         </div>
         </div>
 
@@ -154,7 +168,7 @@
 <script src="/js/jquery.cookie.min.js"></script>
 <script src="/js/main.js"></script>
 
-<script src="add.js"></script>
+<script src="update.js"></script>
 <!-- Chart code -->
 
 </body>
