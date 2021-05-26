@@ -3,6 +3,12 @@ layui.use(['tree', 'util'], function() {
         , layer = layui.layer
         , util = layui.util
 
+    if ($.cookie('username') === 'admin'){
+       upload_layui_admin('operation-batchcommand')
+    }else {
+        upload_layui_develop('operation-batchcommand')
+    }
+
 
      //开启复选框
         get_tree_list()

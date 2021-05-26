@@ -3,6 +3,12 @@
 layui.use('table', function(){
   var table = layui.table;
 
+      if ($.cookie('username') === 'admin'){
+       upload_layui_admin('user-grouplist')
+    }else {
+        upload_layui_develop('user-grouplist')
+    }
+
     // 加载组关联资产信息
     $.ajax({
       type: "POST",

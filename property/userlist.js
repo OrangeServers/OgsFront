@@ -1,12 +1,13 @@
 
 //JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
-
-});
-
 layui.use('table', function(){
   var table = layui.table;
+
+    if ($.cookie('username') === 'admin'){
+     upload_layui_admin('property-userlist')
+  }else {
+      upload_layui_develop('property-userlist')
+  }
 
     // 加载组关联资产信息
     $.ajax({

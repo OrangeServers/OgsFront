@@ -14,85 +14,11 @@
 <body>
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo"><a href="/index.html"><img src="/image/juzi11.png" width="40" height="40">OrangeServer</a></div>
-    <!-- 头部区域（可配合layui 已有的水平导航） -->
-    <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="">nav 1</a></li>
-      <li class="layui-nav-item"><a href="">nav 2</a></li>
-      <li class="layui-nav-item"><a href="">nav 3</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">nav groups</a>
-        <dl class="layui-nav-child">
-          <dd><a href="">menu 11</a></dd>
-          <dd><a href="">menu 22</a></dd>
-          <dd><a href="">menu 33</a></dd>
-        </dl>
-      </li>
-    </ul>
-    <ul class="layui-nav layui-layout-right">
-      <li class="layui-nav-item">
-        <a href="javascript:;">
-          <img src="/image/juzi11.png" class="layui-nav-img">
-          admin
-        </a>
-        <dl class="layui-nav-child">
-          <dd><a href="">set 1</a></dd>
-          <dd><a href="">set 2</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">Sign out</a></li>
-    </ul>
+
   </div>
 
   <div class="layui-side layui-bg-black">
-    <div class="layui-side-scroll">
-      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-        <li class="layui-nav-item"><a href="/index.html"><img src="/image/仪表盘.png" width="20" height="20">仪表盘</a></li>
-        <li class="layui-nav-item">
-          <a class="" href="javascript:;"><img src="/image/资产管理.png" width="20" height="20">资产管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="/property/property-hostlist.html"><img src="/image/juzi11.png" width="20" height="20">资产列表</a></dd>
-            <dd><a href="/property/property-grouplist.html"><img src="/image/juzi11.png" width="20" height="20">资产组</a></dd>
-            <dd><a href="/property/property-userlist.html"><img src="/image/juzi11.png" width="20" height="20">系统用户</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item" id="orange-auth-del-yhgl">
-          <a href="javascript:;"><img src="/image/用户管理.png" width="20" height="20">用户管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="/user/user-userlist.html"><img src="/image/juzi11.png" width="20" height="20">用户列表</a></dd>
-            <dd><a href="/user/user-grouplist.html"><img src="/image/juzi11.png" width="20" height="20">用户组</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;"><img src="/image/执行日志.png" width="20" height="20">操作中心</a>
-          <dl class="layui-nav-child">
-            <dd><a href="/operation/operation-batchscript.html"><img src="/image/juzi11.png" width="20" height="20">批量脚本</a></dd>
-            <dd><a href="/operation/operation-batchcommand.html"><img src="/image/juzi11.png" width="20" height="20">批量命令</a></dd>
-            <dd><a href="/operation/operation-codesync.html"><img src="/image/juzi11.png" width="20" height="20">代码同步</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;"><img src="/image/容器.png" width="20" height="20">容器管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="/container/container-imagelist.html"><img src="/image/juzi11.png" width="20" height="20">镜像列表</a></dd>
-            <dd><a href="/container/container-dockerlist.html"><img src="/image/juzi11.png" width="20" height="20">容器列表</a></dd>
-            <dd><a href="/container/container-kubernetes.html"><img src="/image/juzi11.png" width="20" height="20">kubernetes</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item layui-nav-itemed">
-          <a href="javascript:;"><img src="/image/日志.png" width="20" height="20">日志审计</a>
-          <dl class="layui-nav-child">
-            <dd><a class="layui-this" href="/audit/audit-userlog.html"><img src="/image/juzi11.png" width="20" height="20">登录日志</a></dd>
-            <dd><a href="/audit/audit-comlog.html"><img src="/image/juzi11.png" width="20" height="20">操作日志</a></dd>
-            <dd><a href="/audit/audit-rslog.html"><img src="/image/juzi11.png" width="20" height="20">同步日志</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item"><a href="/authority/authority.html"><img src="/image/权限.png" width="20" height="20">权限管理</a></li>
-        <li class="layui-nav-item"><a href="/filetransfer.html"><img src="/image/文件.png" width="20" height="20">文件传输</a></li>
-        <li class="layui-nav-item"><a href="/settings.html"><img src="/image/设置.png" width="20" height="20">系统设置</a></li>
-      </ul>
-    </div>
+
   </div>
 
   <div class="layui-body">

@@ -33,10 +33,16 @@ function get_count_list() {
   })
 }
 
+
 //折线图js文件
 am4core.ready(function() {
 
 // Themes begin
+    if ($.cookie('username') === 'admin'){
+       upload_layui_admin('index')
+    }else {
+        upload_layui_develop('index')
+    }
 // Themes end
 
 // Create chart instance

@@ -3,6 +3,12 @@ layui.use('table', function () {
     var table = layui.table;
     var laydate = layui.laydate;
 
+    if ($.cookie('username') === 'admin'){
+       upload_layui_admin('audit-comlog')
+    }else {
+        upload_layui_develop('audit-comlog')
+    }
+
     //第一个实例
     function get_login_logs(url, obj) {
         table.render({

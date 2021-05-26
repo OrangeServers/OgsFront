@@ -5,6 +5,11 @@
 //
 //
 // });
+  if ($.cookie('username') === 'admin'){
+     upload_layui_admin('property-hostlist')
+  }else {
+      upload_layui_develop('property-hostlist')
+  }
 
 layui.use(['dropdown', 'table'], function(){
   var table = layui.table,

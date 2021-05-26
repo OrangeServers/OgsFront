@@ -6,6 +6,12 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
   ,element = layui.element
   ,host_name = getParam("name");
 
+    if ($.cookie('username') === 'admin'){
+     upload_layui_admin('authority')
+  }else {
+      upload_layui_develop('authority')
+  }
+
           $.ajax({
           type: "POST",
           url: "http://10.0.1.198:18000/auth/host/uplist",

@@ -50,6 +50,12 @@ layui.use(['form', 'layedit', 'laydate'], function(){
   ,layedit = layui.layedit
   ,laydate = layui.laydate;
 
+      if ($.cookie('username') === 'admin'){
+     upload_layui_admin('property-grouplist')
+  }else {
+      upload_layui_develop('property-grouplist')
+  }
+
   //日期
     laydate.render({
       elem: '#date'

@@ -1,12 +1,13 @@
 
 //JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
-
-});
-
 layui.use('table', function(){
   var table = layui.table;
+
+      if ($.cookie('username') === 'admin'){
+       upload_layui_admin('user-userlist')
+    }else {
+        upload_layui_develop('user-userlist')
+    }
 
   //第一个实例
   table.render({

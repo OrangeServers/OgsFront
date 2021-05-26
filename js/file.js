@@ -4,6 +4,12 @@ layui.use(['upload', 'element', 'layer'], function(){
   ,element = layui.element
   ,layer = layui.layer;
 
+      if ($.cookie('username') === 'admin'){
+       upload_layui_admin('filetransfer')
+    }else {
+        upload_layui_develop('filetransfer')
+    }
+
   //常规使用 - 普通图片上传
   var uploadInst = upload.render({
     elem: '#test1'

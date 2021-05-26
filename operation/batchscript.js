@@ -6,6 +6,12 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
         , layer = layui.layer
         , util = layui.util;
 
+    if ($.cookie('username') === 'admin'){
+       upload_layui_admin('operation-batchscript')
+    }else {
+        upload_layui_develop('operation-batchscript')
+    }
+
     //开启复选框
     get_tree_list()
     $('#orange-text').css({"margin-top": "10px!;"})

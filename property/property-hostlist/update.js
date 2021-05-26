@@ -52,6 +52,12 @@ layui.use(['form', 'layedit', 'laydate'], function(){
   ,layedit = layui.layedit
   ,laydate = layui.laydate;
 
+    if ($.cookie('username') === 'admin'){
+     upload_layui_admin('property-hostlist')
+  }else {
+      upload_layui_develop('property-hostlist')
+  }
+
   // 获取组名列表
   get_group_name_list()
 
