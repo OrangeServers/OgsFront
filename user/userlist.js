@@ -3,11 +3,7 @@
 layui.use('table', function(){
   var table = layui.table;
 
-      if ($.cookie('username') === 'admin'){
-       upload_layui_admin('user-userlist')
-    }else {
-        upload_layui_develop('user-userlist')
-    }
+  get_user_auth_list('user-userlist')
 
   //第一个实例
   table.render({

@@ -3,11 +3,8 @@
 layui.use('table', function(){
   var table = layui.table;
 
-    if ($.cookie('username') === 'admin'){
-     upload_layui_admin('property-grouplist')
-  }else {
-      upload_layui_develop('property-grouplist')
-  }
+  get_user_auth_list('property-grouplist')
+
     // 加载组关联资产信息
     $.ajax({
       type: "POST",

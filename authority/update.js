@@ -6,11 +6,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
   ,element = layui.element
   ,host_name = getParam("name");
 
-    if ($.cookie('username') === 'admin'){
-     upload_layui_admin('authority')
-  }else {
-      upload_layui_develop('authority')
-  }
+  get_user_auth_list('authority')
 
           $.ajax({
           type: "POST",

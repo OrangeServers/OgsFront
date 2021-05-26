@@ -31,11 +31,7 @@ layui.use(['form', 'layedit', 'laydate', 'element'], function(){
   ,laydate = layui.laydate
   ,element = layui.element;
 
-    if ($.cookie('username') === 'admin'){
-     upload_layui_admin('property-hostlist')
-  }else {
-      upload_layui_develop('property-hostlist')
-  }
+  get_user_auth_list('property-hostlist')
 
   // 获取组名列表
     get_group_name_list()

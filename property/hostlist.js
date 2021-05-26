@@ -1,19 +1,11 @@
 
 //JavaScript代码区域
-// layui.use([ 'element'], function(){
-//   var element = layui.element;
-//
-//
-// });
-  if ($.cookie('username') === 'admin'){
-     upload_layui_admin('property-hostlist')
-  }else {
-      upload_layui_develop('property-hostlist')
-  }
 
 layui.use(['dropdown', 'table'], function(){
   var table = layui.table,
       dropdown = layui.dropdown;
+
+  get_user_auth_list('property-hostlist')
 
   //第一个实例
   table.render({

@@ -38,11 +38,7 @@ function get_count_list() {
 am4core.ready(function() {
 
 // Themes begin
-    if ($.cookie('username') === 'admin'){
-       upload_layui_admin('index')
-    }else {
-        upload_layui_develop('index')
-    }
+get_user_auth_list('index')
 // Themes end
 
 // Create chart instance

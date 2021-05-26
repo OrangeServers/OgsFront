@@ -5,11 +5,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
   ,laydate = layui.laydate
   ,element = layui.element;
 
-    if ($.cookie('username') === 'admin'){
-     upload_layui_admin('authority')
-  }else {
-      upload_layui_develop('authority')
-  }
+  get_user_auth_list('authority')
 
         $.ajax({
           type: "POST",

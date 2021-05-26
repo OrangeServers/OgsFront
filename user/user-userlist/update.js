@@ -51,11 +51,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
   ,layedit = layui.layedit
   ,laydate = layui.laydate;
 
-  if ($.cookie('username') === 'admin'){
-       upload_layui_admin('user-userlist')
-    }else {
-        upload_layui_develop('user-userlist')
-    }
+  get_user_auth_list('user-userlist')
 
   //日期
     laydate.render({

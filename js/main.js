@@ -400,6 +400,24 @@
         })
     }
 
+    function get_user_auth_list(page_html) {
+    $.ajax({
+        type: "POST",
+        url: "http://10.0.1.198:18000/server/acc/user/auth_list",
+        dataType: "JSON",
+        // async: false,
+        data: {'name': $.cookie('username')},
+        success: function (res) {
+            let user_auth = res['usrole']
+            if ($.cookie('username') === user_auth){
+               upload_layui_admin(page_html)
+            }else {
+                upload_layui_develop(page_html)
+            }
+        }
+        })
+    }
+
     function get_tree_list () {
   $.ajax({
       type: "POST",

@@ -3,11 +3,7 @@ layui.use('table', function () {
     var table = layui.table;
     var laydate = layui.laydate;
 
-    if ($.cookie('username') === 'admin'){
-       upload_layui_admin('audit-userlog')
-    }else {
-        upload_layui_develop('audit-userlog')
-    }
+    get_user_auth_list('audit-userlog')
 
     //第一个实例
     function get_login_logs(url, obj) {

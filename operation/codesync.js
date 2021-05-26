@@ -15,11 +15,8 @@
     }
 
     $(function (){
-        if ($.cookie('username') === 'admin'){
-       upload_layui_admin('operation-codesync')
-    }else {
-        upload_layui_develop('operation-codesync')
-    }
+        get_user_auth_list('operation-codesync')
+
          get_group_dir()
     });
 

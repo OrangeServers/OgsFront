@@ -44,11 +44,7 @@
 <script>
       layui.use(['jquery', 'element'], function () {
         let element = layui.element;
-      if ($.cookie('username') === 'admin'){
-         upload_layui_admin('settings')
-      }else {
-          upload_layui_develop('settings')
-      }
+        get_user_auth_list('settings')
       })
 </script>
 </body>

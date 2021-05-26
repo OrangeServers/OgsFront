@@ -46,11 +46,7 @@
 layui.use('table', function(){
   var table = layui.table;
 
-  if ($.cookie('username') === 'admin'){
-       upload_layui_admin('container-kubernetes')
-    }else {
-        upload_layui_develop('container-kubernetes')
-    }
+  get_user_auth_list('container-kubernetes')
 
   //第一个实例
   table.render({

@@ -1,11 +1,7 @@
 layui.use('table', function(){
   var table = layui.table;
 
-  if ($.cookie('username') === 'admin'){
-     upload_layui_admin('authority')
-  }else {
-      upload_layui_develop('authority')
-  }
+  get_user_auth_list('authority')
 
   //第一个实例
   table.render({
