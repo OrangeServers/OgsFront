@@ -175,7 +175,9 @@
         $(".layui-header").html(head_html)
         $(".layui-side").html(side_html)
         // 重新渲染整个页面
-        layui.element.init()
+        // layui.element.init()
+        layui.element.render('nav')
+        layui.element.render('breadcrumb')
         }
 
         // 非管理员权限的页面渲染
@@ -307,7 +309,9 @@
         $(".layui-header").html(head_html)
         $(".layui-side").html(side_html)
         // 重新渲染整个页面
-        layui.element.init()
+        // layui.element.init()
+        layui.element.render('nav')
+        layui.element.render('breadcrumb')
         }
 
 
