@@ -69,7 +69,7 @@ layui.use('table', function(){
         layer.msg(checkStatus.isAll ? '全选': '未全选');
       break;
       case 'createData':
-        window.location.href = './property-userlist/create.html'
+        window.location.href = '/property/property-userlist/create.html'
       break;
 
       //自定义头工具栏右侧图标 - 提示
@@ -91,7 +91,7 @@ layui.use('table', function(){
         layer.close(index);
       });
     } else if(obj.event === 'edit'){
-      window.location.href = "./property-userlist/update.html?id=" + data.id
+      window.location.href = "/property/property-userlist/update.html?id=" + data.id
       // $("input[name = 'alias']")
       // layer.alert(data.id, {skin: 'layui-layer-hui'})
     }

@@ -10,7 +10,7 @@ function add_sys_user() {
     dataType: "JSON",
     success: function (res) {
         if (res['sys_user_add_status'] === 'true') {
-            window.location.href = '../property-userlist.html'
+            window.location.href = '/property/property-userlist.html'
         } else if (res['sys_user_add_status'] === 'fail') {
           layer.close(logif)
           layer.alert('添加失败，密码或其他错误')

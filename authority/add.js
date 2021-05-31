@@ -95,7 +95,7 @@ function add_auth_list() {
     dataType: "JSON",
     success: function (res) {
         if (res['auth_host_add_status'] === 'true') {
-            window.location.href = './authority.html'
+            window.location.href = '/authority/authority.html'
         } else if (res['auth_host_add_status'] === 'fail') {
           layer.close(logif)
           layer.alert('创建失败，未知错误')

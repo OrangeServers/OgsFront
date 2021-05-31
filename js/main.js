@@ -407,9 +407,9 @@ function get_user_auth_list(page_html) {
         data: {'name': $.cookie('username')},
         success: function (res) {
             let user_auth = res['usrole']
-            if ($.cookie('username') === user_auth) {
+            if (user_auth === 'admin') {
                 upload_layui_admin(page_html)
-            } else {
+            } else if (user_auth === 'develop'){
                 upload_layui_develop(page_html)
             }
         }
@@ -438,5 +438,5 @@ function get_tree_list() {
 
 function delete_cookie() {
     $.removeCookie('username')
-    window.location.href = '../login.html'
+    window.location.href = '/login.html'
 }

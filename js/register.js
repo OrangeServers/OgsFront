@@ -86,7 +86,7 @@ function com_register() {
                 layer.msg('验证码已过期，请重新获取', {icon: 2})
             } else if (res['chk_user_status'] === 'true' && res['chk_mail_status'] === 'true' && res['verification'] === 'true') {
                 layer.msg('注册成功', {icon: 1})
-                window.location.href = "../login.html"
+                window.location.href = "/login.html"
             }
         }
     })

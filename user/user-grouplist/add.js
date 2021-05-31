@@ -10,7 +10,7 @@ function add_acc_group() {
     dataType: "JSON",
     success: function (res) {
         if (res['acc_group_add_status'] === 'true') {
-            window.location.href = '../../property/property-grouplist.html'
+            window.location.href = '/user/user-grouplist.html'
         } else if (res['acc_group_add_status'] === 'fail') {
           layer.close(logif)
           layer.alert('添加失败，密码或其他错误')

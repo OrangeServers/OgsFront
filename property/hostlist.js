@@ -60,7 +60,7 @@ layui.use(['dropdown', 'table'], function(){
         layer.msg(checkStatus.isAll ? '全选': '未全选');
       break;
       case 'createData':
-        window.location.href = 'property-hostlist/create.html'
+        window.location.href = '/property/property-hostlist/create.html'
       break;
 
       //自定义头工具栏右侧图标 - 提示
@@ -162,7 +162,7 @@ layui.use(['dropdown', 'table'], function(){
       //   });
       //   layer.close(index);
       // });
-      window.location.href = "../property/property-hostlist/update.html?id=" + data.id
+      window.location.href = "/property/property-hostlist/update.html?id=" + data.id
       // $("input[name = 'alias']")
       // layer.alert(data.id, {skin: 'layui-layer-hui'})
     }

@@ -10,7 +10,7 @@ function add_acc_user() {
     dataType: "JSON",
     success: function (res) {
         if (res['acc_user_add_status'] === 'true') {
-            window.location.href = '../user-userlist.html'
+            window.location.href = '/user/user-userlist.html'
         } else if (res['acc_user_add_status'] === 'fail') {
           layer.close(logif)
           layer.alert('添加失败，密码或其他错误')

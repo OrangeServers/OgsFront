@@ -71,10 +71,10 @@ layui.use(['tree', 'util'], function() {
         $("#shuru_tex").val("")
       }
     ,createHost: function (){
-        window.location.href = '../../property/property-hostlist/create.html'
+        window.location.href = '/property/property-hostlist/create.html'
       }
     ,createGroup: function (){
-        window.location.href = '../../property/property-group/create.html'
+        window.location.href = '/property/property-group/create.html'
       }
     ,reload: function(){
       //重载实例

@@ -83,7 +83,7 @@ function user_login() {
         dataType: "JSON",
         success: function (res) {
             if (res['chk_status'] === 'true') {
-                window.location.href = '../index.html'
+                window.location.href = '/index.html'
                 let date = new Date();
                 date.setTime(date.getTime() + 4 * 60 * 60 * 1000);//只能这么写，10表示10秒钟
                 $.cookie('username', $("#orange-username").val(), {expires: date});

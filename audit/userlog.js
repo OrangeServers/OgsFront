@@ -55,16 +55,6 @@ layui.use('table', function () {
                 var data = checkStatus.data;
                 layer.alert(JSON.stringify(data));
                 break;
-            case 'getCheckLength':
-                var data = checkStatus.data;
-                layer.msg('选中了：' + data.length + ' 个');
-                break;
-            case 'isAll':
-                layer.msg(checkStatus.isAll ? '全选' : '未全选');
-                break;
-            case 'createData':
-                window.location.href = '../property/property-group/create.html'
-                break;
 
             //自定义头工具栏右侧图标 - 提示
             case 'LAYTABLE_TIPS':

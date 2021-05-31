@@ -10,7 +10,7 @@ function host_add() {
     dataType: "JSON",
     success: function (res) {
         if (res['server_add_status'] === 'true') {
-            window.location.href = '../property-hostlist.html'
+            window.location.href = '/property/property-hostlist.html'
         } else if (res['server_add_status'] === 'fail') {
           layer.close(logif)
           layer.alert('添加失败，密码或其他错误')

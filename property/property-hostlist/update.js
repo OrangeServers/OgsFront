@@ -35,7 +35,7 @@ function host_update() {
           layer.close(logif)
           layer.alert('更新失败，密码或其他错误，主机无法连接', {skin: 'layui-layer-hui'})
         } else if (res['server_into_update']) {
-          window.location.href = '../property-hostlist.html'
+          window.location.href = '/property/property-hostlist.html'
         } else if (res['server_into_update'] === 'fail') {
           layer.close(logif)
           layer.alert('更新失败，未知错误#db error', {skin: 'layui-layer-hui'})
