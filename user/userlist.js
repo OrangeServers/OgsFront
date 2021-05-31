@@ -10,7 +10,7 @@ layui.use('table', function(){
     id: 'test'
     ,elem: '#test'
     ,height: 580
-    ,url: 'http://10.0.1.198:18000/server/acc/user/list_all'
+    ,url: 'http://10.0.1.198:18000/account/user/list_all'
     ,method: 'POST'
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
@@ -72,7 +72,7 @@ layui.use('table', function(){
     var data = obj.data;
     //console.log(obj)
     if(obj.event === 'del'){
-      layer.confirm('确定删除该资产?', function(index){
+      layer.confirm('确定删除该用户?', function(index){
         // obj.del();
         var host_id = obj.data['id']
         console.log(host_id);
@@ -88,7 +88,7 @@ layui.use('table', function(){
     function host_del(obj) {
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/server/acc/user/del",
+          url: "http://10.0.1.198:18000/account/user/del",
           data: {
           'id': obj
           },

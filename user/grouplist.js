@@ -82,7 +82,7 @@ layui.use('table', function(){
     var data = obj.data;
     //console.log(obj)
     if(obj.event === 'del'){
-      layer.confirm('确定删除该资产?', function(index){
+      layer.confirm('确定删除该用户组?', function(index){
         obj.del();
         var host_id = obj.data['id']
         host_del(host_id)

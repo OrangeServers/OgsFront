@@ -2,7 +2,7 @@ function get_acc_user() {
     let acc_user_id = getParam("id");
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/acc/user/list",
+    url: "http://10.0.1.198:18000/account/user/list",
     data: {'id': acc_user_id},
     dataType: "JSON",
     success: function (res) {
@@ -26,7 +26,7 @@ function acc_user_update() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/acc/user/update",
+    url: "http://10.0.1.198:18000/account/user/update",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {

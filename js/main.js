@@ -401,7 +401,7 @@ function get_group_name_list() {
 function get_user_auth_list(page_html) {
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/server/acc/user/auth_list",
+        url: "http://10.0.1.198:18000/account/user/auth_list",
         dataType: "JSON",
         // async: false,
         data: {'name': $.cookie('username')},

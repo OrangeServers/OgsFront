@@ -5,7 +5,7 @@ function add_acc_user() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/acc/user/add",
+    url: "http://10.0.1.198:18000/account/user/add",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {

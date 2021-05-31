@@ -113,7 +113,7 @@ layui.use('table', function () {
 function host_del(obj) {
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/server/acc/group/del",
+        url: "http://10.0.1.198:18000/account/group/del",
         data: {
             'id': obj
         },
