@@ -69,7 +69,12 @@ function send_mail(thisBtn) {
 }
 
 function com_register() {
-    $.ajax({
+    let val = $('#password1').val()
+    let val_qr = $('#password').val()
+    if (val_qr !== val) {
+        layer.msg('两次输入的密码不一致', {icon: 2})
+    } else if (val_qr === val) {
+           $.ajax({
         type: "POST",
         url: "http://10.0.1.198:18000/account/com_register",
         data: $(".layui-form").serialize(),
@@ -90,6 +95,7 @@ function com_register() {
             }
         }
     })
+    }
 }
 
 var foo = function (element) {
@@ -127,3 +133,25 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         com_register()
     });
 });
+
+// 监听输入事件
+function test_on_input() {
+    let val = $('#password1').val()
+    let val_qr = $('#password').val()
+    if (val_qr !== val) {
+        // layer.msg('????', {icon: 5, time: 2000})
+        $(".orange-psw-qr").html('<i class="layui-icon layui-icon-close-fill" style="font-size: 30px; color: #FF5722;"></i>')
+    } else if (val_qr === val) {
+        $(".orange-psw-qr").html('<i class="layui-icon layui-icon-ok-circle" style="font-size: 30px; color: #5FB878;"></i>')
+    }
+}
+
+function test_fzd_input() {
+    var pwdRegex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z]).{8,30}');
+    let val = $('#password1').val()
+    if (!pwdRegex.test(val)){
+        $('#password1').css('color', '#FF5722')
+    } else if (pwdRegex.test(val)) {
+        $('#password1').css('color', '#5FB878')
+    }
+}
