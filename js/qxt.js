@@ -38,9 +38,21 @@ function get_count_list() {
 am4core.ready(function () {
 
 // Themes begin
+
+
+
     get_user_auth_list('index')
 // Themes end
-
+    // 更新当天数据
+    $.ajax({
+        type: "POST",
+        url: "http://10.0.1.198:18000/local/chart/update",
+        dataType: "JSON",
+        async: false,
+        success: function (res) {
+            console.log(res)
+        }
+    })
 // Create chart instance
     var chart = am4core.create("zhexiandiv", am4charts.XYChart);
 
@@ -53,77 +65,24 @@ am4core.ready(function () {
     chart.scrollbarX = new am4core.Scrollbar();
 
 // Add data
-    chart.data = [{
-        "date": "2012-01-01",
-        "value": 8
-    }, {
-        "date": "2012-01-02",
-        "value": 10
-    }, {
-        "date": "2012-01-03",
-        "value": 12
-    }, {
-        "date": "2012-01-04",
-        "value": 14
-    }, {
-        "date": "2012-01-05",
-        "value": 11
-    }, {
-        "date": "2012-01-06",
-        "value": 6
-    }, {
-        "date": "2012-01-07",
-        "value": 7
-    }, {
-        "date": "2012-01-08",
-        "value": 9
-    }, {
-        "date": "2012-01-09",
-        "value": 13
-    }, {
-        "date": "2012-01-10",
-        "value": 15
-    }, {
-        "date": "2012-01-11",
-        "value": 19
-    }, {
-        "date": "2012-01-12",
-        "value": 21
-    }, {
-        "date": "2012-01-13",
-        "value": 22
-    }, {
-        "date": "2012-01-14",
-        "value": 20
-    }, {
-        "date": "2012-01-15",
-        "value": 18
-    }, {
-        "date": "2012-01-16",
-        "value": 14
-    }, {
-        "date": "2012-01-17",
-        "value": 16,
-        "opacity": 0
-    }, {
-        "date": "2012-01-18",
-        "value": 18
-    }, {
-        "date": "2012-01-19",
-        "value": 17
-    }, {
-        "date": "2012-01-20",
-        "value": 15
-    }, {
-        "date": "2012-01-21",
-        "value": 12
-    }, {
-        "date": "2012-01-22",
-        "value": 10
-    }, {
-        "date": "2012-01-23",
-        "value": 8
-    }];
+
+    $.ajax({
+        type: "POST",
+        url: "http://10.0.1.198:18000/local/chart/count",
+        dataType: "JSON",
+        async: false,
+        success: function (res) {
+            chart.data = res['login_msg']
+        }
+    })
+
+    // chart.data = [{
+    //     "date": "2012-01-01",
+    //     "value": 8
+    // }, {
+    //     "date": "2012-01-02",
+    //     "value": 10
+    // }];
 
 // Create axes
     var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -175,23 +134,39 @@ am4core.ready(function () {
         return trend;
     };
 
-    createTrendLine([
-        {"date": "2012-01-02", "value": 1},
-        {"date": "2012-01-03", "value": 2},
-        {"date": "2012-01-04", "value": 3},
-        {"date": "2012-01-05", "value": 4},
-        {"date": "2012-01-06", "value": 3},
-        {"date": "2012-01-11", "value": 6}
-    ]);
+    $.ajax({
+        type: "POST",
+        url: "http://10.0.1.198:18000/local/chart/count",
+        dataType: "JSON",
+        async: false,
+        success: function (res) {
+            createTrendLine(res['user_msg'])
+            window.lastTrend = createTrendLine
+        }
+    })
 
-    var lastTrend = createTrendLine([
-        {"date": "2012-01-17", "value": 16},
-        {"date": "2012-01-22", "value": 10}
-    ]);
+    // createTrendLine([
+    //     {"date": "2012-01-02", "value": 1},
+    //     {"date": "2012-01-03", "value": 2},
+    //     {"date": "2012-01-04", "value": 3},
+    //     {"date": "2012-01-05", "value": 4},
+    //     {"date": "2012-01-06", "value": 3},
+    //     {"date": "2012-01-11", "value": 6}
+    // ]);
+    //
+    // var lastTrend = createTrendLine([
+    //     {"date": "2012-01-17", "value": 16},
+    //     {"date": "2012-01-22", "value": 10}
+    // ]);
+
+    let mydata = new Date()
+    let day = mydata.getDate();
+    let month = mydata.getMonth() + 1
+    let year = mydata.getFullYear()
 
 // Initial zoom once chart is ready
     lastTrend.events.once("datavalidated", function () {
-        series.xAxis.zoomToDates(new Date(2012, 0, 2), new Date(2012, 0, 13));
+        series.xAxis.zoomToDates(new Date(year, month, day), new Date(year, month, day));
     });
 
 }); // end am4core.ready()
