@@ -116,11 +116,11 @@ function upload_layui_admin(cas_this) {
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
-        '          <dd><a href="">set 1</a></dd>\n' +
-        '          <dd><a href="">set 2</a></dd>\n' +
+        '          <dd><a href="">用户资料</a></dd>\n' +
+        '          <dd><a href="">修改信息</a></dd>\n' +
         '        </dl>\n' +
         '      </li>\n' +
-        '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">Sign out</a></li>\n' +
+        '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
         '    </ul>'
 
     let side_html = '    <div class="layui-side-scroll">\n' +
@@ -262,11 +262,11 @@ function upload_layui_develop(cas_this) {
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
-        '          <dd><a href="">set 1</a></dd>\n' +
-        '          <dd><a href="">set 2</a></dd>\n' +
+        '          <dd><a href="">用户资料</a></dd>\n' +
+        '          <dd><a href="">修改信息</a></dd>\n' +
         '        </dl>\n' +
         '      </li>\n' +
-        '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">Sign out</a></li>\n' +
+        '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
         '    </ul>'
 
     let side_html = '    <div class="layui-side-scroll">\n' +
