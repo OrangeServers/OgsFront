@@ -117,7 +117,7 @@ function upload_layui_admin(cas_this) {
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
         '          <dd><a href="">用户资料</a></dd>\n' +
-        '          <dd><a href="">修改信息</a></dd>\n' +
+        '          <dd><a href="/user/user-information/update.html">修改信息</a></dd>\n' +
         '        </dl>\n' +
         '      </li>\n' +
         '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
@@ -263,7 +263,7 @@ function upload_layui_develop(cas_this) {
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
         '          <dd><a href="">用户资料</a></dd>\n' +
-        '          <dd><a href="">修改信息</a></dd>\n' +
+        '          <dd><a href="/user/user-information/update.html">修改信息</a></dd>\n' +
         '        </dl>\n' +
         '      </li>\n' +
         '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +

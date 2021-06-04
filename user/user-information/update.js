@@ -1,9 +1,9 @@
 function get_acc_user() {
-    let acc_user_id = getParam("id");
+    let user_name = $.cookie('username')
     $.ajax({
     type: "POST",
     url: "http://10.0.1.198:18000/account/user/list",
-    data: {'user_type': 'user_list', 'id': acc_user_id},
+    data: {'user_type': 'user_info', 'name': user_name},
     dataType: "JSON",
     success: function (res) {
         if (res['acc_user_list_msg'] !== 'select list msg error') {
@@ -51,7 +51,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
   ,layedit = layui.layedit
   ,laydate = layui.laydate;
 
-  get_user_auth_list('user-userlist')
+  get_user_auth_list('')
 
   //日期
     laydate.render({
