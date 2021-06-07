@@ -4,6 +4,7 @@
 // 页面布局渲染
 function upload_layui_admin(cas_this) {
     let user_name = $.cookie('username')
+    let path = 'http://10.0.1.198:18000/local/image/test_get/'
 
     let cas_this1 = '',
         cas_this2 = '',
@@ -112,7 +113,7 @@ function upload_layui_admin(cas_this) {
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
-        '          <img src="/image/juzi11.png" class="layui-nav-img">\n' +
+        '          <img src="'+ path + user_name +'" class="layui-nav-img">\n' +
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
@@ -183,6 +184,7 @@ function upload_layui_admin(cas_this) {
 // 非管理员权限的页面渲染
 function upload_layui_develop(cas_this) {
     let user_name = $.cookie('username')
+    let path = 'http://10.0.1.198:18000/local/image/test_get/'
 
     let cas_this1 = '',
         cas_this3 = '',
@@ -258,7 +260,7 @@ function upload_layui_develop(cas_this) {
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
-        '          <img src="/image/juzi11.png" class="layui-nav-img">\n' +
+        '          <img src="'+ path + user_name +'" class="layui-nav-img">\n' +
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +

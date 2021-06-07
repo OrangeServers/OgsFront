@@ -10,6 +10,19 @@
   <link rel="stylesheet" href="/css/orange.css">
   <link rel="stylesheet" href="/css/bq.css">
   <link rel="stylesheet" href="/css/ybp.css">
+<style>
+  .round_icon {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+</style>
 
   <script src="/js/jquery-3.3.1.js"></script>
 
@@ -33,9 +46,10 @@
 
       上传图片
       <input type="file" accept="image/jpeg,image/jp2,image/png">
-      
-      <img src="http://10.0.1.198:18000/local/image/test_get/QQ%E6%88%AA%E5%9B%BE20210426180236.png">
 
+      <label>更换头像</label>
+      <img src="http://10.0.1.198:18000/local/image/test_get/admin" class="round_icon">
+      <input type="file" class="orange-ups-tx" accept="image/jpeg,image/png,image/gif">
     </div>
   </div>
 
@@ -68,6 +82,29 @@
     layui.use(['jquery', 'xmSelect'], function (){
 
 
+
+      $.ajax({
+          type: "POST",
+          url: "http://10.0.1.198:18000/auth/host/uplist",
+          data: {
+            'name': '所有权限',
+            'req_type': 'user'
+          },
+          dataType: "JSON",
+          success: function (res) {
+              let auth_data = res['msg']
+              for (let i=0;i<auth_data.length;i++){
+                  if (auth_data[i]['selected'] === 'selected'){
+                      auth_data[i]['selected'] = true
+                  }
+              }
+            window.demo1 = xmSelect.render({
+                el: '#demo1',
+                language: 'zn',
+                data: auth_data
+            })
+          }
+      })
 
       $.ajax({
           type: "POST",

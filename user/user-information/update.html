@@ -9,6 +9,20 @@
   <link rel="stylesheet" href="/css/orange.css">
   <link rel="stylesheet" href="/css/pagefrom.css">
 
+  <style>
+  .round_icon {
+    margin-left: 100px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    float: left;
+  }
+  </style>
+
 
 </head>
 <body>
@@ -23,7 +37,7 @@
 
   <div class="layui-body">
 
-    <div class="orange-body" style="padding: 15px;">
+    <div class="orange-body" style="padding: 15px; height: 750px!important;">
       <div class="orange-zsbq">
         <a href="/index.html">/ 仪表盘</a>
         <a href="/property/property-hostlist.html">/ 资产列表</a>
@@ -34,10 +48,14 @@
       <h2>编辑个人资料</h2>
       </div>
 
-      <div class="orange-host-from" style="height: 580px">
+      <div class="orange-host-from" style="height: 730px">
         <h3>必填信息</h3>
 <!--      <form id="adhsform" onsubmit="return false">-->
-        <form class="layui-form" onsubmit="return false">
+
+        <div id="orange-user-img-update" style="margin-top: 20px">
+
+        </div>
+        <form class="layui-form" onsubmit="return false" style="margin-top: 100px">
 
               <div class="layui-form-item">
         <label class="layui-form-label">id</label>
