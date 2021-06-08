@@ -2,7 +2,7 @@ function get_server_group() {
     let acc_group_id = getParam("id");
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/host/group/list",
+    url: ogs_backend_url + "/server/host/group/list",
     data: {'id': acc_group_id},
     dataType: "JSON",
     success: function (res) {
@@ -25,7 +25,7 @@ function acc_server_update() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/host/group/update",
+    url: ogs_backend_url + "/server/host/group/update",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {

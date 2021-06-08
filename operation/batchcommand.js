@@ -16,7 +16,7 @@ layui.use(['tree', 'util'], function() {
         });
         $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/server/host_list_cmd",
+          url: ogs_backend_url + "/server/host_list_cmd",
           // useCORS: true,
           data: {
             'host_id': list_id,

@@ -8,7 +8,7 @@ layui.use('table', function(){
     // 加载组关联资产信息
     $.ajax({
       type: "POST",
-      url: "http://10.0.1.198:18000/local/sum",
+      url: ogs_backend_url + "/local/sum",
       data: {
       'sum_name': 'group'
       },
@@ -22,7 +22,7 @@ layui.use('table', function(){
     id: 'test'
     ,elem: '#test'
     ,height: 580
-    ,url: 'http://10.0.1.198:18000/account/group/list_all'
+    ,url: ogs_backend_url + '/account/group/list_all'
     ,method: 'POST'
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
@@ -97,7 +97,7 @@ layui.use('table', function(){
     function host_del(obj) {
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/account/group/del",
+          url: ogs_backend_url + "/account/group/del",
           data: {
           'id': obj
           },

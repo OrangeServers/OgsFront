@@ -5,7 +5,7 @@ function add_server_group() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/host/group/add",
+    url: ogs_backend_url + "/server/host/group/add",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {

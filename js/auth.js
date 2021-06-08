@@ -8,7 +8,7 @@ layui.use('table', function(){
     id: 'test'
     ,elem: '#test'
     ,height: 540
-    ,url: 'http://10.0.1.198:18000/auth/host/list_all'
+    ,url: ogs_backend_url + '/auth/host/list_all'
     ,method: 'POST'
     ,parseData: function(res){ //res 即为原始返回的数据
     return {
@@ -85,7 +85,7 @@ layui.use('table', function(){
     function auth_del(obj) {
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/del",
+          url: ogs_backend_url + "/auth/host/del",
           data: {
           'name': obj
           },

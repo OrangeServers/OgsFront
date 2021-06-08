@@ -10,7 +10,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
 
           $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/uplist",
+          url: ogs_backend_url + "/auth/host/uplist",
           data: {
             'name': host_name,
             'req_type': 'all'
@@ -24,7 +24,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
 
         $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/uplist",
+          url: ogs_backend_url + "/auth/host/uplist",
           data: {
             'name': host_name,
             'req_type': 'user'
@@ -52,7 +52,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
 
           $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/uplist",
+          url: ogs_backend_url + "/auth/host/uplist",
           data: {
               'name': host_name,
               'req_type': 'user_group'
@@ -80,7 +80,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
 
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/uplist",
+          url: ogs_backend_url + "/auth/host/uplist",
           data: {
               'name': host_name,
               'req_type': 'host_group'
@@ -115,7 +115,7 @@ function auth_host_update() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/auth/host/update",
+    url: ogs_backend_url + "/auth/host/update",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {

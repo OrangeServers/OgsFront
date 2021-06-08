@@ -4,7 +4,7 @@
 // 页面布局渲染
 function upload_layui_admin(cas_this) {
     let user_name = $.cookie('username')
-    let path = 'http://10.0.1.198:18000/local/image/test_get/'
+    let path = ogs_backend_url + '/local/image/test_get/'
 
     let cas_this1 = '',
         cas_this2 = '',
@@ -184,7 +184,7 @@ function upload_layui_admin(cas_this) {
 // 非管理员权限的页面渲染
 function upload_layui_develop(cas_this) {
     let user_name = $.cookie('username')
-    let path = 'http://10.0.1.198:18000/local/image/test_get/'
+    let path = ogs_backend_url + '/local/image/test_get/'
 
     let cas_this1 = '',
         cas_this3 = '',
@@ -312,6 +312,8 @@ function upload_layui_develop(cas_this) {
 }
 
 
+const ogs_backend_url = 'http://10.0.1.198:18000/'
+
 $(function () {
     let url_local = window.location.protocol + window.location.host + '/login.html'
     // document.write(returnCitySN["cip"]+','+returnCitySN["cname"])
@@ -385,7 +387,7 @@ function undata(obj) {
 function get_group_name_list() {
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/server/host/group/name_list",
+        url: ogs_backend_url + "/server/host/group/name_list",
         dataType: "JSON",
         data: {'name': $.cookie('username')},
         success: function (res) {
@@ -403,7 +405,7 @@ function get_group_name_list() {
 function get_user_auth_list(page_html) {
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/account/user/auth_list",
+        url: ogs_backend_url + "/account/user/auth_list",
         dataType: "JSON",
         // async: false,
         data: {'name': $.cookie('username')},
@@ -421,7 +423,7 @@ function get_user_auth_list(page_html) {
 function get_tree_list() {
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/local/data",
+        url: ogs_backend_url + "/local/data",
         dataType: "JSON",
         data: {'name': $.cookie('username')},
         showLine: true,

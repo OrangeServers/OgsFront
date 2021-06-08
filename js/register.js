@@ -1,3 +1,6 @@
+
+const ogs_backend_url = 'http://10.0.1.198:18000/'
+
 function chk_username() {
     let user_val = $("#orange-username").val()
     if (user_val === '') {
@@ -5,7 +8,7 @@ function chk_username() {
     } else {
         $.ajax({
             type: "POST",
-            url: "http://10.0.1.198:18000/account/chk_username",
+            url: ogs_backend_url + "/account/chk_username",
             data: {
                 'username': user_val,
             },
@@ -50,7 +53,7 @@ function send_mail(thisBtn) {
 
         $.ajax({
             type: "POST",
-            url: "http://10.0.1.198:18000/mail/send_user_mail",
+            url: ogs_backend_url + "/mail/send_user_mail",
             data: {
                 'email': user_val,
             },
@@ -76,7 +79,7 @@ function com_register() {
     } else if (val_qr === val) {
            $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/account/com_register",
+        url: ogs_backend_url + "/account/com_register",
         data: $(".layui-form").serialize(),
         dataType: "JSON",
         success: function (res) {

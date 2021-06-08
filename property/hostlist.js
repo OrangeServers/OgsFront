@@ -12,7 +12,7 @@ layui.use(['dropdown', 'table'], function(){
     id: 'test'
     ,elem: '#test'
     ,height: 580
-    ,url: 'http://10.0.1.198:18000/server/host/list_all'
+    ,url: ogs_backend_url + '/server/host/list_all'
     ,method: 'POST'
     ,where: {'name': $.cookie('username')}
     ,parseData: function(res){ //res 即为原始返回的数据
@@ -75,7 +75,7 @@ layui.use(['dropdown', 'table'], function(){
     id: 'test'
     ,elem: '#test'
     ,height: 580
-    ,url: 'http://10.0.1.198:18000/server/host/list_page'
+    ,url: ogs_backend_url + '/server/host/list_page'
     ,method: 'POST'
     ,where: {'group_name': obj, 'name': $.cookie('username')}
     ,parseData: function(res){ //res 即为原始返回的数据
@@ -110,7 +110,7 @@ layui.use(['dropdown', 'table'], function(){
   function get_group_list_name(){
   $.ajax({
   type: "POST",
-  url: "http://10.0.1.198:18000/server/host/group/name_list",
+  url: ogs_backend_url + "/server/host/group/name_list",
   dataType: "JSON",
   data: {'name': $.cookie('username')},
   success: function (res) {
@@ -172,7 +172,7 @@ layui.use(['dropdown', 'table'], function(){
     function host_del(obj) {
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/server/host/del",
+          url: ogs_backend_url + "/server/host/del",
           data: {
           'id': obj
           },

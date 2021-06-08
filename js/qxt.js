@@ -1,7 +1,7 @@
 function get_count_list() {
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/server/count_list_all",
+        url: ogs_backend_url + "/server/count_list_all",
         dataType: "JSON",
         async: false,
         success: function (res) {
@@ -39,14 +39,15 @@ am4core.ready(function () {
 
 // Themes begin
 
-
-
     get_user_auth_list('index')
+
+    $(".orange-sl3,.orange-sl4").attr('href','/index.html')
+
 // Themes end
     // 更新当天数据
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/local/chart/update",
+        url: ogs_backend_url + "/local/chart/update",
         dataType: "JSON",
         async: false,
         success: function (res) {
@@ -68,7 +69,7 @@ am4core.ready(function () {
 
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/local/chart/count",
+        url: ogs_backend_url + "/local/chart/count",
         dataType: "JSON",
         async: false,
         success: function (res) {
@@ -136,7 +137,7 @@ am4core.ready(function () {
 
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/local/chart/count",
+        url: ogs_backend_url + "/local/chart/count",
         dataType: "JSON",
         async: false,
         success: function (res) {

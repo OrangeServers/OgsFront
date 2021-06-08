@@ -9,7 +9,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   //常规使用 - 普通图片上传
   var uploadInst = upload.render({
     elem: '#test1'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,before: function(obj){
       //预读本地文件示例，不支持ie8
       obj.preview(function(index, file, result){
@@ -48,7 +48,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   //多图片上传
   upload.render({
     elem: '#test2'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,multiple: true
     ,before: function(obj){
       //预读本地文件示例，不支持ie8
@@ -64,7 +64,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   //指定允许上传的文件类型
   upload.render({
     elem: '#test3'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,accept: 'file' //普通文件
     ,before: function(obj){
       //预读本地文件示例，不支持ie8
@@ -88,7 +88,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   });
   upload.render({ //允许上传的文件后缀
     elem: '#test4'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,accept: 'file' //普通文件
     ,exts: 'zip|rar|7z' //只允许上传压缩文件
     ,done: function(res){
@@ -98,7 +98,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   });
   upload.render({
     elem: '#test5'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,accept: 'video' //视频
     ,done: function(res){
       layer.msg('上传成功');
@@ -107,7 +107,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   });
   upload.render({
     elem: '#test6'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,accept: 'audio' //音频
     ,done: function(res){
       layer.msg('上传成功');
@@ -118,7 +118,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   //设定文件大小限制
   upload.render({
     elem: '#test7'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,size: 60 //限制文件大小，单位 KB
     ,done: function(res){
       layer.msg('上传成功');
@@ -141,7 +141,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   //选完文件后不自动上传
   upload.render({
     elem: '#test8'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,auto: false
     //,multiple: true
     ,bindAction: '#test9'
@@ -154,7 +154,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   //拖拽上传
   upload.render({
     elem: '#test10'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,accept: 'file'
     ,done: function(res){
       layer.msg('上传成功');
@@ -167,7 +167,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   var demoListView = $('#demoList')
   ,uploadListIns = upload.render({
     elem: '#testList'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,accept: 'file'
     ,multiple: true
     ,auto: false
@@ -222,7 +222,7 @@ layui.use(['upload', 'element', 'layer'], function(){
   //绑定原始文件域
   upload.render({
     elem: '#test20'
-    ,url: 'http://10.0.1.198:18000/local/file' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/file' //改成您自己的上传接口
     ,done: function(res){
       layer.msg('上传成功');
       console.log(res)

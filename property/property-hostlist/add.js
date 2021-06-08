@@ -5,7 +5,7 @@ function host_add() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/host/add",
+    url: ogs_backend_url + "/server/host/add",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {

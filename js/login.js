@@ -1,5 +1,7 @@
 document.write("<script src=\"http://pv.sohu.com/cityjson?ie=utf-8\"></script>")
 
+const ogs_backend_url = 'http://10.0.1.198:18000/'
+
 function draw(show_num) {
     var canvas_width = $('#canvas').width();
     var canvas_height = $('#canvas').height();
@@ -78,7 +80,7 @@ function user_login() {
     console.log(login_form)
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/account/login_dl",
+        url: ogs_backend_url + "/account/login_dl",
         data: login_form,
         dataType: "JSON",
         success: function (res) {

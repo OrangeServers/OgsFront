@@ -2,7 +2,7 @@ function get_sys_user() {
     let sys_user_id = getParam("id");
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/sys/user/list",
+    url: ogs_backend_url + "/server/sys/user/list",
     data: {'id': sys_user_id},
     dataType: "JSON",
     success: function (res) {
@@ -26,7 +26,7 @@ function sys_user_update() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/sys/user/update",
+    url: ogs_backend_url + "/server/sys/user/update",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {

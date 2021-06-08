@@ -2,7 +2,7 @@ function get_host_list() {
     var host_id = getParam("id");
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/host/list",
+    url: ogs_backend_url + "/server/host/list",
     data: {'id': host_id},
     dataType: "JSON",
     success: function (res) {
@@ -27,7 +27,7 @@ function host_update() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/server/host/update",
+    url: ogs_backend_url + "/server/host/update",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {

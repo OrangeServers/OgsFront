@@ -64,7 +64,7 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
             }
             obj.append('com_name', $.cookie('username'))
             $.ajax({
-                url: 'http://10.0.1.198:18000/server/file/put',
+                url: ogs_backend_url + '/server/file/put',
                 type: 'POST',
                 dataType: "JSON",
                 // async: false,

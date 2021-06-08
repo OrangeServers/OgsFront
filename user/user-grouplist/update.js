@@ -2,7 +2,7 @@ function get_acc_group() {
     let acc_group_id = getParam("id");
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/account/group/list",
+    url: ogs_backend_url + "/account/group/list",
     data: {'id': acc_group_id},
     dataType: "JSON",
     success: function (res) {
@@ -25,7 +25,7 @@ function acc_group_update() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/account/group/update",
+    url: ogs_backend_url + "/account/group/update",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {

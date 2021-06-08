@@ -1,7 +1,7 @@
     function get_group_dir() {
         $.ajax({
             type: "POST",
-            url: "http://10.0.1.198:18000/local/dir/group",
+            url: ogs_backend_url + "/local/dir/group",
             dataType: "JSON",
             success: function (data) {
                 new Vue({
@@ -23,7 +23,7 @@
     function get_project_dir() {
         $.ajax({
             type: "POST",
-            url: "http://10.0.1.198:18000/local/dir/project",
+            url: ogs_backend_url + "/local/dir/project",
             data: {
                 'group_dir': $("#sel1").val(),
             },
@@ -43,7 +43,7 @@
         let logi = layer.msg('正在同步中')
         $.ajax({
             type: "POST",
-            url: "http://10.0.1.198:18000/local/rsync",
+            url: ogs_backend_url + "/local/rsync",
             data: {
             'group_dir': $("#sel1").val(),
             'project_dir': $("#sel2").val()

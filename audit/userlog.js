@@ -45,7 +45,7 @@ layui.use('table', function () {
         });
     }
 
-    get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
+    get_login_logs(ogs_backend_url + '/account/login/logs', null)
 
     //头工具栏事件
     table.on('toolbar(test)', function (obj) {
@@ -75,9 +75,9 @@ layui.use('table', function () {
                 console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
                 console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
                 if (value === '') {
-                    get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
+                    get_login_logs(ogs_backend_url + '/account/login/logs', null)
                 } else {
-                    get_login_logs('http://10.0.1.198:18000/account/login/date', value)
+                    get_login_logs(ogs_backend_url + '/account/login/date', value)
                 }
             }
         });
@@ -91,9 +91,9 @@ layui.use('table', function () {
         if (event.keyCode === 13) {
             let select_val = $('#demoReload').val()
             if (select_val === '') {
-                get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
+                get_login_logs(ogs_backend_url + '/account/login/logs', null)
             } else {
-                get_login_logs('http://10.0.1.198:18000/account/login/select', select_val)
+                get_login_logs(ogs_backend_url + '/account/login/select', select_val)
             }
         }
     })
@@ -102,9 +102,9 @@ layui.use('table', function () {
     $('.demoTable .layui-btn').on('click', function () {
         let select_val = $('#demoReload').val()
         if (select_val === '') {
-            get_login_logs('http://10.0.1.198:18000/account/login/logs', null)
+            get_login_logs(ogs_backend_url + '/account/login/logs', null)
         } else {
-            get_login_logs('http://10.0.1.198:18000/account/login/select', select_val)
+            get_login_logs(ogs_backend_url + '/account/login/select', select_val)
         }
     })
 
@@ -113,7 +113,7 @@ layui.use('table', function () {
 function host_del(obj) {
     $.ajax({
         type: "POST",
-        url: "http://10.0.1.198:18000/account/group/del",
+        url: ogs_backend_url + "/account/group/del",
         data: {
             'id': obj
         },

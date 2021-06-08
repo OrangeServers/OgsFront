@@ -9,7 +9,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
 
         $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/list",
+          url: ogs_backend_url + "/auth/host/list",
           data: {
           'req_type': 'user'
           },
@@ -31,7 +31,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
 
           $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/list",
+          url: ogs_backend_url + "/auth/host/list",
           data: {
           'req_type': 'user_group'
           },
@@ -53,7 +53,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function (){
 
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/list",
+          url: ogs_backend_url + "/auth/host/list",
           data: {
           'req_type': 'host_group'
           },
@@ -82,7 +82,7 @@ function add_auth_list() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/auth/host/add",
+    url: ogs_backend_url + "/auth/host/add",
     // data: {
     //     'name': $("input[name = 'name").val(),
     //     'user': window.demo1.getValue('value'),

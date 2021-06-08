@@ -2,7 +2,7 @@ function get_acc_user() {
     let user_name = $.cookie('username')
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/account/user/list",
+    url: ogs_backend_url + "/account/user/list",
     data: {'user_type': 'user_info', 'name': user_name},
     dataType: "JSON",
     success: function (res) {
@@ -26,7 +26,7 @@ function acc_user_update() {
           });
     $.ajax({
     type: "POST",
-    url: "http://10.0.1.198:18000/account/user/update",
+    url: ogs_backend_url + "/account/user/update",
     data: $('.layui-form').serialize(),
     dataType: "JSON",
     success: function (res) {
@@ -55,7 +55,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 
 
     let user = $.cookie('username')
-    let path = 'http://10.0.1.198:18000/local/image/test_get/'
+    let path = ogs_backend_url + '/local/image/test_get/'
     let img_url = path + user
     console.log(user)
     let html ='<label style="float: left; margin-left: 100px; font-size: 25px">更换头像</label>\n' +
@@ -80,7 +80,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 
   layui.upload.render({
     elem: '#test1'
-    ,url: 'http://10.0.1.198:18000/local/image/test_put' //改成您自己的上传接口
+    ,url: ogs_backend_url + '/local/image/test_put' //改成您自己的上传接口
     ,data: {
         'user': user
       }

@@ -48,7 +48,7 @@
       <input type="file" accept="image/jpeg,image/jp2,image/png">
 
       <label>更换头像</label>
-      <img src="http://10.0.1.198:18000/local/image/test_get/admin" class="round_icon">
+      <img src=ogs_backend_url + "/local/image/test_get/admin" class="round_icon">
       <input type="file" class="orange-ups-tx" accept="image/jpeg,image/png,image/gif">
     </div>
   </div>
@@ -85,7 +85,7 @@
 
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/uplist",
+          url: ogs_backend_url + "/auth/host/uplist",
           data: {
             'name': '所有权限',
             'req_type': 'user'
@@ -108,7 +108,7 @@
 
       $.ajax({
           type: "POST",
-          url: "http://10.0.1.198:18000/auth/host/uplist",
+          url: ogs_backend_url + "/auth/host/uplist",
           data: {
             'name': '所有权限',
             'req_type': 'user'
