@@ -312,7 +312,7 @@ function upload_layui_develop(cas_this) {
 }
 
 
-const ogs_backend_url = 'http://10.0.1.198:18000/'
+const ogs_backend_url = 'http://10.0.1.198:18000'
 
 $(function () {
     let url_local = window.location.protocol + window.location.host + '/login.html'

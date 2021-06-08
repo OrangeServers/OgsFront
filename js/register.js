@@ -1,5 +1,5 @@
 
-const ogs_backend_url = 'http://10.0.1.198:18000/'
+const ogs_backend_url = 'http://10.0.1.198:18000'
 
 function chk_username() {
     let user_val = $("#orange-username").val()
