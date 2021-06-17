@@ -16,6 +16,12 @@
     <div class="layui-col-xs3" style="background-color: #B5FFF8; height: 100%">
       <div class="grid-demo grid-demo-bg1">3/12</div>
 
+<div class="site-demo-button" style="margin-bottom: 0;">
+  <button class="layui-btn site-demo-active" data-type="tabAdd">新增Tab项</button>
+  <button class="layui-btn site-demo-active" data-type="tabDelete">删除：商品管理</button>
+  <button class="layui-btn site-demo-active" data-type="tabChange">切换到：用户管理</button>
+</div>
+
 <div id="orange-fx1" class="demo-tree"></div>
 
     </div>
@@ -42,11 +48,6 @@
     <div class="layui-tab-item">内容4</div>
     <div class="layui-tab-item">内容5</div>
   </div>
-</div>
-<div class="site-demo-button" style="margin-bottom: 0;">
-  <button class="layui-btn site-demo-active" data-type="tabAdd">新增Tab项</button>
-  <button class="layui-btn site-demo-active" data-type="tabDelete">删除：商品管理</button>
-  <button class="layui-btn site-demo-active" data-type="tabChange">切换到：用户管理</button>
 </div>
 
 <!-- 示例-970 -->
@@ -90,6 +91,14 @@
 <script>
 
 
+layui.use(['tree', 'util', 'upload', 'element', 'layer'], function(){
+    let tree = layui.tree
+        , $ = layui.jquery
+        , upload = layui.upload
+        , element = layui.element
+        , layer = layui.layer
+        , util = layui.util; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
     function get_tree_list() {
     $.ajax({
         type: "POST",
@@ -108,21 +117,17 @@
                 , click: function (obj){
                     if (obj.data['id'] < 1000){
                         console.log(obj.data['title']); //得到当前点击的节点数据
+                          element.tabAdd('demo', {
+                            title: obj.data['title'] //用于演示
+                            ,content: obj.data['id']
+                            ,id: obj.data['id'] //实际使用一般是规定好的id，这里以时间戳模拟下
+                          })
                     }
                 }
             });
         }
     })
 }
-
-
-layui.use(['tree', 'util', 'upload', 'element', 'layer'], function(){
-    let tree = layui.tree
-        , $ = layui.jquery
-        , upload = layui.upload
-        , element = layui.element
-        , layer = layui.layer
-        , util = layui.util; //Tab的切换功能，切换事件监听等，需要依赖element模块
 
     get_tree_list()
 
