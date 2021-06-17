@@ -1,6 +1,5 @@
 document.write("<script src=\"http://pv.sohu.com/cityjson?ie=utf-8\"></script>")
 
-const ogs_backend_url = 'http://10.0.1.198:18000'
 
 function draw(show_num) {
     var canvas_width = $('#canvas').width();
@@ -113,6 +112,8 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         , layer = layui.layer
         , layedit = layui.layedit
         , laydate = layui.laydate;
+
+
 
     //日期
     console.log($().cookie)
