@@ -115,8 +115,16 @@
          console.log(MessageEvent.data)
      };
 
+     let ssh_host_data = {
+       'host': '10.0.1.199',
+       'port': 22,
+       'user': 'root',
+       'psw': 'abcdefg'
+     }
+
      ws.onopen = function (){
        ws.send('ls\r')
+       //ws.send(JSON.stringify(ssh_host_data))
      }
 
      function send() {
