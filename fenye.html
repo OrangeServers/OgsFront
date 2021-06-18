@@ -8,6 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
   <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
+    <link rel="stylesheet" href="/xterm/css/xterm.css" />
+
+
 </head>
 <body>
 
@@ -16,22 +20,22 @@
     <div class="layui-col-xs3" style="background-color: #B5FFF8; height: 100%">
       <div class="grid-demo grid-demo-bg1">3/12</div>
 
-<div class="site-demo-button" style="margin-bottom: 0;">
-  <button class="layui-btn site-demo-active" data-type="tabAdd">新增Tab项</button>
-  <button class="layui-btn site-demo-active" data-type="tabDelete">删除：商品管理</button>
-  <button class="layui-btn site-demo-active" data-type="tabChange">切换到：用户管理</button>
-</div>
+<!--<div class="site-demo-button" style="margin-bottom: 0;">-->
+<!--  <button class="layui-btn site-demo-active" data-type="tabAdd">新增Tab项</button>-->
+<!--  <button class="layui-btn site-demo-active" data-type="tabDelete">删除：商品管理</button>-->
+<!--  <button class="layui-btn site-demo-active" data-type="tabChange">切换到：用户管理</button>-->
+<!--</div>-->
 
 <div id="orange-fx1" class="demo-tree"></div>
 
     </div>
     <div class="layui-col-xs9" style="background-color: #fff9ec">
-      <div class="grid-demo">9/12</div>
+<!--      <div class="grid-demo">9/12</div>-->
 
 
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-  <legend>动态操作Tab</legend>
-</fieldset>
+<!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">-->
+<!--  <legend>动态操作Tab</legend>-->
+<!--</fieldset>-->
 
 <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
   <ul class="layui-tab-title">
@@ -46,38 +50,13 @@
     <div class="layui-tab-item">内容2</div>
     <div class="layui-tab-item">内容3</div>
     <div class="layui-tab-item">内容4</div>
-    <div class="layui-tab-item">内容5</div>
+    <div class="layui-tab-item"><div id="terminal">
+	</div></div>
   </div>
 </div>
 
 <!-- 示例-970 -->
 <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
-
-
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-  <legend>当Tab数超过一定宽度</legend>
-</fieldset>
-
-<div class="layui-tab layui-tab-card" style="width: 290px;">
-  <ul class="layui-tab-title">
-    <li class="layui-this">网站设置</li>
-    <li>用户管理</li>
-    <li>权限分配</li>
-    <li>商品管理</li>
-    <li>订单管理</li>
-  </ul>
-  <div class="layui-tab-content" style="height: 100px;">
-    <div class="layui-tab-item layui-show">
-      1. 宽度足够，就不会出现右上图标；宽度不够，就会开启展开功能。
-      <br>2. 如果你的宽度是自适应的，Tab会自动判断是否需要展开，并适用于所有风格。
-    </div>
-    <div class="layui-tab-item">2</div>
-    <div class="layui-tab-item">3</div>
-    <div class="layui-tab-item">4</div>
-    <div class="layui-tab-item">5</div>
-    <div class="layui-tab-item">6</div>
-  </div>
-</div>
 
     </div>
   </div>
@@ -87,8 +66,113 @@
 
 <script src="/layui/layui.js" charset="utf-8"></script>
 <script src="/js/jquery-3.3.1.js"></script>
+<script src="/xterm/lib/xterm.js"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
 <script>
+
+// 版本4.9.0 <br>
+
+    function runFakeTerminal (termid) {
+            let term = new Terminal({
+       rendererType: "canvas", //渲染类型
+       rows: 40, //行数
+       convertEol: true, //启用时，光标将设置为下一行的开头
+       scrollback:10,//终端中的回滚量
+       disableStdin: false, //是否应禁用输入。
+       cursorStyle: 'underline', //光标样式
+       cursorBlink: true, //光标闪烁
+       theme: {
+         foreground: '#ffffff', //字体
+         background: '#060101', //背景色
+         cursor: 'help',//设置光标
+       }
+     })
+   let terminal = document.getElementById(termid)
+     term.open(document.getElementById(termid))　　
+
+    term.writeln(`✔ Installed 1 packages
+   ✔ Linked 0 latest versions
+   ✔ Run 0 scripts
+   Recently updated (since 2019-05-10): 1 packages (detail see file
+   /Users/baolilei/Desktop/project/felab/xterm.js/fe-source-stage/src/xterm/node_modules/.recently_updates.txt)
+   Today:
+   → xterm@*(3.13.1) (01:15:03)
+   ✔ All packages installed (1 packages installed from npm registry, used 1s(network 1s), speed 365.87kB/s, json
+   1(7.12kB), tarball 509.49kB)`)
+
+
+           var ws = new WebSocket('ws://10.0.1.198:8014/websocket');
+     ws.onmessage = function (MessageEvent) {
+         //console.log(MessageEvent);
+        //console.log(MessageEvent.data);
+        //  var time=new Date();
+        //  var t= time.toLocaleString();
+        //  var p=document.createElement("p");
+        //  p.innerText="("+t+")"+MessageEvent.data;
+        //  term.write(p);
+       term.write(MessageEvent.data)
+         console.log(MessageEvent.data)
+     };
+
+     ws.onopen = function (){
+       ws.send('ls\r')
+     }
+
+     function send() {
+         var msg = document.getElementById('msg').value;
+         ws.send(msg);
+     }
+
+
+      if (term._initialized) {
+        return
+      }
+
+      term._initialized = true
+
+      term.prompt = () => {
+        // term.write('\r\n$ ')
+        term.write('\r\n')
+      }
+
+      term.writeln('Welcome to xterm.js')
+      term.writeln('This is a local terminal emulation, without a real terminal in the back-end.')
+      term.writeln('Type some keys and commands to play around.')
+      term.writeln('')
+      term.prompt()
+let msg_list = ''
+      term.onKey(e => {
+       // console.log(e)
+
+        const ev = e.domEvent
+        const printable = !ev.altKey && !ev.altGraphKey && !ev.ctrlKey && !ev.metaKey
+        console.log(ev.key)
+         if (e.key === '\r'){
+          console.log(msg_list)
+          ws.send(msg_list + '\r')
+          //ws.send('\r')
+          msg_list = ''
+        } else if (e.key === '\t'){
+           ws.send(msg_list + '\t' + '\t')
+       } else{
+          msg_list += e.key
+          console.log(msg_list)
+        }
+        let dt = e.domEvent.altKey
+        if (ev.keyCode === 13) {
+          console.log(e.key)
+          term.prompt()
+        } else if (ev.keyCode === 8) {
+          // Do not delete the prompt
+          if (term._core.buffer.x > 2) {
+            term.write('\b \b')
+          }
+        } else if (printable) {
+          term.write(e.key)
+        }
+      })
+
+    }
 
 
 layui.use(['tree', 'util', 'upload', 'element', 'layer'], function(){
@@ -117,11 +201,13 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function(){
                 , click: function (obj){
                     if (obj.data['id'] < 1000){
                         console.log(obj.data['title']); //得到当前点击的节点数据
+                          let termid = "terminal" + obj.data['id']
                           element.tabAdd('demo', {
                             title: obj.data['title'] //用于演示
-                            ,content: obj.data['id']
+                            ,content: '<div id="' + termid + '"></div>'
                             ,id: obj.data['id'] //实际使用一般是规定好的id，这里以时间戳模拟下
                           })
+                          runFakeTerminal (termid)
                     }
                 }
             });
@@ -161,6 +247,8 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function(){
 
 
 });
+
+
 </script>
 
 </body>
