@@ -101,7 +101,8 @@
    1(7.12kB), tarball 509.49kB)`)
 
 
-           var ws = new WebSocket('ws://10.0.1.198:8014/websocket');
+     //var ws = new WebSocket('ws://10.0.1.198:8014/websocket')
+     let ws = new WebSocket('ws://10.0.1.198:28000/local/websocket');
      ws.onmessage = function (MessageEvent) {
          //console.log(MessageEvent);
         //console.log(MessageEvent.data);
@@ -201,7 +202,7 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function(){
                 , click: function (obj){
                     if (obj.data['id'] < 1000){
                         console.log(obj.data['title']); //得到当前点击的节点数据
-                          let termid = "terminal" + obj.data['id']
+                          let termid = "terminal" + Math.floor(Math.random()*10000)
                           element.tabAdd('demo', {
                             title: obj.data['title'] //用于演示
                             ,content: '<div id="' + termid + '"></div>'
