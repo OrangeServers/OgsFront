@@ -39,18 +39,8 @@
 
 <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
   <ul class="layui-tab-title">
-    <li class="layui-this" lay-id="11">网站设置</li>
-    <li lay-id="22">用户管理</li>
-    <li lay-id="33">权限分配</li>
-    <li lay-id="44">商品管理</li>
-    <li lay-id="55">订单管理</li>
   </ul>
   <div class="layui-tab-content">
-    <div class="layui-tab-item layui-show">内容1</div>
-    <div class="layui-tab-item">内容2</div>
-    <div class="layui-tab-item">内容3</div>
-    <div class="layui-tab-item">内容4</div>
-    <div class="layui-tab-item"><div id="terminal">
 	</div></div>
   </div>
 </div>
@@ -72,7 +62,7 @@
 
 // 版本4.9.0 <br>
 
-    function runFakeTerminal (termid) {
+    function runFakeTerminal (termid, host) {
             let term = new Terminal({
        rendererType: "canvas", //渲染类型
        rows: 40, //行数
@@ -115,16 +105,14 @@
          console.log(MessageEvent.data)
      };
 
-     let ssh_host_data = {
-       'host': '10.0.1.199',
-       'port': 22,
-       'user': 'root',
-       'psw': 'abcdefg'
+     let ssh_host_name = {
+       'hostname': host
      }
 
      ws.onopen = function (){
-       ws.send('ls\r')
        //ws.send(JSON.stringify(ssh_host_data))
+       ws.send(JSON.stringify(ssh_host_name))
+       ws.send('\r')
      }
 
      function send() {
@@ -216,7 +204,7 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function(){
                             ,content: '<div id="' + termid + '"></div>'
                             ,id: obj.data['id'] //实际使用一般是规定好的id，这里以时间戳模拟下
                           })
-                          runFakeTerminal (termid)
+                          runFakeTerminal (termid, obj.data['title'])
                     }
                 }
             });

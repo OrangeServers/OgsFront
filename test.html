@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="/css/orange.css">
   <link rel="stylesheet" href="/css/bq.css">
   <link rel="stylesheet" href="/css/ybp.css">
+  <link rel="stylesheet" href="/layui/layuimod/dtree/dtree.css">
+  <link rel="stylesheet" href="/layui/layuimod/dtree/font/dtreefont.css">
 <style>
   .round_icon {
   width: 100px;
@@ -52,6 +54,9 @@
       <label>更换头像</label>
 <!--      <img src=ogs_backend_url + "/local/image/test_get/admin" class="round_icon">-->
       <input type="file" class="orange-ups-tx" accept="image/jpeg,image/png,image/gif">
+
+      <div id="orange-fx1" class="demo-tree"></div>
+
     </div>
 
   </div>
@@ -69,6 +74,7 @@
 <script src="/js/jquery.cookie.min.js"></script>
 <script src="/js/conf.js"></script>
 <script src="/layui/layuimod/xm-select.js"></script>
+<!--<script src="/layui/layuimod/dtree/dtree.js"></script>-->
 <script src="/js/test.js"></script>
 <!-- Chart code -->
 
@@ -96,14 +102,57 @@
     })
     }
 
-    // layui.config({
-    //     base: 'layui/'
-    // }).extend({
-    //     xmSelect: 'xm-select'
-    // })
-    //
-    layui.use(['jquery', 'xmSelect'], function (){
+    layui.config({
+        base: '/layui/layuimod/dtree/'
+    }).extend({
+        dtree: 'dtree'
+    })
 
+    layui.use(['jquery', 'dtree'], function (){
+      let  dtree = layui.dtree
+
+    $.ajax({
+        type: "POST",
+        url: "/local/data",
+        dataType: "JSON",
+        data: {'name': 'xuzhiwei'},
+        showLine: true,
+        edit: ['add', 'update', 'del'],
+        success: function (res) {
+            let data = res['host']
+            dtree.render({
+                elem: '#orange-fx1'
+                , id: 'demoId1'
+                , data: data
+                , showCheckbox: true
+                , iconfont:["layui-icon"]
+                // , nodeIconArray:{"3":{"open":"dtree-icon-pulldown","close":"dtree-icon-pullup"}}
+                // , nodeIconArray:{"3":{"open":"layui-icon-template-1","close":"layui-icon-template-1"}}
+                // , leafIconArray:{"11":"dtree-icon-star"}
+                // , icon: ["3","11"]
+                // , skin: "layui"
+                ,iconfontStyle: [{  // 第一个JSON
+                    fnode:{
+                      node:{
+                        open: "dtree-icon-jia1"  // 这里从dtreefont图标库中选择该图标，当节点展开时，一级图标使用
+                      }
+                    },
+                  snode:{  //二级节点
+                    node:{  //非叶子节点
+                      // open:"",  //节点展开
+                      // close:""  //节点关闭
+                    },
+                    leaf:"layui-icon-template-1"  //叶子节点
+                  }
+                  }]
+            });
+        }
+    })
+
+      dtree.on("node('orange-fx1')", function (obj){
+        console.log(obj.param)
+        layui.layer.msg(obj.param['context'])
+      })
 
       $.ajax({
           type: "POST",
@@ -127,6 +176,7 @@
             })
           }
       })
+
 
       $.ajax({
           type: "POST",
