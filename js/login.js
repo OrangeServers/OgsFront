@@ -114,6 +114,9 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         , laydate = layui.laydate;
 
 
+    if ($.cookie('username') !== undefined){
+        window.location.href = '/index.html'
+    }
 
     //日期
     console.log($().cookie)
