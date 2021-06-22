@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>OrangeShell</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" href="/image/bitbug_favicon.ico">
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
+    <link rel="stylesheet" href="/xterm/css/xterm.css"/>
+
+    <link rel="stylesheet" href="/layui/layuimod/dtree/dtree.css">
+    <link rel="stylesheet" href="/layui/layuimod/dtree/font/dtreefont.css">
+
+
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+
+
+<div style="margin: 0 auto; max-width: 100%;">
+    <div class="layui-row">
+
+        <div class="layui-col-xs6 layui-col-md12" style="background-color: #23262E">
+            <img src="/image/juzi11.png" style="margin-left: 20px; height: 30px; width: 30px; float: left">
+            <p style="margin-left: 80px; color: #fff; font-size: 23px">Orange Shell</p>
+        </div>
+
+        <div class="layui-col-xs3" style="background-color: #EBEEF0; height: 800px">
+
+            <div id="orange-fx1" class="demo-tree" style="margin-left: 10px;"></div>
+<!--            <p style="text-align:center; margin-top: 610px">Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>-->
+
+        </div>
+        <div class="layui-col-xs9" style="height: 690px">
+
+            <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true">
+                <ul class="layui-tab-title">
+                </ul>
+                <div class="layui-tab-content">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<!--    <div class="layui-footer" style="margin-left: 0px!important;">-->
+<!--    &lt;!&ndash; 底部固定区域 &ndash;&gt;-->
+<!--    <p >Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>-->
+<!--  </div>-->
+
+</div>
+
+<script src="/layui/layui.js" charset="utf-8"></script>
+<script src="/js/jquery-3.3.1.js"></script>
+<script src="/js/jquery.cookie.min.js"></script>
+<script src="/xterm/lib/xterm.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+<script src="/js/conf.js"></script>
+<script src="/js/main.js"></script>
+<script src="/osh/shell.js"></script>
+
+</body>
+</html>
