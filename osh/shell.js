@@ -1,5 +1,7 @@
     // 版本4.9.0 <br>
 
+    import {color} from "../xterm/src/browser/Color";
+
     function runFakeTerminal(termid, host) {
         let term = new Terminal({
             rendererType: "canvas", //渲染类型
@@ -18,13 +20,51 @@
         let terminal = document.getElementById(termid)
         term.open(document.getElementById(termid))
 
-        term.writeln(`hello!
-Welcome to Orange Shell Services !
+    term.writeln(`                                                          hello!
+                                        Welcome to Orange Shell Services !
 `)
 
 
         //var ws = new WebSocket('ws://10.0.1.198:8014/websocket')
         let ws = new WebSocket('ws://10.0.1.198:28000/local/websocket');
+         //let lockReconnect = false //避免重复连接
+         let timeoutFlag = true
+         let timeoutSet = null
+         //let reconectNum = 0
+         //const timeout = 30000 //超时重连间隔
+
+//   22   //心跳检测
+//         const heartCheck = {
+//           timeout: 5000, //毫秒
+//           timeoutObj: null,
+//           serverTimeoutObj: null,
+//           reset: function() {
+//             clearInterval(this.timeoutObj)
+//             clearTimeout(this.serverTimeoutObj)
+//             return this
+//           },
+//           start: function() {
+//             const self = this
+//             let count = 0
+//             this.timeoutObj = setInterval(() => {
+//               if (count < 3) {
+//                 if (ws.readyState === 1) {
+//                   ws.send('HeartBeat')
+//                   console.info(`${intro}HeartBeat第${count + 1}次`)
+//                 }
+//                 count++
+//               } else {
+//                 clearInterval(this.timeoutObj)
+//                 count = 0
+//                 if (ws.readyState === 0 && ws.readyState === 1) {
+//                   ws.close()
+//                 }
+//               }
+//             }, self.timeout)
+//           }
+//         }
+
+
         ws.onmessage = function (MessageEvent) {
             //console.log(MessageEvent);
             //console.log(MessageEvent.data);
@@ -33,6 +73,7 @@ Welcome to Orange Shell Services !
             //  var p=document.createElement("p");
             //  p.innerText="("+t+")"+MessageEvent.data;
             //  term.write(p);
+            //heartCheck.reset().start()
             term.write(MessageEvent.data)
         };
 
@@ -44,7 +85,21 @@ Welcome to Orange Shell Services !
             //ws.send(JSON.stringify(ssh_host_data))
             ws.send(JSON.stringify(ssh_host_name))
             ws.send('\r')
+            //heartCheck.reset().start()
         }
+
+        ws.onerror = function () {
+            console.log('连接失败')
+            term.writeln('\nUnable to connect to host: [Errno 110] Connection timed out, Please check whether the back-end service is normal')
+            ws.close()
+        }
+
+        ws.onclose = function () {
+            console.log('连接失败')
+            term.writeln('\nUnable to connect to host: [Errno 110] Connection timed out, Please check whether the back-end service is normal')
+            ws.close()
+        }
+
 
         function send() {
             var msg = document.getElementById('msg').value;
@@ -63,10 +118,6 @@ Welcome to Orange Shell Services !
             term.write('\r\n')
         }
 
-        term.writeln('Welcome to xterm.js')
-        term.writeln('This is a local terminal emulation, without a real terminal in the back-end.')
-        term.writeln('Type some keys and commands to play around.')
-        term.writeln('')
         term.prompt()
         let msg_list = ''
         term.onKey(e => {
