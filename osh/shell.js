@@ -1,7 +1,5 @@
     // 版本4.9.0 <br>
 
-    import {color} from "../xterm/src/browser/Color";
-
     function runFakeTerminal(termid, host) {
         let term = new Terminal({
             rendererType: "canvas", //渲染类型
@@ -24,46 +22,9 @@
                                         Welcome to Orange Shell Services !
 `)
 
-
         //var ws = new WebSocket('ws://10.0.1.198:8014/websocket')
         let ws = new WebSocket('ws://10.0.1.198:28000/local/websocket');
          //let lockReconnect = false //避免重复连接
-         let timeoutFlag = true
-         let timeoutSet = null
-         //let reconectNum = 0
-         //const timeout = 30000 //超时重连间隔
-
-//   22   //心跳检测
-//         const heartCheck = {
-//           timeout: 5000, //毫秒
-//           timeoutObj: null,
-//           serverTimeoutObj: null,
-//           reset: function() {
-//             clearInterval(this.timeoutObj)
-//             clearTimeout(this.serverTimeoutObj)
-//             return this
-//           },
-//           start: function() {
-//             const self = this
-//             let count = 0
-//             this.timeoutObj = setInterval(() => {
-//               if (count < 3) {
-//                 if (ws.readyState === 1) {
-//                   ws.send('HeartBeat')
-//                   console.info(`${intro}HeartBeat第${count + 1}次`)
-//                 }
-//                 count++
-//               } else {
-//                 clearInterval(this.timeoutObj)
-//                 count = 0
-//                 if (ws.readyState === 0 && ws.readyState === 1) {
-//                   ws.close()
-//                 }
-//               }
-//             }, self.timeout)
-//           }
-//         }
-
 
         ws.onmessage = function (MessageEvent) {
             //console.log(MessageEvent);
@@ -90,14 +51,16 @@
 
         ws.onerror = function () {
             console.log('连接失败')
-            term.writeln('\nUnable to connect to host: [Errno 110] Connection timed out, Please check whether the back-end service is normal')
+            term.writeln('\nUnable to connect to host: [Errno 110] Connection timed out, Please check that the password is correct or the server is running')
             ws.close()
+            $("." + host).css("color", "red")
         }
 
         ws.onclose = function () {
             console.log('连接失败')
-            term.writeln('\nUnable to connect to host: [Errno 110] Connection timed out, Please check whether the back-end service is normal')
+            term.writeln('\nUnable to connect to host: [Errno 110] Connection timed out, Please check that the password is correct or the server is running')
             ws.close()
+            $("." + host).css("color", "red")
         }
 
 
@@ -206,7 +169,7 @@
               //  console.log(obj.param['context']); //得到当前点击的节点数据
                 let termid = Math.floor(Math.random() * 100000)
                 element.tabAdd('demo', {
-                    title: obj.param['context'] //用于演示
+                    title: '<i class="layui-icon layui-icon-circle-dot ' + obj.param['context'] + '" style="font-size: 10px; color: #4cb450; margin-right: 10px"></i>' + obj.param['context'] //用于演示
                     , content: '<div id="' + termid + '"></div>'
                     , id: termid //实际使用一般是规定好的id，这里以时间戳模拟下
                 })
