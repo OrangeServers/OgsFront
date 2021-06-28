@@ -1,11 +1,17 @@
     // 版本4.9.0 <br>
 
+   // import {FitAddon} from '../xterm/xterm-addon-fit/src/FitAddon'
+
+
     function runFakeTerminal(termid, host) {
+
+    // let fitAddon = new FitAddon()
+
         let term = new Terminal({
             rendererType: "canvas", //渲染类型
-            rows: 40, //行数
+            rows: 100, //行数
             convertEol: true, //启用时，光标将设置为下一行的开头
-            scrollback: 10,//终端中的回滚量
+            scrollback: 50,//终端中的回滚量
             disableStdin: false, //是否应禁用输入。
             cursorStyle: 'underline', //光标样式
             cursorBlink: true, //光标闪烁
@@ -15,8 +21,13 @@
                 cursor: 'help',//设置光标
             }
         })
+
+        // let fitAddon = new FitAddon()
+        // term.loadAddon(FitAddon)
+
         let terminal = document.getElementById(termid)
         term.open(document.getElementById(termid))
+        // fitAddon.fit()
 
     term.writeln(`                                                          hello!
                                         Welcome to Orange Shell Services !
