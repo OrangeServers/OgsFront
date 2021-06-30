@@ -8,8 +8,26 @@
   <link rel="icon" href="/image/bitbug_favicon.ico">
   <link rel="stylesheet" href="/layui/css/layui.css">
   <link rel="stylesheet" href="/css/orange.css">
+  <link rel="stylesheet" href="/css/pagefrom.css">
+
+<style>
+    h1 {
+        margin-top: 20px;
+        margin-left: 30px;
+    }
+
+    .layui-body > .orange-body > .orange-host-from > .layui-form > .layui-form-item > .layui-form-label {
+        width: 150px;
+        padding: 9px 5px;
+    }
+
+    .layui-body > .orange-body > .orange-host-from > .layui-form > .layui-form-item > .layui-input-block {
+        width: 900px;
+        margin-left: 200px
+    }
 
 
+</style>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -24,7 +42,42 @@
   <div class="layui-body">
 
     <div class="orange-body" style="padding: 15px;">
- 用户信息展示和可编辑，用户名显示别名，头像上传，主题颜色
+        <h1>设置</h1>
+
+      <div class="orange-host-from" style="margin-top: 20px">
+        <h3>系统信息</h3>
+        <form class="layui-form" onsubmit="return false">
+
+          <div class="layui-form-item">
+        <label class="layui-form-label">登录失效时间</label>
+        <div class="layui-input-block">
+          <select name="login_out_time" lay-filter="aihao">
+            <option value="0">1小时</option>
+            <option value="3" selected="">3小时</option>
+            <option value="2">6小时</option>
+            <option value="3">1天</option>
+          </select>
+        </div>
+      </div>
+
+          <div class="layui-form-item">
+        <label class="layui-form-label">是否允许用户注册</label>
+        <div class="layui-input-block">
+          <input type="checkbox" checked="" name="rsgister" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+        </div>
+        </div>
+
+          <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即应用</button>
+          <button type="button" class="layui-btn layui-btn-normal" onclick="clean_adhost()">取消</button>
+        </div>
+      </div>
+
+        </form>
+
+    </div>
+
     </div>
   </div>
 
@@ -43,9 +96,34 @@
 
 <!-- Chart code -->
 <script>
-      layui.use(['jquery', 'element'], function () {
-        let element = layui.element;
+      layui.use(['form', 'jquery', 'layedit', 'laydate', 'element'], function () {
+        let element = layui.element,
+            layedit = layui.layedit,
+            laydate = layui.laydate,
+            form = layui.form;
+
         get_user_auth_list('settings')
+
+    //日期
+
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+
+        laydate.render({
+          elem: '#date'
+        });
+        laydate.render({
+          elem: '#date1'
+        });
+        form.on('submit(demo1)', function(){
+          console.log($('.layui-form').serialize())
+        });
+
       })
 </script>
 </body>

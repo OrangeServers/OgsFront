@@ -7,7 +7,7 @@ layui.use('table', function(){
   table.render({
     id: 'test'
     ,elem: '#test'
-    ,height: 540
+    ,height: 520
     ,url: ogs_backend_url + '/auth/host/list_all'
     ,method: 'POST'
     ,parseData: function(res){ //res 即为原始返回的数据
