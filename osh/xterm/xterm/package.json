@@ -1,0 +1,147 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "xterm",
+        "scope": null,
+        "escapedName": "xterm",
+        "name": "xterm",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/root/xterm"
+    ]
+  ],
+  "_from": "xterm@latest",
+  "_hasShrinkwrap": false,
+  "_id": "xterm@4.12.0",
+  "_inCache": true,
+  "_location": "/xterm",
+  "_nodeVersion": "10.24.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/xterm_4.12.0_1620742974153_0.09925608770209182"
+  },
+  "_npmUser": {
+    "name": "tyriar",
+    "email": "tyriar@tyriar.com"
+  },
+  "_npmVersion": "6.14.12",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "xterm",
+    "scope": null,
+    "escapedName": "xterm",
+    "name": "xterm",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/xterm/-/xterm-4.12.0.tgz",
+  "_shasum": "db09b425b4dcae5b96f8cbbaaa93b3bc60997ca9",
+  "_shrinkwrap": null,
+  "_spec": "xterm",
+  "_where": "/root/xterm",
+  "bugs": {
+    "url": "https://github.com/xtermjs/xterm.js/issues"
+  },
+  "dependencies": {},
+  "description": "Full xterm terminal, in your browser",
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/debug": "^4.1.5",
+    "@types/deep-equal": "^1.0.1",
+    "@types/glob": "^7.1.3",
+    "@types/jsdom": "^16.2.5",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^10.17.17",
+    "@types/utf8": "^2.1.6",
+    "@types/webpack": "^4.41.24",
+    "@types/ws": "^7.2.9",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^3.10.1",
+    "chai": "^4.2.0",
+    "deep-equal": "^2.0.4",
+    "eslint": "^7.12.1",
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "glob": "^7.0.5",
+    "jsdom": "^16.4.0",
+    "mocha": "^8.2.1",
+    "mustache": "^4.0.1",
+    "node-pty": "^0.9.0",
+    "nyc": "^15.1.0",
+    "playwright": "^1.5.2",
+    "source-map-loader": "^1.1.2",
+    "ts-loader": "^8.0.8",
+    "typescript": "4.0",
+    "utf8": "^3.0.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0",
+    "ws": "^7.3.1",
+    "xterm-benchmark": "^0.1.3"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-K5mF/p3txUV18mjiZFlElagoHFpqXrm5OYHeoymeXSu8GG/nMaOO/+NRcNCwfdjzAbdQ5VLF32hEHiWWKKm0bw==",
+    "shasum": "db09b425b4dcae5b96f8cbbaaa93b3bc60997ca9",
+    "tarball": "https://registry.npmjs.org/xterm/-/xterm-4.12.0.tgz",
+    "fileCount": 105,
+    "unpackedSize": 2209994,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgmpM+CRA9TVsSAnZWagAAXe8P/i3uUBvd0SwwF2bUDaOV\nTL6O/T4rNahfeA8KMqP1RSvIfs9HexFJ6sZBOc8B89ffWQ/2LXhByPQcCI7d\nUwERwr8vZG2WGPg2MdvJmrnOz5WNrsCqnKe3mZKMvPqQ/DRO7qAzexGj3CAX\nYdlBIC4AiczhnuwbmuTw552sTwytqOBX8jU+OMWjUDl4W6KNSWKaXrLEvCL6\n6IUwx0XgWa+XJdIl3uoVSux/fO85GIfjytWyvam9ZOPnp3XWw4/itsKtbgrs\nVP3ecS/m/GOc+8dDZlI6YbyOlOEqlWGwEW3asRZ9nsb+OWqcbKZ2DIiKCDQ9\naTFQoLfyHh6y1nKsNmrj9PobHDnMuSwhAPqR29kfUNKuJzw4UfHvZ/OiZjMw\nHOo9+5fxToksnCf+/lpbSBJWQnLpg6PECMoOehb7UaK4lgDq8fDmEHUn1EuZ\n63uofCKiHF/nbUYGXWNfY4Uf1zVwNq94gdkkgm2tki5PRpDUfUIUrGwf9WV6\n96aNYTx2Qyywwk8dH8V7JkCu7lUr0kqswrD2ioQ2Hqc2eMlKmI8WE/qAal9B\nnUg6gKKfN5ccXkl162pxOzQjgnqOlbLTpoXMcvUVxjX5d580gr+5xG2Qin7v\navHVTA8Y3sefUNaRuVCRg6F4Lk4MQzr9T/tjNLz/TAlsfYqbIEX1pXbrO7dQ\naxNC\r\n=BRYV\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "gitHead": "24f431b290b88dc1822ed6b0ca25f25a71e1d0fb",
+  "homepage": "https://github.com/xtermjs/xterm.js#readme",
+  "license": "MIT",
+  "main": "lib/xterm.js",
+  "maintainers": [
+    {
+      "name": "tyriar",
+      "email": "tyriar@tyriar.com"
+    },
+    {
+      "name": "paris",
+      "email": "pariskasidiaris@gmail.com"
+    }
+  ],
+  "name": "xterm",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xtermjs/xterm.js.git"
+  },
+  "scripts": {
+    "benchmark": "NODE_PATH=./out xterm-benchmark -r 5 -c test/benchmark/benchmark.json",
+    "benchmark-baseline": "NODE_PATH=./out xterm-benchmark -r 5 -c test/benchmark/benchmark.json --baseline out-test/benchmark/test/benchmark/*benchmark.js",
+    "benchmark-eval": "NODE_PATH=./out xterm-benchmark -r 5 -c test/benchmark/benchmark.json --eval out-test/benchmark/test/benchmark/*benchmark.js",
+    "build": "tsc -b tsconfig.all.json",
+    "clean": "rm -rf lib out addons/*/lib addons/*/out",
+    "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts src/ addons/",
+    "package": "webpack",
+    "posttest": "npm run lint",
+    "prepackage": "npm run build",
+    "prepare": "npm run setup",
+    "prepublishOnly": "npm run package",
+    "presetup": "node ./bin/install-addons.js",
+    "setup": "npm run build",
+    "start": "node demo/start",
+    "start-debug": "node --inspect-brk demo/start",
+    "test": "npm run test-unit",
+    "test-api": "npm run test-api-chromium",
+    "test-api-chromium": "node ./bin/test_api.js --browser=chromium --timeout=20000",
+    "test-api-firefox": "node ./bin/test_api.js --browser=firefox --timeout=20000",
+    "test-api-webkit": "node ./bin/test_api.js --browser=webkit --timeout=20000",
+    "test-unit": "node ./bin/test.js",
+    "test-unit-coverage": "node ./bin/test.js --coverage",
+    "vtfeatures": "node bin/extract_vtfeatures.js src/**/*.ts src/*.ts",
+    "watch": "tsc -b -w tsconfig.all.json --preserveWatchOutput"
+  },
+  "style": "css/xterm.css",
+  "types": "typings/xterm.d.ts",
+  "version": "4.12.0"
+}
