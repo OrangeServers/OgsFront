@@ -164,11 +164,12 @@ am4core.ready(function () {
     let day = mydata.getDate();
     let month = mydata.getMonth() + 1
     let year = mydata.getFullYear()
+    console.log(day,month,year)
 
 // Initial zoom once chart is ready
-    lastTrend.events.once("datavalidated", function () {
-        series.xAxis.zoomToDates(new Date(year, month, day), new Date(year, month, day));
-    });
+        window.lastTrend.events.once("datavalidated", function(){
+          series.xAxis.zoomToDates(new Date(year, month, day), new Date(year, month, day));
+        });
 
 }); // end am4core.ready()
 

@@ -70,8 +70,9 @@ function randomColor() {//得到随机的颜色值
         return year + '-' + month + '-' + day
     }
 
-function user_login() {
+function user_login(login_time) {
     // layer.alert($('.layui-form').serialize())
+
     var logif = layer.load(1, {
         shade: [0.1, '#fff'] //0.1透明度的白色背景
     });
@@ -86,7 +87,8 @@ function user_login() {
             if (res['chk_status'] === 'true') {
                 window.location.href = '/index.html'
                 let date = new Date();
-                date.setTime(date.getTime() + 4 * 60 * 60 * 1000);//只能这么写，10表示10秒钟
+                date.setTime(date.getTime() + login_time * 60 * 60 * 1000)
+               // date.setTime(date.getTime() + 4 * 60 * 60 * 1000);//只能这么写，10表示10秒钟
                 $.cookie('username', $("#orange-username").val(), {expires: date});
             } else if (res['password_status'] === 'fail') {
                 layer.close(logif)
@@ -118,6 +120,20 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         window.location.href = '/index.html'
     }
 
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/local/settings/get",
+        data: {'name': 'admin'},
+        dataType: "JSON",
+        success: function (res) {
+            window.login_time = res['login_time']
+            let register_status = res['register_status']
+            if (register_status === 'off') {
+                $('.orange-res').remove()
+            }
+        }
+    })
+
     //日期
     console.log($().cookie)
     laydate.render({
@@ -135,7 +151,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             $('#orange-yzm').val('')
             draw(show_num)
         } else if (val === num) {
-            user_login()
+            user_login(window.login_time)
         }
     });
 });

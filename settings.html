@@ -9,25 +9,8 @@
   <link rel="stylesheet" href="/layui/css/layui.css">
   <link rel="stylesheet" href="/css/orange.css">
   <link rel="stylesheet" href="/css/pagefrom.css">
+  <link rel="stylesheet" href="/css/settings.css">
 
-<style>
-    h1 {
-        margin-top: 20px;
-        margin-left: 30px;
-    }
-
-    .layui-body > .orange-body > .orange-host-from > .layui-form > .layui-form-item > .layui-form-label {
-        width: 150px;
-        padding: 9px 5px;
-    }
-
-    .layui-body > .orange-body > .orange-host-from > .layui-form > .layui-form-item > .layui-input-block {
-        width: 900px;
-        margin-left: 200px
-    }
-
-
-</style>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -44,35 +27,28 @@
     <div class="orange-body" style="padding: 15px;">
         <h1>设置</h1>
 
-      <div class="orange-host-from" style="margin-top: 20px">
+      <div class="orange-host-from" style="margin-top: 20px; height: 240px">
         <h3>系统信息</h3>
         <form class="layui-form" onsubmit="return false">
 
           <div class="layui-form-item">
-        <label class="layui-form-label">登录失效时间</label>
+        <label class="layui-form-label">用户登录失效时间</label>
         <div class="layui-input-block">
-          <select name="login_out_time" lay-filter="aihao">
-            <option value="0">1小时</option>
-            <option value="3" selected="">3小时</option>
-            <option value="2">6小时</option>
-            <option value="3">1天</option>
+          <select name="login_time" lay-filter="aihao">
+            <option value="1" class="orange-sel1">1小时</option>
+            <option value="3" class="orange-sel3">3小时</option>
+            <option value="6" class="orange-sel6">6小时</option>
+            <option value="12" class="orange-sel12">1天</option>
           </select>
         </div>
       </div>
 
-          <div class="layui-form-item">
-        <label class="layui-form-label">是否允许用户注册</label>
-        <div class="layui-input-block">
-          <input type="checkbox" checked="" name="rsgister" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
-        </div>
-        </div>
-
       <div class="layui-form-item">
-        <label class="layui-form-label">单选框</label>
+        <label class="layui-form-label">是否开启用户注册</label>
         <div class="layui-input-block">
-          <input type="radio" name="sex" value="男" title="男" checked="">
-          <input type="radio" name="sex" value="女" title="女">
-          <input type="radio" name="sex" value="禁" title="禁用" disabled="">
+          <input class="orange-ra-on" type="radio" name="register_status" value="on" title="开启">
+          <input class="orange-ra-off" type="radio" name="register_status" value="off" title="关闭">
+          <input type="radio" name="rsgister" value="禁" title="禁用" disabled="">
         </div>
       </div>
 
@@ -104,36 +80,7 @@
 <script src="/js/main.js"></script>
 
 <!-- Chart code -->
-<script>
-      layui.use(['form', 'jquery', 'layedit', 'laydate', 'element'], function () {
-        let element = layui.element,
-            layedit = layui.layedit,
-            laydate = layui.laydate,
-            form = layui.form;
+<script src="/js/settings.js"></script>
 
-        get_user_auth_list('settings')
-
-    //日期
-
-  //监听指定开关
-  form.on('switch(switchTest)', function(data){
-    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-      offset: '6px'
-    });
-    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-  });
-
-        laydate.render({
-          elem: '#date'
-        });
-        laydate.render({
-          elem: '#date1'
-        });
-        form.on('submit(demo1)', function(){
-          console.log($('.layui-form').serialize())
-        });
-
-      })
-</script>
 </body>
 </html>

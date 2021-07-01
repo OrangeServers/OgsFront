@@ -122,6 +122,19 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         , layedit = layui.layedit
         , laydate = layui.laydate;
 
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/local/settings/get",
+        data: {'name': 'admin'},
+        dataType: "JSON",
+        success: function (res) {
+            let register_status = res['register_status']
+            if (register_status === 'off') {
+                window.location.href = '/login.html'
+            }
+        }
+    })
+
     //日期
     console.log($().cookie)
     laydate.render({
