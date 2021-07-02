@@ -3,6 +3,27 @@
 
 // 页面布局渲染
 function upload_layui_admin(cas_this) {
+    let color_matching = ''
+
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/local/settings/get",
+        data: {'name': 'admin'},
+        dataType: "JSON",
+        async: false,
+        success: function (res) {
+            if (res['color_matching'] === 'black'){
+                let color_matching_head = '#faa755'
+                color_matching = '#393D49'
+                $('.layui-header').css('background-color', color_matching_head)
+            } else if (res['color_matching'] === 'blue'){
+                let color_matching_head = '#2261A1'
+                color_matching = '#2F4056'
+                $('.layui-header').css('background-color', color_matching_head)
+            }
+        }
+    })
+
     let user_name = $.cookie('username')
     let path = ogs_backend_url + '/local/image/test_get/'
 
@@ -124,9 +145,9 @@ function upload_layui_admin(cas_this) {
         '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
         '    </ul>'
 
-    let side_html = '    <div class="layui-side-scroll">\n' +
+    let side_html = '    <div class="layui-side-scroll" style="background-color: '+ color_matching + '">\n' +
         '      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->\n' +
-        '      <ul class="layui-nav layui-nav-tree"  lay-filter="test">\n' +
+        '      <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="background-color: '+ color_matching + '">\n' +
         '        <li class="layui-nav-item"><a href="/index.html"' + cas_this1 + '><img src="/image/仪表盘.png" width="20" height="20">仪表盘</a></li>\n' +
         '        <li class="layui-nav-item' + cas_item1 + '">\n' +
         '          <a class="" href="javascript:;"><img src="/image/资产管理.png" width="20" height="20">资产管理</a>\n' +
@@ -184,6 +205,28 @@ function upload_layui_admin(cas_this) {
 
 // 非管理员权限的页面渲染
 function upload_layui_develop(cas_this) {
+    let color_matching = ''
+
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/local/settings/get",
+        data: {'name': 'admin'},
+        dataType: "JSON",
+        async: false,
+        success: function (res) {
+            if (res['color_matching'] === 'black'){
+                let color_matching_head = '#faa755'
+                color_matching = '#393D49'
+                $('.layui-header').css('background-color', color_matching_head)
+            } else if (res['color_matching'] === 'blue'){
+                let color_matching_head = '#2261A1'
+                color_matching = '#2F4056'
+                $('.layui-header').css('background-color', color_matching_head)
+            }
+        }
+    })
+
+
     let user_name = $.cookie('username')
     let path = ogs_backend_url + '/local/image/test_get/'
 
@@ -272,9 +315,9 @@ function upload_layui_develop(cas_this) {
         '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
         '    </ul>'
 
-    let side_html = '    <div class="layui-side-scroll">\n' +
+    let side_html = '    <div class="layui-side-scroll" style="background-color: '+ color_matching + '">\n' +
         '      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->\n' +
-        '      <ul class="layui-nav layui-nav-tree"  lay-filter="test">\n' +
+        '      <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="background-color: '+ color_matching + '">\n' +
         '        <li class="layui-nav-item"><a href="/index.html"' + cas_this1 + '><img src="/image/仪表盘.png" width="20" height="20">仪表盘</a></li>\n' +
         '        <li class="layui-nav-item' + cas_item1 + '">\n' +
         '          <a class="" href="javascript:;"><img src="/image/资产管理.png" width="20" height="20">资产管理</a>\n' +
@@ -321,6 +364,7 @@ $(function () {
         window.location.href = '/login.html'
     } else {
         // $(".orange-title-name").html($(".orange-title-name").html().replace("admin",$.cookie('username')))
+        // $('.layui-header').css('background-color', '#2261A1')
     }
 });
 

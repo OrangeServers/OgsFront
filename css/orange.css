@@ -6,10 +6,12 @@
 
 body > .layui-layout-admin {
   color: #0C0C0C;
+  /*color: #2261A1;*/
 }
 
 body > .layui-layout-admin > .layui-header {
   background-color: #faa755;
+  /*background-color: #2261A1;*/
   border: 0.1px solid #c2c9c6;
 }
 
@@ -62,11 +64,11 @@ body > .layui-layout-admin > .layui-body > .orange-body {
 }
 
 /*body > .layui-layout-admin > .layui-bg-black > .layui-side-scroll {*/
-/*  background-color: #FFFFFF;*/
+/*  background-color: #2F4056;*/
 /*}*/
 
 /*body > .layui-layout-admin > .layui-bg-black > .layui-side-scroll > .layui-nav-tree {*/
-/*  background-color: #FFFFFF;*/
+/*  background-color: #2F4056;*/
 /*}*/
 
 .layui-footer > p {

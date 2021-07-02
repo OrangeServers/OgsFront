@@ -15,6 +15,7 @@
         success: function (res) {
             $(".orange-sel" + res['login_time']).attr('selected', '')
             $(".orange-ra-" + res['register_status']).attr('checked', '')
+            $(".orange-ra-" + res['color_matching']).attr('checked', '')
           form.render()
         }
     })
