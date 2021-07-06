@@ -20,20 +20,20 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
     // 按钮事件
     util.event('lay-demo', {
         getChecked: function (othis) {
-        let formData = new FormData()
-        let ipu_file = $("#uploadFile")[0].files[0]
-        let checkedData = layui.tree.getChecked('demoId1');
-        let chk_data_len = checkedData.length
-        if (chk_data_len === 0) {
-            layer.msg('必须选择资产组或资产才能执行', {icon: 7});
-        } else if(ipu_file === undefined){
-            layer.msg('必须上传文件才能执行', {icon: 7})
-        } else if (chk_data_len !== 0 && ipu_file !== undefined){
-            formData.append('file', ipu_file)
-            formData.append('name', ipu_file.name)
-            console.log('div' + ipu_file.name)
-            test_put_file(formData, undata(checkedData))
-        }
+            let formData = new FormData()
+            let ipu_file = $("#uploadFile")[0].files[0]
+            let checkedData = layui.tree.getChecked('demoId1');
+            let chk_data_len = checkedData.length
+            if (chk_data_len === 0) {
+                layer.msg('必须选择资产组或资产才能执行', {icon: 7});
+            } else if (ipu_file === undefined) {
+                layer.msg('必须上传文件才能执行', {icon: 7})
+            } else if (chk_data_len !== 0 && ipu_file !== undefined) {
+                formData.append('file', ipu_file)
+                formData.append('name', ipu_file.name)
+                console.log('div' + ipu_file.name)
+                test_put_file(formData, undata(checkedData))
+            }
         }
         , resetMsg: function () {
             $("#shuru_tex").val("")
@@ -56,51 +56,53 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
         // if (tree_len === 0) {
         //     layer.msg('必须选择资产组或资产才能执行', {icon: 7});
         // } else {
-            let logif = layer.load(1, {
-                shade: [0.1, '#fff'] //0.1透明度的白色背景
-            });
-            for (let y=0;y<id_list.length;y++){
-                obj.append('id_list', id_list[y])
-            }
-            obj.append('com_name', $.cookie('username'))
-            $.ajax({
-                url: ogs_backend_url + '/server/file/put',
-                type: 'POST',
-                dataType: "JSON",
-                // async: false,
-                data: obj,		//上传到后台的文件
-                processData: false,	// 告诉jQuery不要去处理发送的数据
-                contentType: false,	// 告诉jQuery不要去设置Content-Type请求头
-                traditional: true,
-                success: function (res) {
-                    console.log(res)
-                    if (res["server_ping_status"] === 'true') {
-                        layer.close(logif)
-                        layer.msg('批量执行完成', {icon: 1})
-                        var com_ls = res["command_msg"]
-                        var com_hs = res["hostname_list"]
-                        var com_msg = ''
-                        var com_host = ''
-                        var com_jh = ''
-                        for (var i = 0; i < com_ls.length; i++) {
-                            com_msg = com_ls[i] + '\n'
-                            for (var y = 0; y <= i; y++) {
-                                com_host = com_hs[y] + '  // 机器执行结果 // :' + '\n'
-                            }
-                            com_jh += com_host + com_msg
+        let logif = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+        for (let y = 0; y < id_list.length; y++) {
+            obj.append('id_list', id_list[y])
+        }
+        obj.append('com_name', $.cookie('username'))
+        $.ajax({
+            url: ogs_backend_url + '/server/file/put',
+            type: 'POST',
+            dataType: "JSON",
+            // async: false,
+            data: obj,		//上传到后台的文件
+            processData: false,	// 告诉jQuery不要去处理发送的数据
+            contentType: false,	// 告诉jQuery不要去设置Content-Type请求头
+            traditional: true,
+            success: function (res) {
+                console.log(res)
+                if (res["server_ping_status"] === 'true') {
+                    layer.close(logif)
+                    layer.msg('批量执行完成', {icon: 1})
+                    var com_ls = res["command_msg"]
+                    var com_hs = res["hostname_list"]
+                    var com_msg = ''
+                    var com_host = ''
+                    var com_jh = ''
+                    for (var i = 0; i < com_ls.length; i++) {
+                        com_msg = com_ls[i] + '\n'
+                        for (var y = 0; y <= i; y++) {
+                            com_host = com_hs[y] + '  // 机器执行结果 // :' + '\n'
                         }
-                        $("#shuchu_tex").html('批量命令执行结果' + '\n' + '\n' + com_jh).css({
-                            "color": "#FF8C00",
-                            "font-size": "10px"
-                        })
-                        layui.tree.reload('demoId1', {});
-                        $(".orange-file-zt").html('状态: 已上传执行')
-                    } else if (res["server_ping_status"] === 'fail') {
-                        layer.close(logif)
-                        layer.msg('批量执行失败', {icon: 2})
+                        com_jh += com_host + com_msg
                     }
+                    $("#shuchu_tex").html('批量命令执行结果' + '\n' + '\n' + com_jh).css({
+                        "color": "#FF8C00",
+                        "font-size": "10px"
+                    })
+                    layui.tree.reload('demoId1', {});
+                    $(".orange-file-zt").html('状态: 已上传执行')
+                } else if (res["server_ping_status"] === 'fail') {
+                    let err_msg = res['error_list'] + ' error! ' + res['msg']
+                    console.log(err_msg)
+                    layer.close(logif)
+                    layer.msg(err_msg, {icon: 2})
                 }
-            })
+            }
+        })
         // }
     }
 
