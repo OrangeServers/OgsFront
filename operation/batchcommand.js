@@ -44,8 +44,10 @@ layui.use(['tree', 'util'], function() {
                   }
                   $("#shuchu_tex").html('批量命令执行结果' + '\n' + '\n' + com_jh).css({"color": "#FF8C00","font-size": "10px"})
             } else if (res["server_ping_status"] === 'fail'){
+                  let err_msg = res['error_list'] + ' error! ' + res['msg']
+                  console.log(err_msg)
                   layer.close(logif)
-                  layer.msg('批量执行失败', {icon: 2})
+                  layer.msg(err_msg, {icon: 2})
             }
           }
         })

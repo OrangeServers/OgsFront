@@ -24,12 +24,12 @@ layui.use('table', function () {
             }
             , cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                , {field: 'com_name', title: '登录用户'}
+                , {field: 'com_name', width:160, title: '登录用户'}
                 , {field: 'com_type', width: 140, title: '操作类型'}
-                , {field: 'com_info', width: 140, title: '操作详情'}
-                , {field: 'com_host', width: 120, title: '操作资产id'}
+                , {field: 'com_info', width: 160, title: '操作详情'}
+                , {field: 'com_host', title: '操作资产id'}
                 , {field: 'com_status', width: 60, title: '状态'}
-                , {field: 'com_reason', title: '原因'}
+                , {field: 'com_reason', width: 160 ,title: '原因'}
                 , {field: 'com_time', width: 160, title: '执行时间'}
                 // ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width: 80}
             ]]
