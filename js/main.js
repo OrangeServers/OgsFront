@@ -111,7 +111,7 @@ function upload_layui_admin(cas_this) {
     } else if (cas_this === 'audit-comlog') {
         cas_item5 = ' layui-nav-itemed'
         cas_item_this13 = 'class="layui-this"'
-    } else if (cas_this === 'audit-rslog') {
+    } else if (cas_this === 'audit-czlog') {
         cas_item5 = ' layui-nav-itemed'
         cas_item_this14 = 'class="layui-this"'
     }
@@ -185,8 +185,8 @@ function upload_layui_admin(cas_this) {
         '          <a href="javascript:;"><img src="/image/日志.png" width="20" height="20">日志审计</a>\n' +
         '          <dl class="layui-nav-child">\n' +
         '            <dd><a href="/audit/audit-userlog.html"' + cas_item_this12 + '><img src="/image/juzi11.png" width="20" height="20">登录日志</a></dd>\n' +
-        '            <dd><a href="/audit/audit-comlog.html"' + cas_item_this13 + '><img src="/image/juzi11.png" width="20" height="20">操作日志</a></dd>\n' +
-        '            <dd><a href="/audit/audit-rslog.html"' + cas_item_this14 + '><img src="/image/juzi11.png" width="20" height="20">同步日志</a></dd>\n' +
+        '            <dd><a href="/audit/audit-comlog.html"' + cas_item_this13 + '><img src="/image/juzi11.png" width="20" height="20">执行日志</a></dd>\n' +
+        '            <dd><a href="/audit/audit-czlog.html"' + cas_item_this14 + '><img src="/image/juzi11.png" width="20" height="20">操作日志</a></dd>\n' +
         '          </dl>\n' +
         '        </li>\n' +
         '        <li class="layui-nav-item"><a href="/authority/authority.html"' + cas_this2 + '><img src="/image/权限.png" width="20" height="20">权限管理</a></li>\n' +
