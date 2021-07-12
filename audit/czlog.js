@@ -13,24 +13,24 @@ layui.use('table', function () {
             , height: 550
             , url: url
             , method: 'POST'
-            , where: {'com_jg_date': obj}
+            , where: {'cz_jg_date': obj}
             , parseData: function (res) { //res 即为原始返回的数据
                 return {
                     "code": res.host_status, //解析接口状态
                     "msg": '', //解析提示文本
-                    "count": res.command_len_msg, //解析数据长度
-                    "data": res.command_list_msg //解析数据列表
+                    "count": res.cz_len_msg, //解析数据长度
+                    "data": res.cz_list_msg //解析数据列表
                 };
             }
             , cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                , {field: 'com_name', width:160, title: '登录用户'}
-                , {field: 'com_type', width: 140, title: '操作类型'}
-                , {field: 'com_info', width: 160, title: '操作详情'}
-                , {field: 'com_host', title: '操作细节'}
-                , {field: 'com_status', width: 60, title: '状态'}
-                , {field: 'com_reason', width: 160 ,title: '原因'}
-                , {field: 'com_time', width: 160, title: '操作时间'}
+                , {field: 'cz_name', width:160, title: '登录用户'}
+                , {field: 'cz_type', width: 140, title: '操作类型'}
+                , {field: 'cz_info', width: 160, title: '操作详情'}
+                , {field: 'cz_details', title: '操作细节'}
+                , {field: 'cz_status', width: 60, title: '状态'}
+                , {field: 'cz_reason', width: 160 ,title: '原因'}
+                , {field: 'cz_time', width: 160, title: '操作时间'}
                 // ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width: 80}
             ]]
             , page: true //开启分页
