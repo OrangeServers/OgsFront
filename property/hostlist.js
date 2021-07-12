@@ -174,7 +174,8 @@ layui.use(['dropdown', 'table'], function(){
           type: "POST",
           url: ogs_backend_url + "/server/host/del",
           data: {
-          'id': obj
+          'id': obj,
+          'name': $.cookie('username')
           },
           dataType: "JSON",
           success: function (res) {

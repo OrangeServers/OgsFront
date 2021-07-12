@@ -6,7 +6,7 @@ layui.use('table', function () {
     get_user_auth_list('audit-czlog')
 
     //第一个实例
-    function get_login_logs(url, obj) {
+    function get_cz_logs(url, obj) {
         table.render({
             id: 'testReload'
             , elem: '#test'
@@ -27,10 +27,10 @@ layui.use('table', function () {
                 , {field: 'com_name', width:160, title: '登录用户'}
                 , {field: 'com_type', width: 140, title: '操作类型'}
                 , {field: 'com_info', width: 160, title: '操作详情'}
-                , {field: 'com_host', title: '操作资产id'}
+                , {field: 'com_host', title: '操作细节'}
                 , {field: 'com_status', width: 60, title: '状态'}
                 , {field: 'com_reason', width: 160 ,title: '原因'}
-                , {field: 'com_time', width: 160, title: '执行时间'}
+                , {field: 'com_time', width: 160, title: '操作时间'}
                 // ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width: 80}
             ]]
             , page: true //开启分页
@@ -44,11 +44,11 @@ layui.use('table', function () {
         });
     }
 
-    get_login_logs(ogs_backend_url + '/server/command/logs', null)
+    get_cz_logs(ogs_backend_url + '/server/cz/logs', null)
 
 
     //日期时间范围
-    function login_date_select() {
+    function cz_date_select() {
         laydate.render({
             elem: '#test10'
             , type: 'datetime'
@@ -58,15 +58,15 @@ layui.use('table', function () {
                 console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
                 console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
                 if (value === '') {
-                    get_login_logs(ogs_backend_url + '/server/command/logs', null)
+                    get_cz_logs(ogs_backend_url + '/server/cz/logs', null)
                 } else {
-                    get_login_logs(ogs_backend_url + '/server/command/date', value)
+                    get_cz_logs(ogs_backend_url + '/server/cz/date', value)
                 }
             }
         });
     }
 
-    login_date_select()
+    cz_date_select()
 
     // 回车触发搜索事件
     $('#demoReload').bind('keydown', function (event) {
@@ -74,9 +74,9 @@ layui.use('table', function () {
         if (event.keyCode === 13) {
             let select_val = $('#demoReload').val()
             if (select_val === '') {
-                get_login_logs(ogs_backend_url + '/server/command/logs', null)
+                get_cz_logs(ogs_backend_url + '/server/cz/logs', null)
             } else {
-                get_login_logs(ogs_backend_url + '/server/command/select', select_val)
+                get_cz_logs(ogs_backend_url + '/server/cz/select', select_val)
             }
         }
     })
@@ -85,9 +85,9 @@ layui.use('table', function () {
     $('.demoTable .layui-btn').on('click', function () {
         let select_val = $('#demoReload').val()
         if (select_val === '') {
-            get_login_logs(ogs_backend_url + '/server/command/logs', null)
+            get_cz_logs(ogs_backend_url + '/server/cz/logs', null)
         } else {
-            get_login_logs(ogs_backend_url + '/server/command/select', select_val)
+            get_cz_logs(ogs_backend_url + '/server/cz/select', select_val)
         }
     })
 

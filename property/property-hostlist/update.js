@@ -25,10 +25,11 @@ function host_update() {
        var logif = layer.load(1, {
               shade: [0.1,'#fff'] //0.1透明度的白色背景
           });
+    let data = $('.layui-form').serialize() + "&name=" + $.cookie('username')
     $.ajax({
     type: "POST",
     url: ogs_backend_url + "/server/host/update",
-    data: $('.layui-form').serialize(),
+    data: data,
     dataType: "JSON",
     success: function (res) {
         if (res['server_ping_status'] === 'fail') {
