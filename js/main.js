@@ -12,11 +12,11 @@ function upload_layui_admin(cas_this) {
         dataType: "JSON",
         async: false,
         success: function (res) {
-            if (res['color_matching'] === 'black'){
+            if (res['color_matching'] === 'black') {
                 let color_matching_head = '#faa755'
                 color_matching = '#393D49'
                 $('.layui-header').css('background-color', color_matching_head)
-            } else if (res['color_matching'] === 'blue'){
+            } else if (res['color_matching'] === 'blue') {
                 let color_matching_head = '#2261A1'
                 color_matching = '#2F4056'
                 $('.layui-header').css('background-color', color_matching_head)
@@ -134,7 +134,7 @@ function upload_layui_admin(cas_this) {
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
-        '          <img src="'+ path + user_name +'" class="layui-nav-img">\n' +
+        '          <img src="' + path + user_name + '" class="layui-nav-img">\n' +
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
@@ -145,9 +145,9 @@ function upload_layui_admin(cas_this) {
         '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
         '    </ul>'
 
-    let side_html = '    <div class="layui-side-scroll" style="background-color: '+ color_matching + '">\n' +
+    let side_html = '    <div class="layui-side-scroll" style="background-color: ' + color_matching + '">\n' +
         '      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->\n' +
-        '      <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="background-color: '+ color_matching + '">\n' +
+        '      <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="background-color: ' + color_matching + '">\n' +
         '        <li class="layui-nav-item"><a href="/index.html"' + cas_this1 + '><img src="/image/仪表盘.png" width="20" height="20">仪表盘</a></li>\n' +
         '        <li class="layui-nav-item' + cas_item1 + '">\n' +
         '          <a class="" href="javascript:;"><img src="/image/资产管理.png" width="20" height="20">资产管理</a>\n' +
@@ -214,11 +214,11 @@ function upload_layui_develop(cas_this) {
         dataType: "JSON",
         async: false,
         success: function (res) {
-            if (res['color_matching'] === 'black'){
+            if (res['color_matching'] === 'black') {
                 let color_matching_head = '#faa755'
                 color_matching = '#393D49'
                 $('.layui-header').css('background-color', color_matching_head)
-            } else if (res['color_matching'] === 'blue'){
+            } else if (res['color_matching'] === 'blue') {
                 let color_matching_head = '#2261A1'
                 color_matching = '#2F4056'
                 $('.layui-header').css('background-color', color_matching_head)
@@ -304,7 +304,7 @@ function upload_layui_develop(cas_this) {
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
-        '          <img src="'+ path + user_name +'" class="layui-nav-img">\n' +
+        '          <img src="' + path + user_name + '" class="layui-nav-img">\n' +
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
@@ -315,9 +315,9 @@ function upload_layui_develop(cas_this) {
         '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
         '    </ul>'
 
-    let side_html = '    <div class="layui-side-scroll" style="background-color: '+ color_matching + '">\n' +
+    let side_html = '    <div class="layui-side-scroll" style="background-color: ' + color_matching + '">\n' +
         '      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->\n' +
-        '      <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="background-color: '+ color_matching + '">\n' +
+        '      <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="background-color: ' + color_matching + '">\n' +
         '        <li class="layui-nav-item"><a href="/index.html"' + cas_this1 + '><img src="/image/仪表盘.png" width="20" height="20">仪表盘</a></li>\n' +
         '        <li class="layui-nav-item' + cas_item1 + '">\n' +
         '          <a class="" href="javascript:;"><img src="/image/资产管理.png" width="20" height="20">资产管理</a>\n' +
@@ -457,7 +457,7 @@ function get_user_auth_list(page_html) {
             let user_auth = res['usrole']
             if (user_auth === 'admin') {
                 upload_layui_admin(page_html)
-            } else if (user_auth === 'develop'){
+            } else if (user_auth === 'develop') {
                 upload_layui_develop(page_html)
             }
         }
