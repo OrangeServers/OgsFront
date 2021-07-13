@@ -90,7 +90,8 @@ layui.use('table', function(){
           type: "POST",
           url: ogs_backend_url + "/account/user/del",
           data: {
-          'id': obj
+          'id': obj,
+          'cz_name': $.cookie('username')
           },
           dataType: "JSON",
           success: function (res) {
