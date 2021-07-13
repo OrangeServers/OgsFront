@@ -3,10 +3,11 @@ function add_server_group() {
        var logif = layer.load(1, {
               shade: [0.1,'#fff'] //0.1透明度的白色背景
           });
+    let data = $('.layui-form').serialize() + "&cz_name=" + $.cookie('username')
     $.ajax({
     type: "POST",
     url: ogs_backend_url + "/server/host/group/add",
-    data: $('.layui-form').serialize(),
+    data: data,
     dataType: "JSON",
     success: function (res) {
         if (res['server_group_add_status'] === 'true') {
