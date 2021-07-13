@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>批量执行脚本</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>批量执行脚本</title>
 
-  <link rel="icon" href="/image/bitbug_favicon.ico">
-  <link rel="stylesheet" href="/layui/css/layui.css">
-  <link rel="stylesheet" href="/css/orange.css">
-  <link rel="stylesheet" href="/css/batchscript.css">
+    <link rel="icon" href="/image/bitbug_favicon.ico">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/orange.css">
+    <link rel="stylesheet" href="/css/batchscript.css">
 
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
+    <div class="layui-header">
 
-  </div>
+    </div>
 
-  <div class="layui-side layui-bg-black">
+    <div class="layui-side layui-bg-black">
 
-  </div>
+    </div>
 
-  <div class="layui-body">
+    <div class="layui-body">
 
-    <div class="orange-body" style="padding: 15px;">
+        <div class="orange-body" style="padding: 15px;">
 
-      <div class="orange-cmd-header">
-      <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>批量执行脚本</legend>
-      </fieldset>
-      </div>
+            <div class="orange-cmd-header">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>批量执行脚本</legend>
+                </fieldset>
+            </div>
 
-      <div class="orange-cmd-body">
-      <div class="layui-btn-container">
+            <div class="orange-cmd-body">
+                <div class="layui-btn-container">
 
-        <button type="button" class="layui-btn layui-btn-sm" lay-demo="createHost">创建资产</button>
-        <button type="button" class="layui-btn layui-btn-sm" lay-demo="createGroup">创建组</button>
-        <button type="button" class="layui-btn layui-btn-sm" lay-demo="reload">清空勾选</button>
-      </div>
+                    <button type="button" class="layui-btn layui-btn-sm" lay-demo="createHost">创建资产</button>
+                    <button type="button" class="layui-btn layui-btn-sm" lay-demo="createGroup">创建组</button>
+                    <button type="button" class="layui-btn layui-btn-sm" lay-demo="reload">清空勾选</button>
+                </div>
 
-      <div id="orange-fx1" class="demo-tree"></div>
-      </div>
+                <div id="orange-fx1" class="demo-tree"></div>
+            </div>
 
-      <div class="orange-cmd-end">
+            <div class="orange-cmd-end">
 
 
-    <div id="drop_area">
-      <input id="uploadFile" type="file">
-        <div class="text" id="orange-text" style="margin-top: 40px">
-          <i class="layui-icon"></i>
-          <span>+点击或拖拽脚本到此处, 即可上传</span>
+                <div id="drop_area">
+                    <input id="uploadFile" type="file">
+                    <div class="text" id="orange-text" style="margin-top: 40px">
+                        <i class="layui-icon"></i>
+                        <span>+点击或拖拽脚本到此处, 即可上传</span>
+                    </div>
+                </div>
+                <div id="img_area"></div>
+
+
+                <!--        <input type="button" onclick="" value="上传" />-->
+                <button type="button" class="layui-btn layui-btn-sm" lay-demo="getChecked" id="test9">上传执行</button>
+                <br>
+                <button type="button" class="layui-btn layui-btn-primary" lay-demo="resetMsg">重置内容</button>
+                <textarea readonly="readonly" id="shuchu_tex" style="resize: none">执行同步代码的输出内容</textarea>
+            </div>
+
         </div>
-    </div>
-    <div id="img_area"></div>
-
-
-<!--        <input type="button" onclick="" value="上传" />-->
-        <button type="button" class="layui-btn layui-btn-sm" lay-demo="getChecked" id="test9">上传执行</button>
-        <br>
-        <button type="button" class="layui-btn layui-btn-primary" lay-demo="resetMsg">重置内容</button>
-      <textarea readonly="readonly" id="shuchu_tex" style="resize: none">执行同步代码的输出内容</textarea>
-      </div>
-
-    </div>
 
     </div>
 
 
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    <p >Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
-  </div>
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <p>Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
+    </div>
 </div>
 
 

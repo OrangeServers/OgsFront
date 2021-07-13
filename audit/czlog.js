@@ -24,12 +24,12 @@ layui.use('table', function () {
             }
             , cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                , {field: 'cz_name', width:160, title: '登录用户'}
+                , {field: 'cz_name', width: 160, title: '登录用户'}
                 , {field: 'cz_type', width: 140, title: '操作类型'}
                 , {field: 'cz_info', width: 160, title: '操作详情'}
                 , {field: 'cz_details', title: '操作细节'}
                 , {field: 'cz_status', width: 60, title: '状态'}
-                , {field: 'cz_reason', width: 160 ,title: '原因'}
+                , {field: 'cz_reason', width: 160, title: '原因'}
                 , {field: 'cz_time', width: 160, title: '操作时间'}
                 // ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width: 80}
             ]]

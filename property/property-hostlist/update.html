@@ -1,114 +1,123 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>layout 管理系统大布局 - Layui</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 管理系统大布局 - Layui</title>
 
-  <link rel="stylesheet" href="/layui/css/layui.css">
-  <link rel="stylesheet" href="/css/orange.css">
-  <link rel="stylesheet" href="/css/pagefrom.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/orange.css">
+    <link rel="stylesheet" href="/css/pagefrom.css">
 
 
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
-
-  </div>
-
-  <div class="layui-side layui-bg-black">
-
-  </div>
-
-  <div class="layui-body">
-
-    <div class="orange-body" style="padding: 15px;">
-      <div class="orange-zsbq">
-        <a href="/index.html">/ 仪表盘</a>
-        <a href="/property/property-hostlist.html">/ 资产列表</a>
-        <a href="update.html">/ 更新信息</a>
-      </div>
-
-      <div class="orange-cjbt">
-      <h2>更新资产信息</h2>
-      </div>
-
-      <div class="orange-host-from" style="height: 580px">
-        <h3>必填信息</h3>
-<!--      <form id="adhsform" onsubmit="return false">-->
-        <form class="layui-form" onsubmit="return false">
-
-              <div class="layui-form-item">
-        <label class="layui-form-label">id</label>
-        <div class="layui-input-block">
-          <input type="text" name="id" readonly="readonly" style="background-color: #dbe2df" lay-verify="required" lay-reqtext="id是必填项，不能为空!" autocomplete="off" class="layui-input">
-        </div>
-        </div>
-
-
-              <div class="layui-form-item">
-        <label class="layui-form-label">别名</label>
-        <div class="layui-input-block">
-          <input type="text" name="alias" lay-verify="required" lay-reqtext="资产别名是必填项，不能为空!" placeholder="请输入资产别名" autocomplete="off" class="layui-input">
-        </div>
-        </div>
-
-                <div class="layui-form-item">
-        <label class="layui-form-label">机器ip</label>
-        <div class="layui-input-block">
-          <input type="text" name="host_ip" lay-verify="required" lay-reqtext="资产ip是必填项，不能为空!" placeholder="请输入资产ip" autocomplete="off" class="layui-input">
-        </div>
-        </div>
-
-                <div class="layui-form-item">
-        <label class="layui-form-label">机器端口</label>
-        <div class="layui-input-block">
-          <input type="text" name="host_port" lay-verify="required" lay-reqtext="资产端口是必填项，不能为空!" placeholder="请输入资产端口" autocomplete="off" class="layui-input">
-        </div>
-        </div>
-
-                <div class="layui-form-item">
-        <label class="layui-form-label">登录用户</label>
-        <div class="layui-input-block">
-          <input type="text" name="host_user" lay-verify="required" lay-reqtext="登录用户名是必填项，不能为空!" placeholder="请输入登录用户名" autocomplete="off" class="layui-input">
-        </div>
-        </div>
-
-                <div class="layui-form-item">
-        <label class="layui-form-label">登录密码</label>
-        <div class="layui-input-block">
-          <input type="password" name="host_password" lay-verify="required" lay-reqtext="登录密码是必填项，不能为空!" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
-        </div>
-        </div>
-
-                <div class="layui-form-item">
-        <label class="layui-form-label">用户组</label>
-        <div class="layui-input-block">
-          <select name="group" lay-filter="group" id="orange_group">
-          </select>
-        </div>
-        </div>
-
-
-          <div class="layui-form-item">
-        <div class="layui-input-block">
-          <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-          <button type="button" class="layui-btn layui-btn-normal" onclick="clean_adhost()">取消</button>
-        </div>
-      </div>
-
-      </form>
-      </div>
+    <div class="layui-header">
 
     </div>
-  </div>
 
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    <p >Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
-  </div>
+    <div class="layui-side layui-bg-black">
+
+    </div>
+
+    <div class="layui-body">
+
+        <div class="orange-body" style="padding: 15px;">
+            <div class="orange-zsbq">
+                <a href="/index.html">/ 仪表盘</a>
+                <a href="/property/property-hostlist.html">/ 资产列表</a>
+                <a href="update.html">/ 更新信息</a>
+            </div>
+
+            <div class="orange-cjbt">
+                <h2>更新资产信息</h2>
+            </div>
+
+            <div class="orange-host-from" style="height: 580px">
+                <h3>必填信息</h3>
+                <!--      <form id="adhsform" onsubmit="return false">-->
+                <form class="layui-form" onsubmit="return false">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">id</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="id" readonly="readonly" style="background-color: #dbe2df"
+                                   lay-verify="required" lay-reqtext="id是必填项，不能为空!" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">别名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="alias" lay-verify="required" lay-reqtext="资产别名是必填项，不能为空!"
+                                   placeholder="请输入资产别名" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">机器ip</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="host_ip" lay-verify="required" lay-reqtext="资产ip是必填项，不能为空!"
+                                   placeholder="请输入资产ip" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">机器端口</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="host_port" lay-verify="required" lay-reqtext="资产端口是必填项，不能为空!"
+                                   placeholder="请输入资产端口" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">登录用户</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="host_user" lay-verify="required" lay-reqtext="登录用户名是必填项，不能为空!"
+                                   placeholder="请输入登录用户名" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">登录密码</label>
+                        <div class="layui-input-block">
+                            <input type="password" name="host_password" lay-verify="required"
+                                   lay-reqtext="登录密码是必填项，不能为空!" placeholder="请输入登录密码" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户组</label>
+                        <div class="layui-input-block">
+                            <select name="group" lay-filter="group" id="orange_group">
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <button type="button" class="layui-btn layui-btn-normal" onclick="clean_adhost()">取消
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <p>Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
+    </div>
 </div>
 
 

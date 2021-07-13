@@ -1,84 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>系统设置</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>系统设置</title>
 
-  <link rel="icon" href="/image/bitbug_favicon.ico">
-  <link rel="stylesheet" href="/layui/css/layui.css">
-  <link rel="stylesheet" href="/css/orange.css">
-  <link rel="stylesheet" href="/css/pagefrom.css">
-  <link rel="stylesheet" href="/css/settings.css">
+    <link rel="icon" href="/image/bitbug_favicon.ico">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/orange.css">
+    <link rel="stylesheet" href="/css/pagefrom.css">
+    <link rel="stylesheet" href="/css/settings.css">
 
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
-
-  </div>
-
-  <div class="layui-side layui-bg-black">
-
-  </div>
-
-  <div class="layui-body">
-
-    <div class="orange-body" style="padding: 15px;">
-        <h1>设置</h1>
-
-      <div class="orange-host-from" style="margin-top: 20px; height: 260px">
-        <h3>系统信息</h3>
-        <form class="layui-form" onsubmit="return false">
-
-          <div class="layui-form-item">
-        <label class="layui-form-label">用户登录失效时间</label>
-        <div class="layui-input-block">
-          <select name="login_time" lay-filter="aihao">
-            <option value="1" class="orange-sel1">1小时</option>
-            <option value="3" class="orange-sel3">3小时</option>
-            <option value="6" class="orange-sel6">6小时</option>
-            <option value="12" class="orange-sel12">1天</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="layui-form-item">
-        <label class="layui-form-label">是否开启用户注册</label>
-        <div class="layui-input-block">
-          <input class="orange-ra-on" type="radio" name="register_status" value="on" title="开启">
-          <input class="orange-ra-off" type="radio" name="register_status" value="off" title="关闭">
-          <input type="radio" name="register_status" value="禁" title="禁用" disabled="">
-        </div>
-      </div>
-
-      <div class="layui-form-item">
-        <label class="layui-form-label">系统配色方案</label>
-        <div class="layui-input-block">
-          <input class="orange-ra-black" type="radio" name="color_matching" value="black" title="black">
-          <input class="orange-ra-blue" type="radio" name="color_matching" value="blue" title="blue">
-<!--          <input type="radio" name="color_matching" value="禁" title="禁用" disabled="">-->
-        </div>
-      </div>
-
-          <div class="layui-form-item">
-        <div class="layui-input-block">
-          <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即应用</button>
-<!--          <button type="button" class="layui-btn layui-btn-normal" onclick="clean_adhost()">取消</button>-->
-        </div>
-      </div>
-
-        </form>
+    <div class="layui-header">
 
     </div>
 
-    </div>
-  </div>
+    <div class="layui-side layui-bg-black">
 
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    <p >Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
-  </div>
+    </div>
+
+    <div class="layui-body">
+
+        <div class="orange-body" style="padding: 15px;">
+            <h1>设置</h1>
+
+            <div class="orange-host-from" style="margin-top: 20px; height: 260px">
+                <h3>系统信息</h3>
+                <form class="layui-form" onsubmit="return false">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户登录失效时间</label>
+                        <div class="layui-input-block">
+                            <select name="login_time" lay-filter="aihao">
+                                <option value="1" class="orange-sel1">1小时</option>
+                                <option value="3" class="orange-sel3">3小时</option>
+                                <option value="6" class="orange-sel6">6小时</option>
+                                <option value="12" class="orange-sel12">1天</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否开启用户注册</label>
+                        <div class="layui-input-block">
+                            <input class="orange-ra-on" type="radio" name="register_status" value="on" title="开启">
+                            <input class="orange-ra-off" type="radio" name="register_status" value="off" title="关闭">
+                            <input type="radio" name="register_status" value="禁" title="禁用" disabled="">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">系统配色方案</label>
+                        <div class="layui-input-block">
+                            <input class="orange-ra-black" type="radio" name="color_matching" value="black"
+                                   title="black">
+                            <input class="orange-ra-blue" type="radio" name="color_matching" value="blue" title="blue">
+                            <!--          <input type="radio" name="color_matching" value="禁" title="禁用" disabled="">-->
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即应用</button>
+                            <!--          <button type="button" class="layui-btn layui-btn-normal" onclick="clean_adhost()">取消</button>-->
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <p>Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
+    </div>
 </div>
 
 

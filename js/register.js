@@ -1,4 +1,3 @@
-
 function chk_username() {
     let user_val = $("#orange-username").val()
     if (user_val === '') {
@@ -75,27 +74,27 @@ function com_register() {
     if (val_qr !== val) {
         layer.msg('两次输入的密码不一致', {icon: 2})
     } else if (val_qr === val) {
-           $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/account/com_register",
-        data: $(".layui-form").serialize(),
-        dataType: "JSON",
-        success: function (res) {
-            console.log(res);
-            if (res['chk_user_status'] === 'fail') {
-                layer.msg('该用户名已存在,请检查后再试', {icon: 2})
-            } else if (res['verification'] === 'fail') {
-                layer.msg('验证码错误，请检查后再试', {icon: 2})
-            } else if (res['chk_mail_status'] === 'fail') {
-                layer.msg('邮箱已被注册，请检查后再试', {icon: 2})
-            } else if (res['chk_verification'] === 'fail') {
-                layer.msg('验证码已过期，请重新获取', {icon: 2})
-            } else if (res['chk_user_status'] === 'true' && res['chk_mail_status'] === 'true' && res['verification'] === 'true') {
-                layer.msg('注册成功', {icon: 1})
-                window.location.href = "/login.html"
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/account/com_register",
+            data: $(".layui-form").serialize(),
+            dataType: "JSON",
+            success: function (res) {
+                console.log(res);
+                if (res['chk_user_status'] === 'fail') {
+                    layer.msg('该用户名已存在,请检查后再试', {icon: 2})
+                } else if (res['verification'] === 'fail') {
+                    layer.msg('验证码错误，请检查后再试', {icon: 2})
+                } else if (res['chk_mail_status'] === 'fail') {
+                    layer.msg('邮箱已被注册，请检查后再试', {icon: 2})
+                } else if (res['chk_verification'] === 'fail') {
+                    layer.msg('验证码已过期，请重新获取', {icon: 2})
+                } else if (res['chk_user_status'] === 'true' && res['chk_mail_status'] === 'true' && res['verification'] === 'true') {
+                    layer.msg('注册成功', {icon: 1})
+                    window.location.href = "/login.html"
+                }
             }
-        }
-    })
+        })
     }
 }
 
@@ -163,7 +162,7 @@ function test_on_input() {
 function test_fzd_input() {
     var pwdRegex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z]).{8,30}');
     let val = $('#password1').val()
-    if (!pwdRegex.test(val)){
+    if (!pwdRegex.test(val)) {
         $('#password1').css('color', '#FF5722')
     } else if (pwdRegex.test(val)) {
         $('#password1').css('color', '#5FB878')

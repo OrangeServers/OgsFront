@@ -56,19 +56,19 @@ function randomColor() {//得到随机的颜色值
 }
 
 
-    function get_new_ondate() {
-        let mydata = new Date()
-        let day = mydata.getDate();
-        let month = mydata.getMonth() + 1;
-        let year = mydata.getFullYear();
-        if (month < 10) {
+function get_new_ondate() {
+    let mydata = new Date()
+    let day = mydata.getDate();
+    let month = mydata.getMonth() + 1;
+    let year = mydata.getFullYear();
+    if (month < 10) {
         month = "0" + month;
-        }
-        if (day < 10) {
-            day = "0" + day;
-        }
-        return year + '-' + month + '-' + day
     }
+    if (day < 10) {
+        day = "0" + day;
+    }
+    return year + '-' + month + '-' + day
+}
 
 function user_login(login_time) {
     // layer.alert($('.layui-form').serialize())
@@ -88,7 +88,7 @@ function user_login(login_time) {
                 window.location.href = '/index.html'
                 let date = new Date();
                 date.setTime(date.getTime() + login_time * 60 * 60 * 1000)
-               // date.setTime(date.getTime() + 4 * 60 * 60 * 1000);//只能这么写，10表示10秒钟
+                // date.setTime(date.getTime() + 4 * 60 * 60 * 1000);//只能这么写，10表示10秒钟
                 $.cookie('username', $("#orange-username").val(), {expires: date});
             } else if (res['password_status'] === 'fail') {
                 layer.close(logif)
@@ -116,7 +116,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         , laydate = layui.laydate;
 
 
-    if ($.cookie('username') !== undefined){
+    if ($.cookie('username') !== undefined) {
         window.location.href = '/index.html'
     }
 

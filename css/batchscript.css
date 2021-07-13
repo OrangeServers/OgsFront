@@ -73,16 +73,18 @@
     margin-left: 10px;
     float: left;
 }
+
 #uploadFile {
-  width: 700px;
-  height: 110px;
-  border: 1px dashed black;
-  /*margin-top: 10px;*/
-  /*margin-left: 10px;*/
-  opacity: 0;
-  position: relative;
-  z-index: 99;
+    width: 700px;
+    height: 110px;
+    border: 1px dashed black;
+    /*margin-top: 10px;*/
+    /*margin-left: 10px;*/
+    opacity: 0;
+    position: relative;
+    z-index: 99;
 }
+
 #drop_area .text {
     position: absolute;
     width: 100%;
@@ -90,9 +92,11 @@
     text-align: center;
     font-size: 14px;
 }
+
 #img_area {
     width: 300px;
 }
+
 #img_area img {
     width: 300px;
     margin-bottom: 5px;

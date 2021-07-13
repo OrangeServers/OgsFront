@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>OrangeServer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>OrangeServer</title>
 
-  <link rel="icon" href="/image/bitbug_favicon.ico">
-  <link rel="stylesheet" href="/layui/css/layui.css">
-  <link rel="stylesheet" href="/css/orange.css">
-  <link rel="stylesheet" href="/css/bq.css">
-  <link rel="stylesheet" href="/css/ybp.css">
-  <link rel="stylesheet" href="/layui/layuimod/dtree/dtree.css">
-  <link rel="stylesheet" href="/layui/layuimod/dtree/font/dtreefont.css">
-<style>
-  .round_icon {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
+    <link rel="icon" href="/image/bitbug_favicon.ico">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/orange.css">
+    <link rel="stylesheet" href="/css/bq.css">
+    <link rel="stylesheet" href="/css/ybp.css">
+    <link rel="stylesheet" href="/layui/layuimod/dtree/dtree.css">
+    <link rel="stylesheet" href="/layui/layuimod/dtree/font/dtreefont.css">
+    <style>
+        .round_icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
 
-</style>
+    </style>
 
-  <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/jquery-3.3.1.js"></script>
 
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
-  </div>
+    <div class="layui-header">
+    </div>
 
-  <div class="layui-side layui-bg-black">
-
-  </div>
-
-  <div class="layui-body">
-    <!--  -->
-    <div class="orange-body" style="padding: 15px;">
-
-              <div id="demo1" class="xm-select-demo"></div>
-      <button class="btn" id="demo1-getValue">获取选中值</button>
-      <pre id="demo1-value"></pre>
-
-      <button value="1" onclick="host_conn_sh(this.value)">连接id1主机</button>
-
-      上传图片
-      <input type="file" accept="image/jpeg,image/jp2,image/png">
-
-      <label>更换头像</label>
-<!--      <img src=ogs_backend_url + "/local/image/test_get/admin" class="round_icon">-->
-      <input type="file" class="orange-ups-tx" accept="image/jpeg,image/png,image/gif">
-
-      <div id="orange-fx1" class="demo-tree"></div>
+    <div class="layui-side layui-bg-black">
 
     </div>
 
-  </div>
+    <div class="layui-body">
+        <!--  -->
+        <div class="orange-body" style="padding: 15px;">
+
+            <div id="demo1" class="xm-select-demo"></div>
+            <button class="btn" id="demo1-getValue">获取选中值</button>
+            <pre id="demo1-value"></pre>
+
+            <button value="1" onclick="host_conn_sh(this.value)">连接id1主机</button>
+
+            上传图片
+            <input type="file" accept="image/jpeg,image/jp2,image/png">
+
+            <label>更换头像</label>
+            <!--      <img src=ogs_backend_url + "/local/image/test_get/admin" class="round_icon">-->
+            <input type="file" class="orange-ups-tx" accept="image/jpeg,image/png,image/gif">
+
+            <div id="orange-fx1" class="demo-tree"></div>
+
+        </div>
+
+    </div>
 
 
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    <p >Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
-  </div>
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <p>Copyright @ 2021-04-09 by Xuzhiwei Version1.0</p>
+    </div>
 </div>
 
 
@@ -80,26 +80,26 @@
 
 
 <script type="application/javascript">
-   function host_conn_sh(host_id) {
-    $.ajax({
-    type: "POST",
-    url: "/server/host/list",
-    data: {'id': host_id},
-    dataType: "JSON",
-    success: function (res) {
-        if (res['host_list_msg'] !== 'select list msg error') {
-            let host_port = res['host_port'],
-                host_ip = res['host_ip'],
-                host_user = res["host_user"],
-                host_psw = 'amxiMTIz'
-            // let url = '/webssh/?hostname=' + host_ip + '&username=' + host_user + '&password=' + host_psw
-          let url = '/webssh/?hostname=' + host_ip + '&username=' + host_user + '&password=' + host_psw
-          window.open(url)
-        } else if (res['host_list_msg'] === 'select list msg error'){
-            error('未知错误')
-        }
-    }
-    })
+    function host_conn_sh(host_id) {
+        $.ajax({
+            type: "POST",
+            url: "/server/host/list",
+            data: {'id': host_id},
+            dataType: "JSON",
+            success: function (res) {
+                if (res['host_list_msg'] !== 'select list msg error') {
+                    let host_port = res['host_port'],
+                        host_ip = res['host_ip'],
+                        host_user = res["host_user"],
+                        host_psw = 'amxiMTIz'
+                    // let url = '/webssh/?hostname=' + host_ip + '&username=' + host_user + '&password=' + host_psw
+                    let url = '/webssh/?hostname=' + host_ip + '&username=' + host_user + '&password=' + host_psw
+                    window.open(url)
+                } else if (res['host_list_msg'] === 'select list msg error') {
+                    error('未知错误')
+                }
+            }
+        })
     }
 
     layui.config({
@@ -108,110 +108,109 @@
         dtree: 'dtree'
     })
 
-    layui.use(['jquery', 'dtree'], function (){
-      let  dtree = layui.dtree
+    layui.use(['jquery', 'dtree'], function () {
+        let dtree = layui.dtree
 
-    $.ajax({
-        type: "POST",
-        url: "/local/data",
-        dataType: "JSON",
-        data: {'name': 'xuzhiwei'},
-        showLine: true,
-        edit: ['add', 'update', 'del'],
-        success: function (res) {
-            let data = res['host']
-            dtree.render({
-                elem: '#orange-fx1'
-                , id: 'demoId1'
-                , data: data
-                , showCheckbox: true
-                , iconfont:["layui-icon"]
-                // , nodeIconArray:{"3":{"open":"dtree-icon-pulldown","close":"dtree-icon-pullup"}}
-                // , nodeIconArray:{"3":{"open":"layui-icon-template-1","close":"layui-icon-template-1"}}
-                // , leafIconArray:{"11":"dtree-icon-star"}
-                // , icon: ["3","11"]
-                // , skin: "layui"
-                ,iconfontStyle: [{  // 第一个JSON
-                    fnode:{
-                      node:{
-                        open: "dtree-icon-jia1"  // 这里从dtreefont图标库中选择该图标，当节点展开时，一级图标使用
-                      }
-                    },
-                  snode:{  //二级节点
-                    node:{  //非叶子节点
-                      // open:"",  //节点展开
-                      // close:""  //节点关闭
-                    },
-                    leaf:"layui-icon-template-1"  //叶子节点
-                  }
-                  }]
-            });
-        }
-    })
+        $.ajax({
+            type: "POST",
+            url: "/local/data",
+            dataType: "JSON",
+            data: {'name': 'xuzhiwei'},
+            showLine: true,
+            edit: ['add', 'update', 'del'],
+            success: function (res) {
+                let data = res['host']
+                dtree.render({
+                    elem: '#orange-fx1'
+                    , id: 'demoId1'
+                    , data: data
+                    , showCheckbox: true
+                    , iconfont: ["layui-icon"]
+                    // , nodeIconArray:{"3":{"open":"dtree-icon-pulldown","close":"dtree-icon-pullup"}}
+                    // , nodeIconArray:{"3":{"open":"layui-icon-template-1","close":"layui-icon-template-1"}}
+                    // , leafIconArray:{"11":"dtree-icon-star"}
+                    // , icon: ["3","11"]
+                    // , skin: "layui"
+                    , iconfontStyle: [{  // 第一个JSON
+                        fnode: {
+                            node: {
+                                open: "dtree-icon-jia1"  // 这里从dtreefont图标库中选择该图标，当节点展开时，一级图标使用
+                            }
+                        },
+                        snode: {  //二级节点
+                            node: {  //非叶子节点
+                                // open:"",  //节点展开
+                                // close:""  //节点关闭
+                            },
+                            leaf: "layui-icon-template-1"  //叶子节点
+                        }
+                    }]
+                });
+            }
+        })
 
-      dtree.on("node('orange-fx1')", function (obj){
-        console.log(obj.param)
-        layui.layer.msg(obj.param['context'])
-      })
+        dtree.on("node('orange-fx1')", function (obj) {
+            console.log(obj.param)
+            layui.layer.msg(obj.param['context'])
+        })
 
-      $.ajax({
-          type: "POST",
-          url: ogs_backend_url + "/auth/host/uplist",
-          data: {
-            'name': '所有权限',
-            'req_type': 'user'
-          },
-          dataType: "JSON",
-          success: function (res) {
-              let auth_data = res['msg']
-              for (let i=0;i<auth_data.length;i++){
-                  if (auth_data[i]['selected'] === 'selected'){
-                      auth_data[i]['selected'] = true
-                  }
-              }
-            window.demo1 = xmSelect.render({
-                el: '#demo1',
-                language: 'zn',
-                data: auth_data
-            })
-          }
-      })
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/auth/host/uplist",
+            data: {
+                'name': '所有权限',
+                'req_type': 'user'
+            },
+            dataType: "JSON",
+            success: function (res) {
+                let auth_data = res['msg']
+                for (let i = 0; i < auth_data.length; i++) {
+                    if (auth_data[i]['selected'] === 'selected') {
+                        auth_data[i]['selected'] = true
+                    }
+                }
+                window.demo1 = xmSelect.render({
+                    el: '#demo1',
+                    language: 'zn',
+                    data: auth_data
+                })
+            }
+        })
 
 
-      $.ajax({
-          type: "POST",
-          url: ogs_backend_url + "/auth/host/uplist",
-          data: {
-            'name': '所有权限',
-            'req_type': 'user'
-          },
-          dataType: "JSON",
-          success: function (res) {
-              let auth_data = res['msg']
-              for (let i=0;i<auth_data.length;i++){
-                  if (auth_data[i]['selected'] === 'selected'){
-                      auth_data[i]['selected'] = true
-                  }
-              }
-            window.demo1 = xmSelect.render({
-                el: '#demo1',
-                language: 'zn',
-                data: auth_data
-            })
-          }
-      })
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/auth/host/uplist",
+            data: {
+                'name': '所有权限',
+                'req_type': 'user'
+            },
+            dataType: "JSON",
+            success: function (res) {
+                let auth_data = res['msg']
+                for (let i = 0; i < auth_data.length; i++) {
+                    if (auth_data[i]['selected'] === 'selected') {
+                        auth_data[i]['selected'] = true
+                    }
+                }
+                window.demo1 = xmSelect.render({
+                    el: '#demo1',
+                    language: 'zn',
+                    data: auth_data
+                })
+            }
+        })
 
         let xmSelect = layui.xmSelect
 
 
-  document.getElementById('demo1-getValue').onclick = function(){
-      //获取当前多选选中的值
-      var selectArr = demo1.getValue('value');
-      document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
-  }
+        document.getElementById('demo1-getValue').onclick = function () {
+            //获取当前多选选中的值
+            var selectArr = demo1.getValue('value');
+            document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
+        }
 
     })
-
 
 
 </script>
