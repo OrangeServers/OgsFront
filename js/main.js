@@ -119,9 +119,6 @@ function upload_layui_admin(cas_this) {
     let head_html = '    <div class="layui-logo"><a href="/index.html"><img src="/image/juzi11.png" width="40" height="40">OrangeServer</a></div>\n' +
         '    <!-- 头部区域（可配合layui 已有的水平导航） -->\n' +
         '    <ul class="layui-nav layui-layout-left">\n' +
-        '      <li class="layui-nav-item"><a href="">nav 1</a></li>\n' +
-        '      <li class="layui-nav-item"><a href="">nav 2</a></li>\n' +
-        '      <li class="layui-nav-item"><a href="">nav 3</a></li>\n' +
         '      <li class="layui-nav-item">\n' +
         '        <a href="javascript:;">nav groups</a>\n' +
         '        <dl class="layui-nav-child">\n' +
@@ -289,9 +286,6 @@ function upload_layui_develop(cas_this) {
     let head_html = '    <div class="layui-logo"><a href="/index.html"><img src="/image/juzi11.png" width="40" height="40">OrangeServer</a></div>\n' +
         '    <!-- 头部区域（可配合layui 已有的水平导航） -->\n' +
         '    <ul class="layui-nav layui-layout-left">\n' +
-        '      <li class="layui-nav-item"><a href="">nav 1</a></li>\n' +
-        '      <li class="layui-nav-item"><a href="">nav 2</a></li>\n' +
-        '      <li class="layui-nav-item"><a href="">nav 3</a></li>\n' +
         '      <li class="layui-nav-item">\n' +
         '        <a href="javascript:;">nav groups</a>\n' +
         '        <dl class="layui-nav-child">\n' +
