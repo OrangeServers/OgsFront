@@ -15,12 +15,14 @@ function upload_layui_admin(cas_this) {
         async: false,
         success: function (res) {
             if (res['color_matching'] === 'black') {
-                // color_matching_head = '#faa755'
                 color_matching_head = '#23262E'
                 color_matching = '#393D49'
             } else if (res['color_matching'] === 'blue') {
                 color_matching_head = '#2261A1'
                 color_matching = '#2F4056'
+            } else if (res['color_matching'] === 'orange') {
+                color_matching_head = '#faa755'
+                color_matching = '#393D49'
             }
         }
     })
