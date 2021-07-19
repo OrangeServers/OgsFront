@@ -4,13 +4,16 @@
 
 // 管理员页面权限渲染
 function upload_layui_admin(cas_this) {
-    let color_matching = ''
-    let color_matching_head = ''
+    let user_name = $.cookie('username'),
+        path = ogs_backend_url + '/local/image/test_get/';
+
+    let color_matching = '',
+        color_matching_head = '';
 
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/local/settings/get",
-        data: {'name': 'admin'},
+        data: {'name': user_name},
         dataType: "JSON",
         async: false,
         success: function (res) {
@@ -26,9 +29,6 @@ function upload_layui_admin(cas_this) {
             }
         }
     })
-
-    let user_name = $.cookie('username')
-    let path = ogs_backend_url + '/local/image/test_get/'
 
     let cas_this1 = '',
         cas_this2 = '',
@@ -206,29 +206,31 @@ function upload_layui_admin(cas_this) {
 
 // 非管理员权限的页面渲染
 function upload_layui_develop(cas_this) {
-    let color_matching = ''
-    let color_matching_head = ''
+    let user_name = $.cookie('username'),
+        path = ogs_backend_url + '/local/image/test_get/';
+
+    let color_matching = '',
+        color_matching_head = '';
 
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/local/settings/get",
-        data: {'name': 'admin'},
+        data: {'name': user_name},
         dataType: "JSON",
         async: false,
         success: function (res) {
             if (res['color_matching'] === 'black') {
-                color_matching_head = '#faa755',
+                color_matching_head = '#23262E'
                 color_matching = '#393D49'
             } else if (res['color_matching'] === 'blue') {
                 color_matching_head = '#2261A1'
                 color_matching = '#2F4056'
+            } else if (res['color_matching'] === 'orange') {
+                color_matching_head = '#faa755'
+                color_matching = '#393D49'
             }
         }
     })
-
-
-    let user_name = $.cookie('username')
-    let path = ogs_backend_url + '/local/image/test_get/'
 
     let cas_this1 = '',
         cas_this3 = '',
