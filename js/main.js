@@ -129,17 +129,16 @@ function upload_layui_admin(cas_this) {
         '      </li>\n' +
         '    </ul>\n' +
         '    <ul class="layui-nav layui-layout-right">\n' +
-        '      <li class="layui-nav-item">\n' +
+        '      <li class="layui-nav-item" style="margin-right: 20px">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
         '          <img src="' + path + user_name + '" class="layui-nav-img">\n' +
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
-        '          <dd><a href="">用户资料</a></dd>\n' +
         '          <dd><a href="/user/user-information/update.html">修改信息</a></dd>\n' +
+        '          <dd><a href="/login.html" class="orange-login-out" onclick="delete_cookie()">退出登录</a></dd>\n' +
         '        </dl>\n' +
         '      </li>\n' +
-        '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
         '    </ul>'
 
     let side_html = '    <div class="layui-side-scroll" style="background-color: ' + color_matching + '">\n' +
@@ -296,17 +295,17 @@ function upload_layui_develop(cas_this) {
         '      </li>\n' +
         '    </ul>\n' +
         '    <ul class="layui-nav layui-layout-right">\n' +
-        '      <li class="layui-nav-item">\n' +
+        '      <li class="layui-nav-item" style="margin-right: 20px">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
         '          <img src="' + path + user_name + '" class="layui-nav-img">\n' +
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
-        '          <dd><a href="">用户资料</a></dd>\n' +
         '          <dd><a href="/user/user-information/update.html">修改信息</a></dd>\n' +
+        '          <dd><a href="/login.html" class="orange-login-out" onclick="delete_cookie()">退出登录</a></dd>\n' +
         '        </dl>\n' +
         '      </li>\n' +
-        '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
+        // '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
         '    </ul>'
 
     let side_html = '    <div class="layui-side-scroll" style="background-color: ' + color_matching + '">\n' +
