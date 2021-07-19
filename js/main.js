@@ -1,9 +1,11 @@
 // js内导入其他js
 // document.write("<script src=\"http://pv.sohu.com/cityjson?ie=utf-8\"></script>");
 
-// 页面布局渲染
+
+// 管理员页面权限渲染
 function upload_layui_admin(cas_this) {
     let color_matching = ''
+    let color_matching_head = ''
 
     $.ajax({
         type: "POST",
@@ -13,13 +15,12 @@ function upload_layui_admin(cas_this) {
         async: false,
         success: function (res) {
             if (res['color_matching'] === 'black') {
-                let color_matching_head = '#faa755'
+                // color_matching_head = '#faa755'
+                color_matching_head = '#23262E'
                 color_matching = '#393D49'
-                $('.layui-header').css('background-color', color_matching_head)
             } else if (res['color_matching'] === 'blue') {
-                let color_matching_head = '#2261A1'
+                color_matching_head = '#2261A1'
                 color_matching = '#2F4056'
-                $('.layui-header').css('background-color', color_matching_head)
             }
         }
     })
@@ -116,7 +117,8 @@ function upload_layui_admin(cas_this) {
         cas_item_this14 = 'class="layui-this"'
     }
 
-    let head_html = '    <div class="layui-logo"><a href="/index.html"><img src="/image/juzi11.png" width="40" height="40">OrangeServer</a></div>\n' +
+    let head_html = '<div class="layui-header" style="background-color: ' + color_matching_head + '">' +
+        '    <div class="layui-logo"><a href="/index.html"><img src="/image/juzi11.png" width="40" height="40">OrangeServer</a></div>\n' +
         '    <!-- 头部区域（可配合layui 已有的水平导航） -->\n' +
         '    <ul class="layui-nav layui-layout-left">\n' +
         '      <li class="layui-nav-item">\n' +
@@ -139,9 +141,10 @@ function upload_layui_admin(cas_this) {
         '          <dd><a href="/login.html" class="orange-login-out" onclick="delete_cookie()">退出登录</a></dd>\n' +
         '        </dl>\n' +
         '      </li>\n' +
-        '    </ul>'
-
-    let side_html = '    <div class="layui-side-scroll" style="background-color: ' + color_matching + '">\n' +
+        '    </ul>' +
+        '</div>' +
+        '<div class="layui-side layui-bg-black">' +
+        '    <div class="layui-side-scroll" style="background-color: ' + color_matching + '">\n' +
         '      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->\n' +
         '      <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="background-color: ' + color_matching + '">\n' +
         '        <li class="layui-nav-item"><a href="/index.html"' + cas_this1 + '><img src="/image/仪表盘.png" width="20" height="20">仪表盘</a></li>\n' +
@@ -189,10 +192,10 @@ function upload_layui_admin(cas_this) {
         '        <li class="layui-nav-item"><a href="/filetransfer.html"' + cas_this3 + '><img src="/image/文件.png" width="20" height="20">文件传输</a></li>\n' +
         '        <li class="layui-nav-item"><a href="/settings.html"' + cas_this4 + '><img src="/image/设置.png" width="20" height="20">系统设置</a></li>\n' +
         '      </ul>\n' +
-        '    </div>'
+        '    </div>' +
+        '</div>'
 
-    $(".layui-header").html(head_html)
-    $(".layui-side").html(side_html)
+    $(".layui-body").before(head_html)
     // 重新渲染整个页面
     // layui.element.init()
     layui.element.render('nav')
@@ -202,6 +205,7 @@ function upload_layui_admin(cas_this) {
 // 非管理员权限的页面渲染
 function upload_layui_develop(cas_this) {
     let color_matching = ''
+    let color_matching_head = ''
 
     $.ajax({
         type: "POST",
@@ -211,13 +215,11 @@ function upload_layui_develop(cas_this) {
         async: false,
         success: function (res) {
             if (res['color_matching'] === 'black') {
-                let color_matching_head = '#faa755'
+                color_matching_head = '#faa755',
                 color_matching = '#393D49'
-                $('.layui-header').css('background-color', color_matching_head)
             } else if (res['color_matching'] === 'blue') {
-                let color_matching_head = '#2261A1'
+                color_matching_head = '#2261A1'
                 color_matching = '#2F4056'
-                $('.layui-header').css('background-color', color_matching_head)
             }
         }
     })
@@ -282,7 +284,8 @@ function upload_layui_develop(cas_this) {
         cas_item_this11 = 'class="layui-this"'
     }
 
-    let head_html = '    <div class="layui-logo"><a href="/index.html"><img src="/image/juzi11.png" width="40" height="40">OrangeServer</a></div>\n' +
+    let head_html = '<div class="layui-header" style="background-color: ' + color_matching_head + '">' +
+        '    <div class="layui-logo"><a href="/index.html"><img src="/image/juzi11.png" width="40" height="40">OrangeServer</a></div>\n' +
         '    <!-- 头部区域（可配合layui 已有的水平导航） -->\n' +
         '    <ul class="layui-nav layui-layout-left">\n' +
         '      <li class="layui-nav-item">\n' +
@@ -305,10 +308,10 @@ function upload_layui_develop(cas_this) {
         '          <dd><a href="/login.html" class="orange-login-out" onclick="delete_cookie()">退出登录</a></dd>\n' +
         '        </dl>\n' +
         '      </li>\n' +
-        // '      <li class="layui-nav-item"><a class="orange-login-out" onclick="delete_cookie()">退出登录</a></li>\n' +
-        '    </ul>'
-
-    let side_html = '    <div class="layui-side-scroll" style="background-color: ' + color_matching + '">\n' +
+        '    </ul>' +
+        '</div>' +
+        '<div class="layui-side layui-bg-black">' +
+        '    <div class="layui-side-scroll" style="background-color: ' + color_matching + '">\n' +
         '      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->\n' +
         '      <ul class="layui-nav layui-nav-tree"  lay-filter="test" style="background-color: ' + color_matching + '">\n' +
         '        <li class="layui-nav-item"><a href="/index.html"' + cas_this1 + '><img src="/image/仪表盘.png" width="20" height="20">仪表盘</a></li>\n' +
@@ -339,10 +342,10 @@ function upload_layui_develop(cas_this) {
         '        <li class="layui-nav-item"><a href="/filetransfer.html"' + cas_this3 + '><img src="/image/文件.png" width="20" height="20">文件传输</a></li>\n' +
         '        <li class="layui-nav-item"><a href="/settings.html"' + cas_this4 + '><img src="/image/设置.png" width="20" height="20">系统设置</a></li>\n' +
         '      </ul>\n' +
-        '    </div>'
+        '    </div>' +
+        '</div>'
 
-    $(".layui-header").html(head_html)
-    $(".layui-side").html(side_html)
+    $(".layui-body").before(head_html)
     // 重新渲染整个页面
     // layui.element.init()
     layui.element.render('nav')

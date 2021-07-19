@@ -31,7 +31,7 @@ layui.use(['form', 'jquery', 'layedit', 'laydate', 'element'], function () {
                 if (res['status'] === 'true') {
                     layer.msg('应用成功', {icon: 1, time: 2000})
                 } else if (res['status'] === 'fail') {
-                    layer.msg('应用成功', {icon: 2, time: 2000})
+                    layer.msg('应用失败', {icon: 2, time: 2000})
                 }
             }
         })
