@@ -31,10 +31,7 @@ function sys_user_update() {
         data: data,
         dataType: "JSON",
         success: function (res) {
-            if (res['sys_user_ping_status'] === 'fail') {
-                layer.close(logif)
-                layer.alert('更新失败，密码或其他错误，主机无法连接', {skin: 'layui-layer-hui'})
-            } else if (res['sys_user_into_update']) {
+            if (res['sys_user_ping_status'] === 'true') {
                 window.location.href = '/property/property-userlist.html'
             } else if (res['sys_user_into_update'] === 'fail') {
                 layer.close(logif)
