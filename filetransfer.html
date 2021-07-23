@@ -10,17 +10,40 @@
     <link rel="stylesheet" href="/css/orange.css">
 
     <style>
-        #demo6 {
-            background-image: url('image/文件夹.png');
-            background-color: Transparent;
-            background-repeat: no-repeat;
-            background-size: 100px 100px;
+        /*#demo6 {*/
+        /*    background-image: url('image/文件夹.png');*/
+        /*    background-color: Transparent;*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-size: 100px 100px;*/
+        /*    width: 100px;*/
+        /*    height: 100px;*/
+        /*    border: none;*/
+        /*    vertical-align: bottom;*/
+        /*}*/
+        .orange-dir {
+            /*background-image: url('image/文件夹.png');*/
+            /*background-color: Transparent;*/
+            /*background-repeat: no-repeat;*/
+            /*background-size: 100px 100px;*/
             width: 100px;
-            height: 100px;
+            height: 90px;
             border: none;
             vertical-align: bottom;
         }
-        #demo6:hover {
+
+        .orange-dir > img {
+            width: 50px;
+            height: 40px;
+            margin-top: 10px;
+        }
+
+        .orange-dir > p {
+            color: #23262E;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .orange-dir:hover {
             background-color: #bfbfbf;
         }
     </style>
@@ -36,12 +59,11 @@
             <p>文件管理, button内嵌套icon和p标签</p>
 
             <div class="file-div">
-                <button class="layui-btn layui-btn-primary" id="demo6">
-
-                    <!--                <i class="layui-icon layui-icon-circle layui-font-12"></i>-->
+                <button class="layui-btn layui-btn-primary orange-dir" id="demo6">
+                    <img src="image/文件夹2.png">
+                    <p>home</p>
                 </button>
 
-                <button title="ces" id="demo7">ces</button>
             </div>
 
         </div>
@@ -78,6 +100,23 @@
             dataType: "JSON",
             success: function (res) {
                 console.log(res)
+                let html = ''
+                let res_dir = res['dir']
+                let res_file = res['file']
+                for (let i = 0; i < res_dir.length; i++) {
+                    html += '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
+                        '                    <img src="image/文件夹2.png">\n' +
+                        '                    <p>' + res_dir[i] + '</p>\n' +
+                        '                </button>'
+                }
+
+                for (let y = 0; y < res_file.length; y++) {
+                    html += '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
+                        '                    <img src="image/文件2.png">\n' +
+                        '                    <p>' + res_file[y] + '</p>\n' +
+                        '                </button>'
+                }
+                $(".file-div").html(html)
             }
         })
 
@@ -97,6 +136,55 @@
             }]
         });
 
+        //右键菜单
+        var inst = dropdown.render({
+            elem: '#demo6' //也可绑定到 document，从而重置整个右键
+            , trigger: 'contextmenu' //contextmenu
+            , isAllowSpread: false //禁止菜单组展开收缩
+            , style: 'width: 200px' //定义宽度，默认自适应
+            , id: 'test777' //定义唯一索引
+            , data: [{
+                title: 'menu item 1'
+                , id: 'test'
+            }, {
+                title: 'Printing'
+                , id: 'print'
+            }, {
+                title: 'Reload'
+                , id: 'reload'
+            }, {type: '-'}, {
+                title: 'menu item 3'
+                , id: '#3'
+                , child: [{
+                    title: 'menu item 3-1'
+                    , id: '#1'
+                }, {
+                    title: 'menu item 3-2'
+                    , id: '#2'
+                }, {
+                    title: 'menu item 3-3'
+                    , id: '#3'
+                }]
+            }, {type: '-'}, {
+                title: 'menu item 4'
+                , id: ''
+            }, {
+                title: 'menu item 5'
+                , id: '#1'
+            }, {
+                title: 'menu item 6'
+                , id: '#1'
+            }]
+            , click: function (obj, othis) {
+                if (obj.id === 'test') {
+                    layer.msg('click');
+                } else if (obj.id === 'print') {
+                    window.print();
+                } else if (obj.id === 'reload') {
+                    location.reload();
+                }
+            }
+        });
 
     })
 </script>
