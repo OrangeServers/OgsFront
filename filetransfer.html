@@ -104,21 +104,74 @@
                 let res_dir = res['dir']
                 let res_file = res['file']
                 for (let i = 0; i < res_dir.length; i++) {
-                    let html = '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
+                    let html = '                <button class="layui-btn layui-btn-primary orange-dir" id="orange-dir-' + i +'">\n' +
                         '                    <img src="image/文件夹2.png">\n' +
                         '                    <p>' + res_dir[i] + '</p>\n' +
                         '                </button>'
                     $(".file-div").append(html)
+                    dropdown.render({
+                        elem: "#orange-dir-" + i //也可绑定到 document，从而重置整个右键
+                        , trigger: 'contextmenu' //contextmenu
+                        , isAllowSpread: false //禁止菜单组展开收缩
+                        , style: 'width: 200px' //定义宽度，默认自适应
+                        , id: 'test788' //定义唯一索引
+                        , data: [{
+                            title: 'menu item 1'
+                            , id: 'test'
+                        }, {
+                            title: 'Printing'
+                            , id: 'print'
+                        }, {
+                            title: 'Reload'
+                            , id: 'reload'
+                        }]
+                        , click: function (obj, othis) {
+                            if (obj.id === 'test') {
+                                layer.msg('click');
+                            } else if (obj.id === 'print') {
+                                window.print();
+                            } else if (obj.id === 'reload') {
+                                location.reload();
+                            }
+                        }
+                    });
                 }
 
                 for (let y = 0; y < res_file.length; y++) {
-                    let html = '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
+                    let html = '                <button class="layui-btn layui-btn-primary orange-dir" id="orange-file-' + y + '">\n' +
                         '                    <img src="image/文件2.png">\n' +
                         '                    <p>' + res_file[y] + '</p>\n' +
                         '                </button>'
                     $(".file-div").append(html)
+                    dropdown.render({
+                        elem: "#orange-file-" + y //也可绑定到 document，从而重置整个右键
+                        , trigger: 'contextmenu' //contextmenu
+                        , isAllowSpread: false //禁止菜单组展开收缩
+                        , style: 'width: 200px' //定义宽度，默认自适应
+                        , id: 'test799' //定义唯一索引
+                        , data: [{
+                            title: 'menu item 1'
+                            , id: 'test'
+                        }, {
+                            title: 'Printing'
+                            , id: 'print'
+                        }, {
+                            title: 'Reload'
+                            , id: 'reload'
+                        }]
+                        , click: function (obj, othis) {
+                            if (obj.id === 'test') {
+                                layer.msg('click');
+                            } else if (obj.id === 'print') {
+                                window.print();
+                            } else if (obj.id === 'reload') {
+                                location.reload();
+                            }
+                        }
+                    });
                 }
                 // $(".file-div").html(html)
+                element.init()
             }
         })
 
@@ -154,28 +207,6 @@
             }, {
                 title: 'Reload'
                 , id: 'reload'
-            }, {type: '-'}, {
-                title: 'menu item 3'
-                , id: '#3'
-                , child: [{
-                    title: 'menu item 3-1'
-                    , id: '#1'
-                }, {
-                    title: 'menu item 3-2'
-                    , id: '#2'
-                }, {
-                    title: 'menu item 3-3'
-                    , id: '#3'
-                }]
-            }, {type: '-'}, {
-                title: 'menu item 4'
-                , id: ''
-            }, {
-                title: 'menu item 5'
-                , id: '#1'
-            }, {
-                title: 'menu item 6'
-                , id: '#1'
             }]
             , click: function (obj, othis) {
                 if (obj.id === 'test') {
