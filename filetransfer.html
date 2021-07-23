@@ -100,23 +100,25 @@
             dataType: "JSON",
             success: function (res) {
                 console.log(res)
-                let html = ''
+                // let html = ''
                 let res_dir = res['dir']
                 let res_file = res['file']
                 for (let i = 0; i < res_dir.length; i++) {
-                    html += '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
+                    let html = '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
                         '                    <img src="image/文件夹2.png">\n' +
                         '                    <p>' + res_dir[i] + '</p>\n' +
                         '                </button>'
+                    $(".file-div").append(html)
                 }
 
                 for (let y = 0; y < res_file.length; y++) {
-                    html += '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
+                    let html = '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
                         '                    <img src="image/文件2.png">\n' +
                         '                    <p>' + res_file[y] + '</p>\n' +
                         '                </button>'
+                    $(".file-div").append(html)
                 }
-                $(".file-div").html(html)
+                // $(".file-div").html(html)
             }
         })
 
