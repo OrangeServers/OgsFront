@@ -9,6 +9,21 @@
     <link rel="stylesheet" href="/layui/css/layui.css">
     <link rel="stylesheet" href="/css/orange.css">
 
+    <style>
+        #demo6 {
+            background-image: url('image/文件夹.png');
+            background-color: Transparent;
+            background-repeat: no-repeat;
+            background-size: 100px 100px;
+            width: 100px;
+            height: 100px;
+            border: none;
+            vertical-align: bottom;
+        }
+        #demo6:hover {
+            background-color: #bfbfbf;
+        }
+    </style>
 
 </head>
 <body>
@@ -18,119 +33,17 @@
     <div class="layui-body">
 
         <div class="orange-body" style="padding: 15px;">
+            <p>文件管理, button内嵌套icon和p标签</p>
 
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>常规使用：普通图片上传</legend>
-            </fieldset>
+            <div class="file-div">
+                <button class="layui-btn layui-btn-primary" id="demo6">
 
-            <div class="layui-upload">
-                <button type="button" class="layui-btn" id="test1">更换头像</button>
-                <div class="layui-upload-list">
-                    <img class="layui-upload-img" id="demo1">
-                    <p id="demoText"></p>
-                </div>
-            </div>
-            <div style="width:300px;">
-                <div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="demo">
-                    <div class="layui-progress-bar" lay-percent=""></div>
-                </div>
-            </div>
-            <p style="margin-top: 10px; color: #666;">可轻松配合进度条使用</p>
-            <p>
-            </p>
-            <div style="margin-top: 10px;">
+                    <!--                <i class="layui-icon layui-icon-circle layui-font-12"></i>-->
+                </button>
 
-                <!-- 示例-970 -->
-                <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px"
-                     data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
-
+                <button title="ces" id="demo7">ces</button>
             </div>
 
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>上传多张图片</legend>
-            </fieldset>
-
-            <div class="layui-upload">
-                <button type="button" class="layui-btn" id="test2">多图片上传</button>
-                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
-                    预览图：
-                    <div class="layui-upload-list" id="demo2"></div>
-                </blockquote>
-            </div>
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>指定允许上传的文件类型</legend>
-            </fieldset>
-
-            <button type="button" class="layui-btn" id="test3"><i class="layui-icon"></i>上传文件</button>
-            <button type="button" class="layui-btn layui-btn-primary" id="test4"><i class="layui-icon"></i>只允许压缩文件
-            </button>
-            <button type="button" class="layui-btn" id="test5"><i class="layui-icon"></i>上传视频</button>
-            <button type="button" class="layui-btn" id="test6"><i class="layui-icon"></i>上传音频</button>
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>设定文件大小限制</legend>
-            </fieldset>
-
-            <button type="button" class="layui-btn layui-btn-danger" id="test7"><i class="layui-icon"></i>上传图片</button>
-            <div class="layui-inline layui-word-aux">
-                这里以限制 60KB 为例
-            </div>
-
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>同时绑定多个元素，并将属性设定在元素上</legend>
-            </fieldset>
-
-            <button class="layui-btn demoMore" lay-data="{url: '/a/'}">上传A</button>
-            <button class="layui-btn demoMore" lay-data="{url: '/b/', size:5}">上传B</button>
-            <button class="layui-btn demoMore" lay-data="{url: '/c/', accept: 'file',size:10}">上传C</button>
-
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>选完文件后不自动上传</legend>
-            </fieldset>
-
-            <div class="layui-upload">
-                <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>
-                <button type="button" class="layui-btn" id="test9">开始上传</button>
-            </div>
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>拖拽上传</legend>
-            </fieldset>
-
-            <div class="layui-upload-drag" id="test10">
-                <i class="layui-icon"></i>
-                <p>点击上传，或将文件拖拽到此处</p>
-                <div class="layui-hide" id="uploadDemoView">
-                    <hr>
-                    <img src="" alt="上传成功后渲染" style="max-width: 196px">
-                </div>
-            </div>
-
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>高级应用：制作一个多文件列表</legend>
-            </fieldset>
-
-            <div class="layui-upload">
-                <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件</button>
-                <div class="layui-upload-list">
-                    <table class="layui-table">
-                        <thead>
-                        <tr>
-                            <th>文件名</th>
-                            <th>大小</th>
-                            <th>状态</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
-                        <tbody id="demoList"></tbody>
-                    </table>
-                </div>
-                <button type="button" class="layui-btn" id="testListAction">开始上传</button>
-            </div>
-
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>绑定原始文件域</legend>
-            </fieldset>
-
-            <input type="file" name="file" id="test20">
         </div>
     </div>
 
@@ -148,6 +61,44 @@
 <script src="/js/main.js"></script>
 <!-- Chart code -->
 
-<script src="/js/file.js"></script>
+<script>
+    layui.use(['dropdown', 'util', 'layer', 'table', 'element'], function () {
+        let element = layui.element,
+            dropdown = layui.dropdown,
+            util = layui.util,
+            layer = layui.layer,
+            table = layui.table,
+            $ = layui.jquery;
+
+        get_user_auth_list('filetransfer')
+
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/local/file/def_get",
+            dataType: "JSON",
+            success: function (res) {
+                console.log(res)
+            }
+        })
+
+        //自定义事件 - dblclick 双击
+        dropdown.render({
+            elem: '#demo6'
+            , trigger: 'dblclick'
+            , data: [{
+                title: 'menu item 1'
+                , id: 100
+            }, {
+                title: 'menu item 2'
+                , id: 101
+            }, {
+                title: 'menu item 3'
+                , id: 102
+            }]
+        });
+
+
+    })
+</script>
 </body>
 </html>
