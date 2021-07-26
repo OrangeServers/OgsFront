@@ -111,8 +111,9 @@
             if (window.file_ispath === '/'){
                 file_render('/')
                 layer.msg('已经到根目录了')
+            } else {
+                file_render(window.file_ispath, 'checkout')
             }
-            file_render(window.file_ispath, 'checkout')
         })
 
         $(".orange-btn-root").on('click', function () {
