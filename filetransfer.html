@@ -104,13 +104,19 @@
         // $("#demo6").dblclick(function (){
         //     layer.msg($(this).val())
         // })
-
-        $(".orange-btn-root").on('click', function () {
-            file_render('')
+        // $(".orange-btn-checkout").on('click', function () {
+        //     file_render(window.file_ispath)
+        // })
+        $(".orange-btn-checkout").on('click', function () {
+            if (window.file_ispath === '/'){
+                file_render('/')
+                layer.msg('已经到根目录了')
+            }
+            file_render(window.file_ispath, 'checkout')
         })
 
-        $(".orange-btn-checkout").on('click', function () {
-            layer.msg('checkout')
+        $(".orange-btn-root").on('click', function () {
+            file_render('/')
         })
 
         $(".orange-btn-file").on('click', function () {
@@ -121,15 +127,16 @@
             file_render()
         })
 
-        function file_render(file_path) {
+        function file_render(file_path, get_type = 'get') {
             $(".file-div").html('')
             $.ajax({
                 type: "POST",
                 url: ogs_backend_url + "/local/file/def_get",
                 dataType: "JSON",
-                data: {'req_dir': file_path},
+                data: {'req_dir': file_path, 'get_file_type': get_type},
                 success: function (res) {
                     console.log(res)
+                    window.file_ispath = res['ispath']
                     // let html = ''
                     let res_dir = res['dir']
                     let res_file = res['file']
@@ -157,7 +164,7 @@
                             }]
                             , click: function (obj, othis) {
                                 if (obj.id === 'load') {
-                                    file_render(res_dir[i])
+                                    file_render(res['ispath'] + res_dir[i])
                                 } else if (obj.id === 'print') {
                                     window.print();
                                 } else if (obj.id === 'reload') {
@@ -167,7 +174,7 @@
                         });
                         $("#" + "orange-dir-" + i).dblclick(function () {
                             console.log($(this).val())
-                            file_render(res_dir[i])
+                            file_render(res['ispath'] + res_dir[i])
                         })
                     }
 
@@ -219,7 +226,7 @@
             })
         }
 
-        file_render('')
+        file_render('/')
 
         //自定义事件 - dblclick 双击
         // dropdown.render({
