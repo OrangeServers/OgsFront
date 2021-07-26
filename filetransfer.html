@@ -126,7 +126,7 @@
         })
 
         $(".orange-btn-reload").on('click', function () {
-            file_render()
+            file_render(window.file_ispath)
         })
 
         function file_render(file_path, get_type = 'get') {
