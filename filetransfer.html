@@ -62,7 +62,8 @@
                 <button class="layui-btn layui-btn-sm layui-btn-danger orange-btn-checkout"><i
                         class="layui-icon layui-icon-left"></i>返回上级目录
                 </button>
-                <button class="layui-btn layui-btn-sm orange-btn-file"><i class="layui-icon layui-icon-file"></i>上传文件
+                <button class="layui-btn layui-btn-sm orange-btn-file" id="test3"><i
+                        class="layui-icon layui-icon-file"></i>上传文件
                 </button>
                 <button class="layui-btn layui-btn-sm orange-btn-createdir"><i class="layui-icon layui-icon-add-1"></i>新建文件夹
                 </button>
@@ -70,9 +71,15 @@
                         class="layui-icon layui-icon-refresh-3"></i>刷新当前目录
                 </button>
                 <button class="layui-btn layui-btn-sm layui-btn-normal orange-btn-path"></button>
+
+                <div class="layui-progress layui-progress-big" lay-showpercent="true" lay-filter="demo-jdt"
+                     style="margin-top: 8px">
+                    <div class="layui-progress-bar" lay-percent=""></div>
+                </div>
+
             </div>
 
-            <div class="file-div">
+            <div class="file-div" style="margin-top: 30px">
                 <button class="layui-btn layui-btn-primary orange-dir" id="demo6" value="home">
                     <img src="image/文件夹2.png">
                     <p>home</p>
@@ -100,8 +107,9 @@
 <script>
 
 
-    layui.use(['dropdown', 'util', 'layer', 'table', 'element'], function () {
+    layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function () {
         let element = layui.element,
+            upload = layui.upload,
             dropdown = layui.dropdown,
             util = layui.util,
             layer = layui.layer,
@@ -127,9 +135,31 @@
             file_render('/')
         })
 
-        $(".orange-btn-file").on('click', function () {
-            layer.msg('file')
-        })
+        // $(".orange-btn-file").on('click', function () {
+        //     put_file_render($.cookie('file_ispath'))
+        // })
+
+        let put_file = upload.render({
+            elem: '#test3'
+            , url: ogs_backend_url + "/local/file/put" //改成您自己的上传接口
+            , accept: 'file' //普通文件
+            , auto: true
+            , before: function (obj) {
+                element.progress('demo-jdt', '0%'); //进度条复位
+            }
+            , progress: function (n, elem, res, index) {
+                element.progress('demo-jdt', n + '%'); //可配合 layui 进度条元素使用
+                if (n === 100) {
+                    layer.msg('上传完毕', {icon: 1});
+                }
+            }
+            , data: {'req_dir': $.cookie('file_ispath')}
+            , done: function (res) {
+                if (res['status'] === 'true') {
+                    file_render($.cookie('file_ispath'))
+                }
+            }
+        });
 
         $(".orange-btn-createdir").on('click', function () {
             layer.prompt({
@@ -170,8 +200,13 @@
                 success: function (res) {
                     //console.log(res)
                     window.file_ispath = res['ispath']
+                    $.cookie('file_ispath', file_ispath)
                     $('.orange-btn-path').html('当前目录路径: ' + window.file_ispath)
-                    // let html = ''
+                    // 重载上传文件渲染
+                    put_file.reload({
+                        data: {'req_dir': file_ispath}
+                    })
+                    //指定允许上传的文件类型
                     let res_dir = res['dir']
                     let res_file = res['file']
                     for (let i = 0; i < res_dir.length; i++) {
