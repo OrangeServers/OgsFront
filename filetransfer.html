@@ -168,7 +168,7 @@
                 dataType: "JSON",
                 data: {'req_dir': file_path, 'get_file_type': get_type},
                 success: function (res) {
-                    console.log(res)
+                    //console.log(res)
                     window.file_ispath = res['ispath']
                     $('.orange-btn-path').html('当前目录路径: ' + window.file_ispath)
                     // let html = ''
@@ -217,7 +217,7 @@
                             }
                         });
                         $("#" + "orange-dir-" + i).dblclick(function () {
-                            console.log($(this).val())
+                            //console.log($(this).val())
                             file_render(res['ispath'] + res_dir[i])
                         })
                     }
@@ -246,7 +246,7 @@
                             }]
                             , click: function (obj, othis) {
                                 if (obj.id === 'dow') {
-                                    window.open('http://10.0.1.198:18000/local/download?filename=' + res_file[y])
+                                    window.open('http://10.0.1.198:18000/local/download?filename=' + window.file_ispath + res_file[y])
                                 } else if (obj.id === 'rename') {
                                     window.print();
                                 } else if (obj.id === 'del') {
