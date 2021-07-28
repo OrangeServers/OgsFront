@@ -224,7 +224,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
         })
     }
 
-    file_render('/')
+    // file_render('/')
 
 
 })

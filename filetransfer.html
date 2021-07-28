@@ -25,11 +25,13 @@
             /*background-color: Transparent;*/
             /*background-repeat: no-repeat;*/
             /*background-size: 100px 100px;*/
-            width: 100px;
+            width: 120px;
             height: 90px;
             border: none;
             vertical-align: bottom;
         }
+
+
 
         .orange-dir > img {
             width: 50px;
@@ -37,10 +39,15 @@
             margin-top: 10px;
         }
 
-        .orange-dir > p {
+        .orange-file-p {
+            width: 50px;
+            height: 40px;
             color: #23262E;
+            /*white-space: nowrap;*/
             word-wrap: break-word;
             word-break: break-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .orange-dir:hover {
@@ -80,9 +87,10 @@
             </div>
 
             <div class="file-div" style="margin-top: 30px">
+
                 <button class="layui-btn layui-btn-primary orange-dir" id="demo6" value="home">
                     <img src="image/文件夹2.png">
-                    <p>home</p>
+                    <p class="orange-file-p" onmouseover="layer.tips(this.innerText, this)">homefasdasdasdasdas</p>
                 </button>
 
             </div>
