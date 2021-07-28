@@ -92,7 +92,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                 //console.log(res)
                 window.file_ispath = res['ispath']
                 $.cookie('file_ispath', file_ispath)
-                $('.orange-btn-path').html('当前目录路径: ' + window.file_ispath)
+                $('.orange-btn-path').html('当前磁盘总量: ' + res['disk']['total'] + 'G 使用: ' + res['disk']['used'] + 'G 剩余: ' + res['disk']['free'] + 'G  当前目录路径: ' + window.file_ispath)
                 // 重载上传文件渲染
                 put_file.reload({
                     data: {'req_dir': file_ispath}
