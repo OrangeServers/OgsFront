@@ -77,6 +77,35 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
         });
     })
 
+    function file_rename(tl1, tl2, file_path) {
+        layer.prompt({
+            formType: 0,
+            value: tl2,
+            title: tl1 + tl2 + ' 的名称',
+            btn: ['确定', '取消'], //按钮，
+            btnAlign: 'c'
+        }, function (value, index) {
+            $.ajax({
+                type: "POST",
+                url: ogs_backend_url + "/local/file/rename",
+                dataType: "JSON",
+                data: {
+                    'req_dir': window.file_ispath,
+                    'old_name': tl2,
+                    'new_name': value
+                },
+                success: function (res) {
+                    if (res['status'] === 'true') {
+                        layer.close(index)
+                        file_render(file_path)
+                    } else if (res['status'] === 'fail') {
+                        layer.msg(res['msg'])
+                    }
+                }
+            })
+        });
+    }
+
     $(".orange-btn-reload").on('click', function () {
         file_render(window.file_ispath)
     })
@@ -125,8 +154,8 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                         , click: function (obj, othis) {
                             if (obj.id === 'load') {
                                 file_render(res['ispath'] + res_dir[i])
-                            } else if (obj.id === 'print') {
-                                window.print();
+                            } else if (obj.id === 'rename') {
+                                file_rename('修改文件夹 ', res_dir[i], window.file_ispath)
                             } else if (obj.id === 'del') {
                                 $.ajax({
                                     type: "POST",
@@ -174,7 +203,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                             if (obj.id === 'dow') {
                                 window.open('http://10.0.1.198:18000/local/file/download?filename=' + window.file_ispath + res_file[y])
                             } else if (obj.id === 'rename') {
-                                window.print();
+                                file_rename('修改文件 ', res_file[y], window.file_ispath)
                             } else if (obj.id === 'del') {
                                 $.ajax({
                                     type: "POST",
