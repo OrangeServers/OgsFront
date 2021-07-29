@@ -1,3 +1,13 @@
+    function filename_is_on(obj) {
+        setTimeout(function () {
+            layui.layer.tips(obj.innerHTML, obj)
+        }, 1200)
+    }
+
+    function filename_is_off() {
+        layui.layer.closeAll('tips')
+    }
+
 layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function () {
     let element = layui.element,
         upload = layui.upload,
@@ -132,7 +142,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                 for (let i = 0; i < res_dir.length; i++) {
                     let html = '                <button class="layui-btn layui-btn-primary orange-dir" value="' + res_dir[i] + '" id="orange-dir-' + i + '">\n' +
                         '                    <img src="image/文件夹2.png">\n' +
-                        '                    <p>' + res_dir[i] + '</p>\n' +
+                        '                    <p class="orange-file-p" onmouseover="filename_is_on(this)" onmouseout="filename_is_off()">' + res_dir[i] + '</p>\n' +
                         '                </button>'
                     $(".file-div").append(html)
                     dropdown.render({
@@ -180,7 +190,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                 for (let y = 0; y < res_file.length; y++) {
                     let html = '                <button class="layui-btn layui-btn-primary orange-dir" id="orange-file-' + y + '">\n' +
                         '                    <img src="image/文件2.png">\n' +
-                        '                    <p>' + res_file[y] + '</p>\n' +
+                        '                    <p class="orange-file-p" onmouseover="filename_is_on(this)" onmouseout="filename_is_off()">' + res_file[y] + '</p>\n' +
                         '                </button>'
                     $(".file-div").append(html)
                     dropdown.render({
@@ -224,7 +234,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
         })
     }
 
-    // file_render('/')
+    file_render('/')
 
 
 })

@@ -32,7 +32,6 @@
         }
 
 
-
         .orange-dir > img {
             width: 50px;
             height: 40px;
@@ -40,7 +39,8 @@
         }
 
         .orange-file-p {
-            width: 100px;
+            text-align: center;
+            width: 80px;
             height: 40px;
             color: #23262E;
             /*white-space: nowrap;*/
@@ -90,7 +90,8 @@
 
                 <button class="layui-btn layui-btn-primary orange-dir" id="demo6" value="home">
                     <img src="image/文件夹2.png">
-                    <p class="orange-file-p" onmouseover="layer.tips(this.innerText, this)">homefasdasdasdasdas</p>
+                    <!--                    <p class="orange-file-p" onmouseover="layer.tips(this.innerText, this)">homefasdasdasdasdas</p>-->
+                    <p class="orange-file-p" onmouseover="test_mouse(this)" onmouseout="down_mouse()">homefasdasdasdasdas</p>
                 </button>
 
             </div>
@@ -113,5 +114,6 @@
 <!-- Chart code -->
 
 <script src="/js/file.js"></script>
+
 </body>
 </html>
