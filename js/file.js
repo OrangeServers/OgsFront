@@ -1,12 +1,12 @@
-    function filename_is_on(obj) {
-        setTimeout(function () {
-            layui.layer.tips(obj.innerHTML, obj)
-        }, 1200)
-    }
+function filename_is_on(obj) {
+    setTimeout(function () {
+        layui.layer.tips(obj.innerHTML, obj)
+    }, 1500)
+}
 
-    function filename_is_off() {
-        layui.layer.closeAll('tips')
-    }
+function filename_is_off() {
+    layui.layer.closeAll('tips')
+}
 
 layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function () {
     let element = layui.element,
@@ -140,10 +140,12 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                 let res_dir = res['dir']
                 let res_file = res['file']
                 for (let i = 0; i < res_dir.length; i++) {
-                    let html = '                <button class="layui-btn layui-btn-primary orange-dir" value="' + res_dir[i] + '" id="orange-dir-' + i + '">\n' +
+                    let html = '<div class="xde-div" id="orange-dir-' + i + '">' +
+                        '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
                         '                    <img src="image/文件夹2.png">\n' +
+                        '                </button>' +
                         '                    <p class="orange-file-p" onmouseover="filename_is_on(this)" onmouseout="filename_is_off()">' + res_dir[i] + '</p>\n' +
-                        '                </button>'
+                        '</div>'
                     $(".file-div").append(html)
                     dropdown.render({
                         elem: "#orange-dir-" + i //也可绑定到 document，从而重置整个右键
@@ -188,10 +190,12 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                 }
 
                 for (let y = 0; y < res_file.length; y++) {
-                    let html = '                <button class="layui-btn layui-btn-primary orange-dir" id="orange-file-' + y + '">\n' +
+                    let html = '<div class="xde-div" id="orange-file-' + y + '">' +
+                        '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
                         '                    <img src="image/文件2.png">\n' +
+                        '                </button>' +
                         '                    <p class="orange-file-p" onmouseover="filename_is_on(this)" onmouseout="filename_is_off()">' + res_file[y] + '</p>\n' +
-                        '                </button>'
+                        '</div>'
                     $(".file-div").append(html)
                     dropdown.render({
                         elem: "#orange-file-" + y //也可绑定到 document，从而重置整个右键

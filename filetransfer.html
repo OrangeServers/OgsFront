@@ -20,13 +20,20 @@
         /*    border: none;*/
         /*    vertical-align: bottom;*/
         /*}*/
+
+        .xde-div {
+            width: 120px;
+            height: 110px;
+            float: left;
+        }
+
         .orange-dir {
             /*background-image: url('image/文件夹.png');*/
             /*background-color: Transparent;*/
             /*background-repeat: no-repeat;*/
             /*background-size: 100px 100px;*/
             width: 120px;
-            height: 90px;
+            height: 70px;
             border: none;
             vertical-align: bottom;
         }
@@ -40,17 +47,21 @@
 
         .orange-file-p {
             text-align: center;
-            width: 80px;
+            width: 110px;
             height: 40px;
             color: #23262E;
             /*white-space: nowrap;*/
-            word-wrap: break-word;
-            word-break: break-all;
+            /*word-wrap: break-word;*/
+            /*word-break: break-all;*/
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        .orange-dir:hover {
+        /*.orange-dir:hover {*/
+        /*    background-color: #bfbfbf;*/
+        /*}*/
+
+        .xde-div:hover {
             background-color: #bfbfbf;
         }
     </style>
@@ -88,11 +99,14 @@
 
             <div class="file-div" style="margin-top: 30px">
 
-                <button class="layui-btn layui-btn-primary orange-dir" id="demo6" value="home">
-                    <img src="image/文件夹2.png">
-                    <!--                    <p class="orange-file-p" onmouseover="layer.tips(this.innerText, this)">homefasdasdasdasdas</p>-->
-                    <p class="orange-file-p" onmouseover="test_mouse(this)" onmouseout="down_mouse()">homefasdasdasdasdas</p>
-                </button>
+                <div class="xde-div">
+                    <button class="layui-btn layui-btn-primary orange-dir" id="demo6" value="home">
+                        <img src="image/文件夹2.png">
+                        <!--                    <p class="orange-file-p" onmouseover="layer.tips(this.innerText, this)">homefasdasdasdasdas</p>-->
+                    </button>
+                    <p class="orange-file-p" onmouseover="filename_is_on(this)" onmouseout="filename_is_off()">
+                        homasfasdasfasdasfasf</p>
+                </div>
 
             </div>
 
