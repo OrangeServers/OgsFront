@@ -117,7 +117,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                 //当触发hover就开始自动在1秒后执行相应代码
                 let tis = $('#' + p_id)
                 layer.tips(tis.text(), tis)
-            }, 2000);
+            }, 1500);
         }, function () {
             clearTimeout(tid); //当在1秒内退出了hover事件就取消计时代码
         }).mouseout(function () {
