@@ -1,13 +1,3 @@
-function filename_is_on(obj) {
-    setTimeout(function () {
-        layui.layer.tips(obj.innerHTML, obj)
-    }, 1500)
-}
-
-function filename_is_off() {
-    layui.layer.closeAll('tips')
-}
-
 layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function () {
     let element = layui.element,
         upload = layui.upload,
@@ -120,6 +110,21 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
         file_render(window.file_ispath)
     })
 
+    function filename_is(p_id) {
+        let tid = 0;
+        $("#" + p_id).hover(function () {
+            tid = setTimeout(function () {
+                //当触发hover就开始自动在1秒后执行相应代码
+                let tis = $('#' + p_id)
+                layer.tips(tis.text(), tis)
+            }, 2000);
+        }, function () {
+            clearTimeout(tid); //当在1秒内退出了hover事件就取消计时代码
+        }).mouseout(function () {
+            layer.closeAll('tips')
+        })
+    }
+
     function file_render(file_path, get_type = 'get') {
         $(".file-div").html('')
         $.ajax({
@@ -144,7 +149,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                         '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
                         '                    <img src="image/文件夹2.png">\n' +
                         '                </button>' +
-                        '                    <p class="orange-file-p" onmouseover="filename_is_on(this)" onmouseout="filename_is_off()">' + res_dir[i] + '</p>\n' +
+                        '                    <p class="orange-file-p" id="' + 'orange-dirname-p' + i + '">' + res_dir[i] + '</p>\n' +
                         '</div>'
                     $(".file-div").append(html)
                     dropdown.render({
@@ -187,6 +192,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                         //console.log($(this).val())
                         file_render(res['ispath'] + res_dir[i])
                     })
+                    filename_is('orange-dirname-p' + i)
                 }
 
                 for (let y = 0; y < res_file.length; y++) {
@@ -194,7 +200,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                         '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
                         '                    <img src="image/文件2.png">\n' +
                         '                </button>' +
-                        '                    <p class="orange-file-p" onmouseover="filename_is_on(this)" onmouseout="filename_is_off()">' + res_file[y] + '</p>\n' +
+                        '                    <p class="orange-file-p" id="' + 'orange-filename-p' + y + '">' + res_file[y] + '</p>\n' +
                         '</div>'
                     $(".file-div").append(html)
                     dropdown.render({
@@ -233,6 +239,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                             }
                         }
                     });
+                    filename_is('orange-filename-p' + y)
                 }
             }
         })
