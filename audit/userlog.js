@@ -31,7 +31,7 @@ layui.use('table', function () {
                 , {field: 'login_agent', width: 240, title: '登录设备'}
                 , {field: 'login_status', width: 60, title: '状态'}
                 , {field: 'login_reason', width: 140, title: '原因'}
-                , {field: 'login_time', width: 160, title: '登录时间'}
+                , {field: 'login_time', width: 160, title: '登录时间', sort: true}
                 // ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width: 80}
             ]]
             , page: true //开启分页

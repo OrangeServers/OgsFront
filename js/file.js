@@ -125,6 +125,34 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
         })
     }
 
+    function filesize_is(filename, p_id) {
+        let tid = 0;
+        $("#" + p_id).hover(function () {
+            tid = setTimeout(function () {
+                //当触发hover就开始自动在1秒后执行相应代码
+                let tis = $('#' + p_id)
+                // let size = ''
+                $.ajax({
+                    type: "POST",
+                    url: ogs_backend_url + "/local/file/size",
+                    dataType: "JSON",
+                    data: {
+                        'req_dir': window.file_ispath,
+                        'si_filename': filename,
+                    },
+                    success: function (res) {
+                        let size = res['size']
+                        layer.tips(size, tis)
+                    }
+                })
+            }, 1500);
+        }, function () {
+            clearTimeout(tid); //当在1秒内退出了hover事件就取消计时代码
+        }).mouseout(function () {
+            layer.closeAll('tips')
+        })
+    }
+
     function file_render(file_path, get_type = 'get') {
         $(".file-div").html('')
         $.ajax({
@@ -146,7 +174,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                 let res_file = res['file']
                 for (let i = 0; i < res_dir.length; i++) {
                     let html = '<div class="xde-div" id="orange-dir-' + i + '">' +
-                        '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
+                        '                <button class="layui-btn layui-btn-primary orange-dir" id="' + 'orange-dirname-btn' + i + '">\n' +
                         '                    <img src="image/文件夹2.png">\n' +
                         '                </button>' +
                         '                    <p class="orange-file-p" id="' + 'orange-dirname-p' + i + '">' + res_dir[i] + '</p>\n' +
@@ -193,11 +221,12 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                         file_render(res['ispath'] + res_dir[i])
                     })
                     filename_is('orange-dirname-p' + i)
+                    filesize_is(res_dir[i], 'orange-dirname-btn' + i)
                 }
 
                 for (let y = 0; y < res_file.length; y++) {
                     let html = '<div class="xde-div" id="orange-file-' + y + '">' +
-                        '                <button class="layui-btn layui-btn-primary orange-dir">\n' +
+                        '                <button class="layui-btn layui-btn-primary orange-dir" id="' + 'orange-filename-btn' + y + '">\n' +
                         '                    <img src="image/文件2.png">\n' +
                         '                </button>' +
                         '                    <p class="orange-file-p" id="' + 'orange-filename-p' + y + '">' + res_file[y] + '</p>\n' +
@@ -240,6 +269,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                         }
                     });
                     filename_is('orange-filename-p' + y)
+                    filesize_is(res_file[y], 'orange-filename-btn' + y)
                 }
             }
         })
