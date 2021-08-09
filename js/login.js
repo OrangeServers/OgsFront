@@ -129,7 +129,9 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             window.login_time = res['login_time']
             let register_status = res['register_status']
             if (register_status === 'off') {
-                $('.orange-res').remove()
+                //$('.orange-res').remove()
+                // 隐藏标签，不删除
+                $('.orange-res').hide()
             }
         }
     })
