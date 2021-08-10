@@ -10,8 +10,8 @@ function upload_layui_admin(cas_this) {
 
     $.ajax({
         type: "POST",
-        url: ogs_backend_url + "/account/user/list",
-        data: {'user_type': 'user_info', 'name': user_cookie},
+        url: ogs_backend_url + "/account/user/alias",
+        data: {'name': user_cookie},
         dataType: "JSON",
         async: false,
         success: function (res) {
@@ -224,8 +224,8 @@ function upload_layui_develop(cas_this) {
 
     $.ajax({
         type: "POST",
-        url: ogs_backend_url + "/account/user/list",
-        data: {'user_type': 'user_info', 'name': user_cookie},
+        url: ogs_backend_url + "/account/user/alias",
+        data: {'name': user_cookie},
         dataType: "JSON",
         async: false,
         success: function (res) {
