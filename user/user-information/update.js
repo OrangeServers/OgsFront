@@ -1,31 +1,3 @@
-function get_user_info() {
-    let user_name = $.cookie('username')
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/account/user/list",
-        data: {'user_type': 'user_info', 'name': user_name},
-        dataType: "JSON",
-        success: function (res) {
-            if (res['acc_user_list_msg'] !== 'select list msg error') {
-                if (res["usrole"] === 'develop'){
-                    $('.usrole_dev').attr({'selected': 'selected'})
-                    $('.usrole_adm').attr({'disabled': 'disabled'})
-                } else if (res["usrole"] === 'admin'){
-                    $('.usrole_adm').attr({'selected': 'selected'})
-                }
-                $("input[name = 'alias']").val(res["alias"])
-                $("input[name = 'id']").val(res["id"])
-                $("input[name = 'name']").val(res["name"])
-                $("input[name = 'mail']").val(res['mail'])
-                $("input[name = 'remarks']").val(res["remarks"])
-                layui.form.render('select')
-            } else {
-                error('未知错误')
-            }
-        }
-    })
-}
-
 function user_info_update() {
     // layer.alert($('.layui-form').serialize())
     let logif = layer.load(1, {
@@ -60,6 +32,8 @@ layui.use(['form', 'layedit', 'laydate'], function () {
 
     get_user_auth_list('')
 
+    let user_name = $.cookie('username')
+    get_user_info('user_info', user_name)
 
     let user = $.cookie('username')
     let path = ogs_backend_url + '/local/image/test_get/'
@@ -112,6 +86,6 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     });
 });
 
-$(function () {
-    get_user_info()
-});
+// $(function () {
+//     get_user_info()
+// });

@@ -508,6 +508,42 @@ function get_tree_list() {
     })
 }
 
+function get_user_info(user_type, user_name) {
+    let u_data = {'user_type': user_type}
+    if (user_type === 'user_list'){
+        u_data['id'] = user_name
+    } else if (user_type === 'user_info'){
+        u_data['name'] = user_name
+    }
+    console.log(u_data)
+
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/account/user/list",
+        data: u_data,
+        dataType: "JSON",
+        success: function (res) {
+            if (res['acc_user_list_msg'] !== 'select list msg error') {
+                if (res["usrole"] === 'develop'){
+                    $('.usrole_dev').attr({'selected': 'selected'})
+                    $('.usrole_adm').attr({'disabled': 'disabled'})
+                } else if (res["usrole"] === 'admin'){
+                    $('.usrole_adm').attr({'selected': 'selected'})
+                }
+                $("input[name = 'alias']").val(res["alias"])
+                $("input[name = 'id']").val(res["id"])
+                $("input[name = 'name']").val(res["name"])
+                $("input[name = 'mail']").val(res['mail'])
+                $("input[name = 'remarks']").val(res["remarks"])
+                layui.form.render('select')
+            } else {
+                error('未知错误')
+            }
+        }
+    })
+}
+
+
 function delete_cookie() {
     $.removeCookie('username')
     window.location.href = '/login.html'

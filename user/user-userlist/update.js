@@ -1,31 +1,3 @@
-function get_acc_user() {
-    let acc_user_id = getParam("id");
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/account/user/list",
-        data: {'user_type': 'user_list', 'id': acc_user_id},
-        dataType: "JSON",
-        success: function (res) {
-            if (res['acc_user_list_msg'] !== 'select list msg error') {
-                if (res["usrole"] === 'develop') {
-                    $('.usrole_dev').attr({'selected': 'selected'})
-                    $('.usrole_adm').attr({'disabled': 'disabled'})
-                } else if (res["usrole"] === 'admin') {
-                    $('.usrole_adm').attr({'selected': 'selected'})
-                }
-                    $("input[name = 'alias']").val(res["alias"])
-                    $("input[name = 'id']").val(res["id"])
-                    $("input[name = 'name']").val(res["name"])
-                    $("input[name = 'mail']").val(res['mail'])
-                    $("input[name = 'remarks']").val(res["remarks"])
-                    layui.form.render('select')
-                } else {
-                    error('未知错误')
-                }
-            }
-        })
-}
-
 function acc_user_update() {
     // layer.alert($('.layui-form').serialize())
     let logif = layer.load(1, {
@@ -60,6 +32,10 @@ layui.use(['form', 'layedit', 'laydate'], function () {
 
     get_user_auth_list('user-userlist')
 
+
+    let acc_user_id = getParam("id");
+    get_user_info('user_list', acc_user_id)
+
     //日期
     laydate.render({
         elem: '#date'
@@ -72,6 +48,6 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     });
 });
 
-$(function () {
-    get_acc_user()
-});
+// $(function () {
+//     get_acc_user()
+// });
