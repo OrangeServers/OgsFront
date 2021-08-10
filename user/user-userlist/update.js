@@ -7,16 +7,23 @@ function get_acc_user() {
         dataType: "JSON",
         success: function (res) {
             if (res['acc_user_list_msg'] !== 'select list msg error') {
-                $("input[name = 'alias']").val(res["alias"])
-                $("input[name = 'id']").val(res["id"])
-                $("input[name = 'name']").val(res["name"])
-                $("input[name = 'mail']").val(res['mail'])
-                $("input[name = 'remarks']").val(res["remarks"])
-            } else {
-                error('未知错误')
+                if (res["usrole"] === 'develop') {
+                    $('.usrole_dev').attr({'selected': 'selected'})
+                    $('.usrole_adm').attr({'disabled': 'disabled'})
+                } else if (res["usrole"] === 'admin') {
+                    $('.usrole_adm').attr({'selected': 'selected'})
+                }
+                    $("input[name = 'alias']").val(res["alias"])
+                    $("input[name = 'id']").val(res["id"])
+                    $("input[name = 'name']").val(res["name"])
+                    $("input[name = 'mail']").val(res['mail'])
+                    $("input[name = 'remarks']").val(res["remarks"])
+                    layui.form.render('select')
+                } else {
+                    error('未知错误')
+                }
             }
-        }
-    })
+        })
 }
 
 function acc_user_update() {
