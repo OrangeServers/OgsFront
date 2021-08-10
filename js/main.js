@@ -4,8 +4,20 @@
 
 // 管理员页面权限渲染
 function upload_layui_admin(cas_this) {
-    let user_name = $.cookie('username'),
-        path = ogs_backend_url + '/local/image/test_get/';
+    let user_cookie = $.cookie('username'),
+        path = ogs_backend_url + '/local/image/test_get/',
+        user_name = '';
+
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/account/user/list",
+        data: {'user_type': 'user_info', 'name': user_cookie},
+        dataType: "JSON",
+        async: false,
+        success: function (res) {
+            user_name = res['alias']
+        }
+    })
 
     let color_matching = '',
         color_matching_head = '';
@@ -13,7 +25,7 @@ function upload_layui_admin(cas_this) {
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/local/settings/get",
-        data: {'name': user_name},
+        data: {'name': user_cookie},
         dataType: "JSON",
         async: false,
         success: function (res) {
@@ -135,7 +147,7 @@ function upload_layui_admin(cas_this) {
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item" style="margin-right: 20px">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
-        '          <img src="' + path + user_name + '" class="layui-nav-img">\n' +
+        '          <img src="' + path + user_cookie + '" class="layui-nav-img">\n' +
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
@@ -206,8 +218,20 @@ function upload_layui_admin(cas_this) {
 
 // 非管理员权限的页面渲染
 function upload_layui_develop(cas_this) {
-    let user_name = $.cookie('username'),
-        path = ogs_backend_url + '/local/image/test_get/';
+    let user_cookie = $.cookie('username'),
+        path = ogs_backend_url + '/local/image/test_get/',
+        user_name = '';
+
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/account/user/list",
+        data: {'user_type': 'user_info', 'name': user_cookie},
+        dataType: "JSON",
+        async: false,
+        success: function (res) {
+            user_name = res['alias']
+        }
+    })
 
     let color_matching = '',
         color_matching_head = '';
@@ -215,7 +239,7 @@ function upload_layui_develop(cas_this) {
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/local/settings/get",
-        data: {'name': user_name},
+        data: {'name': user_cookie},
         dataType: "JSON",
         async: false,
         success: function (res) {
@@ -304,7 +328,7 @@ function upload_layui_develop(cas_this) {
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item" style="margin-right: 20px">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
-        '          <img src="' + path + user_name + '" class="layui-nav-img">\n' +
+        '          <img src="' + path + user_cookie + '" class="layui-nav-img">\n' +
         '          ' + user_name + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +

@@ -221,7 +221,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                         file_render(res['ispath'] + res_dir[i])
                     })
                     filename_is('orange-dirname-p' + i)
-                    filesize_is(res_dir[i], 'orange-dirname-btn' + i)
+                    //filesize_is(res_dir[i], 'orange-dirname-btn' + i)
                 }
 
                 for (let y = 0; y < res_file.length; y++) {
