@@ -543,6 +543,31 @@ function get_user_info(user_type, user_name) {
     })
 }
 
+function user_info_update() {
+    // layer.alert($('.layui-form').serialize())
+    let logif = layer.load(1, {
+        shade: [0.1, '#fff'] //0.1透明度的白色背景
+    });
+    let data = $('.layui-form').serialize() + "&cz_name=" + $.cookie('username')
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/account/user/update",
+        data: data,
+        dataType: "JSON",
+        success: function (res) {
+            if (res['acc_user_ping_status'] === 'fail') {
+                layer.close(logif)
+                layer.alert('更新失败，密码或其他错误，主机无法连接', {skin: 'layui-layer-hui'})
+            } else if (res['acc_user_into_update']) {
+                window.location.href = '/user/user-userlist.html'
+            } else if (res['acc_user_into_update'] === 'fail') {
+                layer.close(logif)
+                layer.alert('更新失败，未知错误#db error', {skin: 'layui-layer-hui'})
+            }
+        }
+    })
+}
+
 
 function delete_cookie() {
     $.removeCookie('username')
