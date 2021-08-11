@@ -45,7 +45,8 @@ function upload_layui_admin(cas_this) {
     let cas_this1 = '',
         cas_this2 = '',
         cas_this3 = '',
-        cas_this4 = ''
+        cas_this4 = '',
+        cas_this5 = ''
 
     let cas_item_this1 = '',
         cas_item_this2 = '',
@@ -73,10 +74,12 @@ function upload_layui_admin(cas_this) {
         cas_this1 = 'class="layui-this"'
     } else if (cas_this === 'authority') {
         cas_this2 = 'class="layui-this"'
-    } else if (cas_this === 'filetransfer') {
+    } else if (cas_this === 'cron') {
         cas_this3 = 'class="layui-this"'
-    } else if (cas_this === 'settings') {
+    } else if (cas_this === 'filetransfer') {
         cas_this4 = 'class="layui-this"'
+    } else if (cas_this === 'settings') {
+        cas_this5 = 'class="layui-this"'
     }
     // 副页property渲染
     else if (cas_this === 'property-hostlist') {
@@ -203,8 +206,9 @@ function upload_layui_admin(cas_this) {
         '          </dl>\n' +
         '        </li>\n' +
         '        <li class="layui-nav-item"><a href="/authority/authority.html"' + cas_this2 + '><img src="/image/权限.png" width="20" height="20">权限管理</a></li>\n' +
-        '        <li class="layui-nav-item"><a href="/filetransfer.html"' + cas_this3 + '><img src="/image/文件.png" width="20" height="20">文件传输</a></li>\n' +
-        '        <li class="layui-nav-item"><a href="/settings.html"' + cas_this4 + '><img src="/image/设置.png" width="20" height="20">系统设置</a></li>\n' +
+        '        <li class="layui-nav-item"><a href="/cron/cron.html"' + cas_this3 + '><img src="/image/时间.png" width="20" height="20">定时任务</a></li>\n' +
+        '        <li class="layui-nav-item"><a href="/filetransfer.html"' + cas_this4 + '><img src="/image/文件.png" width="20" height="20">文件传输</a></li>\n' +
+        '        <li class="layui-nav-item"><a href="/settings.html"' + cas_this5 + '><img src="/image/设置.png" width="20" height="20">系统设置</a></li>\n' +
         '      </ul>\n' +
         '    </div>' +
         '</div>'
@@ -258,7 +262,8 @@ function upload_layui_develop(cas_this) {
 
     let cas_this1 = '',
         cas_this3 = '',
-        cas_this4 = ''
+        cas_this4 = '',
+        cas_this5 = ''
 
     let cas_item_this1 = '',
         cas_item_this3 = '',
@@ -276,10 +281,12 @@ function upload_layui_develop(cas_this) {
     // 单页渲染
     if (cas_this === 'index') {
         cas_this1 = 'class="layui-this"'
-    } else if (cas_this === 'filetransfer') {
+    } else if (cas_this === 'cron') {
         cas_this3 = 'class="layui-this"'
-    } else if (cas_this === 'settings') {
+    } else if (cas_this === 'filetransfer') {
         cas_this4 = 'class="layui-this"'
+    } else if (cas_this === 'settings') {
+        cas_this5 = 'class="layui-this"'
     }
     // 副页property渲染
     else if (cas_this === 'property-hostlist') {
@@ -367,8 +374,9 @@ function upload_layui_develop(cas_this) {
         '            <dd><a href="/container/container-kubernetes.html"' + cas_item_this11 + '><img src="/image/juzi11.png" width="20" height="20">kubernetes</a></dd>\n' +
         '          </dl>\n' +
         '        </li>\n' +
-        '        <li class="layui-nav-item"><a href="/filetransfer.html"' + cas_this3 + '><img src="/image/文件.png" width="20" height="20">文件传输</a></li>\n' +
-        '        <li class="layui-nav-item"><a href="/settings.html"' + cas_this4 + '><img src="/image/设置.png" width="20" height="20">系统设置</a></li>\n' +
+        '        <li class="layui-nav-item"><a href="/cron/cron.html"' + cas_this3 + '><img src="/image/时间.png" width="20" height="20">定时任务</a></li>\n' +
+        '        <li class="layui-nav-item"><a href="/filetransfer.html"' + cas_this4 + '><img src="/image/文件.png" width="20" height="20">文件传输</a></li>\n' +
+        '        <li class="layui-nav-item"><a href="/settings.html"' + cas_this5 + '><img src="/image/设置.png" width="20" height="20">系统设置</a></li>\n' +
         '      </ul>\n' +
         '    </div>' +
         '</div>'
@@ -510,9 +518,9 @@ function get_tree_list() {
 
 function get_user_info(user_type, user_name) {
     let u_data = {'user_type': user_type}
-    if (user_type === 'user_list'){
+    if (user_type === 'user_list') {
         u_data['id'] = user_name
-    } else if (user_type === 'user_info'){
+    } else if (user_type === 'user_info') {
         u_data['name'] = user_name
     }
     console.log(u_data)
@@ -524,10 +532,10 @@ function get_user_info(user_type, user_name) {
         dataType: "JSON",
         success: function (res) {
             if (res['acc_user_list_msg'] !== 'select list msg error') {
-                if (res["usrole"] === 'develop'){
+                if (res["usrole"] === 'develop') {
                     $('.usrole_dev').attr({'selected': 'selected'})
                     $('.usrole_adm').attr({'disabled': 'disabled'})
-                } else if (res["usrole"] === 'admin'){
+                } else if (res["usrole"] === 'admin') {
                     $('.usrole_adm').attr({'selected': 'selected'})
                 }
                 $("input[name = 'alias']").val(res["alias"])
