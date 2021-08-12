@@ -8,24 +8,30 @@ layui.use('table', function () {
         id: 'test'
         , elem: '#test'
         , height: 520
-        , url: ogs_backend_url + '/auth/host/list_all'
+        , url: ogs_backend_url + '/local/cron/list_all'
         , method: 'POST'
         , parseData: function (res) { //res 即为原始返回的数据
             return {
                 "code": res.host_status, //解析接口状态
                 "msg": '', //解析提示文本
-                "count": res.auth_host_len_msg, //解析数据长度
-                "data": res.auth_host_list_msg //解析数据列表
+                "count": res.cron_len_msg, //解析数据长度
+                "data": res.cron_list_msg //解析数据列表
             };
         }
         , cols: [[
             {type: 'checkbox', fixed: 'left'}
-            , {field: 'name', title: '名称'}
-            , {field: 'user', title: '授权用户'}
-            , {field: 'user_group', title: '授权用户组'}
-            , {field: 'host_group', title: '资产组'}
-            , {field: 'remarks', title: '备注'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
+            , {field: 'id', width: 60, title: 'id'}
+            , {field: 'job_name', title: '任务名'}
+            , {field: 'job_minute', width: 60, title: '分'}
+            , {field: 'job_hour', width: 60, title: '时'}
+            , {field: 'job_day', width: 60, title: '日'}
+            , {field: 'job_month', width: 60, title: '月'}
+            , {field: 'job_week', width: 60, title: '周'}
+            , {field: 'job_groups', title: '资产组'}
+            , {field: 'job_command', title: '任务详情'}
+            , {field: 'job_status', width: 60, title: '状态'}
+            , {field: 'job_remarks', title: '备注'}
+            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 170}
         ]]
         , page: true //开启分页
         , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
@@ -34,7 +40,7 @@ layui.use('table', function () {
             , layEvent: 'LAYTABLE_TIPS'
             , icon: 'layui-icon-tips'
         }]
-        , title: '权限信息表'
+        , title: '定时任务信息表'
     });
 
 
