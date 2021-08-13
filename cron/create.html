@@ -22,37 +22,65 @@
 
             <div class="orange-zsbq">
                 <a href="/index.html">/ 仪表盘</a>
-                <a href="/authority/authority.html"> /权限管理</a>
-                <a href="create.html">/ 创建权限</a>
+                <a href="/cron/cron.html"> /定时任务</a>
+                <a href="create.html">/ 创建定时任务</a>
             </div>
 
             <div class="orange-cjbt">
-                <h2>创建权限信息</h2>
+                <h2>创建定时任务</h2>
             </div>
 
 
-            <div class="orange-host-from">
+            <div class="orange-host-from" style="height: 740px">
                 <h3>必填信息</h3>
                 <!--      <form id="adhsform" onsubmit="return false">-->
                 <form class="layui-form" onsubmit="return false">
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">名称</label>
+                        <label class="layui-form-label">任务名</label>
                         <div class="layui-input-block">
-                            <input type="text" name="name" lay-verify="required" lay-reqtext="资产别名是必填项，不能为空!"
-                                   placeholder="请输入资产别名" autocomplete="off" class="layui-input">
+                            <input type="text" name="job_name" lay-verify="required" lay-reqtext="任务名是必填项，不能为空!"
+                                   placeholder="请输入任务名" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
-                    <div class="layui-form-item" style="margin-top: 30px">
-                        <label class="layui-form-label">授权用户</label>
-                        <div id="orange-xmsel1" class="xm-select-demo layui-input-block"></div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">分</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="job_minute" lay-verify="required" lay-reqtext="分是必填项，不能为空!"
+                                   placeholder="请输入分钟" autocomplete="off" class="layui-input" value="*">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">时</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="job_hour" lay-verify="required" lay-reqtext="时是必填项，不能为空!"
+                                   placeholder="请输入小时" autocomplete="off" class="layui-input" value="*">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">日</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="job_day" lay-verify="required" lay-reqtext="日是必填项，不能为空!"
+                                   placeholder="请输入日" autocomplete="off" class="layui-input" value="*">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">月</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="job_month" lay-verify="required" lay-reqtext="月是必填项，不能为空!"
+                                   placeholder="请输入月份" autocomplete="off" class="layui-input" value="*">
+                        </div>
                     </div>
 
-                    <div class="layui-form-item" style="margin-top: 30px">
-                        <label class="layui-form-label">授权用户组</label>
-                        <div id="orange-xmsel2" class="xm-select-demo layui-input-block"></div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">周</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="job_week" lay-verify="required" lay-reqtext="周是必填项，不能为空!"
+                                   placeholder="请输入周" autocomplete="off" class="layui-input" value="*">
+                        </div>
                     </div>
+
 
                     <div class="layui-form-item" style="margin-top: 30px">
                         <label class="layui-form-label">资产组</label>
@@ -60,9 +88,17 @@
                     </div>
 
                     <div class="layui-form-item">
+                        <label class="layui-form-label">任务详情</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="job_command" lay-verify="required" lay-reqtext="任务详情是必填项，不能为空!"
+                                   placeholder="请输入要执行的操作" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
                         <label class="layui-form-label">备注</label>
                         <div class="layui-input-block">
-                            <input type="text" name="remarks" placeholder="备注信息" autocomplete="off" class="layui-input">
+                            <input type="text" name="job_remarks" placeholder="备注信息" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 

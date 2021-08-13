@@ -59,7 +59,7 @@ layui.use('table', function () {
                 layer.msg(checkStatus.isAll ? '全选' : '未全选');
                 break;
             case 'createData':
-                window.location.href = '/authority/create.html'
+                window.location.href = '/cron/create.html'
                 break;
 
             //自定义头工具栏右侧图标 - 提示
@@ -75,19 +75,16 @@ layui.use('table', function () {
         var data = obj.data;
         var job_name = obj.data['job_name']
         if (obj.event === 'del') {
-            layer.confirm('确定删除该资产?', function (index) {
+            layer.confirm('确定删除该任务?', function (index) {
                 // obj.del();
                 console.log(job_name);
                 cron_del(job_name)
                 layer.close(index);
-                cron_tab.reload()
             });
         } else if (obj.event === 'start') {
             cron_resume(job_name)
-            cron_tab.reload()
         } else if (obj.event === 'stop') {
             cron_pause(job_name)
-            cron_tab.reload()
         }
     });
 
@@ -100,6 +97,11 @@ layui.use('table', function () {
             },
             dataType: "JSON",
             success: function (res) {
+                if (res['cron_del_status'] === 'true') {
+                    cron_tab.reload()
+                } else if (res['cron_del_status'] === 'fail') {
+                    layer.alert('删除失败, 未知错误！')
+                }
             }
         })
     }
@@ -113,6 +115,11 @@ layui.use('table', function () {
             },
             dataType: "JSON",
             success: function (res) {
+                if (res['cron_pause_status'] === 'true') {
+                    cron_tab.reload()
+                } else if (res['cron_pause_status'] === 'fail') {
+                    layer.alert('暂停失败, 未知错误！')
+                }
             }
         })
     }
@@ -126,6 +133,11 @@ layui.use('table', function () {
             },
             dataType: "JSON",
             success: function (res) {
+                if (res['cron_resume_status'] === 'true') {
+                    cron_tab.reload()
+                } else if (res['cron_resume_status'] === 'fail') {
+                    layer.alert('启动失败, 未知错误！')
+                }
             }
         })
     }

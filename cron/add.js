@@ -5,51 +5,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
         , laydate = layui.laydate
         , element = layui.element;
 
-    get_user_auth_list('authority')
-
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/auth/host/list",
-        data: {
-            'req_type': 'user'
-        },
-        dataType: "JSON",
-        success: function (res) {
-            let auth_data = res['msg']
-            window.demo1 = xmSelect.render({
-                el: '#orange-xmsel1',
-                language: 'zn',
-                theme: {
-                    color: '#f37b1d',
-                },
-                name: 'user',
-                layVerType: 'msg',
-                data: auth_data
-            })
-        }
-    })
-
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/auth/host/list",
-        data: {
-            'req_type': 'user_group'
-        },
-        dataType: "JSON",
-        success: function (res) {
-            let auth_data = res['msg']
-            window.demo2 = xmSelect.render({
-                el: '#orange-xmsel2',
-                language: 'zn',
-                theme: {
-                    color: '#f37b1d',
-                },
-                layVerType: 'msg',
-                name: 'user_group',
-                data: auth_data
-            })
-        }
-    })
+    get_user_auth_list('cron')
 
     $.ajax({
         type: "POST",
@@ -66,7 +22,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
                 theme: {
                     color: '#f37b1d',
                 },
-                name: 'host_group',
+                name: 'job_groups',
                 layVerType: 'msg',
                 data: auth_data
             })
@@ -82,27 +38,20 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
         });
         $.ajax({
             type: "POST",
-            url: ogs_backend_url + "/auth/host/add",
-            // data: {
-            //     'name': $("input[name = 'name").val(),
-            //     'user': window.demo1.getValue('value'),
-            //     'user_group': window.demo2.getValue('value'),
-            //     'host_group': window.demo3.getValue('value'),
-            //     'remarks': $("input[name = 'remarks").val(),
-            // },
+            url: ogs_backend_url + "/local/cron/add",
             data: $('.layui-form').serialize(),
             traditional: true,
             dataType: "JSON",
             success: function (res) {
                 if (res['auth_host_add_status'] === 'true') {
-                    window.location.href = '/authority/authority.html'
-                } else if (res['auth_host_add_status'] === 'fail') {
+                    window.location.href = '/cron/cron.html'
+                } else if (res['cron_add_status'] === 'fail') {
                     layer.close(logif)
                     layer.alert('创建失败，未知错误')
-                } else if (res['auth_host_add_status'] === 'con_fail') {
+                } else if (res['cron_add_status'] === 'con_fail') {
                     layer.close(logif)
                     layer.alert('创建失败，无法连接')
-                } else if (res['auth_host_add_status'] === 'sel_fail') {
+                } else if (res['cron_add_status'] === 'sel_fail') {
                     layer.close(logif)
                     layer.alert('创建失败，该权限名已存在')
                 }
