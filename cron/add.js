@@ -43,7 +43,7 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
             traditional: true,
             dataType: "JSON",
             success: function (res) {
-                if (res['auth_host_add_status'] === 'true') {
+                if (res['cron_add_status'] === 'true') {
                     window.location.href = '/cron/cron.html'
                 } else if (res['cron_add_status'] === 'fail') {
                     layer.close(logif)
@@ -53,17 +53,12 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
                     layer.alert('创建失败，无法连接')
                 } else if (res['cron_add_status'] === 'sel_fail') {
                     layer.close(logif)
-                    layer.alert('创建失败，该权限名已存在')
+                    layer.alert('创建失败，该任务名已存在')
                 }
             }
         })
     }
 
-    // document.getElementById('demo1-getValue').onclick = function(){
-    //     //获取当前多选选中的值
-    //     var selectArr = demo1.getValue('value');
-    //     document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
-    // }
 
     form.on('submit(demo1)', function () {
         let msg = $(".layui-form").serialize()
