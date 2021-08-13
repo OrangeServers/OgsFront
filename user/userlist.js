@@ -5,7 +5,7 @@ layui.use('table', function () {
     get_user_auth_list('user-userlist')
 
     //第一个实例
-    table.render({
+    let user_tab = table.render({
         id: 'test'
         , elem: '#test'
         , height: 580
@@ -76,26 +76,30 @@ layui.use('table', function () {
                 // obj.del();
                 var host_id = obj.data['id']
                 console.log(host_id);
-                host_del(host_id)
+                user_del(host_id)
                 layer.close(index);
             });
         } else if (obj.event === 'edit') {
             window.location.href = "/user/user-userlist/update.html?id=" + data.id
         }
     });
-});
 
-function host_del(obj) {
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/account/user/del",
-        data: {
-            'id': obj,
-            'cz_name': $.cookie('username')
-        },
-        dataType: "JSON",
-        success: function (res) {
-            location.reload()
-        }
-    })
-}
+    function user_del(obj) {
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/account/user/del",
+            data: {
+                'id': obj,
+                'cz_name': $.cookie('username')
+            },
+            dataType: "JSON",
+            success: function (res) {
+                if (res['acc_user_del_status'] === 'true') {
+                    user_tab.reload()
+                } else if (res['acc_user_del_status'] === 'fail') {
+                    layer.alert('删除失败, 未知错误！')
+                }
+            }
+        })
+    }
+});

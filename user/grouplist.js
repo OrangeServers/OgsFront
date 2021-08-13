@@ -17,7 +17,7 @@ layui.use('table', function () {
     })
 
     //第一个实例
-    table.render({
+    let group_tab = table.render({
         id: 'test'
         , elem: '#test'
         , height: 580
@@ -83,28 +83,32 @@ layui.use('table', function () {
         //console.log(obj)
         if (obj.event === 'del') {
             layer.confirm('确定删除该用户组?', function (index) {
-                obj.del();
+                // obj.del();
                 var host_id = obj.data['id']
-                host_del(host_id)
+                group_del(host_id)
                 layer.close(index);
             });
         } else if (obj.event === 'edit') {
             window.location.href = "/user/user-grouplist/update.html?id=" + data.id
         }
     });
-});
 
-function host_del(obj) {
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/account/group/del",
-        data: {
-            'id': obj,
-            'cz_name': $.cookie('username')
-        },
-        dataType: "JSON",
-        success: function (res) {
-            // location.reload()
-        }
-    })
-}
+    function group_del(obj) {
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/account/group/del",
+            data: {
+                'id': obj,
+                'cz_name': $.cookie('username')
+            },
+            dataType: "JSON",
+            success: function (res) {
+                if (res['acc_group_del_status'] === 'true') {
+                    group_tab.reload()
+                } else if (res['acc_group_del_status'] === 'fail') {
+                    layer.alert('删除失败, 未知错误！')
+                }
+            }
+        })
+    }
+});

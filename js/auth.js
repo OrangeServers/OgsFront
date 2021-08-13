@@ -4,7 +4,7 @@ layui.use('table', function () {
     get_user_auth_list('authority')
 
     //第一个实例
-    table.render({
+    let auth_tab = table.render({
         id: 'test'
         , elem: '#test'
         , height: 520
@@ -70,7 +70,7 @@ layui.use('table', function () {
         var data = obj.data;
         //console.log(obj)
         if (obj.event === 'del') {
-            layer.confirm('确定删除该资产?', function (index) {
+            layer.confirm('确定删除该权限?', function (index) {
                 // obj.del();
                 var host_name = obj.data['name']
                 console.log(host_name);
@@ -81,18 +81,22 @@ layui.use('table', function () {
             window.location.href = "/authority/update.html?name=" + data.name
         }
     });
-});
 
-function auth_del(obj) {
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/auth/host/del",
-        data: {
-            'name': obj
-        },
-        dataType: "JSON",
-        success: function (res) {
-            location.reload()
-        }
-    })
-}
+    function auth_del(obj) {
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/auth/host/del",
+            data: {
+                'name': obj
+            },
+            dataType: "JSON",
+            success: function (res) {
+                if (res['auth_host_del_status'] === 'true') {
+                    auth_tab.reload()
+                } else if (res['auth_host_del_status'] === 'fail') {
+                    layer.alert('删除失败, 未知错误！')
+                }
+            }
+        })
+    }
+});

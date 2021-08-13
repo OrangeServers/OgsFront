@@ -17,7 +17,7 @@ layui.use('table', function () {
     })
 
     //第一个实例
-    table.render({
+    let user_tab = table.render({
         id: 'test'
         , elem: '#test'
         , height: 580
@@ -85,9 +85,9 @@ layui.use('table', function () {
         //console.log(obj)
         if (obj.event === 'del') {
             layer.confirm('确定删除该系统用户?', function (index) {
-                obj.del();
+                // obj.del();
                 var host_id = obj.data['id']
-                host_del(host_id)
+                user_del(host_id)
                 layer.close(index);
             });
         } else if (obj.event === 'edit') {
@@ -96,24 +96,23 @@ layui.use('table', function () {
             // layer.alert(data.id, {skin: 'layui-layer-hui'})
         }
     });
-});
 
-function host_del(obj) {
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/server/sys/user/del",
-        data: {
-            'id': obj,
-            'cz_name': $.cookie('username')
-        },
-        dataType: "JSON",
-        success: function (res) {
-            // location.reload()
-            if (res['server_del_status'] === 'true') {
-                console.log(res['server_del_status'])
-            } else if (res['server_del_status'] === 'true') {
-                layer.msg('删除失败，未知错误')
+    function user_del(obj) {
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/server/sys/user/del",
+            data: {
+                'id': obj,
+                'cz_name': $.cookie('username')
+            },
+            dataType: "JSON",
+            success: function (res) {
+                if (res['server_del_status'] === 'true') {
+                    user_tab.reload()
+                } else if (res['server_del_status'] === 'fail') {
+                    layer.msg('删除失败，未知错误')
+                }
             }
-        }
-    })
-}
+        })
+    }
+});
