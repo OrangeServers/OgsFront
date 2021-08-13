@@ -20,13 +20,13 @@ layui.use('table', function () {
         }
         , cols: [[
             {type: 'checkbox', fixed: 'left'}
-            , {field: 'id', width: 60, title: 'id'}
+            , {field: 'id', width: 50, title: 'id'}
             , {field: 'job_name', title: '任务名'}
-            , {field: 'job_minute', width: 60, title: '分'}
-            , {field: 'job_hour', width: 60, title: '时'}
-            , {field: 'job_day', width: 60, title: '日'}
-            , {field: 'job_month', width: 60, title: '月'}
-            , {field: 'job_week', width: 60, title: '周'}
+            , {field: 'job_minute', width: 50, title: '分'}
+            , {field: 'job_hour', width: 50, title: '时'}
+            , {field: 'job_day', width: 50, title: '日'}
+            , {field: 'job_month', width: 50, title: '月'}
+            , {field: 'job_week', width: 50, title: '周'}
             , {field: 'job_groups', title: '资产组'}
             , {field: 'job_command', title: '任务详情'}
             , {field: 'job_status', width: 60, title: '状态'}
