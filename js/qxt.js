@@ -38,7 +38,18 @@ am4core.ready(function () {
 
     get_user_auth_list('index')
 
-    $(".orange-sl3,.orange-sl4").attr('href', '/index.html')
+
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/account/user/auth_list",
+        dataType: "JSON",
+        data: {'name': $.cookie('username')},
+        success: function (res) {
+            if (res['usrole'] !== 'admin') {
+                $(".orange-sl3,.orange-sl4").attr('href', '/index.html')
+            }
+        }
+    })
 
 // Themes end
     // 更新当天数据
