@@ -27,6 +27,7 @@ layui.use('table', function () {
             , {field: 'job_day', width: 50, title: '日'}
             , {field: 'job_month', width: 50, title: '月'}
             , {field: 'job_week', width: 50, title: '周'}
+            , {field: 'job_hosts', title: '资产'}
             , {field: 'job_groups', title: '资产组'}
             , {field: 'job_command', title: '任务详情'}
             , {field: 'job_status', width: 60, title: '状态'}

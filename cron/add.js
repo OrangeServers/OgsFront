@@ -29,6 +29,28 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
         }
     })
 
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/auth/host/list",
+        data: {
+            'req_type': 'host_all'
+        },
+        dataType: "JSON",
+        success: function (res) {
+            let auth_data = res['msg']
+            window.demo2 = xmSelect.render({
+                el: '#orange-xmsel2',
+                language: 'zn',
+                theme: {
+                    color: '#f37b1d',
+                },
+                name: 'job_hosts',
+                layVerType: 'msg',
+                data: auth_data
+            })
+        }
+    })
+
     let xmSelect = layui.xmSelect
 
     function add_auth_list() {
