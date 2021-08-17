@@ -3,15 +3,17 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
         , layer = layui.layer
         , layedit = layui.layedit
         , laydate = layui.laydate
-        , element = layui.element;
+        , element = layui.element
+        , username = $.cookie('username');
 
     get_user_auth_list('cron')
 
     $.ajax({
         type: "POST",
-        url: ogs_backend_url + "/auth/host/list",
+        url: ogs_backend_url + "/local/cron/auth_list",
         data: {
-            'req_type': 'host_group'
+            'req_type': 'cron_groups',
+            'name': username
         },
         dataType: "JSON",
         success: function (res) {
@@ -31,9 +33,10 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
 
     $.ajax({
         type: "POST",
-        url: ogs_backend_url + "/auth/host/list",
+        url: ogs_backend_url + "/local/cron/auth_list",
         data: {
-            'req_type': 'host_all'
+            'req_type': 'cron_hosts',
+            'name': username
         },
         dataType: "JSON",
         success: function (res) {
