@@ -46,66 +46,64 @@ layui.use('table', function () {
 
     //头工具栏事件
     table.on('toolbar(test)', function (obj) {
-        var checkStatus = table.checkStatus(obj.config.id);
-        switch (obj.event) {
-            case 'getCheckData':
-                var data = checkStatus.data;
-                console.log(data)
-                layer.alert(JSON.stringify(data));
-                break;
-            case 'deleteData':
-                var data = checkStatus.data;
-                if (data.length === 0) {
-                    layer.msg('没有选中任何任务')
-                } else {
-                    let name_list = []
-                    for (let i of data) {
-                        name_list.push(i['job_name'])
+            var checkStatus = table.checkStatus(obj.config.id);
+            let data = checkStatus.data;
+            switch (obj.event) {
+                case 'createData':
+                    window.location.href = '/cron/create.html'
+                    break;
+                case 'resumeData':
+                    if (data.length === 0) {
+                        layer.msg('没有选中任何任务')
+                    } else {
+                        let name_list = []
+                        for (let i of data) {
+                            name_list.push(i['job_name'])
+                        }
+                        com_cron(name_list, 'resume')
                     }
-                    let del_btn = layer.confirm('确认删除该定时任务？', {
-                        btn: ['删除', '取消'] //按钮
-                    }, function () {
-                        $.ajax({
-                            type: "POST",
-                            url: ogs_backend_url + "/local/cron/del_list",
-                            data: {
-                                'job_name_list': name_list
-                            },
-                            traditional: true,
-                            dataType: "JSON",
-                            success: function (res) {
-                                if (res['cron_del_status'] === 'true') {
-                                    layer.close(del_btn)
-                                    cron_tab.reload()
-                                } else if (res['cron_del_status'] === 'fail') {
-                                    layer.close()
-                                    layer.alert('删除失败, 未知错误！')
-                                }
-                            }
-                        })
-                    }, function () {
-                        layer.close(del_btn)
-                    });
-                }
-                break;
-            case 'getCheckLength':
-                var data = checkStatus.data;
-                layer.msg('选中了：' + data.length + ' 个');
-                break;
-            case 'isAll':
-                layer.msg(checkStatus.isAll ? '全选' : '未全选');
-                break;
-            case 'createData':
-                window.location.href = '/cron/create.html'
-                break;
+                    break;
+                case 'pauseData':
+                    if (data.length === 0) {
+                        layer.msg('没有选中任何任务')
+                    } else {
+                        let name_list = []
+                        for (let i of data) {
+                            name_list.push(i['job_name'])
+                        }
+                        com_cron(name_list, 'pause')
+                    }
+                    break;
+                case 'deleteData':
+                    if (data.length === 0) {
+                        layer.msg('没有选中任何任务')
+                    } else {
+                        let name_list = []
+                        for (let i of data) {
+                            name_list.push(i['job_name'])
+                        }
+                        let del_btn = layer.confirm('确认删除该定时任务？', {
+                            btn: ['删除', '取消'] //按钮
+                        }, function () {
+                            com_cron(name_list, 'del')
+                            layer.close(del_btn)
+                        }, function () {
+                            layer.close(del_btn)
+                        });
+                    }
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                    break;
 
-            //自定义头工具栏右侧图标 - 提示
-            case 'LAYTABLE_TIPS':
-                layer.alert('这是工具栏右侧自定义的一个图标按钮');
-                break;
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            }
+            ;
         }
-        ;
-    });
+    );
 
     //监听行工具事件
     table.on('tool(test)', function (obj) {
@@ -174,6 +172,26 @@ layui.use('table', function () {
                     cron_tab.reload()
                 } else if (res['cron_resume_status'] === 'fail') {
                     layer.alert('启动失败, 未知错误！')
+                }
+            }
+        })
+    }
+
+    function com_cron(name_list, type) {
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/local/cron/com_list",
+            data: {
+                'job_name_list': name_list,
+                'job_type': type
+            },
+            traditional: true,
+            dataType: "JSON",
+            success: function (res) {
+                if (res['cron_com_status'] === 'true') {
+                    cron_tab.reload()
+                } else if (res['cron_com_status'] === 'fail') {
+                    layer.alert('操作失败, 未知错误！')
                 }
             }
         })
