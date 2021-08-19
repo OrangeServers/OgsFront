@@ -50,7 +50,43 @@ layui.use('table', function () {
         switch (obj.event) {
             case 'getCheckData':
                 var data = checkStatus.data;
+                console.log(data)
                 layer.alert(JSON.stringify(data));
+                break;
+            case 'deleteData':
+                var data = checkStatus.data;
+                if (data.length === 0) {
+                    layer.msg('没有选中任何任务')
+                } else {
+                    let name_list = []
+                    for (let i of data) {
+                        name_list.push(i['job_name'])
+                    }
+                    let del_btn = layer.confirm('确认删除该定时任务？', {
+                        btn: ['删除', '取消'] //按钮
+                    }, function () {
+                        $.ajax({
+                            type: "POST",
+                            url: ogs_backend_url + "/local/cron/del_list",
+                            data: {
+                                'job_name_list': name_list
+                            },
+                            traditional: true,
+                            dataType: "JSON",
+                            success: function (res) {
+                                if (res['cron_del_status'] === 'true') {
+                                    layer.close(del_btn)
+                                    cron_tab.reload()
+                                } else if (res['cron_del_status'] === 'fail') {
+                                    layer.close()
+                                    layer.alert('删除失败, 未知错误！')
+                                }
+                            }
+                        })
+                    }, function () {
+                        layer.close(del_btn)
+                    });
+                }
                 break;
             case 'getCheckLength':
                 var data = checkStatus.data;
