@@ -93,7 +93,9 @@ layui.use('table', function () {
             success: function (res) {
                 if (res['auth_host_del_status'] === 'true') {
                     auth_tab.reload()
-                } else if (res['auth_host_del_status'] === 'fail') {
+                } else if (res['auth_host_del_status'] === 'auth fail') {
+                    layer.msg('所有权限不允许删除！', {icon: 5, time: 2000})
+                }else if (res['auth_host_del_status'] === 'fail') {
                     layer.alert('删除失败, 未知错误！')
                 }
             }
