@@ -12,32 +12,32 @@
 <p>请将ogsbackend服务启动，启动后刷新页面</p>
 
 <script src="/js/jquery-3.3.1.js"></script>
+<script src="/js/conf.js"></script>
 <script>
 
-    let ogs_backend_url = 'http://10.0.1.198:18000'
-    function get_status(){
-                $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/local/init",
-        dataType: "JSON",
-        data: {'status': 'ogsfront'},
-        success: function (res){
-            if (res['status'] === 200){
-                console.log('连接成功')
-                window.history.go(-1)
+    function get_status() {
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/local/init",
+            dataType: "JSON",
+            data: {'status': 'ogsfront'},
+            success: function (res) {
+                if (res['status'] === 200) {
+                    console.log('连接成功')
+                    window.history.go(-1)
+                }
+            },
+            error: function (xhr, errorText, errorType) {
+                if (xhr.status !== 200 && xhr.status !== 302) {
+                    window.location.href = '/error.html'
+                }
             }
-        },
-        error: function (xhr,errorText,errorType){
-            if (xhr.status !== 200 && xhr.status !== 302){
-                window.location.href = '/error.html'
-            }
-        }
-    })
+        })
     }
 
     // js 定时器
-setInterval(function () { //每10秒刷新一次图表
-         //需要执行的代码写在这里
+    setInterval(function () { //每10秒刷新一次图表
+        //需要执行的代码写在这里
         get_status()
     }, 10000)
 </script>
