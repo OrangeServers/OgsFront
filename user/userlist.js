@@ -8,7 +8,7 @@ layui.use('table', function () {
     let user_tab = table.render({
         id: 'test'
         , elem: '#test'
-        , height: 580
+        , height: 560
         , url: ogs_backend_url + '/account/user/list_all'
         , method: 'POST'
         , parseData: function (res) { //res 即为原始返回的数据

@@ -10,7 +10,7 @@ layui.use(['dropdown', 'table'], function () {
     let host_tab = table.render({
         id: 'test'
         , elem: '#test'
-        , height: 580
+        , height: 560
         , url: ogs_backend_url + '/server/host/list_all'
         , method: 'POST'
         , where: {'name': $.cookie('username')}
