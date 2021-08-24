@@ -70,15 +70,24 @@ layui.use('table', function () {
         var data = obj.data;
         //console.log(obj)
         if (obj.event === 'del') {
-            layer.confirm('确定删除该权限?', function (index) {
-                // obj.del();
-                var host_name = obj.data['name']
-                console.log(host_name);
-                auth_del(host_name)
-                layer.close(index);
-            });
+            if (obj.data['name'] === '所有权限') {
+                layer.msg('所有权限不允许删除！', {icon: 2, time: 2000})
+            } else {
+                layer.confirm('确定删除该权限?', function (index) {
+                    // obj.del();
+                    var host_name = obj.data['name']
+                    console.log(host_name);
+                    auth_del(host_name)
+                    layer.close(index);
+                });
+            }
         } else if (obj.event === 'edit') {
-            window.location.href = "/authority/update.html?name=" + data.name
+            if (obj.data['name'] === '所有权限') {
+                layer.msg('所有权限不允许编辑！', {icon: 2, time: 2000})
+            } else {
+                window.location.href = "/authority/update.html?name=" + data.name
+            }
+
         }
     });
 
@@ -95,7 +104,7 @@ layui.use('table', function () {
                     auth_tab.reload()
                 } else if (res['auth_host_del_status'] === 'auth fail') {
                     layer.msg('所有权限不允许删除！', {icon: 5, time: 2000})
-                }else if (res['auth_host_del_status'] === 'fail') {
+                } else if (res['auth_host_del_status'] === 'fail') {
                     layer.alert('删除失败, 未知错误！')
                 }
             }
