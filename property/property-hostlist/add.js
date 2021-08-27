@@ -8,7 +8,7 @@ layui.use(['form', 'layedit', 'laydate', 'element'], function () {
     get_user_auth_list('property-hostlist')
 
     // 获取组名列表
-    get_group_name_list()
+    get_group_name_list('/server/host/group/name_list')
 
     function host_add(add_type) {
         // layer.alert($('.layui-form').serialize())

@@ -4,6 +4,8 @@ function add_acc_user() {
         shade: [0.1, '#fff'] //0.1透明度的白色背景
     });
     let data = $('.layui-form').serialize() + "&cz_name=" + $.cookie('username')
+
+
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/account/user/add",
@@ -33,6 +35,8 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         , laydate = layui.laydate;
 
     get_user_auth_list('user-userlist')
+
+    get_group_name_list('/account/group/name_list')
 
     //日期
     laydate.render({

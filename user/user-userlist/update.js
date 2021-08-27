@@ -6,6 +6,8 @@ layui.use(['form', 'layedit', 'laydate'], function () {
 
     get_user_auth_list('user-userlist')
 
+    get_group_name_list('/account/group/name_list')
+
 
     let acc_user_id = getParam("id");
     get_user_info('user_list', acc_user_id)

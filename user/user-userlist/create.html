@@ -28,7 +28,7 @@
                 <h2>创建系统用户</h2>
             </div>
 
-            <div class="orange-host-from">
+            <div class="orange-host-from" style="height: 610px">
                 <h3>必填信息</h3>
                 <!--      <form id="adhsform" onsubmit="return false">-->
                 <form class="layui-form" onsubmit="return false">
@@ -74,6 +74,15 @@
                                 <option value="develop" selected="">develop</option>
                                 <option value="admin">admin</option>
                                 <option value="自定义" disabled="">自定义</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户组</label>
+                        <div class="layui-input-block">
+                            <select name="group" lay-filter="group" id="orange_group">
                             </select>
                         </div>
                     </div>

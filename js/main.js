@@ -460,10 +460,10 @@ function undata(obj) {
 }
 
 
-function get_group_name_list() {
+function get_group_name_list(url) {
     $.ajax({
         type: "POST",
-        url: ogs_backend_url + "/server/host/group/name_list",
+        url: ogs_backend_url + url,
         dataType: "JSON",
         data: {'name': $.cookie('username')},
         success: function (res) {
