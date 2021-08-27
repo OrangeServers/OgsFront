@@ -266,6 +266,7 @@ function upload_layui_develop(cas_this) {
         cas_this5 = ''
 
     let cas_item_this1 = '',
+        cas_item_this2 = '',
         cas_item_this3 = '',
         cas_item_this6 = '',
         cas_item_this7 = '',
@@ -292,6 +293,9 @@ function upload_layui_develop(cas_this) {
     else if (cas_this === 'property-hostlist') {
         cas_item1 = ' layui-nav-itemed'
         cas_item_this1 = 'class="layui-this"'
+    } else if (cas_this === 'property-grouplist') {
+        cas_item1 = ' layui-nav-itemed'
+        cas_item_this2 = 'class="layui-this"'
     } else if (cas_this === 'property-userlist') {
         cas_item1 = ' layui-nav-itemed'
         cas_item_this3 = 'class="layui-this"'
@@ -354,6 +358,7 @@ function upload_layui_develop(cas_this) {
         '          <a class="" href="javascript:;"><img src="/image/资产管理.png" width="20" height="20">资产管理</a>\n' +
         '          <dl class="layui-nav-child">\n' +
         '            <dd><a href="/property/property-hostlist.html"' + cas_item_this1 + '><img src="/image/juzi11.png" width="20" height="20">资产列表</a></dd>\n' +
+        '            <dd><a href="/property/property-grouplist.html"' + cas_item_this2 + '><img src="/image/juzi11.png" width="20" height="20">资产组</a></dd>\n' +
         '            <dd><a href="/property/property-userlist.html"' + cas_item_this3 + '><img src="/image/juzi11.png" width="20" height="20">系统用户</a></dd>\n' +
         '          </dl>\n' +
         '        </li>\n' +

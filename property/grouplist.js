@@ -23,6 +23,7 @@ layui.use('table', function () {
         , height: 560
         , url: ogs_backend_url + '/server/host/group/list_all'
         , method: 'POST'
+        , where: {'name': $.cookie('username')}
         , parseData: function (res) { //res 即为原始返回的数据
             return {
                 "code": res.host_status, //解析接口状态
