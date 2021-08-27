@@ -26,6 +26,7 @@ layui.use('table', function () {
             , {field: 'name', title: '名称'}
             , {field: 'mail', title: '邮箱'}
             , {field: 'usrole', width: 80, title: '权限'}
+            , {field: 'group', title: '用户组'}
             , {field: 'remarks', title: '备注'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
         ]]
