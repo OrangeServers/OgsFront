@@ -82,14 +82,24 @@ layui.use('table', function () {
         var data = obj.data;
         //console.log(obj)
         if (obj.event === 'del') {
-            layer.confirm('确定删除该用户组?', function (index) {
-                // obj.del();
-                var host_id = obj.data['id']
-                group_del(host_id)
-                layer.close(index);
-            });
+            if (obj.data['name'] === 'admin') {
+                layer.msg('admin组不允许删除！', {icon: 2, time: 2000})
+            } else {
+                layer.confirm('确定删除该用户组? 该操作会同时删除组内所有用户 !', function (index) {
+                    // obj.del();
+                    var host_id = obj.data['id']
+                    group_del(host_id)
+                    layer.close(index);
+                });
+            }
+
         } else if (obj.event === 'edit') {
-            window.location.href = "/user/user-grouplist/update.html?id=" + data.id
+            if (obj.data['name'] === 'admin') {
+                layer.msg('admin组不允许编辑！', {icon: 2, time: 2000})
+            } else {
+                window.location.href = "/user/user-grouplist/update.html?id=" + data.id
+            }
+
         }
     });
 
