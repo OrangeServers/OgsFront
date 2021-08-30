@@ -35,7 +35,7 @@ layui.use('table', function () {
             {type: 'checkbox', fixed: 'left'}
             , {field: 'id', width: 80, sort: true, title: 'id'}
             , {field: 'name', title: '组名'}
-            , {field: 'nums', width: 100, title: '资产数量'}
+            , {field: 'nums', width: 100, title: '用户数量'}
             , {field: 'remarks', title: '备注'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
         ]]
