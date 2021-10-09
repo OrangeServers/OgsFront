@@ -28,6 +28,7 @@ function sys_user_update() {
     let data = new FormData()
     data.append('cz_name', $.cookie('username'))
     data.append('host_key', host_key)
+    data.append('id', $("input[name = 'id']").val())
     data.append('alias', $("input[name = 'alias']").val())
     data.append('host_user', $("input[name = 'host_user']").val())
     data.append('agreement', $("select[name = 'agreement']").val())
