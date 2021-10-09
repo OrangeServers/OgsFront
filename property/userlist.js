@@ -107,9 +107,9 @@ layui.use('table', function () {
             },
             dataType: "JSON",
             success: function (res) {
-                if (res['server_del_status'] === 'true') {
+                if (res['sys_user_del_status'] === 'true') {
                     user_tab.reload()
-                } else if (res['server_del_status'] === 'fail') {
+                } else if (res['sys_user_del_status'] === 'fail') {
                     layer.msg('删除失败，未知错误')
                 }
             }

@@ -65,9 +65,16 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">登录密码</label>
                         <div class="layui-input-block">
-                            <input type="password" name="host_password" lay-verify="required"
-                                   lay-reqtext="登录密码是必填项，不能为空!" placeholder="请输入登录密码" autocomplete="off"
+                            <input type="password" name="host_password" lay-verify="title"
+                                   placeholder="请输入登录密码" autocomplete="off"
                                    class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" style="margin-top: 20px">
+                        <label class="layui-form-label">登录密钥</label>
+                        <div class="layui-input-block">
+                            <input id="host_key" class="layui-input" type="file" lay-verify="title" autocomplete="off">
                         </div>
                     </div>
 
