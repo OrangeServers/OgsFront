@@ -24,11 +24,22 @@ function sys_user_update() {
     let logif = layer.load(1, {
         shade: [0.1, '#fff'] //0.1透明度的白色背景
     });
-    let data = $('.layui-form').serialize() + "&cz_name=" + $.cookie('username')
+    let host_key = $('#host_key')[0].files[0]
+    let data = new FormData()
+    data.append('cz_name', $.cookie('username'))
+    data.append('host_key', host_key)
+    data.append('alias', $("input[name = 'alias']").val())
+    data.append('host_user', $("input[name = 'host_user']").val())
+    data.append('agreement', $("select[name = 'agreement']").val())
+    data.append('host_password', $("input[name = 'host_password']").val())
+    data.append('remarks', $("input[name = 'remarks']").val())
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/server/sys/user/update",
         data: data,
+        processData: false,	// 告诉jQuery不要去处理发送的数据
+        contentType: false,	// 告诉jQuery不要去设置Content-Type请求头
+        traditional: true,
         dataType: "JSON",
         success: function (res) {
             if (res['sys_user_ping_status'] === 'true') {
