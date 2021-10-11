@@ -12,6 +12,9 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
     get_tree_list()
     $('#orange-text').css({"margin-top": "10px!;"})
 
+    //获取系统用户列表
+    get_sys_user_name()
+
 // let id_data = ''
 //     console.log(id_data)
 
@@ -63,6 +66,7 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
             obj.append('id_list', id_list[y])
         }
         obj.append('com_name', $.cookie('username'))
+        obj.append('sys_user', $('#orange_sys-user').val())
         $.ajax({
             url: ogs_backend_url + '/server/file/put',
             type: 'POST',

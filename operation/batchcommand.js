@@ -8,6 +8,9 @@ layui.use(['tree', 'util'], function () {
     //开启复选框
     get_tree_list()
 
+    //获取系统用户列表
+    get_sys_user_name()
+
     // 批量执行命令
     function host_list_command(list_id) {
         // let logif = layer.msg('正在批量执行')
@@ -21,7 +24,8 @@ layui.use(['tree', 'util'], function () {
             data: {
                 'host_id': list_id,
                 'command': $("#shuru_tex").val(),
-                'com_name': $.cookie('username')
+                'com_name': $.cookie('username'),
+                'sys_user': $('#orange_sys-user').val()
             },
             // 设置后去掉数组传参中带的[]  使后台能正常接收
             traditional: true,

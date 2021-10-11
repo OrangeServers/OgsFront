@@ -586,3 +586,19 @@ function delete_cookie() {
     $.removeCookie('username')
     window.location.href = '/login.html'
 }
+
+function get_sys_user_name() {
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/server/sys/user/name_list",
+        dataType: "JSON",
+        success: function (res) {
+            let name_list = res['msg']
+            let html = ''
+            for (let i of name_list) {
+                html += '<option value="' + i + '">' + i + '</option>'
+            }
+            $('#orange_sys-user').html(html)
+        }
+    })
+}
