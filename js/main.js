@@ -592,6 +592,7 @@ function get_sys_user_name() {
         type: "POST",
         url: ogs_backend_url + "/server/sys/user/name_list",
         dataType: "JSON",
+        data: {'name': $.cookie('username')},
         success: function (res) {
             let name_list = res['msg']
             let html = ''
