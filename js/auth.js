@@ -24,6 +24,7 @@ layui.use('table', function () {
             , {field: 'user', title: '授权用户'}
             , {field: 'user_group', title: '授权用户组'}
             , {field: 'host_group', title: '资产组'}
+            , {field: 'sys_user', title: '系统用户'}
             , {field: 'remarks', title: '备注'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
         ]]

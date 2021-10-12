@@ -106,6 +106,34 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
         }
     })
 
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/auth/host/uplist",
+        data: {
+            'name': host_name,
+            'req_type': 'sys_user'
+        },
+        dataType: "JSON",
+        success: function (res) {
+            let auth_data = res['msg']
+            for (let i = 0; i < auth_data.length; i++) {
+                if (auth_data[i]['selected'] === 'selected') {
+                    auth_data[i]['selected'] = true
+                }
+            }
+            window.demo1 = xmSelect.render({
+                el: '#orange-xmsel4',
+                language: 'zn',
+                theme: {
+                    color: '#f37b1d',
+                },
+                name: 'sys_user',
+                layVerType: 'msg',
+                data: auth_data
+            })
+        }
+    })
+
     let xmSelect = layui.xmSelect
 
     function auth_host_update() {
