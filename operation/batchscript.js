@@ -31,7 +31,9 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
                 layer.msg('必须选择资产组或资产才能执行', {icon: 7});
             } else if (ipu_file === undefined) {
                 layer.msg('必须上传文件才能执行', {icon: 7})
-            } else if (chk_data_len !== 0 && ipu_file !== undefined) {
+            } else if ($('#orange_sys-user').val() === null) {
+                layer.msg('无可执行系统用户', {icon: 7});
+            }else if (chk_data_len !== 0 && ipu_file !== undefined) {
                 formData.append('file', ipu_file)
                 formData.append('name', ipu_file.name)
                 console.log('div' + ipu_file.name)

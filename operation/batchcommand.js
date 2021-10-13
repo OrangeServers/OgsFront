@@ -68,7 +68,9 @@ layui.use(['tree', 'util'], function () {
                 layer.msg('必须选择资产组或资产才能执行', {icon: 7});
             } else if ($("#shuru_tex").val() === '') {
                 layer.msg('请输入执行命令', {icon: 7});
-            } else {
+            } else if ($('#orange_sys-user').val() === null) {
+                layer.msg('无可执行系统用户', {icon: 7});
+            }else {
                 let id_data = undata(checkedData)
                 host_list_command(id_data)
                 // console.log(host_list_command(id_data))
