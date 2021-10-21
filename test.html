@@ -213,7 +213,10 @@
 
         document.getElementById('demo1-getValue').onclick = function () {
             //获取当前多选选中的值
-            window.location.href = '/ssh/?hostname=10.0.1.199&username=root&password=amxiMTIz'
+            // window.location.href = '/ssh/?hostname=10.0.1.199&username=root&password=amxiMTIz'
+            //Clipboard.copy('wget http://xxxxx/sas/xiazai.zip')
+            // 点击复制到剪切板
+            document.execComman('wget http://xxxxx/sas/xiazai.zip')
             // var selectArr = demo1.getValue('value');
             // document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
         }
