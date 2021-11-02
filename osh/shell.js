@@ -4,7 +4,7 @@
 //  document.write("<script language=javascript src="+url+"></script>");
 
 
-function runFakeTerminal(termid, host) {
+function runFakeTerminal(termid, host, user) {
 
     // let fitAddon = new FitAddon()
 
@@ -49,7 +49,8 @@ function runFakeTerminal(termid, host) {
     };
 
     let ssh_host_name = {
-        'hostname': host
+        'hostname': host,
+        'username': user
     }
 
     ws.onopen = function () {
@@ -137,6 +138,8 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer', 'dtree'], function () {
         , util = layui.util //Tab的切换功能，切换事件监听等，需要依赖element模块
         , dtree = layui.dtree;
 
+    get_sys_user_name()
+
     function get_tree_list() {
         $.ajax({
             type: "POST",
@@ -183,8 +186,13 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer', 'dtree'], function () {
                 , content: '<div id="' + termid + '"></div>'
                 , id: termid //实际使用一般是规定好的id，这里以时间戳模拟下
             })
-            runFakeTerminal(termid, obj.param['context'])
+            let sys_user_name = $('#orange_sys-user').val()
+            if (sys_user_name === null) {
+                layer.msg('无可执行系统用户', {icon: 7});
+            } else {
+            runFakeTerminal(termid, obj.param['context'], sys_user_name)
             element.tabChange('demo', termid);
+            }
         }
     })
 
