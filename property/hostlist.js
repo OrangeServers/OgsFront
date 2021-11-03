@@ -28,7 +28,6 @@ layui.use(['dropdown', 'table'], function () {
             , {field: 'alias', title: '名称'}
             , {field: 'host_ip', title: 'ip地址'}
             , {field: 'host_port', width: 80, title: '端口'}
-            , {field: 'host_user', title: '登录用户'}
             , {field: 'group', title: '组名'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
         ]]

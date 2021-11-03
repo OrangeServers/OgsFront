@@ -11,7 +11,6 @@ function get_host_list() {
                 $("input[name = 'alias']").val(res["alias"])
                 $("input[name = 'host_port']").val(res['host_port'])
                 $("input[name = 'host_ip']").val(res['host_ip'])
-                $("input[name = 'host_user']").val(res["host_user"])
                 $("input[name = 'group']").val(res["group"])
             } else if (res['host_list_msg'] === 'select list msg error') {
                 error('未知错误')
