@@ -8,6 +8,9 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
 
     get_user_auth_list('cron')
 
+    // 获取系统用户
+    get_sys_user_name()
+
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/local/cron/auth_list",

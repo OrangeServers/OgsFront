@@ -595,6 +595,7 @@ function get_sys_user_name() {
                 html += '<option value="' + i + '">' + i + '</option>'
             }
             $('#orange_sys-user').html(html)
+            layui.form.render('select')
         }
     })
 }
