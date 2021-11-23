@@ -4,18 +4,6 @@ layui.use('table', function () {
 
     get_user_auth_list('property-userlist')
 
-    // 加载组关联资产信息
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/local/sum",
-        data: {
-            'sum_name': 'sys_user'
-        },
-        dataType: "JSON",
-        success: function (res) {
-        }
-    })
-
     //第一个实例
     let user_tab = table.render({
         id: 'test'
@@ -37,7 +25,6 @@ layui.use('table', function () {
             , {field: 'alias', title: '名称'}
             , {field: 'host_user', title: '用户名'}
             , {field: 'agreement', width: 100, title: '协议'}
-            , {field: 'nums', width: 100, title: '资产数量'}
             , {field: 'remarks', title: '备注'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
         ]]
