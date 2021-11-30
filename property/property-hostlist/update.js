@@ -3,7 +3,7 @@ function get_host_list() {
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/server/host/list",
-        data: {'id': host_id},
+        data: {'type': 'host_id', 'id': host_id},
         dataType: "JSON",
         success: function (res) {
             if (res['host_list_msg'] !== 'select list msg error') {

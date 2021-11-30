@@ -3,7 +3,7 @@ function get_sys_user() {
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/server/sys/user/list",
-        data: {'id': sys_user_id},
+        data: {'type': 'user_id', 'id': sys_user_id},
         dataType: "JSON",
         success: function (res) {
             if (res['sys_user_list_msg'] !== 'select list msg error') {
