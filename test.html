@@ -107,13 +107,18 @@
         })
     }
 
+    // function nm_sex_get() {
+    //     let msg = $('.layui-form').serializeArray()
+    //     console.log(msg[0]['value'])
+    // }
+
     layui.config({
         base: '/layui/layuimod/dtree/'
     }).extend({
         dtree: 'dtree'
     })
 
-    layui.use(['jquery', 'dtree'], function () {
+    layui.use(['jquery', 'dtree', 'element', 'form'], function () {
         let dtree = layui.dtree
 
         console.log(window.location.pathname)
@@ -210,13 +215,51 @@
 
         let xmSelect = layui.xmSelect
 
-
         document.getElementById('demo1-getValue').onclick = function () {
             //获取当前多选选中的值
             // window.location.href = '/ssh/?hostname=10.0.1.199&username=root&password=amxiMTIz'
             //Clipboard.copy('wget http://xxxxx/sas/xiazai.zip')
             // 点击复制到剪切板
-            document.execComman('wget http://xxxxx/sas/xiazai.zip')
+            // document.execComman('wget http://xxxxx/sas/xiazai.zip')
+            $.ajax({
+                type: "POST",
+                url: ogs_backend_url + "/server/sys/user/name_list",
+                dataType: "JSON",
+                data: {'name': $.cookie('username')},
+                success: function (res) {
+                    let name_list = res['msg']
+                    let sys_name_list = ''
+                    for (let i of name_list) {
+                        sys_name_list += '<input type="radio" name="sex" value="' + i + '" title="' + i + '" checked="">'
+                    }
+                    let select_sys_user = '<form class="layui-form" onsubmit="return false">\n' +
+                        '  <div class="layui-form-item">\n' +
+                        '    <label class="layui-form-label">单选框</label>\n' +
+                        '    <div class="layui-input-block">\n' +
+                        sys_name_list +
+                        // '      <input type="radio" name="sex" value="男" title="男" checked="">\n' +
+                        // '      <input type="radio" name="sex" value="女" title="女">\n' +
+                        // '      <input type="radio" name="sex" value="禁" title="禁用" disabled="">\n' +
+                        '    </div>\n' +
+                        '  </div>\n' +
+                        '  <div class="layui-form-item">\n' +
+                        '    <div class="layui-input-block">\n' +
+                        '      <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" onclick="function nm() {console.log($(\'.layui-form\').serializeArray()[0][\'value\'])} nm()">确认</button>\n' +
+                        '    </div>\n' +
+                        '  </div>\n' +
+                        '</form>'
+
+                    layer.open({
+                        type: 1,
+                        skin: 'layui-layer-rim', //加上边框
+                        area: ['420px', '240px'], //宽高
+                        content: select_sys_user
+                    });
+                    layui.form.render()
+                }
+            })
+
+
             // var selectArr = demo1.getValue('value');
             // document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
         }
