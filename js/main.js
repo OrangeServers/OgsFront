@@ -186,7 +186,7 @@ function upload_layui_admin(cas_this) {
         '            <dd><a href="/operation/operation-batchcommand.html"' + cas_item_this7 + '><img src="/image/juzi11.png" width="20" height="20">批量命令</a></dd>\n' +
         '            <dd><a href="/operation/operation-batchscript.html"' + cas_item_this6 + '><img src="/image/juzi11.png" width="20" height="20">批量脚本</a></dd>\n' +
         '            <dd><a href="/operation/operation-codesync.html"' + cas_item_this8 + '><img src="/image/juzi11.png" width="20" height="20">代码同步</a></dd>\n' +
-        '            <dd><a href="/osh/shell.html" target="_blank"><img src="/image/juzi11.png" width="20" height="20">shell终端</a></dd>\n' +
+        '            <dd><a href="/wsh/" target="_blank"><img src="/image/juzi11.png" width="20" height="20">shell终端</a></dd>\n' +
         '          </dl>\n' +
         '        </li>\n' +
         '        <li class="layui-nav-item' + cas_item4 + '">\n' +
@@ -363,7 +363,7 @@ function upload_layui_develop(cas_this) {
         '            <dd><a href="/operation/operation-batchcommand.html"' + cas_item_this7 + '><img src="/image/juzi11.png" width="20" height="20">批量命令</a></dd>\n' +
         '            <dd><a href="/operation/operation-batchscript.html"' + cas_item_this6 + '><img src="/image/juzi11.png" width="20" height="20">批量脚本</a></dd>\n' +
         '            <dd><a href="/operation/operation-codesync.html"' + cas_item_this8 + '><img src="/image/juzi11.png" width="20" height="20">代码同步</a></dd>\n' +
-        '            <dd><a href="/osh/shell.html" target="_blank"><img src="/image/juzi11.png" width="20" height="20">shell终端</a></dd>\n' +
+        '            <dd><a href="/wsh/" target="_blank"><img src="/image/juzi11.png" width="20" height="20">shell终端</a></dd>\n' +
         '          </dl>\n' +
         '        </li>\n' +
         '        <li class="layui-nav-item' + cas_item4 + '">\n' +
