@@ -67,8 +67,8 @@ function runFakeTerminal(termid, host, user) {
         $("." + host).css("color", "red")
     }
 
-    ws.onclose = function () {
-        console.log('连接失败')
+    ws.onclose = function (e) {
+        console.log(e)
         term.writeln('\nUnable to connect to host: [Errno 110] Connection timed out, Please check that the password is correct or the server is running')
         ws.close()
         $("." + host).css("color", "red")

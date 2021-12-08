@@ -244,7 +244,7 @@
                         '  </div>\n' +
                         '  <div class="layui-form-item">\n' +
                         '    <div class="layui-input-block">\n' +
-                        '      <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" onclick="function nm() {console.log($(\'.layui-form\').serializeArray()[0][\'value\'])} nm()">确认</button>\n' +
+                        '      <button id="sys_user_conn" type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">确认</button>\n' +
                         '    </div>\n' +
                         '  </div>\n' +
                         '</form>'
@@ -256,6 +256,9 @@
                         content: select_sys_user
                     });
                     layui.form.render()
+                    $('#sys_user_conn').click(function (){
+                        console.log($('.layui-form').serializeArray()[0]['value'])
+                    })
                 }
             })
 
