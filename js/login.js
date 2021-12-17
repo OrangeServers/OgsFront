@@ -77,7 +77,6 @@ function user_login(login_time) {
         shade: [0.1, '#fff'] //0.1透明度的白色背景
     });
     let login_form = $.param({'user_gw_ip': returnCitySN["cip"]}) + '&' + $.param({'user_gw_cs': returnCitySN["cname"]}) + '&' + $('.layui-form').serialize()
-    console.log(login_form)
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/account/login_dl",
@@ -137,7 +136,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     })
 
     //日期
-    console.log($().cookie)
+
     laydate.render({
         elem: '#date'
     });
@@ -147,7 +146,6 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     form.on('submit(demo1)', function () {
         let val = $('#orange-yzm').val();
         let num = show_num.join("");
-        console.log(val, num)
         // 强制转换成小写来比较
         if (val.toLowerCase() !== num.toLowerCase()) {
             layer.msg('验证码错误', {icon: 5, time: 2000})
