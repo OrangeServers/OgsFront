@@ -33,11 +33,47 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
                 layer.msg('必须上传文件才能执行', {icon: 7})
             } else if ($('#orange_sys-user').val() === null) {
                 layer.msg('无可执行系统用户', {icon: 7});
-            }else if (chk_data_len !== 0 && ipu_file !== undefined) {
+            } else if (chk_data_len !== 0 && ipu_file !== undefined) {
                 formData.append('file', ipu_file)
                 formData.append('name', ipu_file.name)
                 console.log('div' + ipu_file.name)
-                test_put_file(formData, undata(checkedData))
+                let select_sys_user = '<form class="layui-form" onsubmit="return false">\n' +
+                    '  <div class="layui-form-item">\n' +
+                    // '    <label class="layui-form-label">类型</label>\n' +
+                    '    <div class="layui-input-block" style="margin-left: 100px;">\n' +
+                    '      <input type="radio" name="sex" value="sendcom" title="上传执行" checked="">\n' +
+                    '      <input type="radio" name="sex" value="send" title="仅上传文件">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item" style="position: absolute;right: 120px;bottom: 0px;">\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <button id="sys_user_conn" type="submit" class="layui-btn layui-bg-blue" lay-submit="" lay-filter="demo1">确认</button>\n' +
+                    '      <button id="sys_user_exit" type="submit" class="layui-btn layui-bg-red" lay-submit="" lay-filter="demo1">取消</button>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</form>'
+                let user_open = layer.open({
+                    type: 1,
+                    skin: 'layui-layer-rim', //加上边框
+                    area: ['420px', '240px'], //宽高
+                    content: select_sys_user
+                });
+                layui.form.render()
+                $('#sys_user_exit').click(function () {
+                    layer.close(user_open)
+                })
+                layui.form.render()
+                $('#sys_user_conn').click(function () {
+                    let user_name = $('.layui-form').serializeArray()[0]['value']
+                    if (user_name === 'sendcom') {
+                        test_put_file(formData, undata(checkedData))
+                        layer.close(user_open)
+                    } else if (user_name === 'send') {
+                        test_put_file(formData, undata(checkedData))
+                        layer.close(user_open)
+                    }
+                })
+
             }
         }
         , resetMsg: function () {
