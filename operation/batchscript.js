@@ -66,9 +66,13 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
                 $('#sys_user_conn').click(function () {
                     let user_name = $('.layui-form').serializeArray()[0]['value']
                     if (user_name === 'sendcom') {
+                        console.log('执行脚本')
+                        formData.append('put_type', 'sh')
                         test_put_file(formData, undata(checkedData))
                         layer.close(user_open)
                     } else if (user_name === 'send') {
+                        console.log('上传文件')
+                        formData.append('put_type', 'send')
                         test_put_file(formData, undata(checkedData))
                         layer.close(user_open)
                     }
