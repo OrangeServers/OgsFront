@@ -148,11 +148,12 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         let val = $('#orange-yzm').val();
         let num = show_num.join("");
         console.log(val, num)
-        if (val !== num) {
+        // 强制转换成小写来比较
+        if (val.toLowerCase() !== num.toLowerCase()) {
             layer.msg('验证码错误', {icon: 5, time: 2000})
             $('#orange-yzm').val('')
             draw(show_num)
-        } else if (val === num) {
+        } else if (val.toLowerCase()  === num.toLowerCase()) {
             user_login(window.login_time)
         }
     });
