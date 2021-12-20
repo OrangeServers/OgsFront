@@ -31,7 +31,16 @@ layui.use('table', function () {
             , {field: 'job_groups', title: '资产组'}
             , {field: 'job_sys_user', title: '执行用户'}
             , {field: 'job_command', title: '任务详情'}
-            , {field: 'job_status', width: 60, title: '状态'}
+            // 表格内自定义返回值
+            , {
+                field: 'job_status', width: 60, title: '状态', templet: function (d) {
+                    if (d.job_status === '启动') {
+                        return '<i class="layui-icon layui-icon-circle-dot" style="font-size: 20px; color: #4cb450;"></i>'
+                    } else if (d.job_status === '暂停') {
+                        return '<i class="layui-icon layui-icon-circle-dot" style="font-size: 20px; color: #FFB800;"></i>'
+                    }
+                }
+            }
             , {field: 'job_remarks', title: '备注'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 170}
         ]]
