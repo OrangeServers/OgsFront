@@ -31,7 +31,7 @@ layui.use(['tree', 'util'], function () {
             traditional: true,
             dataType: "JSON",
             success: function (res) {
-                if (res["server_ping_status"] === 'true') {
+                if (res["code"] === 0) {
                     layer.close(logif)
                     layer.msg('批量执行完成', {icon: 1})
                     var com_ls = res["command_msg"]
@@ -50,7 +50,7 @@ layui.use(['tree', 'util'], function () {
                         "color": "#FF8C00",
                         "font-size": "10px"
                     })
-                } else if (res["server_ping_status"] === 'fail') {
+                } else if (res["code"] === 112) {
                     let err_msg = res['error_list'] + ' error! ' + res['msg']
                     console.log(err_msg)
                     layer.close(logif)
