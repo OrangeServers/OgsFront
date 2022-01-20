@@ -116,15 +116,15 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
             traditional: true,
             dataType: "JSON",
             success: function (res) {
-                if (res['auth_host_add_status'] === 'true') {
+                if (res['code'] === 0) {
                     window.location.href = '/authority/authority.html'
-                } else if (res['auth_host_add_status'] === 'fail') {
+                } else if (res['code'] === 2) {
                     layer.close(logif)
                     layer.alert('创建失败，未知错误')
-                } else if (res['auth_host_add_status'] === 'con_fail') {
+                } else if (res['code'] === 201) {
                     layer.close(logif)
                     layer.alert('创建失败，无法连接')
-                } else if (res['auth_host_add_status'] === 'sel_fail') {
+                } else if (res['code'] === 132) {
                     layer.close(logif)
                     layer.alert('创建失败，该权限名已存在')
                 }

@@ -71,15 +71,15 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
             traditional: true,
             dataType: "JSON",
             success: function (res) {
-                if (res['cron_add_status'] === 'true') {
+                if (res['code'] === 0) {
                     window.location.href = '/cron/cron.html'
-                } else if (res['cron_add_status'] === 'fail') {
+                } else if (res['code'] === 2) {
                     layer.close(logif)
                     layer.alert('创建失败，未知错误')
-                } else if (res['cron_add_status'] === 'con_fail') {
+                } else if (res['code'] === 201) {
                     layer.close(logif)
                     layer.alert('创建失败，无法连接')
-                } else if (res['cron_add_status'] === 'sel_fail') {
+                } else if (res['code'] === 141) {
                     layer.close(logif)
                     layer.alert('创建失败，该任务名已存在')
                 }

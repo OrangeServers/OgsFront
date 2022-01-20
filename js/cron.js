@@ -12,7 +12,7 @@ layui.use('table', function () {
         , method: 'POST'
         , parseData: function (res) { //res 即为原始返回的数据
             return {
-                "code": res.host_status, //解析接口状态
+                "code": res.code, //解析接口状态
                 "msg": '', //解析提示文本
                 "count": res.cron_len_msg, //解析数据长度
                 "data": res.cron_list_msg //解析数据列表
@@ -142,9 +142,9 @@ layui.use('table', function () {
             },
             dataType: "JSON",
             success: function (res) {
-                if (res['cron_del_status'] === 'true') {
+                if (res['code'] === 0) {
                     cron_tab.reload()
-                } else if (res['cron_del_status'] === 'fail') {
+                } else if (res['code'] === 2) {
                     layer.alert('删除失败, 未知错误！')
                 }
             }
@@ -160,9 +160,9 @@ layui.use('table', function () {
             },
             dataType: "JSON",
             success: function (res) {
-                if (res['cron_pause_status'] === 'true') {
+                if (res['code'] === 0) {
                     cron_tab.reload()
-                } else if (res['cron_pause_status'] === 'fail') {
+                } else if (res['code'] === 2) {
                     layer.alert('暂停失败, 未知错误！')
                 }
             }
@@ -178,9 +178,9 @@ layui.use('table', function () {
             },
             dataType: "JSON",
             success: function (res) {
-                if (res['cron_resume_status'] === 'true') {
+                if (res['code'] === 0) {
                     cron_tab.reload()
-                } else if (res['cron_resume_status'] === 'fail') {
+                } else if (res['code'] === 2) {
                     layer.alert('启动失败, 未知错误！')
                 }
             }
@@ -198,9 +198,9 @@ layui.use('table', function () {
             traditional: true,
             dataType: "JSON",
             success: function (res) {
-                if (res['cron_com_status'] === 'true') {
+                if (res['code'] === 0) {
                     cron_tab.reload()
-                } else if (res['cron_com_status'] === 'fail') {
+                } else if (res['code'] === 2) {
                     layer.alert('操作失败, 未知错误！')
                 }
             }

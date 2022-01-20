@@ -12,7 +12,7 @@ layui.use('table', function () {
         , method: 'POST'
         , parseData: function (res) { //res 即为原始返回的数据
             return {
-                "code": res.host_status, //解析接口状态
+                "code": res.code, //解析接口状态
                 "msg": '', //解析提示文本
                 "count": res.auth_host_len_msg, //解析数据长度
                 "data": res.auth_host_list_msg //解析数据列表
@@ -101,11 +101,11 @@ layui.use('table', function () {
             },
             dataType: "JSON",
             success: function (res) {
-                if (res['auth_host_del_status'] === 'true') {
+                if (res['code'] === 0) {
                     auth_tab.reload()
-                } else if (res['auth_host_del_status'] === 'auth fail') {
+                } else if (res['code'] === 131) {
                     layer.msg('所有权限不允许删除！', {icon: 5, time: 2000})
-                } else if (res['auth_host_del_status'] === 'fail') {
+                } else if (res['code'] === 2) {
                     layer.alert('删除失败, 未知错误！')
                 }
             }

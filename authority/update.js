@@ -147,14 +147,11 @@ layui.use(['form', 'layedit', 'laydate', 'jquery', 'xmSelect'], function () {
             data: $('.layui-form').serialize(),
             dataType: "JSON",
             success: function (res) {
-                if (res['auth_host_ping_status'] === 'fail') {
-                    layer.close(logif)
-                    layer.alert('更新失败，密码或其他错误，主机无法连接', {skin: 'layui-layer-hui'})
-                } else if (res['auth_host_into_update']) {
+                if (res['code'] === 0) {
                     window.location.href = '/authority/authority.html'
-                } else if (res['auth_host_into_update'] === 'fail') {
+                } else if (res['code'] === 2) {
                     layer.close(logif)
-                    layer.alert('更新失败，未知错误#db error', {skin: 'layui-layer-hui'})
+                    layer.alert('更新失败，内部错误', {skin: 'layui-layer-hui'})
                 }
             }
         })

@@ -16,7 +16,7 @@ layui.use('table', function () {
             , where: {'cz_jg_date': obj}
             , parseData: function (res) { //res 即为原始返回的数据
                 return {
-                    "code": res.host_status, //解析接口状态
+                    "code": res.code, //解析接口状态
                     "msg": '', //解析提示文本
                     "count": res.cz_len_msg, //解析数据长度
                     "data": res.cz_list_msg //解析数据列表
