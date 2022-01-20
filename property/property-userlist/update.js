@@ -6,14 +6,14 @@ function get_sys_user() {
         data: {'type': 'user_id', 'id': sys_user_id},
         dataType: "JSON",
         success: function (res) {
-            if (res['sys_user_list_msg'] !== 'select list msg error') {
+            if (res['code'] === 0) {
                 $("input[name = 'id']").val(res["id"])
                 $("input[name = 'alias']").val(res["alias"])
                 $("input[name = 'nums']").val(res['nums'])
                 $("input[name = 'host_user']").val(res["host_user"])
                 $("input[name = 'remarks']").val(res["remarks"])
-            } else {
-                error('未知错误')
+            } else if (res['code'] === 201) {
+                layer.alert('更新失败，数据获取接口错误', {skin: 'layui-layer-hui'})
             }
         }
     })
@@ -43,11 +43,11 @@ function sys_user_update() {
         traditional: true,
         dataType: "JSON",
         success: function (res) {
-            if (res['sys_user_ping_status'] === 'true') {
+            if (res['code'] === 0) {
                 window.location.href = '/property/property-userlist.html'
-            } else if (res['sys_user_into_update'] === 'fail') {
+            } else if (res['code'] === 2) {
                 layer.close(logif)
-                layer.alert('更新失败，未知错误#db error', {skin: 'layui-layer-hui'})
+                layer.alert('更新失败，内部错误', {skin: 'layui-layer-hui'})
             }
         }
     })

@@ -16,7 +16,7 @@ layui.use(['dropdown', 'table'], function () {
         , where: {'name': $.cookie('username')}
         , parseData: function (res) { //res 即为原始返回的数据
             return {
-                "code": res.host_status, //解析接口状态
+                "code": res.code, //解析接口状态
                 "msg": '', //解析提示文本
                 "count": res.host_len_msg, //解析数据长度
                 "data": res.host_list_msg //解析数据列表
@@ -79,7 +79,7 @@ layui.use(['dropdown', 'table'], function () {
             , where: {'group_name': obj, 'name': $.cookie('username')}
             , parseData: function (res) { //res 即为原始返回的数据
                 return {
-                    "code": res.host_status, //解析接口状态
+                    "code": res.code, //解析接口状态
                     "msg": '', //解析提示文本
                     "count": res.host_len_msg, //解析数据长度
                     "data": res.host_list_msg //解析数据列表
@@ -113,26 +113,30 @@ layui.use(['dropdown', 'table'], function () {
             dataType: "JSON",
             data: {'name': $.cookie('username')},
             success: function (res) {
-                let data_list = []
-                let data_name = res['group_name_list_msg']
-                data_name.push('所有资产')
-                for (let i = 0; i < data_name.length; i++) {
-                    data_list.push({title: data_name[i], id: i})
-                }
-                dropdown.render({
-                    elem: '.orange-change-group'
-                    , data: data_list
-                    , click: function (obj) {
-                        // layer.tips('点击了：'+ obj.title, this.elem, {tips: [1, '#5FB878']})
-                        for (let i = 0; i < data_name.length; i++) {
-                            if (obj.title === data_name[i]) {
-                                // layer.alert(data_name[i])
-                                get_host_list_page(data_name[i])
-                                get_group_list_name()
+                if (res['code'] === 0) {
+                    let data_list = []
+                    let data_name = res['group_name_list_msg']
+                    data_name.push('所有资产')
+                    for (let i = 0; i < data_name.length; i++) {
+                        data_list.push({title: data_name[i], id: i})
+                    }
+                    dropdown.render({
+                        elem: '.orange-change-group'
+                        , data: data_list
+                        , click: function (obj) {
+                            // layer.tips('点击了：'+ obj.title, this.elem, {tips: [1, '#5FB878']})
+                            for (let i = 0; i < data_name.length; i++) {
+                                if (obj.title === data_name[i]) {
+                                    // layer.alert(data_name[i])
+                                    get_host_list_page(data_name[i])
+                                    get_group_list_name()
+                                }
                             }
                         }
-                    }
-                });
+                    });
+                } else if (res['code'] === 201){
+                    console.log('数据获取接口错误')
+                }
             }
         })
     }
@@ -178,9 +182,9 @@ layui.use(['dropdown', 'table'], function () {
             },
             dataType: "JSON",
             success: function (res) {
-                if (res['server_del_status'] === 'true') {
+                if (res['code'] === 0) {
                     host_tab.reload()
-                } else if (res['server_del_status'] === 'fail') {
+                } else if (res['code'] === 'fail') {
                     layer.alert('删除失败, 未知错误！')
                 }
             }

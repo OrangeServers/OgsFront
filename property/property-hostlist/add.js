@@ -22,20 +22,20 @@ layui.use(['form', 'layedit', 'laydate', 'element'], function () {
             data: data,
             dataType: "JSON",
             success: function (res) {
-                if (res['server_add_status'] === 'true') {
+                if (res['code'] === 0) {
                     if (add_type === 'save') {
                         window.location.href = '/property/property-hostlist.html'
                     } else if (add_type === 'save_jx') {
                         layer.close(logif)
                         layer.msg('添加成功', {icon: 1, time: 2000})
                     }
-                } else if (res['server_add_status'] === 'fail') {
+                } else if (res['code'] === 2) {
                     layer.close(logif)
-                    layer.alert('添加失败，密码或其他错误')
-                } else if (res['server_add_status'] === 'con_fail') {
+                    layer.alert('添加失败，内部错误')
+                } else if (res['code'] === 201) {
                     layer.close(logif)
-                    layer.alert('添加失败，主机无法连接')
-                } else if (res['server_add_status'] === 'sel_fail') {
+                    layer.alert('添加失败，数据获取接口错误')
+                } else if (res['code'] === 111) {
                     layer.close(logif)
                     layer.alert('添加失败，该主机已存在')
                 }

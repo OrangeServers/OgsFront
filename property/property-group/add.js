@@ -10,17 +10,17 @@ function add_server_group() {
         data: data,
         dataType: "JSON",
         success: function (res) {
-            if (res['server_group_add_status'] === 'true') {
+            if (res['code'] === 'true') {
                 window.location.href = '/property/property-grouplist.html'
-            } else if (res['server_group_add_status'] === 'fail') {
+            } else if (res['code'] === 2) {
                 layer.close(logif)
-                layer.alert('添加失败，密码或其他错误')
-            } else if (res['server_group_add_status'] === 'con_fail') {
+                layer.alert('添加失败，内部错误')
+            } else if (res['code'] === 201) {
                 layer.close(logif)
-                layer.alert('添加失败，主机无法连接')
-            } else if (res['server_group_add_status'] === 'sel_fail') {
+                layer.alert('添加失败，数据获取接口错误')
+            } else if (res['code'] === 111) {
                 layer.close(logif)
-                layer.alert('添加失败，该用户已存在')
+                layer.alert('添加失败，该资产组已存在')
             }
         }
     })

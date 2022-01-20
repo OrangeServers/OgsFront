@@ -5,7 +5,7 @@ function get_count_list() {
         dataType: "JSON",
         async: false,
         success: function (res) {
-            if (!res['code']) {
+            if (res['code'] === 0) {
                 $('.orange-sl1').html(res['host_len'])
                 $('.orange-sl2').html(res['container_len'])
                 $('.orange-sl3').html(res['user_len'])
@@ -26,7 +26,7 @@ function get_count_list() {
                     "litres": res['container_len']
                 }]
 
-            } else {
+            } else if (res['code'] === 201) {
                 layer.alert('数据获取接口错误')
             }
         }
@@ -72,8 +72,12 @@ am4core.ready(function () {
         dataType: "JSON",
         async: false,
         success: function (res) {
-            window.login_data = res['login_msg']
-            window.user_data = res['user_msg']
+            if (res['code'] === 0) {
+                window.login_data = res['login_msg']
+                window.user_data = res['user_msg']
+            } else if (res['code'] === 201) {
+                console.log('数据获取接口错误')
+            }
         }
     })
 

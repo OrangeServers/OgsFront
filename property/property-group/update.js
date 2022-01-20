@@ -6,13 +6,13 @@ function get_server_group() {
         data: {'id': acc_group_id},
         dataType: "JSON",
         success: function (res) {
-            if (res['server_group_list_msg'] !== 'select list msg error') {
+            if (res['code'] === 0) {
                 $("input[name = 'id']").val(res["id"])
                 $("input[name = 'name']").val(res["name"])
                 $("input[name = 'nums']").val(res['nums'])
                 $("input[name = 'remarks']").val(res["remarks"])
-            } else {
-                error('未知错误')
+            } else if (res['code'] === 201) {
+                layer.alert('更新失败，数据获取接口错误', {skin: 'layui-layer-hui'})
             }
         }
     })
@@ -30,14 +30,11 @@ function acc_server_update() {
         data: data,
         dataType: "JSON",
         success: function (res) {
-            if (res['server_group_ping_status'] === 'fail') {
-                layer.close(logif)
-                layer.alert('更新失败，密码或其他错误，主机无法连接', {skin: 'layui-layer-hui'})
-            } else if (res['server_group_into_update']) {
+            if (res['code'] === 0) {
                 window.location.href = '/property/property-grouplist.html'
-            } else if (res['server_group_into_update'] === 'fail') {
+            } else if (res['code'] === 2) {
                 layer.close(logif)
-                layer.alert('更新失败，未知错误#db error', {skin: 'layui-layer-hui'})
+                layer.alert('更新失败，内部错误', {skin: 'layui-layer-hui'})
             }
         }
     })

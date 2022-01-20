@@ -13,7 +13,7 @@ layui.use('table', function () {
         , method: 'POST'
         , parseData: function (res) { //res 即为原始返回的数据
             return {
-                "code": res.host_status, //解析接口状态
+                "code": res.code, //解析接口状态
                 "msg": '', //解析提示文本
                 "count": res.sys_user_len_msg, //解析数据长度
                 "data": res.sys_user_list_msg //解析数据列表
@@ -94,10 +94,10 @@ layui.use('table', function () {
             },
             dataType: "JSON",
             success: function (res) {
-                if (res['sys_user_del_status'] === 'true') {
+                if (res['code'] === 0) {
                     user_tab.reload()
-                } else if (res['sys_user_del_status'] === 'fail') {
-                    layer.msg('删除失败，未知错误')
+                } else if (res['code'] === 111) {
+                    layer.msg('删除失败，系统内没有该用户')
                 }
             }
         })

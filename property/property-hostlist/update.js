@@ -6,14 +6,14 @@ function get_host_list() {
         data: {'type': 'host_id', 'id': host_id},
         dataType: "JSON",
         success: function (res) {
-            if (res['host_list_msg'] !== 'select list msg error') {
+            if (res['code'] === 0) {
                 $("input[name = 'id']").val(res["id"])
                 $("input[name = 'alias']").val(res["alias"])
                 $("input[name = 'host_port']").val(res['host_port'])
                 $("input[name = 'host_ip']").val(res['host_ip'])
                 $("input[name = 'group']").val(res["group"])
-            } else if (res['host_list_msg'] === 'select list msg error') {
-                error('未知错误')
+            } else if (res['code'] === 201) {
+                layer.alert('更新失败，数据获取接口错误', {skin: 'layui-layer-hui'})
             }
         }
     })
@@ -31,14 +31,14 @@ function host_update() {
         data: data,
         dataType: "JSON",
         success: function (res) {
-            if (res['server_ping_status'] === 'fail') {
+            if (res['code'] === 201) {
                 layer.close(logif)
-                layer.alert('更新失败，密码或其他错误，主机无法连接', {skin: 'layui-layer-hui'})
-            } else if (res['server_into_update']) {
+                layer.alert('更新失败，数据获取接口错误', {skin: 'layui-layer-hui'})
+            } else if (res['code'] === 0) {
                 window.location.href = '/property/property-hostlist.html'
-            } else if (res['server_into_update'] === 'fail') {
+            } else if (res['code'] === 2) {
                 layer.close(logif)
-                layer.alert('更新失败，未知错误#db error', {skin: 'layui-layer-hui'})
+                layer.alert('更新失败，内部错误', {skin: 'layui-layer-hui'})
             }
         }
     })

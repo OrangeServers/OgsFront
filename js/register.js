@@ -11,9 +11,9 @@ function chk_username() {
             },
             dataType: "JSON",
             success: function (res) {
-                if (res['chk_user_status'] === 'true') {
+                if (res['code'] === 0) {
                     layer.msg('该用户名可用', {icon: 1})
-                } else if (res['chk_user_status'] === 'fail') {
+                } else if (res['code'] === 103) {
                     layer.msg('该用户名已存在', {icon: 2})
                 }
             }
@@ -56,10 +56,10 @@ function send_mail(thisBtn) {
             },
             dataType: "JSON",
             success: function (res) {
-                if (res['send_status'] === 'true') {
+                if (res['code'] === 0) {
                     layer.msg('发送成功', {icon: 1})
                     out_verification_time()
-                } else {
+                } else if (res['code'] === 104) {
                     layer.msg('该邮箱已被注册', {icon: 2})
                 }
             }
@@ -81,15 +81,15 @@ function com_register() {
             dataType: "JSON",
             success: function (res) {
                 console.log(res);
-                if (res['chk_user_status'] === 'fail') {
+                if (res['code'] === 103) {
                     layer.msg('该用户名已存在,请检查后再试', {icon: 2})
-                } else if (res['verification'] === 'fail') {
+                } else if (res['code'] === 106) {
                     layer.msg('验证码错误，请检查后再试', {icon: 2})
-                } else if (res['chk_mail_status'] === 'fail') {
+                } else if (res['code'] === 104) {
                     layer.msg('邮箱已被注册，请检查后再试', {icon: 2})
-                } else if (res['chk_verification'] === 'fail') {
+                } else if (res['code'] === 105) {
                     layer.msg('验证码已过期，请重新获取', {icon: 2})
-                } else if (res['chk_user_status'] === 'true' && res['chk_mail_status'] === 'true' && res['verification'] === 'true') {
+                } else if (res['code'] === 0) {
                     layer.msg('注册成功', {icon: 1})
                     window.location.href = "/login.html"
                 }
