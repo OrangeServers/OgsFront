@@ -28,9 +28,9 @@ layui.use(['form', 'jquery', 'layedit', 'laydate', 'element'], function () {
             data: data,
             dataType: "JSON",
             success: function (res) {
-                if (res['status'] === 'true') {
+                if (res['code'] === 0) {
                     layer.msg('应用成功', {icon: 1, time: 2000})
-                } else if (res['status'] === 'fail') {
+                } else if (res['code'] === 201) {
                     layer.msg('应用失败', {icon: 2, time: 2000})
                 }
             }

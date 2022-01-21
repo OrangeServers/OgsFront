@@ -46,7 +46,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
         }
         , data: {'req_dir': $.cookie('file_ispath')}
         , done: function (res) {
-            if (res['status'] === 'true') {
+            if (res['code'] === 0) {
                 file_render($.cookie('file_ispath'))
             }
         }
@@ -66,10 +66,10 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                 dataType: "JSON",
                 data: {'req_dir': window.file_ispath, 'mk_filename': value},
                 success: function (res) {
-                    if (res['status'] === 'true') {
+                    if (res['code'] === 0) {
                         layer.close(index)
                         file_render(window.file_ispath)
-                    } else if (res['status'] === 'fail') {
+                    } else if (res['code'] === 231) {
                         layer.msg(res['msg'])
                     }
                 }
@@ -95,10 +95,10 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                     'new_name': value
                 },
                 success: function (res) {
-                    if (res['status'] === 'true') {
+                    if (res['code'] === 0) {
                         layer.close(index)
                         file_render(file_path)
-                    } else if (res['status'] === 'fail') {
+                    } else if (res['code'] === 232) {
                         layer.msg(res['msg'])
                     }
                 }
@@ -208,7 +208,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                                     dataType: "JSON",
                                     data: {'req_dir': window.file_ispath, 'rm_filename': res_dir[i]},
                                     success: function (res) {
-                                        if (res['status'] === 'true') {
+                                        if (res['code'] === 0) {
                                             file_render(window.file_ispath)
                                         }
                                     }
@@ -260,7 +260,7 @@ layui.use(['upload', 'dropdown', 'util', 'layer', 'table', 'element'], function 
                                     dataType: "JSON",
                                     data: {'req_dir': window.file_ispath, 'rm_filename': res_file[y]},
                                     success: function (res) {
-                                        if (res['status'] === 'true') {
+                                        if (res['code'] === 0) {
                                             file_render(window.file_ispath)
                                         }
                                     }

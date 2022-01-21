@@ -467,13 +467,17 @@ function get_group_name_list(url) {
         dataType: "JSON",
         data: {'name': $.cookie('username')},
         success: function (res) {
-            let data_name = res['group_name_list_msg']
-            let option = '';
-            for (let i = 0; i < data_name.length; i++) {
-                option += "<option value='" + data_name[i] + "'>" + data_name[i] + "</option>";
+            if (res['code'] === 0) {
+                let data_name = res['group_name_list_msg']
+                let option = '';
+                for (let i = 0; i < data_name.length; i++) {
+                    option += "<option value='" + data_name[i] + "'>" + data_name[i] + "</option>";
+                }
+                $("#orange_group").html(option);
+                layui.form.render('select')
+            } else if (res['code'] === 201) {
+                console.log('接口数据获取错误')
             }
-            $("#orange_group").html(option);
-            layui.form.render('select')
         }
     })
 }
@@ -486,11 +490,17 @@ function get_user_auth_list(page_html) {
         // async: false,
         data: {'name': $.cookie('username')},
         success: function (res) {
-            let user_auth = res['usrole']
-            if (user_auth === 'admin') {
-                upload_layui_admin(page_html)
-            } else if (user_auth === 'develop') {
-                upload_layui_develop(page_html)
+            if (res['code'] === 0) {
+                let user_auth = res['usrole']
+                if (user_auth === 'admin') {
+                    upload_layui_admin(page_html)
+                } else if (user_auth === 'develop') {
+                    upload_layui_develop(page_html)
+                }
+            } else if (res['code'] === 201) {
+                console.log('接口数据获取错误')
+            } else if (res['code'] === 211) {
+                console.log('传递类型错误')
             }
         }
     })
@@ -505,13 +515,15 @@ function get_tree_list() {
         showLine: true,
         edit: ['add', 'update', 'del'],
         success: function (res) {
-            let data = res['host']
-            layui.tree.render({
-                elem: '#orange-fx1'
-                , id: 'demoId1'
-                , data: data
-                , showCheckbox: true
-            });
+            if (res['code'] === 0) {
+                let data = res['host']
+                layui.tree.render({
+                    elem: '#orange-fx1'
+                    , id: 'demoId1'
+                    , data: data
+                    , showCheckbox: true
+                });
+            }
         }
     })
 }
@@ -531,7 +543,7 @@ function get_user_info(user_type, user_name) {
         data: u_data,
         dataType: "JSON",
         success: function (res) {
-            if (res['acc_user_list_msg'] !== 'select list msg error') {
+            if (res['code'] !== 201) {
                 if (res["usrole"] === 'develop') {
                     $('.usrole_dev').attr({'selected': 'selected'})
                     $('.usrole_adm').attr({'disabled': 'disabled'})
@@ -545,7 +557,7 @@ function get_user_info(user_type, user_name) {
                 $("input[name = 'remarks']").val(res["remarks"])
                 layui.form.render('select')
             } else {
-                error('未知错误')
+                error('接口数据获取错误')
             }
         }
     })
@@ -563,14 +575,11 @@ function user_info_update() {
         data: data,
         dataType: "JSON",
         success: function (res) {
-            if (res['acc_user_ping_status'] === 'fail') {
-                layer.close(logif)
-                layer.alert('更新失败，密码或其他错误，主机无法连接', {skin: 'layui-layer-hui'})
-            } else if (res['acc_user_into_update']) {
+            if (res['code'] === 0) {
                 window.location.href = '/user/user-userlist.html'
-            } else if (res['acc_user_into_update'] === 'fail') {
+            } else if (res['code'] === 2) {
                 layer.close(logif)
-                layer.alert('更新失败，未知错误#db error', {skin: 'layui-layer-hui'})
+                layer.alert('更新失败，内部错误', {skin: 'layui-layer-hui'})
             }
         }
     })
@@ -589,13 +598,17 @@ function get_sys_user_name() {
         dataType: "JSON",
         data: {'name': $.cookie('username')},
         success: function (res) {
-            let name_list = res['msg']
-            let html = ''
-            for (let i of name_list) {
-                html += '<option value="' + i + '">' + i + '</option>'
+            if (res['code'] === 0) {
+                let name_list = res['msg']
+                let html = ''
+                for (let i of name_list) {
+                    html += '<option value="' + i + '">' + i + '</option>'
+                }
+                $('#orange_sys-user').html(html)
+                layui.form.render('select')
+            } else if (res['code'] === 201) {
+                console.log('接口数据获取错误')
             }
-            $('#orange_sys-user').html(html)
-            layui.form.render('select')
         }
     })
 }
