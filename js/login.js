@@ -128,8 +128,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
 
     $.ajax({
         type: "POST",
-        url: ogs_backend_url + "/local/settings/get",
-        data: {'name': 'admin'},
+        url: ogs_backend_url + "/local/settings/open",
         dataType: "JSON",
         success: function (res) {
             window.login_time = res['login_time']

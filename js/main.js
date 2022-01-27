@@ -592,8 +592,31 @@ function user_info_update() {
 
 
 function delete_cookie() {
-    $.removeCookie('username')
-    window.location.href = '/login.html'
+    // $.removeCookie('username')
+
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/account/login_out",
+        dataType: "JSON",
+        success: function (res) {
+            if (res['code'] === 0) {
+                console.log('用户登出')
+            } else if (res['code'] === 0) {
+                console.log('无令牌登出')
+            }
+        }
+    })
+
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/local/app_auth_ck",
+        dataType: "JSON",
+        success: function (res) {
+            if (res['code'] === 3) {
+                window.location.href = '/login.html'
+            }
+        }
+    })
 }
 
 function get_sys_user_name() {
