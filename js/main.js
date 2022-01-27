@@ -390,14 +390,19 @@ function upload_layui_develop(cas_this) {
 
 
 $(function () {
-    let url_local = window.location.protocol + window.location.host + '/login.html'
+    // let url_local = window.location.protocol + window.location.host + '/login.html'
     // document.write(returnCitySN["cip"]+','+returnCitySN["cname"])
-    if ($.cookie('username') === undefined) {
-        window.location.href = '/login.html'
-    } else {
-        // $(".orange-title-name").html($(".orange-title-name").html().replace("admin",$.cookie('username')))
-        // $('.layui-header').css('background-color', '#2261A1')
-    }
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/local/app_auth_ck",
+        dataType: "JSON",
+        success: function (res) {
+            if (res['code'] === 3) {
+                window.location.href = '/login.html'
+            }
+        }
+    })
+
 });
 
 const getParam = function (name) {

@@ -115,10 +115,16 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         , layedit = layui.layedit
         , laydate = layui.laydate;
 
-
-    if ($.cookie('username') !== undefined) {
-        window.location.href = '/index.html'
-    }
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/local/app_auth_ck",
+        dataType: "JSON",
+        success: function (res) {
+            if (res['code'] === 0) {
+                window.location.href = '/index.html'
+            }
+        }
+    })
 
     $.ajax({
         type: "POST",
