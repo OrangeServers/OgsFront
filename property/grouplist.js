@@ -9,7 +9,6 @@ layui.use('table', function () {
         url: ogs_backend_url + "/account/user/auth_list",
         dataType: "JSON",
         // async: false,
-        data: {'name': $.cookie('username')},
         success: function (res) {
             let user_auth = res['usrole'],
                 html = '<button class="layui-btn layui-btn-sm" lay-event="createData">创建资产组</button>'
@@ -38,7 +37,6 @@ layui.use('table', function () {
         , height: 560
         , url: ogs_backend_url + '/server/host/group/list_all'
         , method: 'POST'
-        , where: {'name': $.cookie('username')}
         , parseData: function (res) { //res 即为原始返回的数据
             return {
                 "code": res.code, //解析接口状态
@@ -125,8 +123,7 @@ layui.use('table', function () {
             type: "POST",
             url: ogs_backend_url + "/server/host/group/del",
             data: {
-                'id': obj,
-                'cz_name': $.cookie('username')
+                'id': obj
             },
             dataType: "JSON",
             success: function (res) {

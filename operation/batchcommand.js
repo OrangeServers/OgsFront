@@ -24,7 +24,6 @@ layui.use(['tree', 'util'], function () {
             data: {
                 'host_id': list_id,
                 'command': $("#shuru_tex").val(),
-                'com_name': $.cookie('username'),
                 'sys_user': $('#orange_sys-user').val()
             },
             // 设置后去掉数组传参中带的[]  使后台能正常接收

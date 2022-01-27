@@ -6,13 +6,23 @@ layui.use(['form', 'layedit', 'laydate'], function () {
 
     get_user_auth_list('')
 
-    let user_name = $.cookie('username')
+    let user_name = ''
+
+    $.ajax({
+        type: "POST",
+        url: ogs_backend_url + "/account/user/alias",
+        dataType: "JSON",
+        async: false,
+        success: function (res) {
+            user_name = res['username']
+        }
+    })
+
     get_user_info('user_info', user_name)
 
-    let user = $.cookie('username')
+
     let path = ogs_backend_url + '/local/image/test_get/'
-    let img_url = path + user
-    console.log(user)
+    let img_url = path + user_name
     let html = '<label style="float: left; margin-left: 100px; font-size: 25px">更换头像</label>\n' +
         '      <img src=' + img_url + ' class="round_icon">\n' +
         '      <div class="layui-upload" style="margin-left: 450px">\n' +
@@ -37,7 +47,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         elem: '#test1'
         , url: ogs_backend_url + '/local/image/test_put' //改成您自己的上传接口
         , data: {
-            'user': user
+            'user': user_name
         }
         , accept: 'images'
         , exts: 'jpeg|jpg|png'

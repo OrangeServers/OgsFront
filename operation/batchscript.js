@@ -107,7 +107,6 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer'], function () {
         for (let y = 0; y < id_list.length; y++) {
             obj.append('id_list', id_list[y])
         }
-        obj.append('com_name', $.cookie('username'))
         obj.append('sys_user', $('#orange_sys-user').val())
         $.ajax({
             url: ogs_backend_url + '/server/file/put',

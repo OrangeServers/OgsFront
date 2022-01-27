@@ -5,7 +5,6 @@ function add_sys_user() {
     });
     let host_key = $('#host_key')[0].files[0]
     let data = new FormData()
-    data.append('cz_name', $.cookie('username'))
     data.append('host_key', host_key)
     data.append('alias', $("input[name = 'alias']").val())
     data.append('host_user', $("input[name = 'host_user']").val())

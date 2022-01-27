@@ -10,7 +10,6 @@ layui.use(['form', 'jquery', 'layedit', 'laydate', 'element'], function () {
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/local/settings/get",
-        data: {'name': $.cookie('username')},
         dataType: "JSON",
         success: function (res) {
             $(".orange-sel" + res['login_time']).attr('selected', '')
@@ -21,7 +20,7 @@ layui.use(['form', 'jquery', 'layedit', 'laydate', 'element'], function () {
     })
 
     function settings_update() {
-        let data = $('.layui-form').serialize() + "&name=" + $.cookie('username')
+        let data = $('.layui-form').serialize()
         $.ajax({
             type: "POST",
             url: ogs_backend_url + "/local/settings/update",

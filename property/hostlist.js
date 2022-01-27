@@ -13,7 +13,6 @@ layui.use(['dropdown', 'table'], function () {
         , height: 560
         , url: ogs_backend_url + '/server/host/list_all'
         , method: 'POST'
-        , where: {'name': $.cookie('username')}
         , parseData: function (res) { //res 即为原始返回的数据
             return {
                 "code": res.code, //解析接口状态
@@ -76,7 +75,7 @@ layui.use(['dropdown', 'table'], function () {
             , height: 580
             , url: ogs_backend_url + '/server/host/list_page'
             , method: 'POST'
-            , where: {'group_name': obj, 'name': $.cookie('username')}
+            , where: {'group_name': obj}
             , parseData: function (res) { //res 即为原始返回的数据
                 return {
                     "code": res.code, //解析接口状态
@@ -111,7 +110,6 @@ layui.use(['dropdown', 'table'], function () {
             type: "POST",
             url: ogs_backend_url + "/server/host/group/name_list",
             dataType: "JSON",
-            data: {'name': $.cookie('username')},
             success: function (res) {
                 if (res['code'] === 0) {
                     let data_list = []
@@ -177,8 +175,7 @@ layui.use(['dropdown', 'table'], function () {
             type: "POST",
             url: ogs_backend_url + "/server/host/del",
             data: {
-                'id': obj,
-                'cz_name': $.cookie('username')
+                'id': obj
             },
             dataType: "JSON",
             success: function (res) {

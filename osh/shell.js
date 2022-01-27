@@ -145,7 +145,6 @@ layui.use(['tree', 'util', 'upload', 'element', 'layer', 'dtree'], function () {
             type: "POST",
             url: ogs_backend_url + "/local/data",
             dataType: "JSON",
-            data: {'name': $.cookie('username')},
             showLine: true,
             edit: ['add', 'update', 'del'],
             success: function (res) {

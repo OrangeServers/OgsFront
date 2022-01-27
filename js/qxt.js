@@ -43,7 +43,6 @@ am4core.ready(function () {
         type: "POST",
         url: ogs_backend_url + "/account/user/auth_list",
         dataType: "JSON",
-        data: {'name': $.cookie('username')},
         success: function (res) {
             if (res['usrole'] !== 'admin') {
                 $(".orange-sl3,.orange-sl4").attr('href', '/index.html')

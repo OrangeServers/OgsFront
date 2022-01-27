@@ -4,18 +4,18 @@
 
 // 管理员页面权限渲染
 function upload_layui_admin(cas_this) {
-    let user_cookie = $.cookie('username'),
-        path = ogs_backend_url + '/local/image/test_get/',
-        user_name = '';
+    let path = ogs_backend_url + '/local/image/test_get/',
+        user_name = '',
+        user_alias = '';
 
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/account/user/alias",
-        data: {'name': user_cookie},
         dataType: "JSON",
         async: false,
         success: function (res) {
-            user_name = res['alias']
+            user_alias = res['alias']
+            user_name = res['username']
         }
     })
 
@@ -25,7 +25,6 @@ function upload_layui_admin(cas_this) {
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/local/settings/get",
-        data: {'name': user_cookie},
         dataType: "JSON",
         async: false,
         success: function (res) {
@@ -150,8 +149,8 @@ function upload_layui_admin(cas_this) {
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item" style="margin-right: 20px">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
-        '          <img src="' + path + user_cookie + '" class="layui-nav-img">\n' +
-        '          ' + user_name + '\n' +
+        '          <img src="' + path + user_name + '" class="layui-nav-img">\n' +
+        '          ' + user_alias + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
         '          <dd><a href="/user/user-information/update.html">修改信息</a></dd>\n' +
@@ -222,18 +221,18 @@ function upload_layui_admin(cas_this) {
 
 // 非管理员权限的页面渲染
 function upload_layui_develop(cas_this) {
-    let user_cookie = $.cookie('username'),
-        path = ogs_backend_url + '/local/image/test_get/',
-        user_name = '';
+    let path = ogs_backend_url + '/local/image/test_get/',
+        user_name = '',
+        user_alias = '';
 
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/account/user/alias",
-        data: {'name': user_cookie},
         dataType: "JSON",
         async: false,
         success: function (res) {
-            user_name = res['alias']
+            user_alias = res['alias']
+            user_name = res['username']
         }
     })
 
@@ -243,7 +242,6 @@ function upload_layui_develop(cas_this) {
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/local/settings/get",
-        data: {'name': user_cookie},
         dataType: "JSON",
         async: false,
         success: function (res) {
@@ -335,8 +333,8 @@ function upload_layui_develop(cas_this) {
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item" style="margin-right: 20px">\n' +
         '        <a href="javascript:;" class="orange-title-name">\n' +
-        '          <img src="' + path + user_cookie + '" class="layui-nav-img">\n' +
-        '          ' + user_name + '\n' +
+        '          <img src="' + path + user_name + '" class="layui-nav-img">\n' +
+        '          ' + user_alias + '\n' +
         '        </a>\n' +
         '        <dl class="layui-nav-child">\n' +
         '          <dd><a href="/user/user-information/update.html">修改信息</a></dd>\n' +
@@ -470,7 +468,6 @@ function get_group_name_list(url) {
         type: "POST",
         url: ogs_backend_url + url,
         dataType: "JSON",
-        data: {'name': $.cookie('username')},
         success: function (res) {
             if (res['code'] === 0) {
                 let data_name = res['group_name_list_msg']
@@ -493,7 +490,6 @@ function get_user_auth_list(page_html) {
         url: ogs_backend_url + "/account/user/auth_list",
         dataType: "JSON",
         // async: false,
-        data: {'name': $.cookie('username')},
         success: function (res) {
             if (res['code'] === 0) {
                 let user_auth = res['usrole']
@@ -516,7 +512,6 @@ function get_tree_list() {
         type: "POST",
         url: ogs_backend_url + "/local/data",
         dataType: "JSON",
-        data: {'name': $.cookie('username')},
         showLine: true,
         edit: ['add', 'update', 'del'],
         success: function (res) {
@@ -573,7 +568,7 @@ function user_info_update() {
     let logif = layer.load(1, {
         shade: [0.1, '#fff'] //0.1透明度的白色背景
     });
-    let data = $('.layui-form').serialize() + "&cz_name=" + $.cookie('username')
+    let data = $('.layui-form').serialize()
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/account/user/update",
@@ -624,7 +619,6 @@ function get_sys_user_name() {
         type: "POST",
         url: ogs_backend_url + "/server/sys/user/name_list",
         dataType: "JSON",
-        data: {'name': $.cookie('username')},
         success: function (res) {
             if (res['code'] === 0) {
                 let name_list = res['msg']

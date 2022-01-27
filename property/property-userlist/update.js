@@ -26,7 +26,6 @@ function sys_user_update() {
     });
     let host_key = $('#host_key')[0].files[0]
     let data = new FormData()
-    data.append('cz_name', $.cookie('username'))
     data.append('host_key', host_key)
     data.append('id', $("input[name = 'id']").val())
     data.append('alias', $("input[name = 'alias']").val())
