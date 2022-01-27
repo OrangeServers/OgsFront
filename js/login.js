@@ -79,7 +79,7 @@ function user_login(login_time) {
     let login_form = $.param({'user_gw_ip': returnCitySN["cip"]}) + '&' + $.param({'user_gw_cs': returnCitySN["cname"]}) + '&' + $('.layui-form').serialize()
     $.ajax({
         type: "POST",
-        url: ogs_backend_url + "/account/login_dl",
+        url: ogs_backend_url + "/account/login_dl2",
         data: login_form,
         dataType: "JSON",
         success: function (res) {
@@ -88,6 +88,7 @@ function user_login(login_time) {
                 let date = new Date();
                 date.setTime(date.getTime() + login_time * 60 * 60 * 1000)
                 // date.setTime(date.getTime() + 4 * 60 * 60 * 1000);//只能这么写，10表示10秒钟
+                $.cookie('ogs_token', res['token'])
                 $.cookie('username', $("#orange-username").val(), {expires: date});
             } else if (res['code'] === 102) {
                 layer.close(logif)
