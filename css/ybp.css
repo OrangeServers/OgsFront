@@ -41,17 +41,17 @@
 
 #zhexiandiv {
   width: 650px;
-  height: 300px;
-  margin-top: 10px;
+  height: 380px;
+  margin-top: 30px;
   margin-left: 20px;
   float: left;
 }
 
 #bingtudiv {
-  width: 460px;
-  height: 210px;
+  width: 450px;
+  height: 400px;
   float: left;
   margin-left: 20px;
-  margin-top: 100px;
+  margin-top: 30px;
   /*clear: both;*/
 }
