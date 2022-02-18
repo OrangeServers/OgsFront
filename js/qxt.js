@@ -68,6 +68,10 @@ layui.use(['form', 'layedit', 'laydate'], function () {
 // Themes begin
 // Themes end
 
+let login_data = '',
+    user_data = '',
+    date_data = ''
+
     $.ajax({
         type: "POST",
         url: ogs_backend_url + "/local/chart/count",
@@ -75,9 +79,9 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         async: false,
         success: function (res) {
             if (res['code'] === 0) {
-                window.login_data = res['login_msg']
-                window.user_data = res['user_msg']
-                window.date_data = res['date_msg']
+                login_data = res['login_msg']
+                user_data = res['user_msg']
+                date_data = res['date_msg']
             } else if (res['code'] === 201) {
                 console.log('数据获取接口错误')
             }

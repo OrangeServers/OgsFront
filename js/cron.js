@@ -21,7 +21,9 @@ layui.use('table', function () {
         , cols: [[
             {type: 'checkbox', fixed: 'left'}
             , {field: 'id', width: 50, title: 'id'}
-            , {field: 'job_name', title: '任务名'}
+            , {field: 'job_name', title: '任务名', templet: function (d) {
+                   return '<a href="/cron/cron.html" className="layui-table-link" target="_blank" style="color: blue">'+ d.job_name +'</a>'
+                }}
             , {field: 'job_minute', width: 50, title: '分'}
             , {field: 'job_hour', width: 50, title: '时'}
             , {field: 'job_day', width: 50, title: '日'}
