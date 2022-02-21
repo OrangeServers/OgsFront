@@ -374,7 +374,6 @@ function upload_layui_develop(cas_this) {
         '        </li>\n' +
         '        <li class="layui-nav-item"><a href="/cron/cron.html"' + cas_this3 + '><img src="/image/时间.png" width="20" height="20">定时任务</a></li>\n' +
         '        <li class="layui-nav-item"><a href="/filetransfer.html"' + cas_this4 + '><img src="/image/文件.png" width="20" height="20">文件传输</a></li>\n' +
-        '        <li class="layui-nav-item"><a href="/settings.html"' + cas_this5 + '><img src="/image/设置.png" width="20" height="20">系统设置</a></li>\n' +
         '      </ul>\n' +
         '    </div>' +
         '</div>'

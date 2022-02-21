@@ -133,10 +133,10 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         success: function (res) {
             window.login_time = res['login_time']
             let register_status = res['register_status']
-            if (register_status === 'off') {
+            if (register_status === 'on') {
                 //$('.orange-res').remove()
                 // 隐藏标签，不删除
-                $('.orange-res').hide()
+                $('.orange-dres').html('<a href="/register.html" class="orange-res">没有账号? 立即注册</a>')
             }
         }
     })
