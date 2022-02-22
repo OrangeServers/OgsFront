@@ -25,6 +25,7 @@ layui.use('table', function () {
             , {field: 'alias', title: '名称'}
             , {field: 'host_user', title: '用户名'}
             , {field: 'agreement', width: 100, title: '协议'}
+            , {field: 'host_key', title: '私钥'}
             , {field: 'remarks', title: '备注'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
         ]]
