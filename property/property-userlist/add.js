@@ -21,7 +21,7 @@ function add_sys_user() {
         traditional: true,
         dataType: "JSON",
         success: function (res) {
-            if (res['code'] === 'true') {
+            if (res['code'] === 0) {
                 window.location.href = '/property/property-userlist.html'
             } else if (res['code'] === 2) {
                 layer.close(logif)
