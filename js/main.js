@@ -137,14 +137,14 @@ function upload_layui_admin(cas_this) {
         '    <div class="layui-logo"><a href="/index.html"><img src="/image/juzi11.png" width="40" height="40">OrangeServer</a></div>\n' +
         '    <!-- 头部区域（可配合layui 已有的水平导航） -->\n' +
         '    <ul class="layui-nav layui-layout-left">\n' +
-        '      <li class="layui-nav-item">\n' +
-        '        <a href="javascript:;">nav groups</a>\n' +
-        '        <dl class="layui-nav-child">\n' +
-        '          <dd><a href="">menu 11</a></dd>\n' +
-        '          <dd><a href="">menu 22</a></dd>\n' +
-        '          <dd><a href="">menu 33</a></dd>\n' +
-        '        </dl>\n' +
-        '      </li>\n' +
+        // '      <li class="layui-nav-item">\n' +
+        // '        <a href="javascript:;">nav groups</a>\n' +
+        // '        <dl class="layui-nav-child">\n' +
+        // '          <dd><a href="">menu 11</a></dd>\n' +
+        // '          <dd><a href="">menu 22</a></dd>\n' +
+        // '          <dd><a href="">menu 33</a></dd>\n' +
+        // '        </dl>\n' +
+        // '      </li>\n' +
         '    </ul>\n' +
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item" style="margin-right: 20px">\n' +
@@ -184,7 +184,7 @@ function upload_layui_admin(cas_this) {
         '          <dl class="layui-nav-child">\n' +
         '            <dd><a href="/operation/operation-batchcommand.html"' + cas_item_this7 + '><img src="/image/juzi11.png" width="20" height="20">批量命令</a></dd>\n' +
         '            <dd><a href="/operation/operation-batchscript.html"' + cas_item_this6 + '><img src="/image/juzi11.png" width="20" height="20">批量脚本</a></dd>\n' +
-        '            <dd><a href="/operation/operation-codesync.html"' + cas_item_this8 + '><img src="/image/juzi11.png" width="20" height="20">代码同步</a></dd>\n' +
+        // '            <dd><a href="/operation/operation-codesync.html"' + cas_item_this8 + '><img src="/image/juzi11.png" width="20" height="20">代码同步</a></dd>\n' +
         '            <dd><a href="/wsh/" target="_blank"><img src="/image/juzi11.png" width="20" height="20">shell终端</a></dd>\n' +
         '          </dl>\n' +
         '        </li>\n' +
@@ -321,14 +321,14 @@ function upload_layui_develop(cas_this) {
         '    <div class="layui-logo"><a href="/index.html"><img src="/image/juzi11.png" width="40" height="40">OrangeServer</a></div>\n' +
         '    <!-- 头部区域（可配合layui 已有的水平导航） -->\n' +
         '    <ul class="layui-nav layui-layout-left">\n' +
-        '      <li class="layui-nav-item">\n' +
-        '        <a href="javascript:;">nav groups</a>\n' +
-        '        <dl class="layui-nav-child">\n' +
-        '          <dd><a href="">menu 11</a></dd>\n' +
-        '          <dd><a href="">menu 22</a></dd>\n' +
-        '          <dd><a href="">menu 33</a></dd>\n' +
-        '        </dl>\n' +
-        '      </li>\n' +
+        // '      <li class="layui-nav-item">\n' +
+        // '        <a href="javascript:;">nav groups</a>\n' +
+        // '        <dl class="layui-nav-child">\n' +
+        // '          <dd><a href="">menu 11</a></dd>\n' +
+        // '          <dd><a href="">menu 22</a></dd>\n' +
+        // '          <dd><a href="">menu 33</a></dd>\n' +
+        // '        </dl>\n' +
+        // '      </li>\n' +
         '    </ul>\n' +
         '    <ul class="layui-nav layui-layout-right">\n' +
         '      <li class="layui-nav-item" style="margin-right: 20px">\n' +
@@ -360,7 +360,7 @@ function upload_layui_develop(cas_this) {
         '          <dl class="layui-nav-child">\n' +
         '            <dd><a href="/operation/operation-batchcommand.html"' + cas_item_this7 + '><img src="/image/juzi11.png" width="20" height="20">批量命令</a></dd>\n' +
         '            <dd><a href="/operation/operation-batchscript.html"' + cas_item_this6 + '><img src="/image/juzi11.png" width="20" height="20">批量脚本</a></dd>\n' +
-        '            <dd><a href="/operation/operation-codesync.html"' + cas_item_this8 + '><img src="/image/juzi11.png" width="20" height="20">代码同步</a></dd>\n' +
+        // '            <dd><a href="/operation/operation-codesync.html"' + cas_item_this8 + '><img src="/image/juzi11.png" width="20" height="20">代码同步</a></dd>\n' +
         '            <dd><a href="/wsh/" target="_blank"><img src="/image/juzi11.png" width="20" height="20">shell终端</a></dd>\n' +
         '          </dl>\n' +
         '        </li>\n' +
