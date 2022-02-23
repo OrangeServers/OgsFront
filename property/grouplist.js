@@ -4,19 +4,23 @@ layui.use('table', function () {
 
     get_user_auth_list('property-grouplist')
 
-    $.ajax({
-        type: "POST",
-        url: ogs_backend_url + "/account/user/auth_list",
-        dataType: "JSON",
-        // async: false,
-        success: function (res) {
-            let user_auth = res['usrole'],
-                html = '<button class="layui-btn layui-btn-sm" lay-event="createData">创建资产组</button>'
-            if (user_auth === 'admin') {
-                $('.orange-crgp').before(html)
+    function create_zx() {
+        $.ajax({
+            type: "POST",
+            url: ogs_backend_url + "/account/user/auth_list",
+            dataType: "JSON",
+            // async: false,
+            success: function (res) {
+                let user_auth = res['usrole'],
+                    html = '<button class="layui-btn layui-btn-sm" lay-event="createData">创建资产组</button>'
+                if (user_auth === 'admin') {
+                    $('.orange-crgp').before(html)
+                }
             }
-        }
-    })
+        })
+    }
+
+    create_zx()
 
     // 加载组关联资产信息
     $.ajax({
@@ -129,6 +133,7 @@ layui.use('table', function () {
             success: function (res) {
                 if (res['code'] === 0) {
                     group_tab.reload()
+                    create_zx()
                 } else if (res['code'] === 111) {
                     layer.alert('删除失败, 未知错误！')
                 }
