@@ -10,7 +10,7 @@ function add_server_group() {
         data: data,
         dataType: "JSON",
         success: function (res) {
-            if (res['code'] === 'true') {
+            if (res['code'] === 0) {
                 window.location.href = '/property/property-grouplist.html'
             } else if (res['code'] === 2) {
                 layer.close(logif)
