@@ -181,7 +181,7 @@ layui.use(['dropdown', 'table'], function () {
             success: function (res) {
                 if (res['code'] === 0) {
                     host_tab.reload()
-                } else if (res['code'] === 'fail') {
+                } else if (res['code'] === 111) {
                     layer.alert('删除失败, 未知错误！')
                 }
             }
