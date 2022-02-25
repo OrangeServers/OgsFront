@@ -7,9 +7,14 @@ orangeservers的前端项目，整体部署和展示文档在[OgsDocument](https
 
 ### 部署
 
+查看不了图片或者克隆慢可以去gitee的仓库，[这是地址](https://gitee.com/xuwei777/OgsFront)
+
 ```shell
-# 克隆前端项目
+# 克隆前端项目 国内环境克隆慢可以去gitee克隆
 git clone https://github.com/OrangeServers/OgsFront.git
+# 也可以直接下载安装压缩包 wget http://download.stisd.cn/ogsfront/OgsFront_v1.0.tar.gz
+
+# 改名
 mv OgsFront ogsfront
 
 # 配置nginx配置文件，示例 orangeserver.conf
