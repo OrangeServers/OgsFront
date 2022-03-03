@@ -1,13 +1,13 @@
 # OgsFront
 
 ### 简介
-orangeservers的前端项目，整体部署和展示文档在[OgsDocument](https://github.com/OrangeServers/OgsDocument)
+orangeservers的前端项目，整体部署和展示文档在[OgsDocument](https://github.com/OrangeServers/OgsDocument)    [文档gitee地址](https://gitee.com/orangeservers/OgsDocument)
 
 项目使用layui+jquery编写
 
 ### 部署
 
-查看不了图片或者克隆慢可以去gitee的仓库，[这是地址](https://gitee.com/xuwei777/OgsFront)
+查看不了图片或者克隆慢可以去gitee的仓库，[这是地址](https://gitee.com/orangeservers/OgsFront)
 
 ```shell
 # 克隆前端项目 国内环境克隆慢可以去gitee克隆
